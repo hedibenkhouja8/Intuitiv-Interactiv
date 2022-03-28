@@ -1,11 +1,15 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+   <div v-bind:key="item.id" v-for="item in info">
+
+      <h1>fefefe{{item.lastname}}</h1>
+    </div>
+ <h1>ecececcecc</h1>
     <p>
-      For a guide and recipes on how to configure / customize this project,<br>
+      For a guide and recipes on how xsxssto configure / customize this project,<br>
       check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
+    </p>  
     <h3>Installed CLI Plugins</h3>
     <ul>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
@@ -27,16 +31,28 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <div id="app">
+  {{ info }}
+</div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
+  data () {
+    return {
+      info: null
+    }
+  },
+  mounted () {
+    axios
+      .get('http://127.0.0.1:8000/api/hedis')
+      .then(response => (this.info = response.data))
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
