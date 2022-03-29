@@ -2,7 +2,7 @@
   <div class="">
    <div v-bind:key="item.id" v-for="item in info">
 
-      <h1>fefefe{{item.lastname}}</h1>
+      <h1>fefefe{{item.lastname}}</h1><button v-on:click="deletehedi(item.id)">dlete</button>
     </div>
 
     <div id="app">
@@ -43,6 +43,9 @@ export default {
       .post('http://127.0.0.1:8000/api/hedis',
      {name:this.name,lastname:this.lastname}, )
      .then((response)=>{console.log(response)})
+    },
+    deletehedi(id){
+      axios.delete('http://127.0.0.1:8000/api/hedis/'+id)
     }
   }
 }
