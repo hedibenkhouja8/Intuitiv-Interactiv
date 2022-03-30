@@ -1,5 +1,5 @@
 <template>
-
+<div>
 <h2>Home page 
     
  <div v-bind:key="item.id" v-for="item in info">
@@ -13,7 +13,6 @@
 
  
 <div>
-  <br>
   <form @submit.prevent="onCreate">
   <label>name</label>
   <input type="text" class="form-control" v-model="name"/>
@@ -24,7 +23,7 @@
   
   </form></div>
   </div>
-
+</div>
 </template>
 
 <script>

@@ -4,10 +4,15 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\MemoireRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      collectionOperations={},
+ 
+ * )
  * @ORM\Entity(repositoryClass=MemoireRepository::class)
  */
 class Memoire
@@ -22,38 +27,111 @@ class Memoire
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $file;
+    private $description;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Critere::class, mappedBy="memoires")
+     */
+    private $criteres;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Demandeempreint::class, mappedBy="memoire")
+     */
+    private $demandeempreints;
+
+    public function __construct()
+    {
+        $this->criteres = new ArrayCollection();
+        $this->demandeempreints = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getTitre(): ?string
     {
-        return $this->name;
+        return $this->titre;
     }
 
-    public function setName(string $name): self
+    public function setTitre(string $titre): self
     {
-        $this->name = $name;
+        $this->titre = $titre;
 
         return $this;
     }
 
-    public function getFile(): ?string
+    public function getDescription(): ?string
     {
-        return $this->file;
+        return $this->description;
     }
 
-    public function setFile(string $file): self
+    public function setDescription(string $description): self
     {
-        $this->file = $file;
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Critere>
+     */
+    public function getCriteres(): Collection
+    {
+        return $this->criteres;
+    }
+
+    public function addCritere(Critere $critere): self
+    {
+        if (!$this->criteres->contains($critere)) {
+            $this->criteres[] = $critere;
+            $critere->addMemoire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCritere(Critere $critere): self
+    {
+        if ($this->criteres->removeElement($critere)) {
+            $critere->removeMemoire($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Demandeempreint>
+     */
+    public function getDemandeempreints(): Collection
+    {
+        return $this->demandeempreints;
+    }
+
+    public function addDemandeempreint(Demandeempreint $demandeempreint): self
+    {
+        if (!$this->demandeempreints->contains($demandeempreint)) {
+            $this->demandeempreints[] = $demandeempreint;
+            $demandeempreint->setMemoire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDemandeempreint(Demandeempreint $demandeempreint): self
+    {
+        if ($this->demandeempreints->removeElement($demandeempreint)) {
+            // set the owning side to null (unless already changed)
+            if ($demandeempreint->getMemoire() === $this) {
+                $demandeempreint->setMemoire(null);
+            }
+        }
 
         return $this;
     }

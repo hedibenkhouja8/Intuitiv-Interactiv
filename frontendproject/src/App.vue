@@ -1,4 +1,5 @@
 <template>
+<div>
 <nav>
 <router-link to="/"> home </router-link>
 <router-link to="/users"> users </router-link>
@@ -11,7 +12,7 @@
 
   <router-view />
  <nav>
-</nav>
+</nav></div>
 </template>
 
 <script>

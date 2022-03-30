@@ -2,8 +2,8 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 import HomePage from "../components/Home.vue";
 import EditItem from '../components/Edit.vue';
-import AboutPage from '../components/users.vue';
-import UsersPage from '../components/about.vue';
+import AboutPage from '../components/about.vue';
+import UsersPage from '../components/users.vue';
 
 
 const routes = [
