@@ -2,6 +2,7 @@
 <div>
     
   <h1> users </h1>
+<h1></h1>
 
   
 </div>
@@ -9,7 +10,9 @@
 
 <script>
 export default {
-name: 'UsersPage'
+name: 'UsersPage',
+props : ["detail"]
+
 }
 </script>
 

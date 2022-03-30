@@ -16,7 +16,7 @@ const routes = [
     }
   },
   {
-    path: "/edit",
+    path: "/edit/:id",
     name: "Edit",
     component: EditItem,
     meta: {
@@ -51,4 +51,4 @@ router.afterEach((to, from) => {
   document.title = to.meta.title;
 })
 
-export default router;
+export default router; 

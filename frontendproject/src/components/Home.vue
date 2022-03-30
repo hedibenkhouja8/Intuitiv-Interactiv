@@ -1,12 +1,15 @@
 <template>
-<h2>Home page 
-</h2>
-  <div class="">
-   <div v-bind:key="item.id" v-for="item in info">
 
-      <h3>{{item.id}} {{item.lastname}} {{item.name}} <button v-on:click="deletehedi(item.id)">dlete</button> <router-link to="/edit"> edit </router-link>
+<h2>Home page 
+    
+ <div v-bind:key="item.id" v-for="item in info">
+
+      <h3>{{item.id}} {{item.lastname}} {{item.name}} <button v-on:click="deletehedi(item.id)">dlete</button> <button @click="edit(item.id)">edit</button>
 </h3>
     </div>
+</h2>
+
+  <div>
 
  
 <div>
@@ -49,7 +52,12 @@ export default {
     },
     deletehedi(id){
       axios.delete('http://127.0.0.1:8000/api/hedis/'+id)
-    }
+    },edit(id){
+this.$router.push({
+    name:"Edit",
+    params : {id:id}
+})
+},
   }
 }
 
