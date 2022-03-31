@@ -50,7 +50,10 @@ class MemoireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $memoire = Memoire::find($id);
+        $memoire->update($request->all());
+        return $memoire;
+
     }
 
     /**
@@ -61,6 +64,6 @@ class MemoireController extends Controller
      */
     public function destroy($id)
     {
-        //
+       return Memoire::destroy($id);
     }
 }
