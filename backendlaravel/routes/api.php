@@ -18,5 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/Memoire',[MemoireController::class,'index']); 
-Route::post('/Memoire',[MemoireController::class,'store']); 
+ 
+Route::resource('Memoire',MemoireController::class);
+//Route::get('/Memoire',[MemoireController::class,'index']); 
+//Route::post('/Memoire',[MemoireController::class,'store']);

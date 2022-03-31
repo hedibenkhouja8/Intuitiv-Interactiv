@@ -38,7 +38,7 @@ class MemoireController extends Controller
      */
     public function show($id)
     {
-        //
+        return Memoire::find($id);
     }
 
     /**
