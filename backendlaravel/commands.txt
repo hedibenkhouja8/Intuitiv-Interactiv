@@ -1,0 +1,4 @@
+entity : 
+model + migration : php artisan make:model Memoire --migration
+migrate to db : php artisan migrate
+controller : php artisan make:controller MemoireController --api

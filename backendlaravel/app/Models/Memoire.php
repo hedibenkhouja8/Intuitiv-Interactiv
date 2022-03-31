@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Memoire extends Model
 {
     use HasFactory;
+    protected $fillable = ['name','lastname'];
 }
