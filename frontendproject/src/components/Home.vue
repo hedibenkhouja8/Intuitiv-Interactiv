@@ -40,7 +40,7 @@ export default {
   },
   mounted () {
     axios.get('http://127.0.0.1:8000/api/Memoire')
-.then(response => (this.info = response))   
+.then(response => (this.info = response.data))   
 
    
   },
