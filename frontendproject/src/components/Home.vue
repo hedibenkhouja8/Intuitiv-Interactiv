@@ -1,10 +1,10 @@
 <template>
 <div>
 <h2>Home page 
-    
+  {{info}}
  <div v-bind:key="item.id" v-for="item in info">
 
-      <h3>{{item.id}} {{item.lastname}} {{item.name}} <button v-on:click="deletehedi(item.id)">dlete</button> <button @click="edit(item.id)">edit</button>
+      <h3>{{item.id}} {{item.lastname}} {{item.name}}    <button v-on:click="deletehedi(item.id)">dlete</button> <button @click="edit(item.id)">edit</button>
 </h3>
     </div>
 </h2>
@@ -34,23 +34,25 @@ export default {
     return {
       info: null,
       name :'',
-      lastname:''
+      lastname:'',
+      list:undefined
     }
   },
   mounted () {
-    axios
-      .get('http://127.0.0.1:8000/api/hedis')
-      .then(response => (this.info = response.data['hydra:member']))
+    axios.get('http://127.0.0.1:8000/api/Memoire')
+.then(response => (this.info = response))   
+
+   
   },
   methods :{
     onCreate(){
       axios
-      .post('http://127.0.0.1:8000/api/hedis',
+      .post('http://127.0.0.1:8000/api/Memoire',
      {name:this.name,lastname:this.lastname}, )
      .then((response)=>{console.log(response)})
     },
     deletehedi(id){
-      axios.delete('http://127.0.0.1:8000/api/hedis/'+id)
+      axios.delete('http://127.0.0.1:8000/api/Memoire/'+id)
     },edit(id){
 this.$router.push({
     name:"Edit",

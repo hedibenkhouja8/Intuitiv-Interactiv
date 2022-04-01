@@ -42,7 +42,7 @@ name: 'ItemEdit',
  async mounted () {
       
 
-const res =axios.get('http://127.0.0.1:8000/api/hedis/'+this.$route.params.id)
+const res =axios.get('http://127.0.0.1:8000/api/Memoire/'+this.$route.params.id)
 this.values=(await res).data
 
       
@@ -50,12 +50,12 @@ this.values=(await res).data
   methods :{
     onupdate(){
       axios
-      .put('http://127.0.0.1:8000/api/hedis/'+this.$route.params.id,
+      .put('http://127.0.0.1:8000/api/Memoire/'+this.$route.params.id,
      {name:this.values.name,lastname:this.values.lastname}, )
      .then((response)=>{console.log(response)})
     },
     deletehedi(){ 
-      axios.delete('http://127.0.0.1:8000/api/hedis/'+this.$route.params.id)
+      axios.delete('http://127.0.0.1:8000/api/Memoire/'+this.$route.params.id)
     }
   }
 }
