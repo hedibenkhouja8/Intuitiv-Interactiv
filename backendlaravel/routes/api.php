@@ -33,5 +33,5 @@ Route::resource('Empreint',EmpreintController::class);
 Route::resource('Encadreurs',EncadreursController::class);
 Route::resource('Etablisement',EtablisementsController::class);
 
-//Route::get('/Memoire',[MemoireController::class,'index']); 
+Route::get('/Memoire',[MemoireController::class,'index']); 
 //Route::post('/Memoire',[MemoireController::class,'store']);

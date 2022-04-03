@@ -1,3 +1,0 @@
-<?php //route_name_c7494ab991c815d320eb49c8b7dd439e
-
-return [PHP_INT_MAX, 'api_hedis_get_collection'];
