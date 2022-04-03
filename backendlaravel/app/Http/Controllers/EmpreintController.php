@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Memoire;
 use App\Models\Empreint;
+use Illuminate\Http\Request;
+
 class EmpreintController extends Controller
 {
    /**
@@ -64,5 +66,17 @@ class EmpreintController extends Controller
     public function destroy($id)
     {
        return Empreint::destroy($id);
+    }
+    /**
+     * The Empreints of a Memoire
+     * @return \Illuminate\Http\Response
+     * @param  Memoire  $memoire
+     * Route: /api/Memoire/{memoire}/Empreint
+     */
+    public function byMemoire(Memoire $memoire){
+        return $memoire->empreints;
+        //Si on veut les details du memoires avec ses empreints
+        /* return Memoire::with('empreints')
+        ->where('id',$memoire->id)->get();*/
     }
 }

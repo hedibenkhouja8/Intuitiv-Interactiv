@@ -34,4 +34,10 @@ Route::resource('Encadreurs',EncadreursController::class);
 Route::resource('Etablisement',EtablisementsController::class);
 
 Route::get('/Memoire',[MemoireController::class,'index']); 
-//Route::post('/Memoire',[MemoireController::class,'store']);
+Route::get('/Memoire/{memoire}/Empreint',[EmpreintController::class,'byMemoire']);
+
+Route::get('/Memoire/{memoire}/Critere',[CritereController::class,'byMemoire']);
+Route::get('/Critere/{Critere}/Memoire',[MemoireController::class,'byCritere']);
+Route::get('/Memoire/{memoire}/DemandeEmpreint',[DemandeEmpreintController::class,'byMemoire']);
+
+Route::get('/Etablisement/{etablisement}/Memoire',[MemoireController::class,'byEtablisement']);

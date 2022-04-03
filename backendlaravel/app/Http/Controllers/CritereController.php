@@ -64,4 +64,17 @@ class CritereController extends Controller
         return Critere::destroy($id);
 
     }
+      /**
+     * The Empreints of a Memoire
+     * @return \Illuminate\Http\Response
+     * @param  Memoire  $memoire
+     * Route: /api/Memoire/{memoire}/Critere
+     */
+    public function byMemoire(Memoire $memoire){
+        return $memoire->criteres;
+         //Si on veut les details du memoires avec ses empreints
+         /* return Memoire::with('demendeempreints')
+         ->where('id',$memoire->id)->get();*/
+     }
+    
 }

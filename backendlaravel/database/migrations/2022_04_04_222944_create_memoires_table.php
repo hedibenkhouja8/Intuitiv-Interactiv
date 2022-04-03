@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmpreintsTable extends Migration
+class CreateMemoiresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,17 @@ class CreateEmpreintsTable extends Migration
      */
     public function up()
     {
-        Schema::create('empreints', function (Blueprint $table) {
+        Schema::create('memoires', function (Blueprint $table) {
             $table->id();
+            $table->string('titre');
             $table->integer('id_etudiant');
-            $table->integer('id_memoire');
-            $table->date('date_debut');
-            $table->date('date_fin');
+            $table->year('annee');
+            $table->string('description');
+            $table->foreignId('etablisement_id')->constrained();
+          
+            $table->string('fichierpdf');
+            $table->integer('encadreur');
+            $table->string('criteres');
             $table->timestamps();
         });
     }
@@ -30,6 +35,6 @@ class CreateEmpreintsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('empreints');
+        Schema::dropIfExists('memoires');
     }
 }

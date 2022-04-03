@@ -17,7 +17,8 @@ class CreateEncadreursTable extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenom');
-            $table->integer('id_etablissement');
+            
+           $table->foreignId('etablisement_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

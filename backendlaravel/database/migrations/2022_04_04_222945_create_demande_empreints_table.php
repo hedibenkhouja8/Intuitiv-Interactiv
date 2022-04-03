@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDemandeDepotsTable extends Migration
+class CreateDemandeEmpreintsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,17 @@ class CreateDemandeDepotsTable extends Migration
      */
     public function up()
     {
-        Schema::create('demande_depots', function (Blueprint $table) {
+        Schema::create('demande_empreints', function (Blueprint $table) {
             $table->id();
-            $table->string('titre');
             $table->integer('id_etudiant');
-            $table->integer('id_encadreur');
-            $table->date('date_memoire');
+            //$table->unsignedBigInteger('memoire_id');
+            //$table->foreign('memoire_id')->references('id')->on('memoires');
+            $table->foreignId('memoire_id')->constrained();
+            $table->date('date_debut');
+            $table->date('date_fin');
             $table->string('description');
             $table->string('status');
-            $table->string('fichierpdf');
-            $table->string('fichierdemande');
-            $table->string('criteres');
-            $table->integer('nbpages');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -36,6 +35,6 @@ class CreateDemandeDepotsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('demande_depots');
+        Schema::dropIfExists('demande_empreints');
     }
 }

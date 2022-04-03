@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Memoire;
+use App\Models\Critere;
 
+use App\Models\Memoire;
+use App\Models\Etablisement;
 use Illuminate\Http\Request;
 
 class MemoireController extends Controller
@@ -66,4 +68,28 @@ class MemoireController extends Controller
     {
        return Memoire::destroy($id);
     }
+     /**
+     * The Empreints of a Memoire
+     * @return \Illuminate\Http\Response
+     * @param  Etablisement  $etablisement
+     * Route: /api/Etablisement/{etablisement}/Memoire
+     */
+    public function byEtablisement(Etablisement $etablisement){
+        return $etablisement->memoires;
+        //Si on veut les details du memoires avec ses empreints
+        /* return Memoire::with('empreints')
+        ->where('id',$memoire->id)->get();*/
+    }
+      /**
+     * The Empreints of a Memoire
+     * @return \Illuminate\Http\Response
+     * @param  Critere  $critere
+     * Route: /api/Critere/{critere}/Memoire
+     */
+    public function byCritere(Critere $critere){
+        return $critere->memoires;
+         //Si on veut les details du memoires avec ses empreints
+         /* return Memoire::with('demendeempreints')
+         ->where('id',$memoire->id)->get();*/
+     }
 }
