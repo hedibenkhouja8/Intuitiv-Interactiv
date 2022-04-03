@@ -15,8 +15,14 @@ class CreateMemoiresTable extends Migration
     {
         Schema::create('memoires', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('lastname');
+            $table->string('titre');
+            $table->integer('id_etudiant');
+            $table->year('annee');
+            $table->string('description');
+            $table->integer('id_etablissement');
+            $table->string('fichierpdf');
+            $table->integer('encadreur');
+            $table->string('criteres');
             $table->timestamps();
         });
     }

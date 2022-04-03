@@ -1,0 +1,3 @@
+<?php //route_name_e0d2df5efaadfdde7bfc9d7156362e89
+
+return [PHP_INT_MAX, 'api_hedis_get_item'];

@@ -1,5 +1,11 @@
 <?php
 use App\Http\Controllers\MemoireController;
+use App\Http\Controllers\CritereController;
+use App\Http\Controllers\DemandeDepotController;
+use App\Http\Controllers\DemandeEmpreintController;
+use App\Http\Controllers\EmpreintController;
+use App\Http\Controllers\EncadreursController;
+use App\Http\Controllers\EtablisementsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +26,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
  
 Route::resource('Memoire',MemoireController::class);
-Route::get('/Memoire',[MemoireController::class,'index']); 
-Route::post('/Memoire',[MemoireController::class,'store']);
+Route::resource('Critere',CritereController::class);
+Route::resource('DemandeDepot',DemandeDepotController::class);
+Route::resource('DemandeEmpreint',DemandeEmpreintController::class);
+Route::resource('Empreint',EmpreintController::class);
+Route::resource('Encadreurs',EncadreursController::class);
+Route::resource('Etablisement',EtablisementsController::class);
+
+//Route::get('/Memoire',[MemoireController::class,'index']); 
+//Route::post('/Memoire',[MemoireController::class,'store']);

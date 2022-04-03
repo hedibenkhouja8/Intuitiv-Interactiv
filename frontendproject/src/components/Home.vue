@@ -1,7 +1,7 @@
 <template>
 <div>
 <h2>Home page 
-  {{info}}
+  
  <div v-bind:key="item.id" v-for="item in info">
 
       <h3>{{item.id}} {{item.lastname}} {{item.name}}    <button v-on:click="deletehedi(item.id)">dlete</button> <button @click="edit(item.id)">edit</button>
