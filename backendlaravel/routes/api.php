@@ -7,6 +7,7 @@ use App\Http\Controllers\EmpreintController;
 use App\Http\Controllers\EncadreursController;
 use App\Http\Controllers\EtablisementsController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,14 +20,17 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//public
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 
- 
-Route::resource('Memoire',MemoireController::class);
-Route::resource('Critere',CritereController::class);
+//protected routes LOGIN
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    Route::resource('Memoire',MemoireController::class);
+    Route::resource('Critere',CritereController::class);
 Route::resource('DemandeDepot',DemandeDepotController::class);
 Route::resource('DemandeEmpreint',DemandeEmpreintController::class);
 Route::resource('Empreint',EmpreintController::class);
@@ -39,5 +43,9 @@ Route::get('/Memoire/{memoire}/Empreint',[EmpreintController::class,'byMemoire']
 Route::get('/Memoire/{memoire}/Critere',[CritereController::class,'byMemoire']);
 Route::get('/Critere/{Critere}/Memoire',[MemoireController::class,'byCritere']);
 Route::get('/Memoire/{memoire}/DemandeEmpreint',[DemandeEmpreintController::class,'byMemoire']);
-
 Route::get('/Etablisement/{etablisement}/Memoire',[MemoireController::class,'byEtablisement']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
+
+
+ 

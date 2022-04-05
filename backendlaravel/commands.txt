@@ -2,3 +2,8 @@ entity :
 model + migration : php artisan make:model Memoire --migration
 migrate to db : php artisan migrate
 controller : php artisan make:controller MemoireController --api
+
+auth : 
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
