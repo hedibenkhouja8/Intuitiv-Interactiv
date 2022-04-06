@@ -17,7 +17,6 @@ class CreateDemandeDepotsTable extends Migration
             $table->id();
             $table->string('titre');
             $table->integer('id_etudiant');
-            $table->integer('id_encadreur');
             $table->date('date_memoire');
             $table->string('description');
             $table->string('status');
@@ -25,6 +24,8 @@ class CreateDemandeDepotsTable extends Migration
             $table->string('fichierpdf');
             $table->string('fichierdemande');
             $table->string('criteres');
+            
+            $table->foreignId('etablisement_id')->constrained();
             $table->integer('nbpages');
             $table->timestamps();
         });

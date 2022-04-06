@@ -20,8 +20,5 @@ class Encadreur extends Model
     {
         return $this->belongsToMany(Memoire::class);
     }
-    public function memoire()
-    {
-        return $this->belongsTo(Etablisement::class);
-    }
+   
 }

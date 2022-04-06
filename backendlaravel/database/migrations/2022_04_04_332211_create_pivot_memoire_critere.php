@@ -13,7 +13,7 @@ class CreatePivotMemoireCritere extends Migration
      */
     public function up()
     {
-        Schema::create('memoire_critere', function (Blueprint $table) {
+        Schema::create('critere_memoire', function (Blueprint $table) {
             $table->id();
             $table->foreignId('memoire_id')->constrained();
             $table->foreignId('critere_id')->constrained()->onDelete('cascade');

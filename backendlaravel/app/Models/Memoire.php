@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Critere;
 use App\Models\Empreint;
+use App\Models\Encadreur;
 use App\Models\DemandeDepot;
 use App\Models\Etablisement;
 use App\Models\DemandeEmpreint;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Memoire extends Model
 {
     use HasFactory;
-    protected $fillable = ['titre','id_etudiant','annee','description','etablisement_id','fichierpdf','encadreur','criteres'];
+    protected $fillable = ['titre','id_etudiant','annee','description','etablisement_id','fichierpdf'];
     public function demendeempreints()
     {
         return $this->hasMany(DemandeEmpreint::class);
@@ -33,5 +34,9 @@ class Memoire extends Model
     public function criteres()
     {
         return $this->belongsToMany(Critere::class);
+    }
+    public function encadreurs()
+    {
+        return $this->belongsToMany(Encadreur::class);
     }
 }

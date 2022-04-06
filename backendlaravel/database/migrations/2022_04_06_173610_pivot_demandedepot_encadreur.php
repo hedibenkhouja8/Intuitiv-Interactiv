@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePivotMemoireEncadreur extends Migration
+class PivotDemandedepotEncadreur extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePivotMemoireEncadreur extends Migration
      */
     public function up()
     {
-        Schema::create('encadreur_memoire', function (Blueprint $table) {
+        Schema::create('demandedepot_encadreur', function (Blueprint $table) {
             $table->id();
             
-            $table->foreignId('memoire_id')->constrained();
+            $table->foreignId('demandedepot_id')->constrained();
             $table->foreignId('encadreur_id')->constrained()->onDelete('cascade');
       
         });
@@ -29,6 +29,6 @@ class CreatePivotMemoireEncadreur extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pivot_memoire_encadreur');
+        //
     }
 }
