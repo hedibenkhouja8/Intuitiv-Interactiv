@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class PivotDemandedepotEncadreur extends Migration
+class PivotCritereDemandedepot extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class PivotDemandedepotEncadreur extends Migration
      */
     public function up()
     {
-        Schema::create('demande_depot_encadreur', function (Blueprint $table) {
+        Schema::create('critere_demande_depot', function (Blueprint $table) {
             $table->id();
             
+            $table->foreignId('critere_id')->constrained();
             $table->foreignId('demande_depot_id')->constrained();
-            $table->foreignId('encadreur_id')->constrained();
       
         });
     }

@@ -16,14 +16,12 @@ class CreateDemandeDepotsTable extends Migration
         Schema::create('demande_depots', function (Blueprint $table) {
             $table->id();
             $table->string('titre');
-            $table->integer('id_etudiant');
-            $table->date('date_memoire');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('description');
             $table->string('status');
             $table->foreignId('memoire_id')->constrained();
             $table->string('fichierpdf');
             $table->string('fichierdemande');
-            $table->string('criteres');
             
             $table->foreignId('etablisement_id')->constrained();
             $table->integer('nbpages');

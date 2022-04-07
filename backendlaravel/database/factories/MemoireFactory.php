@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use App\Models\Critere;
 use App\Models\Encadreur;
 use App\Models\Etablisement;
@@ -18,19 +19,18 @@ class MemoireFactory extends Factory
     {
         
        $etablisement = Etablisement::all()->pluck('id');
-       
+       $user = User::all()->pluck('id');
        $encadreur = Encadreur::all();
        $critere = Critere::all();
         return [
             'titre' => $this->faker->name,
-            'id_etudiant' =>$this->faker->randomDigit, 
+            'user_id' =>$this->faker->randomElement($user), 
             
             'annee' =>$this->faker->randomDigit,
             'etablisement_id'=>$this->faker->randomElement($etablisement),
             
             'description' =>$this->faker->name, 
-            'fichierpdf' =>$this->faker->name, 
-            'id_etudiant' =>$this->faker->randomDigit,             
+            'fichierpdf' =>$this->faker->name,             
         ];
     }
 }

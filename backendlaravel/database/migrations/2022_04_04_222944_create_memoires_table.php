@@ -16,7 +16,7 @@ class CreateMemoiresTable extends Migration
         Schema::create('memoires', function (Blueprint $table) {
             $table->id();
             $table->string('titre');
-            $table->integer('id_etudiant');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->year('annee');
             $table->string('description');
             $table->foreignId('etablisement_id')->constrained();

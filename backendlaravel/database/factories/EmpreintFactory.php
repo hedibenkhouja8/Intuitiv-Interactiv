@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use App\Models\Memoire;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -16,9 +17,11 @@ class EmpreintFactory extends Factory
     {
         
         $memoire = Memoire::all()->pluck('id');
+        $user = User::all()->pluck('id');
         return [
              
-            'id_etudiant' => $this->faker->randomDigit,  
+            'user_id' =>$this->faker->randomElement($user),   
+            'memoire_id'=>$this->faker->randomElement($memoire),  
             'date_debut' => $this->faker->dateTime($max = 'now', $timezone = null),
             'date_fin' => $this->faker->dateTime($max = 'now', $timezone = null), 
         ];

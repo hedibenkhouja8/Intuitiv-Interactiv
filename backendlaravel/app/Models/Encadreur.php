@@ -12,13 +12,17 @@ class Encadreur extends Model
 {
     use HasFactory;
     protected $fillable = ['nom','prenom','etablisement_id'];
-   /* public function demandedepots()
+   public function demandedepots()
     {
         return $this->belongsToMany(DemandeDepot::class);
-    }*/
+    }
     public function memoires()
     {
         return $this->belongsToMany(Memoire::class);
+    }
+    public function etablisement()
+    {
+        return $this->belongsTo(Etablisement::class);
     }
    
 }

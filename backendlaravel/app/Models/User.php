@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Memoire;
+use App\Models\Empreint;
+use App\Models\DemandeDepot;
+use App\Models\DemandeEmpreint;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 
 class User extends Authenticatable
@@ -19,8 +23,25 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','etablisement_id'
     ];
+    public function etablisement()
+    {
+        return $this->belongsTo(Etablisement::class);
+    }
+    public function memoires()
+    {
+        return $this->hasMany(Memoire::class);
+    } public function empreints()
+    {
+        return $this->hasMany(Empreint::class);
+    } public function demandedepots()
+    {
+        return $this->hasMany(DemandeDepot::class);
+    } public function demandeempreints()
+    {
+        return $this->hasMany(DemandeEmpreint::class);
+    }
 
     /**
      * The attributes that should be hidden for arrays.

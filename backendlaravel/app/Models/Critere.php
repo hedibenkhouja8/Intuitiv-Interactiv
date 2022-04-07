@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Memoire;
+use App\Models\DemandeDepot;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -13,5 +14,9 @@ class Critere extends Model
     public function memoires()
     {
         return $this->belongsToMany(Memoire::class);
+    }
+    public function demandedepots()
+    {
+        return $this->belongsToMany(DemandeDepot::class);
     }
 }

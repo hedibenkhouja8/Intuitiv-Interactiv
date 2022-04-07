@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Memoire extends Model
 {
     use HasFactory;
-    protected $fillable = ['titre','id_etudiant','annee','description','etablisement_id','fichierpdf'];
+    protected $fillable = ['titre','user_id','annee','description','etablisement_id','fichierpdf'];
     public function demendeempreints()
     {
         return $this->hasMany(DemandeEmpreint::class);

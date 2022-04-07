@@ -15,7 +15,7 @@ class CreateEmpreintsTable extends Migration
     {
         Schema::create('empreints', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_etudiant');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             
            // $table->unsignedBigInteger('memoire_id');
            // $table->foreign('memoire_id')->references('id')->on('memoires');
