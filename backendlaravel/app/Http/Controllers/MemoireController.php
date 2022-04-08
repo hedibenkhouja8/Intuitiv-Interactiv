@@ -28,7 +28,7 @@ class MemoireController extends Controller
      */
     public function store(Request $request)
     {
-    $request->fichierpdf->store('public/files');
+    $request->fichierpdf->store('public/files/memoires');
         $memoire = new Memoire;
         $memoire->titre = $request->titre;
         $memoire->user_id = $request->user_id;

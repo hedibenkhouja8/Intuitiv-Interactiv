@@ -24,14 +24,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-
 //protected routes LOGIN
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
    
     Route::resource('Critere',CritereController::class);
-Route::resource('DemandeDepot',DemandeDepotController::class);
+    Route::resource('DemandeDepot',DemandeDepotController::class);
+
 Route::resource('DemandeEmpreint',DemandeEmpreintController::class);
 Route::resource('Empreint',EmpreintController::class);
 Route::resource('Encadreurs',EncadreursController::class);
