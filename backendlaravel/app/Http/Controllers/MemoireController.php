@@ -6,7 +6,7 @@ use App\Models\Critere;
 use App\Models\Memoire;
 use App\Models\Etablisement;
 use Illuminate\Http\Request;
-
+use Validator;
 class MemoireController extends Controller
 {
     /**
@@ -28,8 +28,15 @@ class MemoireController extends Controller
      */
     public function store(Request $request)
     {
-        return Memoire::create($request->all());
-    
+    $request->fichierpdf->store('public/files');
+        $memoire = new Memoire;
+        $memoire->titre = $request->titre;
+        $memoire->user_id = $request->user_id;
+        $memoire->annee = $request->annee;
+        $memoire->description = $request->description;
+        $memoire->etablisement_id = $request->etablisement_id;
+        $memoire->fichierpdf = $request->fichierpdf->hashName();
+        $memoire->save(); 
     }
 
     /**

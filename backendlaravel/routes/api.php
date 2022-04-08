@@ -29,13 +29,14 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
-    Route::resource('Memoire',MemoireController::class);
+   
     Route::resource('Critere',CritereController::class);
 Route::resource('DemandeDepot',DemandeDepotController::class);
 Route::resource('DemandeEmpreint',DemandeEmpreintController::class);
 Route::resource('Empreint',EmpreintController::class);
 Route::resource('Encadreurs',EncadreursController::class);
 Route::resource('Etablisement',EtablisementsController::class);
+Route::resource('Memoire',MemoireController::class);
 
 Route::get('/Memoire',[MemoireController::class,'index']); 
 Route::get('/Memoire/{memoire}/Empreint',[EmpreintController::class,'byMemoire']);
