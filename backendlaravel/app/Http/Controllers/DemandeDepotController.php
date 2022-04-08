@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\DemandeDepot;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DemandeDepotController extends Controller
 {
@@ -62,9 +63,23 @@ class DemandeDepotController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $demandeDepot = DemandeDepot::find($id);
-        $demandeDepot->update($request->all());
-        return $demandeDepot;
+        $request->fichierpdf->store('public/files/demandes/pdf');
+        $request->fichierdemande->store('public/files/demandes/demande');
+
+        DB::table('demande_depots')
+        ->where('id',$id)
+        ->update([
+        'titre' => $request->titre,
+        'user_id' => $request->user_id,
+        'description' => $request->description,
+        'status' => $request->status,
+        'memoire_id' => $request->memoire_id,
+        'fichierpdf' => $request->fichierpdf->hashName(),
+        'fichierdemande' => $request->fichierdemande->hashName(),
+        'etablisement_id' => $request->etablisement_id,
+        'nbpages' => $request->nbpages
+            ]);
+            
 
     }
 
