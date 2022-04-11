@@ -1,9 +1,9 @@
 <?php
 use App\Http\Controllers\MemoireController;
-use App\Http\Controllers\CritereController;
+use App\Http\Controllers\DomaineController;
 use App\Http\Controllers\DemandeDepotController;
-use App\Http\Controllers\DemandeEmpreintController;
-use App\Http\Controllers\EmpreintController;
+use App\Http\Controllers\DemandeEmpruntController;
+use App\Http\Controllers\EmpruntController;
 use App\Http\Controllers\EncadreursController;
 use App\Http\Controllers\EtablisementsController;
 use Illuminate\Http\Request;
@@ -31,23 +31,23 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
    
-    Route::resource('Critere',CritereController::class);
-    Route::resource('DemandeDepot',DemandeDepotController::class);
-Route::resource('DemandeEmpreint',DemandeEmpreintController::class);
-Route::resource('Empreint',EmpreintController::class);
+  
+});
+
+Route::resource('Domaine',DomaineController::class);
+Route::resource('DemandeDepot',DemandeDepotController::class);
+Route::resource('DemandeEmprunt',DemandeEmpruntController::class);
+Route::resource('Emprunt',EmpruntController::class);
 Route::resource('Encadreurs',EncadreursController::class);
 Route::resource('Etablisement',EtablisementsController::class);
 Route::resource('Memoire',MemoireController::class);
 
 Route::get('/Memoire',[MemoireController::class,'index']); 
-Route::get('/Memoire/{memoire}/Empreint',[EmpreintController::class,'byMemoire']);
+Route::get('/Memoire/{memoire}/Emprunt',[EmpruntController::class,'byMemoire']);
 
-Route::get('/Memoire/{memoire}/Critere',[CritereController::class,'byMemoire']);
-Route::get('/Critere/{Critere}/Memoire',[MemoireController::class,'byCritere']);
-Route::get('/Memoire/{memoire}/DemandeEmpreint',[DemandeEmpreintController::class,'byMemoire']);
+Route::get('/Memoire/{memoire}/Domaine',[DomaineController::class,'byMemoire']);
+Route::get('/Domaine/{Domaine}/Memoire',[MemoireController::class,'byDomaine']);
+Route::get('/Memoire/{memoire}/DemandeEmprunt',[DemandeEmpruntController::class,'byMemoire']);
 Route::get('/Etablisement/{etablisement}/Memoire',[MemoireController::class,'byEtablisement']);
-    Route::post('/logout', [AuthController::class, 'logout']);
-});
-
-
+Route::post('/logout', [AuthController::class, 'logout']);
  

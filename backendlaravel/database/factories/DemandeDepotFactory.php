@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\User;
 use App\Models\Memoire;
 use App\Models\Encadreur;
+use App\Models\Entreprise;
 use App\Models\Etablisement;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,6 +20,8 @@ class DemandeDepotFactory extends Factory
     {
         $etablisement = Etablisement::all()->pluck('id');
         
+        $entreprise = Entreprise::all()->pluck('id');
+        
         $memoire = Memoire::all()->pluck('id');
         $user = User::all()->pluck('id');
        
@@ -28,6 +31,8 @@ class DemandeDepotFactory extends Factory
             
             'etablisement_id'=>$this->faker->randomElement($etablisement),
             
+            'entreprise_id'=>$this->faker->randomElement($entreprise),
+            
             'memoire_id'=>$this->faker->randomElement($memoire),  
             'description' =>$this->faker->name,
             
@@ -35,7 +40,10 @@ class DemandeDepotFactory extends Factory
             'nbpages' =>$this->faker->randomDigit,   
             
             'fichierdemande' =>$this->faker->name,   
-            'fichierpdf' =>$this->faker->name,            
+            'fichierpdf' =>$this->faker->name,  
+            
+            'fichierbrevet' =>$this->faker->name,  
+            'fichierrecherche' =>$this->faker->name,            
         ];
     }
 }

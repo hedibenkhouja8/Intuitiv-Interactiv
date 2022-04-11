@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Domaine;
 use App\Models\Encadreur;
+use App\Models\Entreprise;
 use App\Models\Etablisement;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,13 +29,17 @@ class DemandeDepot extends Model
     {
         return $this->belongsTo(Etablisement::class);
     }
-    
-    public function criteres()
+    public function entreprise()
     {
-        return $this->belongsToMany(Critere::class);
+        return $this->belongsTo(Entreprise::class);
     }
+  
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function domaines()
+    {
+        return $this->belongsToMany(Domaine::class);
     }
 }

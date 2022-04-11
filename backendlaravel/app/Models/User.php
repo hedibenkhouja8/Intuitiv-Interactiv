@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use App\Models\Memoire;
-use App\Models\Empreint;
+use App\Models\Emprunt;
 use App\Models\DemandeDepot;
-use App\Models\DemandeEmpreint;
+use App\Models\DemandeEmprunt;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -32,15 +32,15 @@ class User extends Authenticatable
     public function memoires()
     {
         return $this->hasMany(Memoire::class);
-    } public function empreints()
+    } public function emprunts()
     {
-        return $this->hasMany(Empreint::class);
+        return $this->hasMany(Emprunt::class);
     } public function demandedepots()
     {
         return $this->hasMany(DemandeDepot::class);
-    } public function demandeempreints()
+    } public function demandeemprunts()
     {
-        return $this->hasMany(DemandeEmpreint::class);
+        return $this->hasMany(DemandeEmprunt::class);
     }
 
     /**

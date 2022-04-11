@@ -2,21 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\Memoire;
-use App\Models\DemandeDepot;
+use App\Models\Domaine;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Critere extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom','id_memoire'];
-    public function memoires()
+    public function domaine()
     {
-        return $this->belongsToMany(Memoire::class);
-    }
-    public function demandedepots()
-    {
-        return $this->belongsToMany(DemandeDepot::class);
+        return $this->belongsTo(Domaine::class);
     }
 }

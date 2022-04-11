@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Memoire;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DemandeEmpreintFactory extends Factory
+class DemandeEmpruntFactory extends Factory
 {
     /**
      * Define the model's default state.

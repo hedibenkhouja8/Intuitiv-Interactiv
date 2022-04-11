@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Memoire;
 use Illuminate\Http\Request;
-use App\Models\DemandeEmpreint;
 
-class DemandeEmpreintController extends Controller
+class EntrepriseController extends Controller
 {
- /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return DemandeEmpreint::all();
+        return Entreprise::all();
 
     }
 
@@ -27,7 +25,7 @@ class DemandeEmpreintController extends Controller
      */
     public function store(Request $request)
     {
-        return DemandeEmpreint::create($request->all());
+        return Entreprise::create($request->all());
     
     }
 
@@ -39,7 +37,7 @@ class DemandeEmpreintController extends Controller
      */
     public function show($id)
     {
-        return DemandeEmpreint::find($id);
+        return Entreprise::find($id);
     }
 
     /**
@@ -51,9 +49,9 @@ class DemandeEmpreintController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $demandeEmpreint = DemandeEmpreint::find($id);
-        $demandeEmpreint->update($request->all());
-        return $demandeEmpreint;
+        $entreprise = Entreprise::find($id);
+        $entreprise->update($request->all());
+        return $entreprise;
 
     }
 
@@ -65,18 +63,6 @@ class DemandeEmpreintController extends Controller
      */
     public function destroy($id)
     {
-       return DemandeEmpreint::destroy($id);
-    }
-      /**
-     * The Empreints of a Memoire
-     * @return \Illuminate\Http\Response
-     * @param  Memoire  $memoire
-     * Route: /api/Memoire/{memoire}/DemandeEmpreint
-     */
-    public function byMemoire(Memoire $memoire){
-       return $memoire->demendeempreints;
-        //Si on veut les details du memoires avec ses empreints
-        /* return Memoire::with('demendeempreints')
-        ->where('id',$memoire->id)->get();*/
+       return Entreprise::destroy($id);
     }
 }

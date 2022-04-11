@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Critere;
-use App\Models\Empreint;
+use App\Models\Domaine;
+use App\Models\Emprunt;
 use App\Models\Encadreur;
 use App\Models\DemandeDepot;
 use App\Models\Etablisement;
-use App\Models\DemandeEmpreint;
+use App\Models\DemandeEmprunt;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -15,13 +15,13 @@ class Memoire extends Model
 {
     use HasFactory;
     protected $fillable = ['titre','user_id','annee','description','etablisement_id','fichierpdf'];
-    public function demendeempreints()
+    public function demendeemprunts()
     {
-        return $this->hasMany(DemandeEmpreint::class);
+        return $this->hasMany(DemandeEmprunt::class);
     }
-    public function empreints()
+    public function emprunts()
     {
-        return $this->hasMany(Empreint::class);
+        return $this->hasMany(Emprunt::class);
     }
     public function etablisement()
     {
@@ -31,9 +31,9 @@ class Memoire extends Model
     {
         return $this->hasOne(DemandeDepot::class);
     }
-    public function criteres()
+    public function domaines()
     {
-        return $this->belongsToMany(Critere::class);
+        return $this->belongsToMany(Domaine::class);
     }
     public function encadreurs()
     {

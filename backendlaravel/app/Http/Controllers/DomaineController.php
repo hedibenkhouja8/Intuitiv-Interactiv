@@ -1,21 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Memoire;
-use App\Models\Empreint;
+use App\Models\Domaine;
 use Illuminate\Http\Request;
 
-class EmpreintController extends Controller
+class DomaineController extends Controller
 {
-   /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Empreint::all();
+        return Domaine::all();
 
     }
 
@@ -27,8 +25,7 @@ class EmpreintController extends Controller
      */
     public function store(Request $request)
     {
-        return Empreint::create($request->all());
-    
+        return Domaine::create($request->all());
     }
 
     /**
@@ -39,7 +36,7 @@ class EmpreintController extends Controller
      */
     public function show($id)
     {
-        return Empreint::find($id);
+        return Domaine::find($id);
     }
 
     /**
@@ -51,10 +48,9 @@ class EmpreintController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $empreint = Empreint::find($id);
-        $empreint->update($request->all());
-        return $empreint;
-
+        $domaine = Domaine::find($id);
+        $domaine->update($request->all());
+        return $domaine;
     }
 
     /**
@@ -65,18 +61,20 @@ class EmpreintController extends Controller
      */
     public function destroy($id)
     {
-       return Empreint::destroy($id);
+        return Domaine::destroy($id);
+
     }
-    /**
+      /**
      * The Empreints of a Memoire
      * @return \Illuminate\Http\Response
      * @param  Memoire  $memoire
-     * Route: /api/Memoire/{memoire}/Empreint
+     * Route: /api/Memoire/{memoire}/Domaine
      */
     public function byMemoire(Memoire $memoire){
-        return $memoire->empreints;
-        //Si on veut les details du memoires avec ses empreints
-        /* return Memoire::with('empreints')
-        ->where('id',$memoire->id)->get();*/
-    }
+        return $memoire->domaines;
+         //Si on veut les details du memoires avec ses empreints
+         /* return Memoire::with('demendeempreints')
+         ->where('id',$memoire->id)->get();*/
+     }
+    
 }

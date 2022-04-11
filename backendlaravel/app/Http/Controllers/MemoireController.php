@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Critere;
+use App\Models\Domaine;
 
 use App\Models\Memoire;
 use App\Models\Etablisement;
@@ -76,27 +76,27 @@ class MemoireController extends Controller
        return Memoire::destroy($id);
     }
      /**
-     * The Empreints of a Memoire
+     * The Emprunts of a Memoire
      * @return \Illuminate\Http\Response
      * @param  Etablisement  $etablisement
      * Route: /api/Etablisement/{etablisement}/Memoire
      */
     public function byEtablisement(Etablisement $etablisement){
         return $etablisement->memoires;
-        //Si on veut les details du memoires avec ses empreints
-        /* return Memoire::with('empreints')
+        //Si on veut les details du memoires avec ses Emprunts
+        /* return Memoire::with('Emprunts')
         ->where('id',$memoire->id)->get();*/
     }
       /**
-     * The Empreints of a Memoire
+     * The Emprunts of a Memoire
      * @return \Illuminate\Http\Response
-     * @param  Critere  $critere
-     * Route: /api/Critere/{critere}/Memoire
+     * @param  Domaine  $domaine
+     * Route: /api/Domaine/{domaine}/Memoire
      */
-    public function byCritere(Critere $critere){
-        return $critere->memoires;
-         //Si on veut les details du memoires avec ses empreints
-         /* return Memoire::with('demendeempreints')
+    public function byDomaine(Domaine $domaine){
+        return $domaine->memoires;
+         //Si on veut les details du memoires avec ses Emprunts
+         /* return Memoire::with('demendeEmprunts')
          ->where('id',$memoire->id)->get();*/
      }
 }

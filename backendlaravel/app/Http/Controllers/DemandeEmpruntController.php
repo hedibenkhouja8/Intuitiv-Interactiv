@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Critere;
+use App\Models\Memoire;
 use Illuminate\Http\Request;
+use App\Models\DemandeEmprunt;
 
-class CritereController extends Controller
+class DemandeEmpruntController extends Controller
 {
-    /**
+ /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Critere::all();
+        return DemandeEmprunt::all();
 
     }
 
@@ -26,7 +27,7 @@ class CritereController extends Controller
      */
     public function store(Request $request)
     {
-        return Critere::create($request->all());
+        return DemandeEmprunt::create($request->all());
     
     }
 
@@ -38,7 +39,7 @@ class CritereController extends Controller
      */
     public function show($id)
     {
-        return Critere::find($id);
+        return DemandeEmprunt::find($id);
     }
 
     /**
@@ -50,9 +51,9 @@ class CritereController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $critere = Critere::find($id);
-        $critere->update($request->all());
-        return $critere;
+        $demandeEmprunt = DemandeEmprunt::find($id);
+        $demandeEmprunt->update($request->all());
+        return $demandeEmprunt;
 
     }
 
@@ -64,6 +65,18 @@ class CritereController extends Controller
      */
     public function destroy($id)
     {
-       return Critere::destroy($id);
+       return DemandeEmprunt::destroy($id);
+    }
+      /**
+     * The Emprunts of a Memoire
+     * @return \Illuminate\Http\Response
+     * @param  Memoire  $memoire
+     * Route: /api/Memoire/{memoire}/DemandeEmprunt
+     */
+    public function byMemoire(Memoire $memoire){
+       return $memoire->demendeemprunts;
+        //Si on veut les details du memoires avec ses emprunts
+        /* return Memoire::with('demendeemprunts')
+        ->where('id',$memoire->id)->get();*/
     }
 }

@@ -7,10 +7,10 @@ use App\Models\Memoire;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Empreint extends Model
+class DemandeEmprunt extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','date_debut','date_fin','memoire_id'];
+    protected $fillable = ['user_id','description','status','type','date_debut','date_fin','memoire_id'];
     public function memoire()
     {
         return $this->belongsTo(Memoire::class);

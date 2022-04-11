@@ -23,6 +23,9 @@ class CreateDemandeDepotsTable extends Migration
             $table->string('fichierpdf');
             $table->string('fichierdemande');
             
+            $table->string('fichierbrevet');
+            $table->string('fichierrecherche');
+           $table->foreignId('entreprise_id')->constrained()->onDelete('cascade');
             $table->foreignId('etablisement_id')->constrained();
             $table->integer('nbpages');
             $table->timestamps();

@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
-use App\Models\Critere;
+use App\Models\Domaine;
 use App\Models\Encadreur;
 use App\Models\Etablisement;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -21,7 +21,7 @@ class MemoireFactory extends Factory
        $etablisement = Etablisement::all()->pluck('id');
        $user = User::all()->pluck('id');
        $encadreur = Encadreur::all();
-       $critere = Critere::all();
+       $domaine = Domaine::all();
         return [
             'titre' => $this->faker->name,
             'user_id' =>$this->faker->randomElement($user), 
@@ -30,7 +30,9 @@ class MemoireFactory extends Factory
             'etablisement_id'=>$this->faker->randomElement($etablisement),
             
             'description' =>$this->faker->name, 
-            'fichierpdf' =>$this->faker->name,             
+            'fichierpdf' =>$this->faker->name,  
+            'fichierbrevet' =>$this->faker->name,  
+            'fichierrecherche' =>$this->faker->name,             
         ];
     }
 }
