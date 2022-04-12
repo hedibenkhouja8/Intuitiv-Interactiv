@@ -22,7 +22,7 @@ class CreateDemandeDepotsTable extends Migration
             $table->foreignId('memoire_id')->constrained();
             $table->string('fichierpdf');
             $table->string('fichierdemande');
-            
+            $table->string('coverimage');
             $table->string('fichierbrevet');
             $table->string('fichierrecherche');
            $table->foreignId('entreprise_id')->constrained()->onDelete('cascade');

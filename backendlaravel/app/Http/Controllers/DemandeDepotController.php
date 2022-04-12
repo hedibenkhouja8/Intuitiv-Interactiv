@@ -28,6 +28,10 @@ class DemandeDepotController extends Controller
     {
         $request->fichierpdf->store('public/files/demandes/pdf');
         $request->fichierdemande->store('public/files/demandes/demande');
+        $request->coverimage ->store('public/files/demandes/cover');
+        $request->fichierbrevet->store('public/files/demandes/fichierbrevet');
+        $request->fichierrecherche->store('public/files/demandes/fichierrecherche');
+
         $demande = new DemandeDepot;
         $demande->titre = $request->titre;
         $demande->user_id = $request->user_id;
@@ -38,6 +42,10 @@ class DemandeDepotController extends Controller
         $demande->fichierdemande = $request->fichierdemande->hashName();
         $demande->etablisement_id = $request->etablisement_id;
         $demande->nbpages = $request->nbpages;
+        $demande->entreprise_id = $request->entreprise_id;
+        $demande->coverimage = $request->coverimage->hashName();
+        $demande->fichierbrevet = $request->fichierbrevet->hashName();
+        $demande->fichierrecherche = $request->fichierrecherche->hashName();
         $demande->save();
 
     

@@ -28,7 +28,7 @@ class MemoireFactory extends Factory
             
             'annee' =>$this->faker->randomDigit,
             'etablisement_id'=>$this->faker->randomElement($etablisement),
-            
+            'coverimage'=>$this->faker->name, 
             'description' =>$this->faker->name, 
             'fichierpdf' =>$this->faker->name,  
             'fichierbrevet' =>$this->faker->name,  

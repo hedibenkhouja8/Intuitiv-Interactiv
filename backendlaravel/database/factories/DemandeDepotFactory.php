@@ -38,7 +38,7 @@ class DemandeDepotFactory extends Factory
             
             'status' =>$this->faker->name,
             'nbpages' =>$this->faker->randomDigit,   
-            
+            'coverimage'=>$this->faker->name, 
             'fichierdemande' =>$this->faker->name,   
             'fichierpdf' =>$this->faker->name,  
             

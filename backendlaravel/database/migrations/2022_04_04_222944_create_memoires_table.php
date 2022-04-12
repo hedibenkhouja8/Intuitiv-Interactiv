@@ -20,8 +20,8 @@ class CreateMemoiresTable extends Migration
             $table->year('annee');
             $table->string('description');
             $table->foreignId('etablisement_id')->constrained();
-          
             $table->string('fichierpdf');
+            $table->string('coverimage');
             $table->string('fichierbrevet');
             $table->string('fichierrecherche');
             $table->timestamps();

@@ -14,12 +14,17 @@ class AuthController extends Controller
         $fields = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|unique:users,email',
-            'password' => 'required|string|confirmed'
+            'password' => 'required|string|confirmed',
+            'fichierdemande' => 'required',
+            'etablisement_id' => 'required'
         ]);
+        $fields['fichierdemande']->store('public/files/register');
 
         $user = User::create([
             'name' => $fields['name'],
             'email' => $fields['email'],
+            'fichierdemande' => $fields['fichierdemande']->hashName(),
+            'etablisement_id' =>$fields['etablisement_id'],
             'password' => bcrypt($fields['password'])
         ]);
 

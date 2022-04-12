@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class DemandeDepot extends Model
 {
     use HasFactory;
-    protected $fillable = ['titre','user_id','id_encadreur','date_memoire','description','status','fichierpdf','fichierdemande','criteres','nbpages'];
+    protected $fillable = ['titre','user_id','id_encadreur','date_memoire','description','status','fichierpdf','fichierdemande','criteres','nbpages','coverimage','fichierbrevet','fichierrecherche','entreprise_id'];
     /**
      * Get the user that owns the phone.
      */

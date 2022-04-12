@@ -20,10 +20,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-//public
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
 
 
 //protected routes LOGIN
@@ -33,6 +30,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
    
   
 });
+//public
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
 
 Route::resource('Domaine',DomaineController::class);
 Route::resource('DemandeDepot',DemandeDepotController::class);
