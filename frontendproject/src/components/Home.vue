@@ -1,23 +1,30 @@
 <template>
- <section class=" slider_section position-relative">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
+<section class="slider_section ">
+      <div class="slider_bg_box">
+        <div class="bg_img_box">
+          <img src="../assets/images/slider-bg.jpg" alt="">
+        </div>
+      </div>
+      <div id="customCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <div class="container">
+            <div class="container ">
               <div class="row">
-                <div class="col">
+                <div class="col-md-7 mx-auto">
                   <div class="detail-box">
-                    <div>
-                      <h1>
-                        E D U C A T I O N
-                      </h1>
-                      <a href="">
-                        Read More
+                    <h1>
+                      Welcome To <br>
+                      Natone College
+                    </h1>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
+                    </p>
+                    <div class="btn-box">
+                      <a href="" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="" class="btn2">
+                        About Us
                       </a>
                     </div>
                   </div>
@@ -25,17 +32,24 @@
               </div>
             </div>
           </div>
-          <div class="carousel-item ">
-            <div class="container">
+          <div class="carousel-item">
+            <div class="container ">
               <div class="row">
-                <div class="col">
+                <div class="col-md-7 mx-auto">
                   <div class="detail-box">
-                    <div>
-                      <h1>
-                        E D U C A T I O N
-                      </h1>
-                      <a href="">
-                        Read More
+                    <h1>
+                      Welcome To <br>
+                      Natone College
+                    </h1>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
+                    </p>
+                    <div class="btn-box">
+                      <a href="" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="" class="btn2">
+                        About Us
                       </a>
                     </div>
                   </div>
@@ -43,17 +57,24 @@
               </div>
             </div>
           </div>
-          <div class="carousel-item ">
-            <div class="container">
+          <div class="carousel-item">
+            <div class="container ">
               <div class="row">
-                <div class="col">
+                <div class="col-md-7 mx-auto">
                   <div class="detail-box">
-                    <div>
-                      <h1>
-                        E D U C A T I O N
-                      </h1>
-                      <a href="">
-                        Read More
+                    <h1>
+                      Welcome To <br>
+                      Natone College
+                    </h1>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
+                    </p>
+                    <div class="btn-box">
+                      <a href="" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="" class="btn2">
+                        About Us
                       </a>
                     </div>
                   </div>
@@ -62,91 +83,35 @@
             </div>
           </div>
         </div>
+        <ol class="carousel-indicators">
+          <li data-target="#customCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#customCarousel" data-slide-to="1"></li>
+          <li data-target="#customCarousel" data-slide-to="2"></li>
+        </ol>
       </div>
     </section>
-    <section class="special_section">
-    <div class="container">
-      <div class="special_container">
-        <div class="box b1">
-          <div class="img-box">
-            <img src="../assets/images/award.png" alt="" />
-          </div>
-          <div class="detail-box">
-            <h4>
-              BEST <br />
-              INDUSTRY LEADERS
-            </h4>
-            <a href="">
-              Read More
-            </a>
-          </div>
-        </div>
-        <div class="box b2">
-          <div class="img-box">
-            <img src="../assets/images/study.png" alt="" />
-          </div>
-          <div class="detail-box">
-            <h4>
-              LEARN <br />
-              COURSES ONLINE
-            </h4>
-            <a href="">
-              Read More
-            </a>
-          </div>
-        </div>
-        <div class="box b3">
-          <div class="img-box">
-            <img src="../assets/images/books-stack-of-three.png" alt="" />
-          </div>
-          <div class="detail-box">
-            <h4>
-              BEST <br />
-              LIBRARY & STORE
-            </h4>
-            <a href="">
-              Read More
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end special section -->
-
-  <!-- about section -->
-  <section class="about_section layout_padding">
-    <div class="side_img">
-      <img src="../assets/images/side-img.png" alt="" />
-    </div>
+    
+  <section class="about_section layout_padding ">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <div class="img_container">
-            <div class="img-box b1">
-              <img src="../assets/images/a-1.jpg" alt="" />
-            </div>
-            <div class="img-box b2">
-              <img src="../assets/images/a-2.jpg" alt="" />
-            </div>
+          <div class="img-box">
+            <img src="../assets/images/about-img.jpg" alt="">
           </div>
         </div>
         <div class="col-md-6">
           <div class="detail-box">
             <div class="heading_container">
-              <h3>
-                About Our College
-              </h3>
-              <p>
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that it has a more it
-              </p>
-              <a href="">
-                Read More
-              </a>
+              <h2>
+                Who We Are
+              </h2>
             </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem eum consequuntur ipsam repellat dolor soluta aliquid laborum, eius odit consectetur vel quasi in quidem, eveniet ab est corporis tempore.
+            </p>
+            <a href="">
+              Read More
+            </a>
           </div>
         </div>
       </div>
@@ -155,266 +120,276 @@
 
   <!-- end about section -->
 
-  <!-- course section -->
+  <!-- course section start -->
 
-  <section class="course_section layout_padding-bottom">
-    <div class="side_img">
-      <img src="../assets/images/side-img.png" alt="" />
+  <section class="course_section layout_padding">
+    <div class="course_bg_box ">
+      <div class="bg_img_box">
+        <img src="../assets/images/course-bg.jpg" alt="">
+      </div>
     </div>
-    <div class="container">
+    <div class="container-fluid pr-0">
       <div class="heading_container">
-        <h3>
-          POPULAR COURSES
-        </h3>
+        <h2>
+          Popular courses
+        </h2>
         <p>
-          It is a long established fact that a reader will be distracted
+          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem
         </p>
       </div>
       <div class="course_container">
-        <div class="course_content">
-          <div class="box">
-            <img src="../assets/images/c-1.jpg" alt="" />
-            <a href="" class="">
-              <img src="../assets/images/link.png" alt="" />
-            </a>
-            <h5>
-              LMS <br />
-              Content
-            </h5>
+        <div class=" course_owl-carousel owl-carousel owl-theme ">
+          <div class="item">
+            <div class="box">
+              <div class="img-box">
+                <img src="../assets/images/c1.jpg" alt="">
+              </div>
+              <div class="detail-box">
+                <h4>
+                  Learn JavaScript
+                </h4>
+                <p>
+                  Incidunt veritatis adipisci autem repellat possimus id eos praesentium, beatae repudiandae.
+                </p>
+                <a href="">
+                  View Detail
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="box">
-            <img src="../assets/images/c-2.jpg" alt="" />
-            <a href="" class="">
-              <img src="images/link.png" alt="" />
-            </a>
-            <h5>
-              From <br />
-              Zero to Hero
-            </h5>
+          <div class="item">
+            <div class="box">
+              <div class="img-box">
+                <img src="../assets/images/c2.jpg" alt="">
+              </div>
+              <div class="detail-box">
+                <h4>
+                  Learn Python
+                </h4>
+                <p>
+                  Incidunt veritatis adipisci autem repellat possimus id eos praesentium, beatae repudiandae.
+                </p>
+                <a href="">
+                  View Detail
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box">
+              <div class="img-box">
+                <img src="../assets/images/c3.jpg" alt="">
+              </div>
+              <div class="detail-box">
+                <h4>
+                  Learn Html
+                </h4>
+                <p>
+                  Incidunt veritatis adipisci autem repellat possimus id eos praesentium, beatae repudiandae.
+                </p>
+                <a href="">
+                  View Detail
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box">
+              <div class="img-box">
+                <img src="../assets/images/c4.jpg" alt="">
+              </div>
+              <div class="detail-box">
+                <h4>
+                  Learn Java
+                </h4>
+                <p>
+                  Incidunt veritatis adipisci autem repellat possimus id eos praesentium, beatae repudiandae.
+                </p>
+                <a href="">
+                  View Detail
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="course_content">
-          <div class="box">
-            <img src="../assets/images/c-3.jpg" alt="" />
-            <a href="" class="">
-              <img src="../assets/images/link.png" alt="" />
-            </a>
-            <h5>
-              Learn <br />
-              Python – Interactive
-            </h5>
-          </div>
-          <div class="box">
-            <img src="../assets/images/c-4.jpg" alt="" />
-            <a href="" class="">
-              <img src="../assets/images/link.png" alt="" />
-            </a>
-            <h5>
-              Your <br />
-              Complete Guide
-            </h5>
-          </div>
-          <div class="box">
-            <img src="../assets/images/c-5.jpg" alt="" />
-            <a href="" class="">
-              <img src="../assets/images/link.png" alt="" />
-            </a>
-            <h5>
-              Photography
-            </h5>
-          </div>
-        </div>
-      </div>
-      <div class="btn-box">
-        <a href="">
-          Read More
-        </a>
       </div>
     </div>
   </section>
 
-  <!-- end course section -->
+  <!-- course section ends -->
 
-  <!-- login section -->
+  <!-- teacher section -->
 
-  <section class="login_section layout_padding">
+  <section class="teacher_section layout_padding">
     <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Our Teachers
+        </h2>
+      </div>
       <div class="row">
-        <div class="col-md-6">
-          <div class="detail-box">
-            <h3>
-              GET ONLINE COURSES FOR FREE
-            </h3>
-            <p>
-              Create your free account now and get immediate access to 100s of
-              online courses
-            </p>
-            <a href="">
-              REGISTER NOW
-            </a>
+        <div class="col-sm-6 col-lg-3">
+          <div class="box">
+            <div class="img-box">
+              <img src="../assets/images/t1.jpg" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Alice Stark
+              </h5>
+              <h6>
+                Teacher
+              </h6>
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="login_form">
-            <h5>
-              Login Now
-            </h5>
-            <form action="">
-              <div>
-                <input type="email" placeholder="Email " />
-              </div>
-              <div>
-                <input type="password" placeholder="Password" />
-              </div>
-              <button type="submit">Login</button>
-            </form>
+        <div class="col-sm-6 col-lg-3">
+          <div class="box">
+            <div class="img-box">
+              <img src="../assets/images/t2.jpg" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Martin Evans
+              </h5>
+              <h6>
+                Teacher
+              </h6>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end login section -->
-
-  <!-- event section -->
-  <section class="event_section layout_padding">
-    <div class="container">
-      <div class="heading_container">
-        <h3>
-          Events
-        </h3>
-        <p>
-          Upcoming Education Events to feed your brain.
-        </p>
-      </div>
-      <div class="event_container">
-        <div class="box">
-          <div class="img-box">
-            <img src="../assets/images/event-img.jpg" alt="" />
-          </div>
-          <div class="detail-box">
-            <h4>
-              Education Events 2021
-            </h4>
-            <h6>
-              8:00 AM - 5:00 PM VENICE, ITALY
-            </h6>
-          </div>
-          <div class="date-box">
-            <h3>
-              <span>
-                15
-              </span>
-              March
-            </h3>
+        <div class="col-sm-6 col-lg-3">
+          <div class="box">
+            <div class="img-box">
+              <img src="../assets/images/t3.jpg" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Jane Dunn
+              </h5>
+              <h6>
+                Teacher
+              </h6>
+            </div>
           </div>
         </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="../assets/images/event-img.jpg" alt="" />
-          </div>
-          <div class="detail-box">
-            <h4>
-              Education Events 2021
-            </h4>
-            <h6>
-              8:00 AM - 5:00 PM VENICE, ITALY
-            </h6>
-          </div>
-          <div class="date-box">
-            <h3>
-              <span>
-                15
-              </span>
-              February
-            </h3>
+        <div class="col-sm-6 col-lg-3">
+          <div class="box">
+            <div class="img-box">
+              <img src="../assets/images/t4.jpg" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Clara Mark
+              </h5>
+              <h6>
+                Teacher
+              </h6>
+            </div>
           </div>
         </div>
       </div>
       <div class="btn-box">
         <a href="">
-          Read More
+          View All
         </a>
       </div>
     </div>
   </section>
 
-  <!-- end event section -->
+  <!-- end teacher section -->
 
   <!-- client section -->
 
-  <section class="client_section layout_padding-bottom">
+  <section class="client_section ">
     <div class="container">
       <div class="heading_container">
-        <h3>
-          What People Say
-        </h3>
-        <p>
-          It is a long established fact that a reader will be distracted
-        </p>
+        <h2>
+          What Our Students Say
+        </h2>
       </div>
-      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <div class="box">
-              <div class="img-box">
-                <img src="../assets/images/client.png" alt="" />
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Distracted by
-                </h5>
-                <p>
-                  It is a long established fact that a reader will be
-                  distracted by the readable content of a page when looking at
-                  its layout. The point of using Lorem Ipsum is that it has a
-                  more-or-less normal distribution of letters
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="box">
-              <div class="img-box">
-                <img src="../assets/images/client.png" alt="" />
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Distracted by
-                </h5>
-                <p>
-                  It is a long established fact that a reader will be
-                  distracted by the readable content of a page when looking at
-                  its layout. The point of using Lorem Ipsum is that it has a
-                  more-or-less normal distribution of letters
-                </p>
+            <div class="row">
+              <div class="col-md-11 col-lg-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="../assets/images/client.jpg" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="name">
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                      <h6>
+                        Siaalya
+                      </h6>
+                    </div>
+                    <p>
+                      It is a long established fact that a reader will be
+                      distracted by the readable cIt is a long established fact
+                      that a reader will be distracted by the readable c
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-            <div class="box">
-              <div class="img-box">
-                <img src="../assets/images/client.png" alt="" />
+            <div class="row">
+              <div class="col-md-11 col-lg-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="../assets/images/client.jpg" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="name">
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                      <h6>
+                        Siaalya
+                      </h6>
+                    </div>
+                    <p>
+                      It is a long established fact that a reader will be
+                      distracted by the readable cIt is a long established fact
+                      that a reader will be distracted by the readable c
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div class="detail-box">
-                <h5>
-                  Distracted by
-                </h5>
-                <p>
-                  It is a long established fact that a reader will be
-                  distracted by the readable content of a page when looking at
-                  its layout. The point of using Lorem Ipsum is that it has a
-                  more-or-less normal distribution of letters
-                </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-11 col-lg-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="../assets/images/client.jpg" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="name">
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                      <h6>
+                        Siaalya
+                      </h6>
+                    </div>
+                    <p>
+                      It is a long established fact that a reader will be
+                      distracted by the readable cIt is a long established fact
+                      that a reader will be distracted by the readable c
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="btn-box">
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <div class="carousel_btn-container">
+          <a class="carousel-control-prev" href="#carouselExample2Controls" role="button" data-slide="prev">
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <a class="carousel-control-next" href="#carouselExample2Controls" role="button" data-slide="next">
+            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
             <span class="sr-only">Next</span>
           </a>
         </div>
@@ -425,82 +400,47 @@
   <!-- end client section -->
 
   <!-- contact section -->
-
-  <section class="contact_section ">
+  <section class="contact_section layout_padding ">
     <div class="container">
+      <div class="heading_container">
+        <h2>
+          Contact Us
+        </h2>
+      </div>
       <div class="row">
         <div class="col-md-6">
-          <div class="detail-box">
-            <div class="heading_container">
-              <h3>
-                Contact Us
-              </h3>
-              <p>
-                It is a long established fact that a reader will be distracted
-                by the readable
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="contact-form">
-            <h5>
-              Get In Touch
-            </h5>
+          <div class="form_container">
             <form action="">
               <div>
-                <input type="text" placeholder="Full Name " />
+                <input type="text" placeholder="Your Name" />
               </div>
               <div>
                 <input type="text" placeholder="Phone Number" />
               </div>
               <div>
-                <input type="email" placeholder="Email Address" />
+                <input type="email" placeholder="Email" />
               </div>
               <div>
-                <input type="text" placeholder="Message" class="input_message" />
+                <input type="text" class="message-box" placeholder="Message" />
               </div>
-              <div class="d-flex justify-content-center">
-                <button type="submit" class="btn_on-hover">
-                  Send
+              <div class="btn_box">
+                <button>
+                  SEND
                 </button>
               </div>
             </form>
           </div>
         </div>
+        <div class="col-md-6">
+          <div class="map_container">
+            <div class="map">
+              <div id="googleMap"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-
-  <!-- end contact section -->
-
-  <!-- info section -->
-
-<div>
-<h2>Home page 
-  
- <div v-bind:key="item.id" v-for="item in info">
-
-      <h3>{{item.id}} {{item.lastname}} {{item.name}}    <button v-on:click="deletehedi(item.id)">dlete</button> <button @click="edit(item.id)">edit</button>
-</h3>
-    </div>
-</h2>
-
-  <div>
-
- 
-<div>
-  <form @submit.prevent="onCreate">
-  <label>name</label>
-  <input type="text" class="form-control" v-model="name"/>
-  
-  <label>lastname</label>
-  <input type="text" class="form-control" v-model="lastname"/>
-  <button class="btn btn-primary " type="submit">add</button>
-  
-  </form></div>
-  </div>
-</div>
 </template>
 
 <script>

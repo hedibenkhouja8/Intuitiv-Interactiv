@@ -1,79 +1,91 @@
 <template>
-<section class="info_section layout_padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="info_menu">
-            <h5>
-              QUICK LINKS
-            </h5>
-            <ul class="navbar-nav  ">
-              <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html"> About </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="course.html"> Courses </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="event.html"> Events </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="info_course">
-            <h5>
-              TOP RATED COURSE
-            </h5>
-            <p>
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form, by
-              injected humou
-            </p>
-          </div>
-        </div>
+ <section class="info_section ">
 
-        <div class="col-md-5 offset-md-1">
-          <div class="info_news">
-            <h5>
-              FOR ANY QUERY, PLEASE WRITE TO US
-            </h5>
-            <div class="info_contact">
+    <div class="container">
+      <div class="info_top ">
+        <div class="row ">
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="info_detail">
+              <a href="index.html">
+                <h4>
+                  Natone
+                </h4>
+              </a>
+              <p>
+                Soluta odit exercitationem rerum aperiam eos consectetur impedit delectus qui reiciendis, distinctio, asperiores fuga labore a? Magni natus.
+              </p>
+              <div class="social_box">
+                <a href="">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mx-auto">
+            <h4>
+              Contact us
+            </h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit
+            </p>
+            <div class="contact_nav">
               <a href="">
-                Location
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>
+                  Location
+                </span>
               </a>
               <a href="">
-                demo@gmail.com
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  Call : +01 123455678990
+                </span>
               </a>
               <a href="">
-                Call : +01 1234567890
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                  Email : demo@gmail.com
+                </span>
               </a>
             </div>
-            <form action="">
-              <input type="text" placeholder="Enter Your email" />
-              <button>
-                Subscribe
-              </button>
-            </form>
+          </div>
+          <div class="col-md-4">
+            <div class="info_form">
+              <h4>
+                SIGN UP TO OUR NEWSLETTER
+              </h4>
+              <form action="">
+                <input type="text" placeholder="Enter Your Email" />
+                <button type="submit">
+                  Subscribe
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-   <footer class="container-fluid footer_section">
-    <p>
-      &copy; 2021 All Rights Reserved By
-      <a href="https://html.design/">Free Html Templates</a>
-    </p>
+  <!-- end info_section -->
+
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">Free Html Templates</a>
+      </p>
+    </div>
   </footer>
 </template>
 

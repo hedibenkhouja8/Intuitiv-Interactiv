@@ -1,41 +1,29 @@
 <template>
     <!-- about section -->
-  <section class="about_section layout_padding">
-    <div class="container">
-    <div class="side_img">
-      <img src="../assets/images/side-img.png" alt="" />
-    </div>
+  <section class="about_section layout_padding ">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <div class="img_container">
-            <div class="img-box b1">
-              <img src="../assets/images/a-1.jpg" alt="" />
-            </div>
-            <div class="img-box b2">
-              <img src="../assets/images/a-2.jpg" alt="" />
-            </div>
+          <div class="img-box">
+            <img src="../assets/images/about-img.jpg" alt="">
           </div>
         </div>
         <div class="col-md-6">
           <div class="detail-box">
             <div class="heading_container">
-              <h3>
-                About Our College
-              </h3>
-              <p>
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that it has a more it
-              </p>
-              <a href="">
-                Read More
-              </a>
+              <h2>
+                Who We Are
+              </h2>
             </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem eum consequuntur ipsam repellat dolor soluta aliquid laborum, eius odit consectetur vel quasi in quidem, eveniet ab est corporis tempore.
+            </p>
+            <a href="">
+              Read More
+            </a>
           </div>
         </div>
       </div>
-    </div>
     </div>
   </section>
 
