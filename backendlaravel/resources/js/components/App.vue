@@ -2,7 +2,6 @@
   <section class="course_section layout_padding">
     <div class="course_bg_box ">
       <div class="bg_img_box">
-        <img src="images/course-bg.jpg" alt="">
       </div>
     </div>
     <div class="container-fluid pr-0">
@@ -19,7 +18,6 @@
           <div class="item">
             <div class="box">
               <div class="img-box">
-                <img src="../assets/images/c1.jpg" alt="">
               </div>
               <div class="detail-box">
                 <h4>
@@ -37,7 +35,6 @@
           <div class="item">
             <div class="box">
               <div class="img-box">
-                <img src="../assets/images/c2.jpg" alt="">
               </div>
               <div class="detail-box">
                 <h4>
@@ -55,7 +52,6 @@
           <div class="item">
             <div class="box">
               <div class="img-box">
-                <img src="../assets/images/c3.jpg" alt="">
               </div>
               <div class="detail-box">
                 <h4>
@@ -73,7 +69,7 @@
           <div class="item">
             <div class="box">
               <div class="img-box">
-                <img v-bind:src="'storage/memoires/cover/'+item.coverimage" alt="item.coverimage">
+                <img src="{{ asset('storage/cover/vr6TxGnR0ktDbSc23fqeESfMxAbvgbpeocRnDEoq.png') }}">
               </div>
               <div class="detail-box">
                 <h4>

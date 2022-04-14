@@ -20,6 +20,9 @@ class CreateMemoiresTable extends Migration
             $table->year('annee');
             $table->string('description');
             $table->foreignId('etablisement_id')->constrained();
+            
+        //    $table->foreignId('demande_depot_id')->constrained();
+           $table->foreignId('demande_depot_id')->constrained()->onDelete('cascade')->nullable();
             $table->string('fichierpdf');
             $table->string('coverimage');
             $table->string('fichierbrevet');

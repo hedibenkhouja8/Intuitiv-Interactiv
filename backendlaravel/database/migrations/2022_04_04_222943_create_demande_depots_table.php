@@ -19,7 +19,6 @@ class CreateDemandeDepotsTable extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('description');
             $table->string('status');
-            $table->foreignId('memoire_id')->constrained();
             $table->string('fichierpdf');
             $table->string('fichierdemande');
             $table->string('coverimage');

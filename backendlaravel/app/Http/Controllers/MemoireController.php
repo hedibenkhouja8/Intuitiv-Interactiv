@@ -29,7 +29,7 @@ class MemoireController extends Controller
     public function store(Request $request)
     {
     $request->fichierpdf->store('public/files/memoires/pdf');
-    $request->coverimage ->store('public/files/memoires/cover');
+    $request->coverimage ->store('public/files//cover');
     $request->fichierbrevet->store('public/files/memoires/fichierbrevet');
     $request->fichierrecherche->store('public/files/memoires/fichierrecherche');
 
@@ -39,6 +39,8 @@ class MemoireController extends Controller
         $memoire->annee = $request->annee;
         $memoire->description = $request->description;
         $memoire->etablisement_id = $request->etablisement_id;
+        
+        $memoire->demande_depot_id = $request->demande_depot_id;
         $memoire->fichierpdf = $request->fichierpdf->hashName();
         $memoire->coverimage = $request->coverimage->hashName();
         $memoire->fichierbrevet = $request->fichierbrevet->hashName();
