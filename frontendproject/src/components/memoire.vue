@@ -1,5 +1,66 @@
 <template>
-  <section class="course_section layout_padding">
+
+    <section class="teacher_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Memoires
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-lg-3">
+          <div class="box">
+            <div class="img-box">
+              <img src="../assets/images/t1.jpg" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Alice Stark
+              </h5>
+              <h6>
+                Teacher
+              </h6>
+            </div>
+          </div>
+        </div>
+     
+      
+         <div class="col-sm-6 col-lg-3" v-bind:key="item.id" v-for="item in info">
+          <div class="box">
+            <div class="img-box">
+              <img v-bind:src="'http://localhost:8000/storage/files/memoires/cover/'+item.coverimage" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                {{ item.titre}}
+              </h5>
+              <h6>
+                {{ item.description}}
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn-box">
+        <a href="">
+          View All
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <section class="course_section layout_padding">
     <div class="course_bg_box ">
       <div class="bg_img_box">
         <img src="images/course-bg.jpg" alt="">
@@ -69,11 +130,12 @@
                 </a>
               </div>
             </div>
-          </div><div v-bind:key="item.id" v-for="item in info">
+          </div>
+          <div v-bind:key="item.id" v-for="item in info">
           <div class="item">
             <div class="box">
               <div class="img-box">
-                <img v-bind:src="'storage/memoires/cover/'+item.coverimage" alt="item.coverimage">
+                <img v-bind:src="'http://localhost:8000/storage/files/memoires/cover/'+item.coverimage" alt="item.coverimage">
               </div>
               <div class="detail-box">
                 <h4>
@@ -87,12 +149,28 @@
                 </a>
               </div>
             </div>
-          </div></div>
+          </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </template>
 
 <script>

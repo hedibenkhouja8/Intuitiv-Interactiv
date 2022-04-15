@@ -1,6 +1,6 @@
 <template> 
-<body class="sub_page">
-<div class="hero_area">
+
+
       <header class="header_section ">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -43,8 +43,7 @@
         </nav>
       </div>
     </header>
-</div>  
-</body>
+
 
 </template>
 

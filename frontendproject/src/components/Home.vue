@@ -1,9 +1,10 @@
 <template>
+<div class="hero_area">
 <section class="slider_section ">
       <div class="slider_bg_box">
         <div class="bg_img_box">
           <img src="../assets/images/slider-bg.jpg" alt="">
-        </div>
+</div>
       </div>
       <div id="customCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -90,7 +91,11 @@
         </ol>
       </div>
     </section>
-    
+    <!-- end slider section -->
+  </div>
+  <!-- end about section -->
+
+ 
   <section class="about_section layout_padding ">
     <div class="container">
       <div class="row">
@@ -441,6 +446,8 @@
       </div>
     </div>
   </section>
+  <!-- end contact section -->
+
 </template>
 
 <script>
