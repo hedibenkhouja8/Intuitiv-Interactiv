@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Memoire;
 use Illuminate\Http\Request;
 use App\Models\DemandeEmprunt;
@@ -79,4 +80,10 @@ class DemandeEmpruntController extends Controller
         /* return Memoire::with('demendeemprunts')
         ->where('id',$memoire->id)->get();*/
     }
+    public function byUser(User $user){
+        return $user->demandeemprunts;
+         //Si on veut les details du memoires avec ses emprunts
+         /* return Memoire::with('demendeemprunts')
+         ->where('id',$memoire->id)->get();*/
+     }
 }

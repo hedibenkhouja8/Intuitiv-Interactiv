@@ -20,8 +20,8 @@ class EmpruntFactory extends Factory
         $user = User::all()->pluck('id');
         return [
              
-            'user_id' =>$this->faker->randomElement($user),   
-            'memoire_id'=>$this->faker->randomElement($memoire),  
+            'user_id' =>User::factory(),   
+            'memoire_id'=>Memoire::factory(),  
             'date_debut' => $this->faker->dateTime($max = 'now', $timezone = null),
             'date_fin' => $this->faker->dateTime($max = 'now', $timezone = null), 
         ];

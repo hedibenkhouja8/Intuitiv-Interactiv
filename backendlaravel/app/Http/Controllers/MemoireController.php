@@ -109,4 +109,5 @@ class MemoireController extends Controller
          /* return Memoire::with('demendeEmprunts')
          ->where('id',$memoire->id)->get();*/
      }
+     
 }

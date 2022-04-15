@@ -70,8 +70,8 @@ class DomaineController extends Controller
      * @param  Memoire  $memoire
      * Route: /api/Memoire/{memoire}/Domaine
      */
-    public function byMemoire(Memoire $memoire){
-        return $memoire->domaines;
+    public function byDomaine(Domaine $domaine){
+        return $domaine->criteres;
          //Si on veut les details du memoires avec ses empreints
          /* return Memoire::with('demendeempreints')
          ->where('id',$memoire->id)->get();*/

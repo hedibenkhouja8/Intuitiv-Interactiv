@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Critere;
+use App\Models\Domaine;
 use Illuminate\Http\Request;
 
 class CritereController extends Controller
@@ -65,5 +66,13 @@ class CritereController extends Controller
     public function destroy($id)
     {
        return Critere::destroy($id);
+    }
+    
+     
+    public function byEtablisement(Domaine $domaine){
+        return $domaine->criteres;
+        //Si on veut les details du memoires avec ses Emprunts
+        /* return Memoire::with('Emprunts')
+        ->where('id',$memoire->id)->get();*/
     }
 }

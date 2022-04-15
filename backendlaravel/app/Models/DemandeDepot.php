@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Critere;
 use App\Models\Domaine;
 use App\Models\Encadreur;
 use App\Models\Entreprise;
@@ -41,5 +42,9 @@ class DemandeDepot extends Model
     public function domaines()
     {
         return $this->belongsToMany(Domaine::class);
+    }
+    public function criteres()
+    {
+        return $this->belongsToMany(Critere::class);
     }
 }

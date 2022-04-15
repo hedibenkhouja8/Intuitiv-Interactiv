@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Domaine;
 use App\Models\Memoire;
 use App\Models\Encadreur;
 use App\Models\DemandeDepot;
@@ -29,5 +30,9 @@ class Etablisement extends Model
     public function users()
     {
         return $this->hasMany(User::class);
+    }
+    public function domaine()
+    {
+        return $this->belongsTo(Domaine::class);
     }
 }

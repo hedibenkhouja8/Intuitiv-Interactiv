@@ -79,4 +79,5 @@ class EmpruntController extends Controller
         /* return Memoire::with('empreints')
         ->where('id',$memoire->id)->get();*/
     }
+
 }

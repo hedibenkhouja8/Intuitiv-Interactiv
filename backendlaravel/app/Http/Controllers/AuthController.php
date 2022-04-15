@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Etablisement;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
@@ -70,5 +71,11 @@ class AuthController extends Controller
         return [
             'message' => 'Logged out'
         ];
+    }
+    public function byEtablisement(Etablisement $etablisement){
+        return $etablisement->users;
+        //Si on veut les details du memoires avec ses Emprunts
+        /* return Memoire::with('Emprunts')
+        ->where('id',$memoire->id)->get();*/
     }
 }

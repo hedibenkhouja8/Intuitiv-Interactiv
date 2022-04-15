@@ -7,6 +7,7 @@ import UsersPage from '../components/users.vue';
 import loginComponent from '../components/login.vue';
 import contactusComponent from '../components/ContactUs.vue'
 import MemoireComponent from '../components/memoire.vue'
+import AddDemandeDepotComponent from '../components/adddemandedepot.vue'
 const routes = [
   {
     path: "/",
@@ -30,6 +31,14 @@ const routes = [
     component: AboutPage,
     meta: {
       title: 'About'
+    }
+  },
+  {
+    path: "/adddemandedepot",
+    name: "adddemandedepot",
+    component: AddDemandeDepotComponent,
+    meta: {
+      title: 'Add new demande depot'
     }
   },
   {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCriteresTable extends Migration
+class PivotCritereDemandeDepot extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateCriteresTable extends Migration
      */
     public function up()
     {
-        Schema::create('criteres', function (Blueprint $table) {
+        Schema::create('critere_demande_depot', function (Blueprint $table) {
             $table->id();
             
-            $table->string('nom');
-           $table->foreignId('domaine_id')->constrained();
-            $table->timestamps();
+            $table->foreignId('critere_id')->constrained();
+            $table->foreignId('demande_depot_id')->constrained();
+      
         });
     }
 
@@ -29,6 +29,6 @@ class CreateCriteresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('criteres');
+        //
     }
 }

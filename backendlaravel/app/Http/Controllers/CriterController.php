@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Entreprise;
+use App\Models\Criter;
 use Illuminate\Http\Request;
 
-class EntrepriseController extends Controller
+class CriterController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Entreprise::all();
+        return Criter::all();
 
     }
 
@@ -26,7 +26,7 @@ class EntrepriseController extends Controller
      */
     public function store(Request $request)
     {
-        return Entreprise::create($request->all());
+        return Criter::create($request->all());
     
     }
 
@@ -38,7 +38,7 @@ class EntrepriseController extends Controller
      */
     public function show($id)
     {
-        return Entreprise::find($id);
+        return Criter::find($id);
     }
 
     /**
@@ -50,9 +50,9 @@ class EntrepriseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $entreprise = Entreprise::find($id);
-        $entreprise->update($request->all());
-        return $entreprise;
+        $criter = Criter::find($id);
+        $criter->update($request->all());
+        return $criter;
 
     }
 
@@ -64,6 +64,6 @@ class EntrepriseController extends Controller
      */
     public function destroy($id)
     {
-       return Entreprise::destroy($id);
+       return Criter::destroy($id);
     }
 }
