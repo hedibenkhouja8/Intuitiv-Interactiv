@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Encadreur;
+use App\Models\Etablisement;
+use Illuminate\Http\Request;
+
 class EncadreursController extends Controller
 {
     /**
@@ -64,5 +66,12 @@ class EncadreursController extends Controller
     public function destroy($id)
     {
        return Encadreur::destroy($id);
+    }
+
+    public function byEtablisement(Etablisement $etablisement){
+        return $etablisement->encadreurs;
+        //Si on veut les details du memoires avec ses Emprunts
+        /* return Memoire::with('Emprunts')
+        ->where('id',$memoire->id)->get();*/
     }
 }

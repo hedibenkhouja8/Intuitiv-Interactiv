@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class DemandeDepot extends Model
 {
     use HasFactory;
-    protected $fillable = ['titre','user_id','id_encadreur','date_memoire','description','status','fichierpdf','fichierdemande','criteres','nbpages','coverimage','fichierbrevet','fichierrecherche','entreprise_id'];
+    protected $fillable = ['titre','user_id','description','status','fichierpdf','fichierdemande','nbpages','coverimage','fichierbrevet','fichierrecherche','entreprise_id','encadreur_id','domaine_id','critere_id'];
     /**
      * Get the user that owns the phone.
      */
@@ -22,9 +22,9 @@ class DemandeDepot extends Model
     {
         return $this->belongsTo(Memoire::class);
     }
-    public function encadreurs()
+    public function encadreur()
     {
-        return $this->belongsToMany(Encadreur::class);
+        return $this->belongsTo(Encadreur::class);
     }
     public function etablisement()
     {
@@ -39,12 +39,12 @@ class DemandeDepot extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function domaines()
+    public function domaine()
     {
-        return $this->belongsToMany(Domaine::class);
+        return $this->belongsTo(Domaine::class);
     }
-    public function criteres()
+    public function critere()
     {
-        return $this->belongsToMany(Critere::class);
+        return $this->belongsTo(Critere::class);
     }
 }

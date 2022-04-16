@@ -17,6 +17,11 @@ class CreateDemandeDepotsTable extends Migration
             $table->id();
             $table->string('titre');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            
+            $table->foreignId('encadreur_id')->constrained()->onDelete('cascade');
+            $table->foreignId('domaine_id')->constrained()->onDelete('cascade');
+            
+            $table->foreignId('critere_id')->constrained()->onDelete('cascade');
             $table->string('description');
             $table->string('status');
             $table->string('fichierpdf');

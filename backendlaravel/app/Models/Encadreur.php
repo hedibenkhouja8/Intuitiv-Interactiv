@@ -14,7 +14,7 @@ class Encadreur extends Model
     protected $fillable = ['nom','prenom','etablisement_id'];
    public function demandedepots()
     {
-        return $this->belongsToMany(DemandeDepot::class);
+        return $this->hasMany(DemandeDepot::class);
     }
     public function memoires()
     {

@@ -60,6 +60,8 @@ Route::get('/Etablisement/{etablisement}/Memoire',[MemoireController::class,'byE
 
 Route::get('/Etablisement/{etablisement}/User',[AuthController::class,'byEtablisement']);
 
+Route::get('/Etablisement/{etablisement}/Encadreur',[EncadreursController::class,'byEtablisement']);
+
 Route::get('/Emprunt/{emprunt}/Memoire',[EmpruntController::class,'byEmprunt']);
 
 Route::get('/User/{user}/DemandeEmprunt',[DemandeEmpruntController::class,'byUser']);

@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Critere;
+use App\Models\Domaine;
 use App\Models\Memoire;
 use App\Models\Encadreur;
 use App\Models\Entreprise;
@@ -20,6 +22,9 @@ class DemandeDepotFactory extends Factory
     {
         $etablisement = Etablisement::all()->pluck('id');
         
+        $critere = Critere::all()->pluck('id');
+        $domaine = Domaine::all()->pluck('id');
+        $encadreur = Encadreur::all()->pluck('id');
         $entreprise = Entreprise::all()->pluck('id');
         
         $memoire = Memoire::all()->pluck('id');
@@ -32,6 +37,10 @@ class DemandeDepotFactory extends Factory
             'etablisement_id'=>$this->faker->randomElement($etablisement),
             
             'entreprise_id'=>$this->faker->randomElement($entreprise),
+            
+            'critere_id'=>Critere::factory(), 
+            'domaine_id'=>$this->faker->randomElement($domaine),
+            'encadreur_id'=>$this->faker->randomElement($encadreur),
              
             'description' =>$this->faker->name,
             

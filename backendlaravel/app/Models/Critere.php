@@ -18,6 +18,6 @@ class Critere extends Model
     }
     public function demandedepots()
     {
-        return $this->belongsToMany(DemandeDepot::class);
+        return $this->hasMany(DemandeDepot::class);
     }
 }

@@ -35,9 +35,13 @@ class DemandeDepotController extends Controller
         $demande = new DemandeDepot;
         $demande->titre = $request->titre;
         $demande->user_id = $request->user_id;
+        
+        $demande->encadreur_id = $request->encadreur_id;
+        $demande->domaine_id = $request->domaine_id;
+        $demande->critere_id = $request->critere_id;
         $demande->description = $request->description;
         $demande->status = $request->status;
-        $demande->memoire_id = $request->memoire_id;
+       // $demande->memoire_id = $request->memoire_id;
         $demande->fichierpdf = $request->fichierpdf->hashName();
         $demande->fichierdemande = $request->fichierdemande->hashName();
         $demande->etablisement_id = $request->etablisement_id;
@@ -79,6 +83,9 @@ class DemandeDepotController extends Controller
         ->update([
         'titre' => $request->titre,
         'user_id' => $request->user_id,
+        'encadreur_id' => $request->encadreur_id,
+        'critere_id' => $request->critere_id,
+        'domaine_id' => $request->domaine_id,
         'description' => $request->description,
         'status' => $request->status,
         'memoire_id' => $request->memoire_id,

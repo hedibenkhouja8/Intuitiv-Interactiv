@@ -27,6 +27,22 @@
   <option ></option>
   <option  v-bind:key="critere.id" v-for="critere in criteres ">{{critere.nom}}</option>
 </select></div>
+
+
+
+  <div><select class="form-select" aria-label="Default select example" v-model="selectedEtablisement" v-on:change="getEncadreurs(selectedEtablisement.id)">
+  <option selected>Etablissement</option>
+  <option  v-bind:key="etablisement.id" v-for="etablisement in etablisements " :value="etablisement">{{etablisement.nom}}</option>
+</select></div>
+  <div><select class="form-select" aria-label="Default select example" >
+  <option ></option>
+  <option  v-bind:key="encadreur.id" v-for="encadreur in encadreurs ">{{encadreur.nom}}</option>
+</select></div>
+
+
+
+
+
               <div >
   <input class="form-control" type="file" placeholder="" >
 </div>        <div >
@@ -74,8 +90,11 @@ name: 'AddDemandeDepotComponent',
       entreprises: null,
       domaines: null,
       selectedDomaine:0,
+      selectedEtablisement:0,
       selectedCritere:'',
-      criteres: null
+      criteres: null,
+      etablisements: null,
+      encadreurs: null
     }
   },
   mounted () {
@@ -86,13 +105,21 @@ name: 'AddDemandeDepotComponent',
     axios
       .get('http://127.0.0.1:8000/api/Domaine')
       .then(response => (this.domaines = response.data));
+    axios
+      .get('http://127.0.0.1:8000/api/Etablisement')
+      .then(response => (this.etablisements = response.data));
    
   },
   methods: {
   getCriteres(DomaineId){
      axios
       .get('http://127.0.0.1:8000/api/Domaine/'+DomaineId+'/Critere')
-      .then(response =>( (this.criteres = response.data),(this.selectedCritere=this.criteres[0])));
+      .then(response =>( this.criteres = response.data));
+  },
+  getEncadreurs(EncadreurId){
+     axios
+      .get('http://127.0.0.1:8000/api/Etablisement/'+EncadreurId+'/Encadreur')
+      .then(response =>(this.encadreurs = response.data));
   }
 }, 
 

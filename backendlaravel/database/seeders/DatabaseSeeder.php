@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
        
        DemandeDepot::factory(10)->create();
         
-    foreach (DemandeDepot::all() as $DemandeDepot){
+  /*  foreach (DemandeDepot::all() as $DemandeDepot){
 
         $encadreur = Encadreur::inRandomOrder()->take(rand(1,2))->pluck('id');
         $domaine = Domaine::inRandomOrder()->take(rand(1,3))->pluck('id');
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
         
         $DemandeDepot->domaines()->attach($domaine);
         $DemandeDepot->criteres()->attach($critere);
-    }
+    }*/
        $user=  User::factory(10)->create();
        
 Memoire::factory()->count(3)
