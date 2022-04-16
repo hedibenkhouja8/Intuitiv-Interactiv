@@ -25,18 +25,9 @@ class MemoireFactory extends Factory
        $encadreur = Encadreur::all();
        $domaine = Domaine::all();
         return [
-            'titre' => $this->faker->name,
-            'user_id' =>$this->faker->randomElement($user), 
+            'date_acceptation' => $this->faker->date,
             
-            'annee' =>$this->faker->randomDigit,
-            'etablisement_id'=>$this->faker->randomElement($etablisement),
-            
-            'demande_depot_id'=>DemandeDepot::factory(),
-            'coverimage'=>$this->faker->imageUrl($width = 640, $height = 480),
-            'description' =>$this->faker->name, 
-            'fichierpdf' =>$this->faker->name,  
-            'fichierbrevet' =>$this->faker->name,  
-            'fichierrecherche' =>$this->faker->name,             
+            'demande_depot_id'=>DemandeDepot::factory(),         
         ];
     }
 }
