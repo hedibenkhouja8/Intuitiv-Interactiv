@@ -8,22 +8,19 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form_container">
-            <form action="">
+            <form action="" @submit.prevent="onCreate">
               <div>
-                <input type="text" placeholder="Titre du memoire" />
+                <input type="text" placeholder="Titre du memoire" v-model="titre"/>
               </div>
-              <div>
-                <input type="text" placeholder="Etablissement" />
-              </div>
-              <div><select class="form-select" aria-label="Default select example">
+              <div><select class="form-select" aria-label="Default select example" v-model="selectedEntreprise">
   <option selected>Entreprise d'acceuil</option>
-  <option  v-bind:key="entreprise.id" v-for="entreprise in entreprises ">{{entreprise.nom}}</option>
+  <option  v-bind:key="entreprise.id" v-for="entreprise in entreprises " >{{entreprise.nom}}</option>
 </select></div>
               <div><select class="form-select" aria-label="Default select example" v-model="selectedDomaine" v-on:change="getCriteres(selectedDomaine.id)">
   <option selected>Domaine</option>
   <option  v-bind:key="domaine.id" v-for="domaine in domaines " :value="domaine">{{domaine.nom}}</option>
 </select></div>
-  <div><select class="form-select" aria-label="Default select example" >
+  <div><select class="form-select" aria-label="Default select example" v-model="selectedCritere" >
   <option ></option>
   <option  v-bind:key="critere.id" v-for="critere in criteres ">{{critere.nom}}</option>
 </select></div>
@@ -34,7 +31,7 @@
   <option selected>Etablissement</option>
   <option  v-bind:key="etablisement.id" v-for="etablisement in etablisements " :value="etablisement">{{etablisement.nom}}</option>
 </select></div>
-  <div><select class="form-select" aria-label="Default select example" >
+  <div><select class="form-select" aria-label="Default select example" v-model="selectedEtablisement" >
   <option ></option>
   <option  v-bind:key="encadreur.id" v-for="encadreur in encadreurs ">{{encadreur.nom}}</option>
 </select></div>
@@ -53,16 +50,16 @@
   <input class="form-control" type="file" placeholder="" >
 </div>
               <div>
-                <input type="file" placeholder="Fichier de la memoire" />
+                <input type="file" placeholder="Fichier de la memoire"  />
               </div>
                       <div >
-  <input class="form-control" type="number" placeholder="nombre de page" >
+  <input class="form-control" type="number" placeholder="nombre de page" v-model="nbpages" >
 </div>
               <div>
-                <input type="text" class="message-box" placeholder="Description" />
+                <input type="text" class="message-box" placeholder="Description" v-model="description" />
               </div>
               <div class="btn_box">
-                <button>
+                <button type="submit">
                   SEND
                 </button>
               </div>
@@ -92,9 +89,16 @@ name: 'AddDemandeDepotComponent',
       selectedDomaine:0,
       selectedEtablisement:0,
       selectedCritere:'',
+      selectedEntreprise:'',
       criteres: null,
       etablisements: null,
-      encadreurs: null
+      encadreurs: null,
+      encadreur:'',
+      titre:'',
+      nbpages:0,
+      description:'',
+      user_id:1,
+
     }
   },
   mounted () {
@@ -120,7 +124,13 @@ name: 'AddDemandeDepotComponent',
      axios
       .get('http://127.0.0.1:8000/api/Etablisement/'+EncadreurId+'/Encadreur')
       .then(response =>(this.encadreurs = response.data));
-  }
+  },
+  onCreate(){
+      axios
+      .post('http://127.0.0.1:8000/api/DemandeDepot',
+     {description:this.description,nbpages:this.nbpages,entreprise:this.selectedEntreprise} )
+     .then((response)=>{console.log(response)})
+    }
 }, 
 
 }

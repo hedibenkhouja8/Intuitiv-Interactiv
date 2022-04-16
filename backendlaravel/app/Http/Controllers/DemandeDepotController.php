@@ -40,6 +40,8 @@ class DemandeDepotController extends Controller
         $demande->encadreur_id = $request->encadreur_id;
         $demande->domaine_id = $request->domaine_id;
         $demande->critere_id = $request->critere_id;
+        
+        $demande->memoire_id = $request->memoire_id;
         $demande->description = $request->description;
         $demande->status = $request->status;
        // $demande->memoire_id = $request->memoire_id;
