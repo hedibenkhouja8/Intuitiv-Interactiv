@@ -42,6 +42,7 @@ class DemandeDepotFactory extends Factory
             'domaine_id'=>$this->faker->randomElement($domaine),
             'encadreur_id'=>$this->faker->randomElement($encadreur),
              
+            'memoire_id'=>$this->faker->randomElement($memoire),
             'description' =>$this->faker->name,
             
             'status' =>$this->faker->name,

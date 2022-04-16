@@ -21,6 +21,8 @@ class CreateDemandeDepotsTable extends Migration
             $table->foreignId('encadreur_id')->constrained()->onDelete('cascade');
             $table->foreignId('domaine_id')->constrained()->onDelete('cascade');
             
+            $table->foreignId('memoire_id')->nullable()->constrained()->onDelete('cascade');
+            
             $table->foreignId('critere_id')->constrained()->onDelete('cascade');
             $table->string('description');
             $table->string('status');

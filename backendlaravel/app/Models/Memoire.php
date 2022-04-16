@@ -15,7 +15,7 @@ class Memoire extends Model
 {
     use HasFactory;
     protected $fillable = ['titre','user_id','annee','description','etablisement_id','fichierpdf','coverimage','fichierbrevet','fichierrecherche'];
-    public function demendeemprunts()
+    public function demandeemprunts()
     {
         return $this->hasMany(DemandeEmprunt::class);
     }

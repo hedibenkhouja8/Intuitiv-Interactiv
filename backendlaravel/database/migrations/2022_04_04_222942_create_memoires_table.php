@@ -19,7 +19,7 @@ class CreateMemoiresTable extends Migration
             
             
         //    $table->foreignId('demande_depot_id')->constrained();
-           $table->foreignId('demande_depot_id')->constrained()->onDelete('cascade')->nullable();
+        
           
             $table->timestamps();
         });

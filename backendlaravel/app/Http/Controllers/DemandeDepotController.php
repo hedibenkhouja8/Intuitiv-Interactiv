@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\DemandeDepot;
+use App\Models\Etablisement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -107,5 +108,11 @@ class DemandeDepotController extends Controller
     public function destroy($id)
     {
        return DemandeDepot::destroy($id);
+    }
+    public function byEtablisement(Etablisement $etablisement){
+        return $etablisement->demandedepots;
+        //Si on veut les details du memoires avec ses Emprunts
+        /* return Memoire::with('Emprunts')
+        ->where('id',$memoire->id)->get();*/
     }
 }

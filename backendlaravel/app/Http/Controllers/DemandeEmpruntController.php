@@ -75,7 +75,7 @@ class DemandeEmpruntController extends Controller
      * Route: /api/Memoire/{memoire}/DemandeEmprunt
      */
     public function byMemoire(Memoire $memoire){
-       return $memoire->demendeemprunts;
+       return $memoire->demandeemprunts;
         //Si on veut les details du memoires avec ses emprunts
         /* return Memoire::with('demendeemprunts')
         ->where('id',$memoire->id)->get();*/

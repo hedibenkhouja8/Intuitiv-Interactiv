@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Domaine;
+use Validator;
 
+use App\Models\Domaine;
 use App\Models\Memoire;
+use App\Models\DemandeDepot;
 use App\Models\Etablisement;
 use Illuminate\Http\Request;
-use Validator;
+
 class MemoireController extends Controller
 {
     /**
@@ -108,6 +110,12 @@ class MemoireController extends Controller
          //Si on veut les details du memoires avec ses Emprunts
          /* return Memoire::with('demendeEmprunts')
          ->where('id',$memoire->id)->get();*/
+     }
+     public function byDemande(Memoire $memoire){
+      //  return $memoire->demandedepot;
+         //Si on veut les details du memoires avec ses Emprunts
+         return Memoire::with('demandedepot')
+         ->where('id',$memoire->id)->get();
      }
      
 }
