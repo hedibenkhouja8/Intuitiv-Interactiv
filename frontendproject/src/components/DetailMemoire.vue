@@ -8,21 +8,17 @@
 import axios from 'axios'
 export default {
   
-    props:['id'],
   name: 'DetailMemoire',
   data () {
     return {
      info: null,
-      values :{
-      date_acceptation:'',
-      demande_depot_id:''
-      }
+     
     }
   },
     mounted () {
       
-  
-    axios.get('http://127.0.0.1:8000/api/Memoire')
+    const id =this.$route.params.id;
+    axios.get('http://127.0.0.1:8000/api/Memoire/'+id)
 .then(response => (this.info = response.data))   
 
     axios
@@ -30,8 +26,6 @@ export default {
       .then(response => (this.info = response.data))
       
   
-    const id =this.$route.params.id;
-    axios.get('http://127.0.0.1:8000/api/Memoire/'+id)
 
   },
   methods :{
