@@ -66,4 +66,8 @@ class EntrepriseController extends Controller
     {
        return Entreprise::destroy($id);
     }
+    public function search($name)
+    {
+        return Entreprise::where('nom',$name)->get();
+    }
 }

@@ -48,6 +48,7 @@ Route::resource('Encadreurs',EncadreursController::class);
 Route::resource('Etablisement',EtablisementsController::class);
 
 Route::resource('Entreprise',EntrepriseController::class);
+Route::get('/Entreprise/search/{name}', [EntrepriseController::class, 'search']);
 Route::resource('Memoire',MemoireController::class);
 
 Route::get('/Memoire',[MemoireController::class,'index']); 

@@ -21,14 +21,16 @@
                   aria-label="Default select example"
                   v-model="selectedEntreprise"
                 >
-                  <option selected>Entreprise d'acceuil</option>
+                  <option >Entreprise d'acceuil</option>
                   <option
                     v-bind:key="entreprise.id"
+                    v-bind:value="entreprise.id"
                     v-for="entreprise in entreprises"
                   >
                     {{ entreprise.nom }}
                   </option>
                 </select>
+
               </div>
               <div>
                 <select
@@ -53,11 +55,12 @@
                   aria-label="Default select example"
                   v-model="selectedCritere"
                 >
-                  <option></option>
-                  <option v-bind:key="critere.id" v-for="critere in criteres">
+                  <option selected>critere</option>
+                  <option v-bind:key="critere.id" v-bind:value="critere.id" v-for="critere in criteres">
                     {{ critere.nom }}
                   </option>
                 </select>
+
               </div>
 
               <div>
@@ -76,21 +79,25 @@
                     {{ etablisement.nom }}
                   </option>
                 </select>
+
               </div>
               <div>
                 <select
                   class="form-select"
                   aria-label="Default select example"
-                  v-model="selectedEtablisement"
+                  v-model="selectedEncadreur"
                 >
-                  <option></option>
+                  <option selected>encadreur</option>
                   <option
                     v-bind:key="encadreur.id"
+                    v-bind:value="encadreur.id"
                     v-for="encadreur in encadreurs"
                   >
                     {{ encadreur.nom }}
                   </option>
                 </select>
+                                  
+
               </div>
 
               <div>
@@ -140,6 +147,9 @@
       </div>
     </div>
   </section>
+
+  
+
 </template>
 <script>
 import axios from "axios";
@@ -153,6 +163,7 @@ export default {
       selectedEtablisement: 0,
       selectedCritere: "",
       selectedEntreprise: "",
+      selectedEncadreur:"",
       criteres: null,
       etablisements: null,
       encadreurs: null,
@@ -193,6 +204,13 @@ export default {
         )
         .then((response) => (this.encadreurs = response.data));
     },
+     getEntreprise(Entreprise) {
+      axios
+        .get(
+          "http://127.0.0.1:8000/api/Entreprise/search/" + Entreprise
+        )
+        .then((response) => (this.selectedEntreprise = response.data));
+    },
       onchange(e){
        
 this.file=e.target.files[0];
@@ -215,19 +233,18 @@ this.file4=e.target.files[0];
   },
     onCreate() {
       let data = new FormData();
-      data.append('titre','hellooussama');
+      data.append('titre',this.titre);
       data.append('user_id',1);
-      data.append('encadreur_id',1);
-      data.append('domaine_id',1);
-      data.append('critere_id',1);
-      data.append('memoire_id',1);
-      data.append('description','fff');
+      data.append('encadreur_id',this.selectedEncadreur);
+      data.append('domaine_id',this.selectedDomaine.id);
+      data.append('critere_id',this.selectedCritere);
+      data.append('description',this.description);
       data.append('status','ff');
       data.append('fichierpdf',this.file);
       data.append('fichierdemande',this.file1);
-      data.append('etablisement_id',1);
-      data.append('nbpages',5);
-      data.append('entreprise_id',1);
+      data.append('etablisement_id',this.selectedEtablisement.id);
+      data.append('nbpages',this.nbpages);
+      data.append('entreprise_id',this.selectedEntreprise);
       data.append('coverimage',this.file2);
       data.append('fichierbrevet',this.file3);
       data.append('fichierrecherche',this.file4);
