@@ -27,11 +27,18 @@ class DemandeDepotController extends Controller
      */
     public function store(Request $request)
     {
-        $request->fichierpdf->store('public/files/demandes/pdf');
-        $request->fichierdemande->store('public/files/demandes/demande');
-        $request->coverimage ->store('public/files/demandes/cover');
-        $request->fichierbrevet->store('public/files/demandes/fichierbrevet');
-        $request->fichierrecherche->store('public/files/demandes/fichierrecherche');
+        $file = $request->file('fichierpdf');
+        $file1 = $request->file('fichierdemande');
+        $file2 = $request->file('coverimage');
+        $file3 = $request->file('fichierbrevet');
+        $file4 = $request->file('fichierrecherche');
+
+        $file->store('public/files/demandes/pdf');
+        //$request->fichierpdf->store('public/files/demandes/pdf');
+        $file1->store('public/files/demandes/demande');
+        $file2->store('public/files/demandes/cover');
+        $file3->store('public/files/demandes/fichierbrevet');
+        $file4->store('public/files/demandes/fichierrecherche');
 
         $demande = new DemandeDepot;
         $demande->titre = $request->titre;
