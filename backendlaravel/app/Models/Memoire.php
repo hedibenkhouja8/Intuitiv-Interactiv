@@ -27,9 +27,9 @@ class Memoire extends Model
     {
         return $this->belongsTo(Etablisement::class);
     }
-    public function demandedepot()
+    public function demande_depot()
     {
-        return $this->hasOne(DemandeDepot::class);
+        return $this->belongsTo(DemandeDepot::class);
     }
     public function domaines()
     {

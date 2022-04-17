@@ -1,6 +1,8 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
 import HomePage from "../components/Home.vue";
+
+import DetailMemoire from "../components/DetailMemoire.vue";
 import EditItem from '../components/Edit.vue';
 import AboutPage from '../components/about.vue';
 import UsersPage from '../components/users.vue';
@@ -23,6 +25,13 @@ const routes = [
     component: EditItem,
     meta: {
       title: 'edit'
+    }
+  }, {
+    path: "/memoire/details/:id",
+    name: "DetailMemoire",
+    component: DetailMemoire,
+    meta: {
+      title: 'Memoire Details'
     }
   },
   {

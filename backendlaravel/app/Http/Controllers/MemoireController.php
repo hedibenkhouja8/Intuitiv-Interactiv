@@ -18,7 +18,8 @@ class MemoireController extends Controller
      */
     public function index()
     {
-        return Memoire::all();
+     
+        return Memoire::with('demande_depot')->get();
 
     }
 
@@ -30,24 +31,10 @@ class MemoireController extends Controller
      */
     public function store(Request $request)
     {
-    $request->fichierpdf->store('public/files/memoires/pdf');
-    $request->coverimage ->store('public/files//cover');
-    $request->fichierbrevet->store('public/files/memoires/fichierbrevet');
-    $request->fichierrecherche->store('public/files/memoires/fichierrecherche');
-
         $memoire = new Memoire;
-        $memoire->titre = $request->titre;
-        $memoire->user_id = $request->user_id;
-        $memoire->annee = $request->annee;
-        $memoire->description = $request->description;
-        $memoire->etablisement_id = $request->etablisement_id;
-        
+        $memoire->date_acceptation = $request->date_acceptation;
         $memoire->demande_depot_id = $request->demande_depot_id;
-        $memoire->fichierpdf = $request->fichierpdf->hashName();
-        $memoire->coverimage = $request->coverimage->hashName();
-        $memoire->fichierbrevet = $request->fichierbrevet->hashName();
-        $memoire->fichierrecherche = $request->fichierrecherche->hashName();
-
+    
         $memoire->save(); 
     }
 
@@ -59,7 +46,7 @@ class MemoireController extends Controller
      */
     public function show($id)
     {
-        return Memoire::find($id);
+        return Memoire::find($id)->with('demande_depot')->get();
     }
 
     /**
@@ -114,7 +101,7 @@ class MemoireController extends Controller
      public function byDemande(Memoire $memoire){
       //  return $memoire->demandedepot;
          //Si on veut les details du memoires avec ses Emprunts
-         return Memoire::with('demandedepot')
+         return Memoire::with('demande_depot')
          ->where('id',$memoire->id)->get();
      }
      

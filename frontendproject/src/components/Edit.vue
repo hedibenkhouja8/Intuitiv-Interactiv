@@ -1,34 +1,36 @@
 <template>
-<div>
-<div>
-    
-  <h1> edit</h1>
-</div>  
- 
-
- 
-<div>
-<div>
-  <br>
-  <form @submit.prevent="onupdate">
-  <label>name</label> <br>
-  <input type="text" class="form-control"  v-model="values.name"/> <br> <br>
-  
-  <label>lastname</label> <br> <br>
-
-  <input type="text" class="form-control" v-model="values.lastname"/> <br> <br>
-
-  <button class="btn btn-primary " type="submit">update</button> <br> <br>
-  <button v-on:click="deletehedi()">dlete</button>
-  
-  </form></div>
-  
-</div></div>
+<div>  <section class="about_section layout_padding ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+                 </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>{{id}}
+                Who We Are
+              </h2>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem eum consequuntur ipsam repellat dolor soluta aliquid laborum, eius odit consectetur vel quasi in quidem, eveniet ab est corporis tempore.
+            </p>
+            <a href="">
+              Read More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section></div>
 </template>
 
 <script>
 import axios from 'axios'
 export default {
+  
+    props:['id'],
 name: 'ItemEdit',
   data () {
     return {
@@ -36,15 +38,19 @@ name: 'ItemEdit',
       values :{
       name :'',
       lastname:'',
-      }
+      id:this.$route.params.id,
+      },
+     
     }
   },
  async mounted () {
       
 
-const res =axios.get('http://127.0.0.1:8000/api/Memoire/'+this.$route.params.id)
+ const res =axios.get('http://127.0.0.1:8000/api/Memoire/'+this.$route.params.id)
 this.values=(await res).data
-
+ axios
+      .get('http://127.0.0.1:8000/api/Memoire/'+this.id)
+      .then(response => (this.info = response.data))
       
   },
   methods :{

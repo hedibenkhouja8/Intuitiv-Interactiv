@@ -28,15 +28,18 @@
          <div class="col-sm-6 col-lg-3" v-bind:key="item.id" v-for="item in info">
           <div class="box">
             <div class="img-box">
-              <img v-bind:src="'http://localhost:8000/storage/files/memoires/cover/'+item.coverimage" alt="">
+              <img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.demande_depot.coverimage" alt="">
+              <embed controlslist="nodownload" v-bind:src="'http://localhost:8000/storage/files/demandes/pdf/'+item.demande_depot.fichierpdf" toolbar=0 width="500" height="375" 
+ type="application/pdf">
             </div>
             <div class="detail-box">
               <h5>
-                {{ item.titre}}
+                {{ item.date_acceptation}}
               </h5>
               <h6>
-                {{ item.description}}
+                {{ item.demande_depot.titre}}
               </h6>
+              <button @click="edit(item.id)">edit</button>
             </div>
           </div>
         </div>
@@ -59,103 +62,6 @@
 
 
 
-
-  <!-- <section class="course_section layout_padding">
-    <div class="course_bg_box ">
-      <div class="bg_img_box">
-        <img src="images/course-bg.jpg" alt="">
-      </div>
-    </div>
-    <div class="container-fluid pr-0">
-      <div class="heading_container">
-        <h2>
-         Memoire
-        </h2>
-        <p>
-          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem
-        </p>
-      </div>
-      <div class="course_container">
-        <div class=" course_owl-carousel owl-carousel owl-theme ">
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="../assets/images/c1.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <h4>
-                  Learn JavaScript
-                </h4>
-                <p>
-                  Incidunt veritatis adipisci autem repellat possimus id eos praesentium, beatae repudiandae.
-                </p>
-                <a href="">
-                  View Detail
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="../assets/images/c2.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <h4>
-                  Learn Python
-                </h4>
-                <p>
-                  Incidunt veritatis adipisci autem repellat possimus id eos praesentium, beatae repudiandae.
-                </p>
-                <a href="">
-                  View Detail
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="../assets/images/c3.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <h4>
-                  Learn Html
-                </h4>
-                <p>
-                  Incidunt veritatis adipisci autem repellat possimus id eos praesentium, beatae repudiandae.
-                </p>
-                <a href="">
-                  View Detail
-                </a>
-              </div>
-            </div>
-          </div>
-          <div v-bind:key="item.id" v-for="item in info">
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img v-bind:src="'http://localhost:8000/storage/files/memoires/cover/'+item.coverimage" alt="item.coverimage">
-              </div>
-              <div class="detail-box">
-                <h4>
-                    {{ item.titre}}
-                </h4>
-                <p>
-                    {{ item.description}}
-                </p>
-                <a href="">
-                  View Detail
-                </a>
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  -->
 
 
 
@@ -187,8 +93,14 @@ name: 'MemoireComponent',
     axios
       .get('http://127.0.0.1:8000/api/Memoire')
       .then(response => (this.info = response.data))
+  },
+ methods :{edit(id){
+this.$router.push({
+    name:"DetailMemoire",
+    params : {id:id}
+})
+},
   }
-
 }
 
 </script>

@@ -18,7 +18,7 @@ class CreateMemoiresTable extends Migration
             $table->date('date_acceptation');
             
             
-        //    $table->foreignId('demande_depot_id')->constrained();
+           $table->foreignId('demande_depot_id')->constrained();
         
           
             $table->timestamps();

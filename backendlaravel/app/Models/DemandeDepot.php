@@ -20,7 +20,7 @@ class DemandeDepot extends Model
      */
     public function memoire()
     {
-        return $this->belongsTo(Memoire::class);
+        return $this->hasOne(Memoire::class);
     }
     public function encadreur()
     {
