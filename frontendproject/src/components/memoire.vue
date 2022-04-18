@@ -29,8 +29,7 @@
           <div class="box">
             <div class="img-box">
               <img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.demande_depot.coverimage" alt="">
-              <embed controlslist="nodownload" v-bind:src="'http://localhost:8000/storage/files/demandes/pdf/'+item.demande_depot.fichierpdf" toolbar=0 width="500" height="375" 
- type="application/pdf">
+             
             </div>
             <div class="detail-box">
               <h5>
@@ -99,7 +98,8 @@ this.$router.push({
     name:"DetailMemoire",
     params : {id:id}
 })
-},
+},/* <embed controlslist="nodownload" v-bind:src="'http://localhost:8000/storage/files/demandes/pdf/'+item.demande_depot.fichierpdf" toolbar=0 width="500" height="375" 
+ type="application/pdf">*/
   }
 }
 

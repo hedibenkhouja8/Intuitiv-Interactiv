@@ -50,7 +50,6 @@ class DemandeDepotController extends Controller
         
         $demande->description = $request->description;
         $demande->status = $request->status;
-       // $demande->memoire_id = $request->memoire_id;
         $demande->fichierpdf = $request->fichierpdf->hashName();
         $demande->fichierdemande = $request->fichierdemande->hashName();
         $demande->etablisement_id = $request->etablisement_id;

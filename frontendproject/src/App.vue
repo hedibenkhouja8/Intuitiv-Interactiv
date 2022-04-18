@@ -1,8 +1,8 @@
-<template>
+<template><div>
   <navbar-component/>
   <router-view />
 <footer-component/>
-  
+  </div>
 </template>
 
 <script>

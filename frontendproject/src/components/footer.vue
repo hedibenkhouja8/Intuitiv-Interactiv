@@ -1,4 +1,4 @@
-<template>
+<template><div>
  <section class="info_section ">
 
     <div class="container">
@@ -86,7 +86,7 @@
         <a href="https://html.design/">Free Html Templates</a>
       </p>
     </div>
-  </footer>
+  </footer></div>
 </template>
 
 <script>

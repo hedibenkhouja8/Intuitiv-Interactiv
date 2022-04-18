@@ -1,10 +1,10 @@
-<template>
+<template><div>
   <section class="about_section layout_padding ">
     <div class="container">
       <div class="row" v-bind:key="item.id" v-for="item in info">
         <div class="col-md-6">
           <div class="img-box">
-            <img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.demande_depot.coverimage" alt="">
+            <img width="200" height="600" v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.demande_depot.coverimage" alt="">
           </div>
         </div>
         <div class="col-md-6">
@@ -14,24 +14,62 @@
                titre : {{ item.demande_depot.titre}}
               </h2>
             </div>
-            <p>
+            <h3>
              desc : {{ item.demande_depot.description }}
-            </p>
+            </h3>
             <p>
                date : {{ item.date_acceptation}}
             </p>
             <p>
              nb pages : {{ item.demande_depot.nbpages}}
             </p>
-           
+            <a href="" data-toggle="modal" data-target=".bd-example-modal-lg">
+              Read More
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
-<div>
- 
+
+<div v-bind:key="item.id" v-for="item in info" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" id="myModal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Demande d'emprunt </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div><form @submit.prevent="onCreate">
+      <div class="modal-body">   <div class="form-group">
+      <h6 for="disabledTextInput">Vous allez Empruntez la memoire </h6> <div class="input-group mb-3 input-group-lg">
+      <input type="text" id="disabledTextInput" class="form-control" :placeholder="item.demande_depot.titre" disabled></div>
+    </div>
+      <div class="input-group mb-3 input-group-lg">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Date Debut</span>
+  </div>
+  <input type="date" class="form-control" aria-label="Sizing example input" v-model="date_debut" aria-describedby="inputGroup-sizing-default">
+</div> <div class="input-group mb-3 input-group-lg">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Date Fin</span>
+  </div>
+  <input type="date" class="form-control" v-model="date_fin" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 </div>
+      <h6 for="validationCustom03">Dites Pourquoi voulez vous Emprunter cette memoire?</h6>
+      <div class="input-group mb-3 input-group-lg">
+      <textarea v-model="description" type="text" class="form-control" id="validationCustom03" placeholder="Decrire vos raisons" required></textarea>
+     
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button  type="submit" class="btn btn-primary" data-bs-dismiss="modal" >Confirmer La demande</button>
+      </div></form>
+    </div>
+  </div>
+</div>
+          </div>
 </template>
 
 <script>
@@ -42,9 +80,14 @@ export default {
   data () {
     return {
      info: null,
+     memoire_id:this.$route.params.id,
+     user_id:5,
+     description:'',
+     status:'en attente',
+     type:'indefini',
+     date_debut:'',
+     date_fin:'',
      values :{
-      name :'',
-      lastname:'',
       id:this.$route.params.id,
       }
      
@@ -62,9 +105,13 @@ this.values=(await res).data
   methods :{
     onCreate(){
       axios
-      .post('http://127.0.0.1:8000/api/Memoire',
-     {name:this.name,lastname:this.lastname}, )
-     .then((response)=>{console.log(response)})
+      .post('http://127.0.0.1:8000/api/DemandeEmprunt',
+     {date_debut:this.date_debut,date_fin:this.date_fin,memoire_id:this.memoire_id,user_id:this.user_id,description:this.description,status:this.status,type:this.type} )
+     .then((response)=>{if(response.status === 201) {
+            
+               this.$router.push({ path : '/Memoire' });
+            }
+            })
     },
     deletehedi(id){
       axios.delete('http://127.0.0.1:8000/api/Memoire/'+id)
@@ -91,8 +138,5 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 </style>
