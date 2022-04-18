@@ -59,6 +59,8 @@ Route::get('/Domaine/{domaine}/Critere',[DomaineController::class,'byDomaine']);
 Route::get('/Memoire/{memoire}/DemandeEmprunt',[DemandeEmpruntController::class,'byMemoire']);
 
 Route::get('/Memoire/{memoire}/DemandeDepot',[MemoireController::class,'byDemande']);
+
+
 Route::get('/Etablisement/{etablisement}/DemandeDepot',[DemandeDepotController::class,'byEtablisement']);
 
 Route::get('/Etablisement/{etablisement}/User',[AuthController::class,'byEtablisement']);

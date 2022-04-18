@@ -46,7 +46,8 @@ class MemoireController extends Controller
      */
     public function show($id)
     {
-        return Memoire::find($id)->with('demande_depot')->get();
+        return Memoire::find($id);
+        //return Memoire::find($id)->with('demande_depot')->get();
     }
 
     /**
