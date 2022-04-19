@@ -10,6 +10,7 @@ import loginComponent from '../components/login.vue';
 import contactusComponent from '../components/ContactUs.vue'
 import MemoireComponent from '../components/memoire.vue'
 import AddDemandeDepotComponent from '../components/adddemandedepot.vue'
+import AdminComponent from '../components/Admin/adminindex.vue'
 const routes = [
   {
     path: "/",
@@ -17,6 +18,14 @@ const routes = [
     component: HomePage,
     meta: {
       title: 'home'
+    }
+  },
+  {
+    path: "/Admin",
+    name: "Admin",
+    component: AdminComponent,
+    meta: {
+      title: 'Admin'
     }
   },
   {
