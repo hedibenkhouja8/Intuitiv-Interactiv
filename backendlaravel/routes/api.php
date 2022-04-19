@@ -68,6 +68,7 @@ Route::get('/Etablisement/{etablisement}/User',[AuthController::class,'byEtablis
 Route::get('/Etablisement/{etablisement}/Encadreur',[EncadreursController::class,'byEtablisement']);
 
 Route::get('/Emprunt/{emprunt}/Memoire',[EmpruntController::class,'byEmprunt']);
+Route::get('/Domaine/{domaine}/Memoire',[MemoireController::class,'byDomaine']);
 
 Route::get('/User/{user}/DemandeEmprunt',[DemandeEmpruntController::class,'byUser']);
 Route::post('/logout', [AuthController::class, 'logout']);

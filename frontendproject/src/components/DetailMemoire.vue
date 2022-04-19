@@ -10,15 +10,16 @@
         <div class="col-md-6">
           <div class="detail-box">
             <div class="heading_container">
-              <h2>
+              <h2>{{item.id}}
                titre : {{ item.demande_depot.titre}}
               </h2>
             </div>
             <h3>
              desc : {{ item.demande_depot.description }}
+             id domaine:{{item.demande_depot.domaine_id}}
             </h3>
             <p>
-               date : {{ item.date_acceptation}}
+               date : {{ item.date_acceptation}} {{item.id}}
             </p>
             <p>
              nb pages : {{ item.demande_depot.nbpages}}
@@ -29,9 +30,43 @@
           </div>
         </div>
       </div>
+    </div>   <section class="teacher_section layout_padding">
+    <div class="container">
+      <div class="heading_container ">
+        <h2>
+          Les memoires de meme domaine
+        </h2>
+      </div>
+      <div class="row">
+       
+     
+      
+         <div class="col-sm-6 col-lg-3" v-bind:key="item" v-for="item in info">
+          <div class="box">
+            <div class="img-box">
+              <img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.demande_depot.coverimage" width=" 50" height="350" alt="">
+             
+            </div>
+            <div class="detail-box">
+              <h5>
+                {{ item.date_acceptation}} {{item.id}}
+              </h5>
+              <h6>
+                {{ item.demande_depot.titre}}
+              </h6>
+              <button @click="edit(item.id)">edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn-box">
+        <a href="">
+          View All
+        </a>
+      </div>
     </div>
   </section>
-
+  </section>
 <div v-bind:key="item.id" v-for="item in info" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" id="myModal" role="document">
     <div class="modal-content">
@@ -65,11 +100,13 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button  type="submit" class="btn btn-primary" data-bs-dismiss="modal" >Confirmer La demande</button>
+        
       </div></form>
     </div>
   </div>
-</div>
+</div>  
           </div>
+          
 </template>
 
 <script>
@@ -89,7 +126,8 @@ export default {
      date_fin:'',
      values :{
       id:this.$route.params.id,
-      }
+      },x:null
+     
      
     }
   },
@@ -100,6 +138,9 @@ this.values=(await res).data
          axios
       .get('http://127.0.0.1:8000/api/Memoire/'+this.$route.params.id+'/DemandeDepot')
       .then(response => (this.info = response.data))
+        axios
+      .get('http://127.0.0.1:8000/api/Domaine/'+this.$route.params.id+'/Memoire')
+      .then(response => (this.x = response.data))
 
   },
   methods :{

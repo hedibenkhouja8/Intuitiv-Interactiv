@@ -94,7 +94,7 @@ class MemoireController extends Controller
      * Route: /api/Domaine/{domaine}/Memoire
      */
     public function byDomaine(Domaine $domaine){
-        return $domaine->memoires;
+        return $domaine->demande_depots;
          //Si on veut les details du memoires avec ses Emprunts
          /* return Memoire::with('demendeEmprunts')
          ->where('id',$memoire->id)->get();*/

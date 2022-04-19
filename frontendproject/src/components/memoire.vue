@@ -8,27 +8,13 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-sm-6 col-lg-3">
-          <div class="box">
-            <div class="img-box">
-              <img src="../assets/images/t1.jpg" alt="">
-            </div>
-            <div class="detail-box">
-              <h5>
-                Alice Stark
-              </h5>
-              <h6>
-                Teacher
-              </h6>
-            </div>
-          </div>
-        </div>
+       
      
       
          <div class="col-sm-6 col-lg-3" v-bind:key="item.id" v-for="item in info">
           <div class="box">
             <div class="img-box">
-              <img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.demande_depot.coverimage" alt="">
+              <img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.demande_depot.coverimage" width=" 50" height="350" alt="">
              
             </div>
             <div class="detail-box">

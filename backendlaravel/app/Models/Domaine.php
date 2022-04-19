@@ -17,7 +17,7 @@ class Domaine extends Model
     {
         return $this->belongsToMany(Memoire::class);
     }
-    public function demandedepots()
+    public function demande_depots()
     {
         return $this->hasMany(DemandeDepot::class);
     }
