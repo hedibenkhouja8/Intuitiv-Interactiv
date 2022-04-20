@@ -11,6 +11,15 @@ import contactusComponent from '../components/ContactUs.vue'
 import MemoireComponent from '../components/memoire.vue'
 import AddDemandeDepotComponent from '../components/adddemandedepot.vue'
 import AdminComponent from '../components/Admin/adminindex.vue'
+import activityComponent from '../components/Admin/activity.vue'
+import chartsComponent from '../components/Admin/charts.vue'
+import emailComponent from '../components/Admin/email.vue'
+import settingsComponent from '../components/Admin/settings.vue'
+import usersComponent from '../components/Admin/users.vue'
+import tableComponent from '../components/Admin/table.vue'
+import profileComponent from '../components/Admin/profile.vue'
+
+
 const routes = [
   {
     path: "/",
@@ -18,6 +27,62 @@ const routes = [
     component: HomePage,
     meta: {
       title: 'home'
+    }
+  },
+  {
+    path: "/email",
+    name: "email",
+    component: emailComponent,
+    meta: {
+      title: 'email'
+    }
+  },
+  {
+    path: "/settings",
+    name: "settings",
+    component: settingsComponent,
+    meta: {
+      title: 'settings'
+    }
+  },
+  {
+    path: "/charts",
+    name: "charts",
+    component: chartsComponent,
+    meta: {
+      title: 'charts'
+    }
+  },
+  {
+    path: "/etudiants",
+    name: "etudiants",
+    component: usersComponent,
+    meta: {
+      title: 'etudiants'
+    }
+  },
+  {
+    path: "/activity",
+    name: "activity",
+    component: activityComponent,
+    meta: {
+      title: 'activity'
+    }
+  },
+  {
+    path: "/table",
+    name: "table",
+    component: tableComponent,
+    meta: {
+      title: 'table'
+    }
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    component: profileComponent,
+    meta: {
+      title: 'profile'
     }
   },
   {

@@ -12,6 +12,7 @@
                                  <li><a href="#"><i class="fa fa-bell-o"></i><span class="badge">2</span></a></li>
                                  <li><a href="#"><i class="fa fa-question-circle"></i></a></li>
                                  <li><a href="#"><i class="fa fa-envelope-o"></i><span class="badge">3</span></a></li>
+                                 <li><router-link  class="nav-link" to="/profile"> profile </router-link></li> 
                               </ul>
                               <ul class="user_profile_dd">
                                  <li>
