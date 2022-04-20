@@ -10,7 +10,7 @@
                <topbar-component/>
                <!-- end topbar -->
                <!-- dashboard inner -->
-               <div class="midde_cont">
+             <div class="midde_cont">
                   <div class="container-fluid">
                      <div class="row column_title">
                         <div class="col-md-12">
@@ -273,7 +273,7 @@
                         <!-- end progress bar -->
                      </div>
                      <div class="row column4 graph">
-                        <div class="col-md-6 margin_bottom_30">
+                        <div class="col-md-6">
                            <div class="dash_blog">
                               <div class="dash_blog_inner">
                                  <div class="dash_head">
@@ -311,7 +311,7 @@
                                        <li>
                                           <span><img src="../../assets/images/layout_img/msg2.png" class="img-responsive" alt="#" /></span>
                                           <span>
-                                          <span class="name_user">Herman Beck</span>
+                                          <span class="name_user">John Smith</span>
                                           <span class="msg_user">Sed ut perspiciatis unde omnis.</span>
                                           <span class="time_ago">12 min ago</span>
                                           </span>
@@ -351,11 +351,7 @@
                      </div>
                   </div>
                   <!-- footer -->
-                  <div class="container-fluid">
-                     <div class="footer">
-                        <p>Copyright © 2018 Designed by html.design. All rights reserved.</p>
-                     </div>
-                  </div>
+                 
                </div>
                <!-- end dashboard inner -->
             </div>
@@ -366,7 +362,7 @@
 </template>
 
 <script>
-<<<<<<< HEAD
+import axios from 'axios';
 import sidebarComponent from '@/components/Admin/sidebar.vue'
 import topbarComponent from '@/components/Admin/topbar.vue'
 
@@ -375,12 +371,7 @@ name: 'AdminComponent',
 components: {
   sidebarComponent,
   topbarComponent
-  }
-=======
-
-import axios from 'axios';
-export default {
-name: 'AdminComponent',
+  },
   data () {
     return {
       info: null,
@@ -412,7 +403,6 @@ this.a=7,
   },
   
 
->>>>>>> c7466aa07956b934f33a8d72f874fbe598b30e0a
 }
 </script>
 
