@@ -1,5 +1,16 @@
 <template>
- <div class="midde_cont">
+<div class="full_container">
+         <div class="inner_container">
+            <!-- Sidebar  -->
+           <sidebar-component/>
+            <!-- end sidebar -->
+            <!-- right content -->
+            <div id="content">
+               <!-- topbar -->
+               <topbar-component/>
+               <!-- end topbar -->
+               <!-- dashboard inner -->
+               <div class="midde_cont">
                   <div class="container-fluid">
                      <div class="row column_title">
                         <div class="col-md-12">
@@ -266,7 +277,7 @@
                         <!-- end progress bar -->
                      </div>
                      <div class="row column4 graph">
-                        <div class="col-md-6">
+                        <div class="col-md-6 margin_bottom_30">
                            <div class="dash_blog">
                               <div class="dash_blog_inner">
                                  <div class="dash_head">
@@ -304,7 +315,7 @@
                                        <li>
                                           <span><img src="../../assets/images/layout_img/msg2.png" class="img-responsive" alt="#" /></span>
                                           <span>
-                                          <span class="name_user">John Smith</span>
+                                          <span class="name_user">Herman Beck</span>
                                           <span class="msg_user">Sed ut perspiciatis unde omnis.</span>
                                           <span class="time_ago">12 min ago</span>
                                           </span>
@@ -344,17 +355,33 @@
                      </div>
                   </div>
                   <!-- footer -->
-                 
+                  <div class="container-fluid">
+                     <div class="footer">
+                        <p>Copyright © 2018 Designed by html.design. All rights reserved.</p>
+                     </div>
+                  </div>
                </div>
+               <!-- end dashboard inner -->
+            </div>
+         </div>
+      </div>
 
 
 </template>
 
 <script>
+import sidebarComponent from '@/components/Admin/sidebar.vue'
+import topbarComponent from '@/components/Admin/topbar.vue'
+
 export default {
-name: 'AdminComponent'
+name: 'AdminComponent',
+components: {
+  sidebarComponent,
+  topbarComponent
+  }
 }
 </script>
+
 
 <style>
 

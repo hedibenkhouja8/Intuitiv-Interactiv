@@ -1,5 +1,5 @@
 <template>
-
+  <navbar-component/>
     <section class="teacher_section layout_padding">
     <div class="container">
       <div class="heading_container heading_center">
@@ -61,14 +61,21 @@
 
 
 
+<footer-component/>
 
 </template>
 
 <script>
 
 import axios from 'axios';
+import NavbarComponent from '@/components/navbar.vue'
+import FooterComponent from '@/components/footer.vue'
 export default {
 name: 'MemoireComponent',
+components: {
+    NavbarComponent,
+    FooterComponent
+  },
   data () {
     return {
       info: null

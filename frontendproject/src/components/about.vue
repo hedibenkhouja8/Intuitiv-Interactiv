@@ -1,4 +1,5 @@
 <template>
+  <navbar-component/>
     <!-- about section -->
   <section class="about_section layout_padding ">
     <div class="container">
@@ -27,12 +28,21 @@
     </div>
   </section>
 
+<footer-component/>
 
 </template>
 
 <script>
+import NavbarComponent from '@/components/navbar.vue'
+import FooterComponent from '@/components/footer.vue'
 export default {
-name: 'AboutPage'}
+name: 'AboutPage',
+components: {
+    NavbarComponent,
+    FooterComponent
+  }
+
+}
 </script>
 
 <style>

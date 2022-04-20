@@ -1,5 +1,5 @@
 <template>
-
+  <navbar-component/>
   <section class="login_section layout_padding">
     <div class="container">
       <div class="row">
@@ -36,11 +36,19 @@
       </div>
     </div>
   </section>
+  <footer-component/>
+
 </template>
 
 <script>
+import NavbarComponent from '@/components/navbar.vue'
+import FooterComponent from '@/components/footer.vue'
 export default {
-name: 'loginComponent'
+name: 'loginComponent',
+components: {
+    NavbarComponent,
+    FooterComponent
+  }
 
 }
 </script>

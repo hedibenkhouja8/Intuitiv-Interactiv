@@ -292,7 +292,7 @@ function initMap() {
     ]
   });
 
-  var image = 'images/layout_img/map_icon.png';
+  var image = '../images/layout_img/map_icon.png';
   var beachMarker = new google.maps.Marker({
     position: { lat: 40.645037, lng: -73.880224 },
     map: map,

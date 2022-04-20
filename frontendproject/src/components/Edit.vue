@@ -1,4 +1,5 @@
 <template>
+  <navbar-component/>
 <div>  <section class="about_section layout_padding ">
     <div class="container">
       <div class="row">
@@ -24,14 +25,22 @@
       </div>
     </div>
   </section></div>
+  <footer-component/>
+
 </template>
 
 <script>
 import axios from 'axios'
+import NavbarComponent from '@/components/navbar.vue'
+import FooterComponent from '@/components/footer.vue'
 export default {
   
     props:['id'],
 name: 'ItemEdit',
+components: {
+    NavbarComponent,
+    FooterComponent
+  },
   data () {
     return {
       info: null,

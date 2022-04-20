@@ -1,4 +1,5 @@
 <template>
+  <navbar-component/>
 <div>
 <div class="hero_area">
 <section class="slider_section ">
@@ -449,12 +450,20 @@
   </section>
   <!-- end contact section -->
 </div>
+<footer-component/>
+
 </template>
 
 <script>
+import NavbarComponent from '@/components/navbar.vue'
+import FooterComponent from '@/components/footer.vue'
 import axios from 'axios'
 export default {
   name: 'HomePage',
+  components: {
+    NavbarComponent,
+    FooterComponent
+  },
   data () {
     return {
       info: null,

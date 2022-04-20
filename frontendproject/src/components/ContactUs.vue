@@ -1,5 +1,5 @@
 <template>
-
+  <navbar-component/>
   <section class="contact_section layout_padding">
     <div class="container">
       <div class="heading_container">
@@ -41,12 +41,19 @@
       </div>
     </div>
   </section>
-  
+  <footer-component/>
+
 </template>
 
 <script>
+import NavbarComponent from '@/components/navbar.vue'
+import FooterComponent from '@/components/footer.vue'
 export default {
-name: 'contactusComponent'
+name: 'contactusComponent',
+components: {
+    NavbarComponent,
+    FooterComponent
+  }
 
 }
 </script>

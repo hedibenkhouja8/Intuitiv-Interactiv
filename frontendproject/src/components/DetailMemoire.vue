@@ -1,4 +1,6 @@
-<template><div>
+<template>
+  <navbar-component/>
+<div>
   <section class="about_section layout_padding ">
     <div class="container">
       <div class="row" v-bind:key="item.id" v-for="item in info">
@@ -106,14 +108,21 @@
   </div>
 </div>  
           </div>
-          
+          <footer-component/>
+
 </template>
 
 <script>
 import axios from 'axios'
+import NavbarComponent from '@/components/navbar.vue'
+import FooterComponent from '@/components/footer.vue'
 export default {
   props:['id'],
   name: 'DetailMemoire',
+  components: {
+    NavbarComponent,
+    FooterComponent
+  },
   data () {
     return {
      info: null,

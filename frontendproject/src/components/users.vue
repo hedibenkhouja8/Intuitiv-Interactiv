@@ -1,5 +1,5 @@
 <template>
-
+  <navbar-component/>
   <section class="teacher_section layout_padding">
     <div class="container">
       <div class="heading_container heading_center">
@@ -76,11 +76,19 @@
       </div>
     </div>
   </section>
+  <footer-component/>
+
 </template>
 
 <script>
+import NavbarComponent from '@/components/navbar.vue'
+import FooterComponent from '@/components/footer.vue'
 export default {
 name: 'UsersPage',
+  components: {
+    NavbarComponent,
+    FooterComponent
+  },
 props : ["detail"]
 
 }
