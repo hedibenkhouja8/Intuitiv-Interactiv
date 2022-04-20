@@ -122,4 +122,8 @@ class DemandeDepotController extends Controller
         /* return Memoire::with('Emprunts')
         ->where('id',$memoire->id)->get();*/
     }
+    public function notAccepted(){
+        return DemandeDepot::with('memoire')->where('status','=','EnAttente')->get();
+
+    }
 }
