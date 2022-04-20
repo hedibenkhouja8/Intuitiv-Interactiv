@@ -67,6 +67,8 @@ Route::get('/Etablisement/{etablisement}/User',[AuthController::class,'byEtablis
 
 Route::get('/User',[AuthController::class,'users']);
 
+Route::get('/UserJoin/{user}',[DemandeEmpruntController::class,'X']);
+
 Route::get('/User/Recents',[AuthController::class,'Recentusers']);
 Route::get('/User/{user}',[AuthController::class,'userById']);
 

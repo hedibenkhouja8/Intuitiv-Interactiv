@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Memoire;
 use Illuminate\Http\Request;
 use App\Models\DemandeEmprunt;
+use Illuminate\Support\Facades\DB;
 
 class DemandeEmpruntController extends Controller
 {
@@ -84,8 +85,34 @@ class DemandeEmpruntController extends Controller
        // return $user->demande_emprunts;
         return DemandeEmprunt::with('memoire.demande_depot')
         ->where('user_id',$user->id)->get();
+
+
+
+        $demandeemprunt = DemandEmprunt::whereHas('memoire', function($q){
+            $q->where('created_at', '>=', '2015-01-01 00:00:00');
+        })->get();
+
+        
          //Si on veut les details du memoires avec ses emprunts
       //   return DemandeEmprunt::with('memoire')
         // ->where('id',$user->id)->get();
      }
+     public function X(User $user){
+       return  $shares = DB::table('demande_emprunts')
+        ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
+        ->join('users', 'users.id', '=', 'demande_emprunts.user_id')
+        ->where('users.id',$user->id)
+        ->get();
+   /*   $latestPosts  = DB::table('users')
+        ->join('demande_emprunts', function ($join) {
+            $join->on('users.id', '=', 'demande_emprunts.user_id');
+                 
+        })->where('user_id',$user->id)
+        ->get();
+        $memoiresnuser = DB::table('memoires')
+        ->joinSub($latestPosts , 'demande_emprunts', function ($join) {
+            $join->on('memoires.id', '=', 'demande_emprunts.memoire_id');
+        })->get();
+        return $memoiresnuser;*/
+      }
 }

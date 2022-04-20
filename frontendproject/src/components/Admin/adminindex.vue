@@ -239,27 +239,27 @@
                                     <div class="col-md-12">
                                        <div class="progress_bar">
                                           <!-- Skill Bars -->
-                                          <span class="skill" style="width:73%;">Informatique <span class="info_valume">{{i*100/info}}%</span></span>                  
+                                          <span class="skill" style="width:73%;">Informatique <span class="info_valume">{{(i*100/info).toFixed(2)}}%</span></span>                  
                                           <div class="progress skill-bar ">
                                              <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100"  :style="{'width':i*100/info+'%'}">
                                              </div>
                                           </div>
-                                          <span class="skill" style="width:62%;">Physique <span class="info_valume">{{p*100/info}}%</span></span>   
+                                          <span class="skill" style="width:62%;">Physique <span class="info_valume">{{(p*100/info).toFixed(2)}}%</span></span>   
                                           <div class="progress skill-bar">
                                              <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"  :style="{'width':p*100/info+'%'}">
                                              </div>
                                           </div>
-                                          <span class="skill" style="width:54%;">Chimie <span class="info_valume">{{c*100/info}}%</span></span>
+                                          <span class="skill" style="width:54%;">Chimie <span class="info_valume">{{(c*100/info).toFixed(2)}}%</span></span>
                                           <div class="progress skill-bar">
                                              <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100"  :style="{'width':c*100/info+'%'}">
                                              </div>
                                           </div>
-                                          <span class="skill" style="width:44%;"> Mathémathique <span class="info_valume">{{m*100/info}}%</span></span>
+                                          <span class="skill" style="width:44%;"> Mathémathique <span class="info_valume">{{(m*100/info).toFixed(2)}}%</span></span>
                                           <div class="progress skill-bar">
                                              <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="44" aria-valuemin="0" aria-valuemax="100" :style="{'width':m*100/info+'%'}">
                                              </div>
                                           </div>
-                                          <span class="skill" style="width:48%;">Autre <span class="info_valume">{{a*100/info}}%</span></span>
+                                          <span class="skill" style="width:48%;">Autre <span class="info_valume">{{(a*100/info).toFixed(2)}}%</span></span>
                                           <div class="progress skill-bar">
                                              <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"  :style="{'width':a*100/info+'%'}">
                                              </div>
