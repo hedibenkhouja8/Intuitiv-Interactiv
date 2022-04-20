@@ -42,9 +42,9 @@ class DemandeDepotFactory extends Factory
             'domaine_id'=>$this->faker->randomElement($domaine),
             'encadreur_id'=>$this->faker->randomElement($encadreur),
              
-            'description' =>$this->faker->name,
+            'description' =>$this->faker->paragraph($nbSentences = 5, $variableNbSentences = true),
             
-            'status' =>$this->faker->name,
+            'status' =>$this->faker->  randomElement($array = array ('EnAttente','Accepte','Refuse')) ,// 'b',
             'nbpages' =>$this->faker->randomDigit,   
             'coverimage'=>$this->faker->name, 
             'fichierdemande' =>$this->faker->name,   

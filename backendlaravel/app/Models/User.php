@@ -38,7 +38,7 @@ class User extends Authenticatable
     } public function demandedepots()
     {
         return $this->hasMany(DemandeDepot::class);
-    } public function demandeemprunts()
+    } public function demande_emprunts()
     {
         return $this->hasMany(DemandeEmprunt::class);
     }

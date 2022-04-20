@@ -14,7 +14,7 @@
                      <div class="row column_title">
                         <div class="col-md-12">
                            <div class="page_title">
-                              <h2>Profile</h2>
+                              <h2>Profil</h2>
                            </div>
                         </div>
                      </div>
@@ -25,10 +25,10 @@
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>User profile</h2>
+                                    <h2>Profil de l'utilisateur</h2>
                                  </div>
                               </div>
-                              <div class="full price_table padding_infor_info">
+                              <div v-bind:key="item.id" v-for="item in info" class="full price_table padding_infor_info">
                                  <div class="row">
                                     <!-- user profile section --> 
                                     <!-- profile image -->
@@ -37,10 +37,10 @@
                                           <div class="profile_img"><img width="180" class="rounded-circle" src="../../assets/images/layout_img/user_img.jpg" alt="#" /></div>
                                           <div class="profile_contant">
                                              <div class="contact_inner">
-                                                <h3>John Smith</h3>
-                                                <p><strong>About: </strong>Frontend Developer</p>
+                                                <h3>{{item.name}}</h3>
+                                                <p><strong>Etablissement: </strong>{{item.etablisement.nom}}</p>
                                                 <ul class="list-unstyled">
-                                                   <li><i class="fa fa-envelope-o"></i> : test@gmail.com</li>
+                                                   <li><i class="fa fa-envelope-o"></i> : {{item.email}}</li>
                                                    <li><i class="fa fa-phone"></i> : 987 654 3210</li>
                                                 </ul>
                                              </div>
@@ -77,46 +77,45 @@
                                              <div class="tabbar">
                                                 <nav>
                                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#recent_activity" role="tab" aria-selected="true">Recent Activity</a>
-                                                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#project_worked" role="tab" aria-selected="false">Projects Worked on</a>
+                                                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#recent_activity" role="tab" aria-selected="true"> Emprunts</a>
+                                                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#project_worked" role="tab" aria-selected="false">Demande de depot</a>
                                                       <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#profile_section" role="tab" aria-selected="false">Profile</a>
                                                    </div>
                                                 </nav>
-                                                <div class="tab-content" id="nav-tabContent">
-                                                   <div class="tab-pane fade show active" id="recent_activity" role="tabpanel" aria-labelledby="nav-home-tab">
+                                                <div  class="tab-content" id="nav-tabContent">
+                                                   <div  class="tab-pane fade show active" id="recent_activity" role="tabpanel" aria-labelledby="nav-home-tab">
                                                       <div class="msg_list_main">
                                                          <ul class="msg_list">
-                                                            <li>
-                                                               <span><img src="../../assets/images/layout_img/msg2.png" class="img-responsive" alt="#"></span>
-                                                               <span>
-                                                               <span class="name_user">Taison Jack</span>
-                                                               <span class="msg_user">Sed ut perspiciatis unde omnis.</span>
-                                                               <span class="time_ago">12 min ago</span>
+                                                            <li v-bind:key="item.id" v-for="item in emprunts">
+                                                               <span >
+                                                               <span class="name_user">{{item.memoire.demande_depot.titre}}</span>
+                                                               <span class="msg_user">{{item.description}}</span>
+                                                               <span class="time_ago">{{item.status}}</span>
                                                                </span>
                                                             </li>
-                                                            <li>
-                                                               <span><img src="../../assets/images/layout_img/msg3.png" class="img-responsive" alt="#"></span>
-                                                               <span>
-                                                               <span class="name_user">Mike John</span>
-                                                               <span class="msg_user">On the other hand, we denounce.</span>
-                                                               <span class="time_ago">12 min ago</span>
-                                                               </span>
-                                                            </li>
+                                                            
                                                          </ul>
                                                       </div>
                                                    </div>
                                                    <div class="tab-pane fade" id="project_worked" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et 
-                                                         quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
+                                                    <div class="msg_list_main">
+                                                         <ul class="msg_list">
+                                                            <li v-bind:key="item.id" v-for="item in demandedepots">
+                                                               <span >
+                                                               <span class="name_user">{{item.titre}}</span>
+                                                               <span class="msg_user">{{item.description}}</span>
+                                                               <span class="time_ago">{{item.status}}</span>
+                                                               </span>
+                                                            </li>
+                                                            
+                                                         </ul>
+                                                      </div>
+                                                   </div>   <div class="tab-pane fade" id="profile_section" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                      <p>Sed ut perspiciatis undeicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
                                                          qui ratione voluptatem sequi nesciunt.
                                                       </p>
                                                    </div>
-                                                   <div class="tab-pane fade" id="profile_section" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et 
-                                                         quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
-                                                         qui ratione voluptatem sequi nesciunt.
-                                                      </p>
-                                                   </div>
+                                                  
                                                 </div>
                                              </div>
                                           </div>
@@ -151,11 +150,37 @@
 <script>
 import sidebarComponent from '@/components/Admin/sidebar.vue'
 import topbarComponent from '@/components/Admin/topbar.vue'
+import axios from 'axios'
 export default {
 name: 'profileComponent',
 components: {
   sidebarComponent,
   topbarComponent
+  },
+  data () {
+    return {
+     info: null,
+     emprunts:null,
+     demandedepots:null,
+   
+     
+     
+    }
+  },async mounted () {
+      
+         axios
+      .get('http://127.0.0.1:8000/api/User/'+this.$route.params.id)
+      .then(response => (this.info = response.data))
+        axios
+      .get('http://127.0.0.1:8000/api/User/'+this.$route.params.id+'/DemandeEmprunt')
+      .then(response => (this.emprunts = response.data))
+       axios
+      .get('http://127.0.0.1:8000/api/User/'+this.$route.params.id+'/DemandeDepot')
+      .then(response => (this.demandedepots = response.data))
+axios
+      .get('http://127.0.0.1:8000/api/MemoireDeMemeDomaine/'+this.$route.params.c)
+      .then(response => (this.dom = response.data))
+
   }
 }
 </script>

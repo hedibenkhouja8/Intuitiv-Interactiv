@@ -21,7 +21,7 @@ class CreateDemandeEmpruntsTable extends Migration
             $table->foreignId('memoire_id')->constrained()->onDelete('cascade');
             $table->date('date_debut');
             $table->date('date_fin');
-            $table->string('description');
+            $table->longText('description');
             $table->string('status');
             $table->string('type');
             $table->timestamps();

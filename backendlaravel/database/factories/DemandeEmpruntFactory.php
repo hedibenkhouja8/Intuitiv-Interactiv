@@ -20,9 +20,10 @@ class DemandeEmpruntFactory extends Factory
         $user = User::all()->pluck('id');
         return [
              
-            'user_id' =>User::factory(),   
-            'status' => $this->faker->name,  
-            'description' => $this->faker->name,  
+            'user_id' =>$this->faker->randomElement($user),   
+            'status' => $this->faker->
+            randomElement($array = array ('Accepte','EnAttente','Refuse')) ,// 'b',  
+            'description' => $this->faker->paragraph($nbSentences = 5, $variableNbSentences = true),  
             'type' => $this->faker->name,  
             'memoire_id' => Memoire::factory(),   
             'date_debut' => $this->faker->dateTime($max = 'now', $timezone = null),

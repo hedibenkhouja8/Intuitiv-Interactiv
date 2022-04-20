@@ -81,9 +81,11 @@ class DemandeEmpruntController extends Controller
         ->where('id',$memoire->id)->get();*/
     }
     public function byUser(User $user){
-        return $user->demandeemprunts;
+       // return $user->demande_emprunts;
+        return DemandeEmprunt::with('memoire.demande_depot')
+        ->where('user_id',$user->id)->get();
          //Si on veut les details du memoires avec ses emprunts
-         /* return Memoire::with('demendeemprunts')
-         ->where('id',$memoire->id)->get();*/
+      //   return DemandeEmprunt::with('memoire')
+        // ->where('id',$user->id)->get();
      }
 }

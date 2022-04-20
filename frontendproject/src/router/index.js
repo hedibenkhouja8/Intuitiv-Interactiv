@@ -78,7 +78,7 @@ const routes = [
     }
   },
   {
-    path: "/profile",
+    path: "/profile/:id",
     name: "profile",
     component: profileComponent,
     meta: {
@@ -101,7 +101,7 @@ const routes = [
       title: 'edit'
     }
   }, {
-    path: "/memoire/details/:id",
+    path: "/memoire/details/:id/:c",
     name: "DetailMemoire",
     component: DetailMemoire,
     meta: {

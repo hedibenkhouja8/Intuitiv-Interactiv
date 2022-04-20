@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
 use App\Models\DemandeDepot;
 use App\Models\Etablisement;
 use Illuminate\Http\Request;
@@ -118,6 +119,12 @@ class DemandeDepotController extends Controller
     }
     public function byEtablisement(Etablisement $etablisement){
         return $etablisement->demandedepots;
+        //Si on veut les details du memoires avec ses Emprunts
+        /* return Memoire::with('Emprunts')
+        ->where('id',$memoire->id)->get();*/
+    }
+    public function byUser(User $user){
+        return $user->demandedepots;
         //Si on veut les details du memoires avec ses Emprunts
         /* return Memoire::with('Emprunts')
         ->where('id',$memoire->id)->get();*/

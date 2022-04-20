@@ -1,4 +1,4 @@
-<template>
+<template><div>
   <navbar-component/>
     <section class="teacher_section layout_padding">
     <div class="container">
@@ -19,12 +19,12 @@
             </div>
             <div class="detail-box">
               <h5>
-                {{ item.date_acceptation}}
+                {{ item.demande_depot.titre}}
               </h5>
               <h6>
-                {{ item.demande_depot.titre}}
+                {{ item.demande_depot.user.name}}
               </h6>
-              <button @click="edit(item.id)">edit</button>
+              <button @click="edit(item.id,item.demande_depot.domaine_id)">View Details</button>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
 
 
 
-<footer-component/>
+<footer-component/></div>
 
 </template>
 
@@ -86,10 +86,10 @@ components: {
       .get('http://127.0.0.1:8000/api/Memoire')
       .then(response => (this.info = response.data))
   },
- methods :{edit(id){
+ methods :{edit(id,c){
 this.$router.push({
     name:"DetailMemoire",
-    params : {id:id}
+    params : {id:id,c:c}
 })
 },/* <embed controlslist="nodownload" v-bind:src="'http://localhost:8000/storage/files/demandes/pdf/'+item.demande_depot.fichierpdf" toolbar=0 width="500" height="375" 
  type="application/pdf">*/

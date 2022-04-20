@@ -88,7 +88,7 @@ class AuthController extends Controller
     public function userById(User $user){
         //  return $memoire->demandedepot;
            //Si on veut les details du memoires avec ses Emprunts
-           return User::with('etablisement')
+           return User::with('etablisement')->with('demande_emprunts')
            ->where('id',$user->id)->get();
        }
        public function Recentusers()

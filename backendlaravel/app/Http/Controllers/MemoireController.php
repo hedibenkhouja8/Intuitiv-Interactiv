@@ -19,7 +19,7 @@ class MemoireController extends Controller
     public function index()
     {
      
-        return Memoire::with('demande_depot')->get();
+        return Memoire::with('demande_depot.user')->get();
 
     }
 
@@ -93,11 +93,11 @@ class MemoireController extends Controller
      * @param  Domaine  $domaine
      * Route: /api/Domaine/{domaine}/Memoire
      */
-    public function byDomaine(Domaine $domaine){
-        return $domaine->demande_depots;
+    public function byDomaine(DemandeDepot $demandedepot){
+       // return $domaine->demande_depots;
          //Si on veut les details du memoires avec ses Emprunts
-         /* return Memoire::with('demendeEmprunts')
-         ->where('id',$memoire->id)->get();*/
+         return DemandeDepot::with('demendeEmprunts')
+         ->where('id',$memoire->id)->get();
      }
      public function byDemande(Memoire $memoire){
       //  return $memoire->demandedepot;
@@ -105,5 +105,49 @@ class MemoireController extends Controller
          return Memoire::with('demande_depot')
          ->where('id',$memoire->id)->get();
      }
+     public function MemoireAccepted(){
+        //  return $memoire->demandedepot;
+           //Si on veut les details du memoires avec ses Emprunts
+        return DemandeDepot::with('memoire')->with('user')->where('status','=','Accepte')->get();
+       }
+       public function MemoireDeMemeDomaine( $domaine){
+        // return $memoire->demandedepot;
+        //return DemandeDep
+           //Si on veut les details du memoires avec ses Emprunts
+        return DemandeDepot::with('memoire')->with('user')->where('domaine_id',$domaine)->where('status','=','Accepte')->get();
+       }
+       
+    public function MemoireInformatique()
+    {
+     
+       // return DemandeDepot::with('memoire')->where('domaine_id','=','1');
+
+     return DemandeDepot::with('memoire')->where('domaine_id','=',1)->where('status','=','Accepte')->get();
+    }
+    public function MemoirePhysique()
+    {
+     
+       // return DemandeDepot::with('memoire')->where('domaine_id','=','1');
+
+     return DemandeDepot::with('memoire')->where('domaine_id','=',4)->where('status','=','Accepte')->get();
+    }  public function MemoireChimie()
+    {
+     
+       // return DemandeDepot::with('memoire')->where('domaine_id','=','1');
+
+     return DemandeDepot::with('memoire')->where('domaine_id','=',5)->where('status','=','Accepte')->get();
+    }  public function MemoireMath()
+    {
+     
+       // return DemandeDepot::with('memoire')->where('domaine_id','=','1');
+
+     return DemandeDepot::with('memoire')->where('domaine_id','=',6)->where('status','=','Accepte')->get();
+    }  public function MemoireAutre()
+    {
+     
+       // return DemandeDepot::with('memoire')->where('domaine_id','=','1');
+
+     return DemandeDepot::with('memoire')->where('domaine_id','!=',1)->where('status','=','Accepte')->where('domaine_id','!=',6)->where('domaine_id','!=',4)->where('domaine_id','!=',5)->get();
+    }
      
 }

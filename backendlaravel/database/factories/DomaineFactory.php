@@ -15,7 +15,8 @@ class DomaineFactory extends Factory
     {
         return [
               
-            'nom' => $this->faker->name,   
+            'nom' => $this->faker->
+            randomElement($array = array ('Informatique','Physique','Chimie','Math','Giologie','Biologie','Astronomie')) ,// 'b'  
         ];
     }
 }

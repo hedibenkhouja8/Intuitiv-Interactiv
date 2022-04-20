@@ -17,6 +17,7 @@ use App\Models\DemandeDepot;
 use App\Models\Etablisement;
 use App\Models\DemandeEmprunt;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,8 +27,21 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    { 
-        Domaine::factory(10)->create();
+    {     DB::table('domaines')->insert([
+        'nom' => 'Informtique',
+    ]); DB::table('domaines')->insert([
+        'nom' => 'Biologie',
+    ]); DB::table('domaines')->insert([
+        'nom' => 'Geologie',
+    ]); DB::table('domaines')->insert([
+        'nom' => 'Physique',
+    ]); DB::table('domaines')->insert([
+        'nom' => 'Chimie',
+    ]); DB::table('domaines')->insert([
+        'nom' => 'Math',
+    ]); DB::table('domaines')->insert([
+        'nom' => 'Autre',
+    ]);
         
         Etablisement::factory()->count(3)
         ->create();
@@ -38,6 +52,7 @@ class DatabaseSeeder extends Seeder
         Emprunt::factory(10)->create();
        Critere::factory(10)->create();
        
+       User::factory(10)->create();
        DemandeEmprunt::factory(10)->create();
        
        DemandeDepot::factory(10)->create();
@@ -53,7 +68,6 @@ class DatabaseSeeder extends Seeder
         $DemandeDepot->domaines()->attach($domaine);
         $DemandeDepot->criteres()->attach($critere);
     }*/
-       $user=  User::factory(10)->create();
        
 Memoire::factory()->count(3)
     ->create();

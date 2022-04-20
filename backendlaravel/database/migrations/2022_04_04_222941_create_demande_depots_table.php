@@ -23,7 +23,7 @@ class CreateDemandeDepotsTable extends Migration
             
             
             $table->foreignId('critere_id')->constrained()->onDelete('cascade');
-            $table->string('description');
+            $table->longText('description');
             $table->string('status');
             $table->string('fichierpdf');
             $table->string('fichierdemande');

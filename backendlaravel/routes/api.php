@@ -77,7 +77,18 @@ Route::get('/Etablisement/{etablisement}/Encadreur',[EncadreursController::class
 
 Route::get('/Emprunt/{emprunt}/Memoire',[EmpruntController::class,'byEmprunt']);
 Route::get('/Domaine/{domaine}/Memoire',[MemoireController::class,'byDomaine']);
+Route::get('/MemoireAccepted',[MemoireController::class,'MemoireAccepted']);
+
+Route::get('/MemoireDeMemeDomaine/{demandedepot}',[MemoireController::class,'MemoireDeMemeDomaine']);
 
 Route::get('/User/{user}/DemandeEmprunt',[DemandeEmpruntController::class,'byUser']);
+
+Route::get('/User/{user}/DemandeDepot',[DemandeDepotController::class,'byUser']);
 Route::post('/logout', [AuthController::class, 'logout']);
+
+Route::get('/informatique', [MemoireController::class, 'MemoireInformatique']);
+Route::get('/physique', [MemoireController::class, 'MemoirePhysique']);
+Route::get('/chimie', [MemoireController::class, 'MemoireChimie']);
+Route::get('/math', [MemoireController::class, 'MemoireMath']);
+Route::get('/autre', [MemoireController::class, 'MemoireAutre']);
  

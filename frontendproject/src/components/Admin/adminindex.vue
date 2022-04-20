@@ -231,7 +231,7 @@
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>Progress Bar</h2>
+                                    <h2>Proportion des memoires par domaine</h2>
                                  </div>
                               </div>
                               <div class="full progress_bar_inner">
@@ -239,29 +239,29 @@
                                     <div class="col-md-12">
                                        <div class="progress_bar">
                                           <!-- Skill Bars -->
-                                          <span class="skill" style="width:73%;">Facebook <span class="info_valume">73%</span></span>                  
+                                          <span class="skill" style="width:73%;">Informatique <span class="info_valume">{{i*100/info}}%</span></span>                  
                                           <div class="progress skill-bar ">
-                                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 73%;">
+                                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100"  :style="{'width':i*100/info+'%'}">
                                              </div>
                                           </div>
-                                          <span class="skill" style="width:62%;">Twitter <span class="info_valume">62%</span></span>   
+                                          <span class="skill" style="width:62%;">Physique <span class="info_valume">{{p*100/info}}%</span></span>   
                                           <div class="progress skill-bar">
-                                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%;">
+                                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"  :style="{'width':p*100/info+'%'}">
                                              </div>
                                           </div>
-                                          <span class="skill" style="width:54%;">Instagram <span class="info_valume">54%</span></span>
+                                          <span class="skill" style="width:54%;">Chimie <span class="info_valume">{{c*100/info}}%</span></span>
                                           <div class="progress skill-bar">
-                                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" style="width: 54%;">
+                                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100"  :style="{'width':c*100/info+'%'}">
                                              </div>
                                           </div>
-                                          <span class="skill" style="width:44%;">Google plus <span class="info_valume">82%</span></span>
+                                          <span class="skill" style="width:44%;"> Mathémathique <span class="info_valume">{{m*100/info}}%</span></span>
                                           <div class="progress skill-bar">
-                                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="44" aria-valuemin="0" aria-valuemax="100" style="width: 82%;">
+                                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="44" aria-valuemin="0" aria-valuemax="100" :style="{'width':m*100/info+'%'}">
                                              </div>
                                           </div>
-                                          <span class="skill" style="width:48%;">Other <span class="info_valume">48%</span></span>
+                                          <span class="skill" style="width:48%;">Autre <span class="info_valume">{{a*100/info}}%</span></span>
                                           <div class="progress skill-bar">
-                                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100" style="width: 48%;">
+                                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"  :style="{'width':a*100/info+'%'}">
                                              </div>
                                           </div>
                                        </div>
@@ -378,15 +378,30 @@ components: {
       emprunt: null,
       user:null,
       demande:null,
-      a:null,
-      users:null
+      a:null,      p:null,   m:null,   c:null,
+      users:null,i:null
     }
   },
   mounted () {
 this.a=7,
     axios
-      .get('http://127.0.0.1:8000/api/Memoire')
+      .get('http://127.0.0.1:8000/api/MemoireAccepted')
       .then(response => (this.info = response.data.length))
+      axios
+      .get('http://127.0.0.1:8000/api/physique')
+      .then(response => (this.p = response.data.length)) 
+       axios
+      .get('http://127.0.0.1:8000/api/informatique')
+      .then(response => (this.i = response.data.length))
+       axios
+      .get('http://127.0.0.1:8000/api/chimie')
+      .then(response => (this.c = response.data.length))
+       axios
+      .get('http://127.0.0.1:8000/api/math')
+      .then(response => (this.m = response.data.length))
+       axios
+      .get('http://127.0.0.1:8000/api/autre')
+      .then(response => (this.a = response.data.length))
        axios
       .get('http://127.0.0.1:8000/api/Emprunt')
       .then(response => (this.emprunt = response.data.length))

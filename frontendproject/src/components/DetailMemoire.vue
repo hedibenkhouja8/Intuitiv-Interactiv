@@ -1,4 +1,4 @@
-<template>
+<template><div class="">
   <navbar-component/>
 <div>
   <section class="about_section layout_padding ">
@@ -43,20 +43,20 @@
        
      
       
-         <div class="col-sm-6 col-lg-3" v-bind:key="item" v-for="item in info">
+         <div class="col-sm-6 col-lg-3" v-bind:key="item" v-for="item in dom">
           <div class="box">
             <div class="img-box">
-              <img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.demande_depot.coverimage" width=" 50" height="350" alt="">
+              <img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.coverimage" width=" 50" height="350" alt="">
              
             </div>
             <div class="detail-box">
               <h5>
-                {{ item.date_acceptation}} {{item.id}}
+                {{ item.titre}} 
               </h5>
               <h6>
-                {{ item.demande_depot.titre}}
+                {{ item.user.name}}
               </h6>
-              <button @click="edit(item.id)">edit</button>
+              <button @click="edit(item.memoire.id,item.domaine_id)">edit</button>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@
 </div>  
           </div>
           <footer-component/>
-
+          </div>
 </template>
 
 <script>
@@ -135,7 +135,7 @@ export default {
      date_fin:'',
      values :{
       id:this.$route.params.id,
-      },x:null
+      },dom:null,
      
      
     }
@@ -147,9 +147,9 @@ this.values=(await res).data
          axios
       .get('http://127.0.0.1:8000/api/Memoire/'+this.$route.params.id+'/DemandeDepot')
       .then(response => (this.info = response.data))
-        axios
-      .get('http://127.0.0.1:8000/api/Domaine/'+this.$route.params.id+'/Memoire')
-      .then(response => (this.x = response.data))
+axios
+      .get('http://127.0.0.1:8000/api/MemoireDeMemeDomaine/'+this.$route.params.c)
+      .then(response => (this.dom = response.data))
 
   },
   methods :{
@@ -165,11 +165,11 @@ this.values=(await res).data
     },
     deletehedi(id){
       axios.delete('http://127.0.0.1:8000/api/Memoire/'+id)
-    },edit(id){
+    },edit(id,c){
 this.$router.push({
-    name:"Edit",
-    params : {id:id}
-})
+    name:"DetailMemoire",
+    params : {id:id,c:c}
+});
 },
   }
 }
