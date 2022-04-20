@@ -24,13 +24,13 @@
                            <div class="full counter_section margin_bottom_30">
                               <div class="couter_icon">
                                  <div> 
-                                    <i class="fa fa-user yellow_color"></i>
+                                    <i class="fa fa-book yellow_color"></i>
                                  </div>
                               </div>
                               <div class="counter_no">
                                  <div>
-                                    <p class="total_no">2500</p>
-                                    <p class="head_couter">Welcome</p>
+                                    <p class="total_no">{{info}}</p>
+                                    <p class="head_couter">Memoire Disponible</p>
                                  </div>
                               </div>
                            </div>
@@ -39,13 +39,13 @@
                            <div class="full counter_section margin_bottom_30">
                               <div class="couter_icon">
                                  <div> 
-                                    <i class="fa fa-clock-o blue1_color"></i>
+                                    <i class="fa fa-cloud-download blue1_color"></i>
                                  </div>
                               </div>
                               <div class="counter_no">
                                  <div>
-                                    <p class="total_no">123.50</p>
-                                    <p class="head_couter">Average Time</p>
+                                    <p class="total_no">{{emprunt}}</p>
+                                    <p class="head_couter">Emprunt Effetué</p>
                                  </div>
                               </div>
                            </div>
@@ -54,13 +54,13 @@
                            <div class="full counter_section margin_bottom_30">
                               <div class="couter_icon">
                                  <div> 
-                                    <i class="fa fa-cloud-download green_color"></i>
+                                    <i class="fa fa-user green_color"></i>
                                  </div>
                               </div>
                               <div class="counter_no">
                                  <div>
-                                    <p class="total_no">1,805</p>
-                                    <p class="head_couter">Collections</p>
+                                    <p class="total_no">{{user}}</p>
+                                    <p class="head_couter">Etudiants</p>
                                  </div>
                               </div>
                            </div>
@@ -69,13 +69,13 @@
                            <div class="full counter_section margin_bottom_30">
                               <div class="couter_icon">
                                  <div> 
-                                    <i class="fa fa-comments-o red_color"></i>
+                                    <i class="fa fa-file red_color"></i>
                                  </div>
                               </div>
                               <div class="counter_no">
                                  <div>
-                                    <p class="total_no">54</p>
-                                    <p class="head_couter">Comments</p>
+                                    <p class="total_no">{{demande}}</p>
+                                    <p class="head_couter">Demande de depots</p>
                                  </div>
                               </div>
                            </div>
@@ -189,7 +189,7 @@
                            <div class="dark_bg full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>Testimonial</h2>
+                                    <h2>Etudiants Ajoutée recennements</h2>
                                  </div>
                               </div>
                               <div class="full graph_revenue">
@@ -201,19 +201,15 @@
                                              <div class="carousel-inner">
                                                 <div class="item carousel-item active">
                                                    <div class="img-box"><img src="../../assets/images/layout_img/user_img.jpg" alt=""></div>
-                                                   <p class="testimonial">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae..</p>
-                                                   <p class="overview"><b>Michael Stuart</b>Seo Founder</p>
+                                                   <p class="testimonial">Mohamed Hedi Ben Khouja</p>
+                                                   <p class="overview"><b>Iset Bizerte</b>Voir Profil</p>
                                                 </div>
-                                                <div class="item carousel-item">
+                                                <div v-bind:key="item.id" v-for="item in users" class="item carousel-item">
                                                    <div class="img-box"><img src="../../assets/images/layout_img/user_img.jpg" alt=""></div>
-                                                   <p class="testimonial">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae..</p>
-                                                   <p class="overview"><b>Michael Stuart</b>Seo Founder</p>
+                                                   <p class="testimonial">{{item.name}}</p>
+                                                   <p class="overview"><b>{{item.etablisement.nom}}</b>Voir Profil</p>
                                                 </div>
-                                                <div class="item carousel-item">
-                                                   <div class="img-box"><img src="../../assets/images/layout_img/user_img.jpg" alt=""></div>
-                                                   <p class="testimonial">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae..</p>
-                                                   <p class="overview"><b>Michael Stuart</b>Seo Founder</p>
-                                                </div>
+                                              
                                              </div>
                                              <!-- Carousel controls -->
                                              <a class="carousel-control left carousel-control-prev" href="#testimonial_slider" data-slide="prev">
@@ -258,9 +254,9 @@
                                              <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" style="width: 54%;">
                                              </div>
                                           </div>
-                                          <span class="skill" style="width:82%;">Google plus <span class="info_valume">82%</span></span>
+                                          <span class="skill" style="width:44%;">Google plus <span class="info_valume">82%</span></span>
                                           <div class="progress skill-bar">
-                                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" style="width: 82%;">
+                                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="44" aria-valuemin="0" aria-valuemax="100" style="width: 82%;">
                                              </div>
                                           </div>
                                           <span class="skill" style="width:48%;">Other <span class="info_valume">48%</span></span>
@@ -370,6 +366,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import sidebarComponent from '@/components/Admin/sidebar.vue'
 import topbarComponent from '@/components/Admin/topbar.vue'
 
@@ -379,6 +376,43 @@ components: {
   sidebarComponent,
   topbarComponent
   }
+=======
+
+import axios from 'axios';
+export default {
+name: 'AdminComponent',
+  data () {
+    return {
+      info: null,
+      emprunt: null,
+      user:null,
+      demande:null,
+      a:null,
+      users:null
+    }
+  },
+  mounted () {
+this.a=7,
+    axios
+      .get('http://127.0.0.1:8000/api/Memoire')
+      .then(response => (this.info = response.data.length))
+       axios
+      .get('http://127.0.0.1:8000/api/Emprunt')
+      .then(response => (this.emprunt = response.data.length))
+       axios
+      .get('http://127.0.0.1:8000/api/User')
+      .then(response => (this.user = response.data.length))
+          axios
+      .get('http://127.0.0.1:8000/api/User')
+      .then(response => (this.users = response.data))
+       axios
+      .get('http://127.0.0.1:8000/api/DemandeNonAccepte')
+      .then(response => (this.demande = response.data.length))
+  
+  },
+  
+
+>>>>>>> c7466aa07956b934f33a8d72f874fbe598b30e0a
 }
 </script>
 

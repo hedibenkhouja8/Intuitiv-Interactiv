@@ -78,4 +78,23 @@ class AuthController extends Controller
         /* return Memoire::with('Emprunts')
         ->where('id',$memoire->id)->get();*/
     }
+    
+    public function users()
+    {
+      
+        return User::with('etablisement')->get();
+
+    }
+    public function userById(User $user){
+        //  return $memoire->demandedepot;
+           //Si on veut les details du memoires avec ses Emprunts
+           return User::with('etablisement')
+           ->where('id',$user->id)->get();
+       }
+       public function Recentusers()
+       {
+         
+           return User::with('etablisement')->orderBy('created_at', 'desc')->get();
+   
+       }
 }

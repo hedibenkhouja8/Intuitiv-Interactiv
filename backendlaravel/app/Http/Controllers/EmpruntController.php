@@ -15,7 +15,9 @@ class EmpruntController extends Controller
      */
     public function index()
     {
-        return Emprunt::all();
+      
+     
+        return Emprunt::with('memoire')->get();
 
     }
 

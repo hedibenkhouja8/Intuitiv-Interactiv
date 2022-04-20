@@ -65,6 +65,14 @@ Route::get('/Etablisement/{etablisement}/DemandeDepot',[DemandeDepotController::
 
 Route::get('/Etablisement/{etablisement}/User',[AuthController::class,'byEtablisement']);
 
+Route::get('/User',[AuthController::class,'users']);
+
+Route::get('/User/Recents',[AuthController::class,'Recentusers']);
+Route::get('/User/{user}',[AuthController::class,'userById']);
+
+Route::get('/DemandeNonAccepte',[DemandeDepotController::class,'notAccepted']);
+
+
 Route::get('/Etablisement/{etablisement}/Encadreur',[EncadreursController::class,'byEtablisement']);
 
 Route::get('/Emprunt/{emprunt}/Memoire',[EmpruntController::class,'byEmprunt']);
