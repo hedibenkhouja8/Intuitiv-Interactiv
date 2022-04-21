@@ -42,31 +42,29 @@
                                                 <ul class="list-unstyled">
                                                    <li><i class="fa fa-envelope-o"></i> : {{item.email}}</li>
                                                    <li><i class="fa fa-phone"></i> : 987 654 3210</li>
+                                                   
                                                 </ul>
+                                                <p><strong>Nombre de demandes d'emprunts: </strong>{{nb}}</p>
                                              </div>
                                              <div class="user_progress_bar">
                                                 <div class="progress_bar">
                                                    <!-- Skill Bars -->
-                                                   <span class="skill" style="width:85%;">Web Applications <span class="info_valume">85%</span></span>                   
+                                                   <span class="skill" style="width:85%;">Emprunts accepté<span class="info_valume">{{(accepte*100/nb).toFixed(2)}}%</span></span>                   
                                                    <div class="progress skill-bar ">
-                                                      <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                                                      <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"  :style="{'width':accepte*100/nb+'%'}">
                                                       </div>
                                                    </div>
-                                                   <span class="skill" style="width:78%;">Website Design <span class="info_valume">78%</span></span>   
+                                                   <span class="skill" style="width:78%;">Emprunt en Attente<span class="info_valume">{{((nb-(accepte+refus))*100/nb).toFixed(2)}}%</span></span>   
                                                    <div class="progress skill-bar">
-                                                      <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%;">
+                                                      <div class="progress-baratt progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"  :style="{'width':(nb-(accepte+refus))*100/nb+'%'}">
                                                       </div>
                                                    </div>
-                                                   <span class="skill" style="width:47%;">Automation & Testing <span class="info_valume">47%</span></span>
+                                                   <span class="skill" style="width:47%;">Emprunt Refusé <span class="info_valume">{{(refus*100/nb).toFixed(2)}}%</span></span>
                                                    <div class="progress skill-bar">
-                                                      <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" style="width: 54%;">
+                                                      <div class="progress-barref progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100"  :style="{'width':refus*100/nb+'%'}">
                                                       </div>
                                                    </div>
-                                                   <span class="skill" style="width:65%;">UI / UX <span class="info_valume">65%</span></span>
-                                                   <div class="progress skill-bar">
-                                                      <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%;">
-                                                      </div>
-                                                   </div>
+                                               
                                                 </div>
                                              </div>
                                           </div>
@@ -88,9 +86,15 @@
                                                          <ul class="msg_list">
                                                             <li v-bind:key="item.id" v-for="item in emprunts">
                                                                <span >
-                                                               <span class="name_user">{{item.memoire.demande_depot.titre}}</span>
+                                                               <span class="name_user">{{item.memoire.demande_depot.titre}}</span><br>
                                                                <span class="msg_user">{{item.description}}</span>
-                                                               <span class="time_ago">{{item.status}}</span>
+                                                               <span class="time_ago">{{item.status}} <button
+                                    type="button"
+                                    class="btn "
+                                     @click="details(item.id,item.user_id)"
+                                  >
+                                    <i class="fa fa-share green_color"> </i>
+                                  </button></span>
                                                                </span>
                                                             </li>
                                                             
@@ -104,7 +108,13 @@
                                                                <span >
                                                                <span class="name_user">{{item.titre}}</span>
                                                                <span class="msg_user">{{item.description}}</span>
-                                                               <span class="time_ago">{{item.status}}</span>
+                                                               <span class="time_ago">{{item.status}} <button
+                                    type="button"
+                                    class="btn "
+                                     @click="edit(item.id)"
+                                  >
+                                    <i class="fa fa-share green_color"> </i>
+                                  </button><br></span>
                                                                </span>
                                                             </li>
                                                             
@@ -162,6 +172,7 @@ components: {
      info: null,
      emprunts:null,
      demandedepots:null,
+     nb:null,refus:null,accepte:null
    
      
      
@@ -180,7 +191,29 @@ components: {
 axios
       .get('http://127.0.0.1:8000/api/MemoireDeMemeDomaine/'+this.$route.params.c)
       .then(response => (this.dom = response.data))
+         axios
+      .get('http://127.0.0.1:8000/api/User/'+this.$route.params.id+'/DemandeEmprunt')
+      .then(response => (this.nb = response.data.length))
+        axios
+      .get('http://127.0.0.1:8000/api/User/'+this.$route.params.id+'/nbEmpruntparUserRefuse')
+      .then(response => (this.refus = response.data.length))
+      
+        axios
+      .get('http://127.0.0.1:8000/api/User/'+this.$route.params.id+'/nbEmpruntparUserAccepte')
+      .then(response => (this.accepte = response.data.length))
 
+  },methods:{
+       details(id,c) {
+      this.$router.push({
+        name: "Demandeempruntdetails",
+        params: { id: id ,c:c},
+      });
+    }, edit(id) {
+      this.$router.push({
+        name: "Demandedepotdetails",
+        params: { id: id },
+      });
+    }
   }
 }
 </script>

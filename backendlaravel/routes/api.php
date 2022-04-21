@@ -67,6 +67,8 @@ Route::get('/recentDemandeDepots',[DemandeDepotController::class,'recentDemandeD
 
 Route::get('/DemandeDepotDetails/{demandedepot}',[DemandeDepotController::class,'DemandeDepotDetails']);
 
+Route::get('/DemandeEmpruntDetails/{demandeemprunt}',[DemandeEmpruntController::class,'DemandeEmpruntDetails']);
+
 
 
 Route::get('/Etablisement/{etablisement}/DemandeDepot',[DemandeDepotController::class,'byEtablisement']);
@@ -94,6 +96,10 @@ Route::get('/MemoireDeMemeDomaine/{demandedepot}',[MemoireController::class,'Mem
 Route::get('/User/{user}/DemandeEmprunt',[DemandeEmpruntController::class,'byUser']);
 
 Route::get('/User/{user}/DemandeDepot',[DemandeDepotController::class,'byUser']);
+
+
+Route::get('/User/{user}/nbEmpruntparUserAccepte',[DemandeEmpruntController::class,'nbEmpruntparUserAccepte']);
+Route::get('/User/{user}/nbEmpruntparUserRefuse',[DemandeEmpruntController::class,'nbEmpruntparUserRefuse']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::get('/informatique', [MemoireController::class, 'MemoireInformatique']);

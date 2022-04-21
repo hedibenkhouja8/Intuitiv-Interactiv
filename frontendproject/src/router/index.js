@@ -19,7 +19,9 @@ import usersComponent from '../components/Admin/users.vue'
 import tableComponent from '../components/Admin/table.vue'
 import profileComponent from '../components/Admin/profile.vue'
 import demandedepotComponent from '../components/Admin/demandedepot.vue'
+import demandeempruntComponent from '../components/Admin/demandeemprunt.vue'
 import demandedepotdetailsComponent from '../components/Admin/demandedepotdetails.vue'
+import demandeempruntdetailsComponent from '../components/Admin/demandeempruntdetails.vue'
 
 
 
@@ -39,6 +41,13 @@ const routes = [
     component: demandedepotComponent,
     meta: {
       title: 'demandesdepot'
+    }
+  },{
+    path: "/demandesemprunt",
+    name: "demandeemprunt",
+    component: demandeempruntComponent,
+    meta: {
+      title: 'demandeemprunt'
     }
   },
   {
@@ -118,7 +127,14 @@ const routes = [
     name: "Demandedepotdetails",
     component: demandedepotdetailsComponent,
     meta: {
-      title: 'edit'
+      title: 'Demande Depot Details'
+    }
+  },{
+    path: "/Demandeemprunt/:id/:c",
+    name: "Demandeempruntdetails",
+    component: demandeempruntdetailsComponent,
+    meta: {
+      title: 'Demande Emprunt Details'
     }
   },
    {

@@ -15,7 +15,7 @@
             <div class="row column_title">
               <div class="col-md-12">
                 <div class="page_title">
-                  <h2>Demande</h2>
+                  <h2>Demande D'emprunt</h2>
                 </div>
               </div>
             </div>
@@ -23,15 +23,12 @@
             <div class="row column1"   >
             <div class="card">
         <div v-bind:key="item.id" v-for="item in info" class="card-body">
-            <h3 class="card-title">{{item.titre}}</h3>
+            <h3 class="card-title">{{item.memoire.demande_depot.titre}}</h3>
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-6">
                     <div class="white-box text-center"><img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.coverimage" class="img-responsive"></div>
                 </div>
-                <div class="col-lg-7 col-md-7 col-sm-6">
-                    <h4 class="box-title mt-5"> Description</h4>
-                    <p>{{item.description}}</p>
-                    <h4 class="box-title mt-5"> Etudiant</h4>
+                <div class="col-lg-7 col-md-7 col-sm-6">  <h4 class="box-title mt-5"> Etudiant</h4>
                     <p>{{item.user.name}}  <button
                                     type="button"
                                     class="btn "
@@ -39,41 +36,16 @@
                                   >
                                     <i class="fa fa-share green_color"> </i>
                                   </button></p>
-                     <h4 class="box-title mt-5"> Domaine</h4>
-                    <p>{{item.domaine.nom}}</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">pdf file</button>
-                </div>
-                
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <h3 class="box-title mt-5">General Info</h3>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-product">
-                            <tbody>
-                                <tr>
-                                    <td width="390">Entreprise</td>
-                                    <td>{{item.entreprise.nom}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Etablissement</td>
-                                    <td>{{item.etablisement.nom}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Nombre des pages</td>
-                                    <td>{{item.nbpages}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Critere</td>
-                                    <td>{{item.critere.nom}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Date de demande</td>
-                                    <td>{{formatDate(item.created_at)}}</td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
+                    <h4 class="box-title mt-5"> Prouquoi je veux emprunter cette memoire</h4>
+                    <p>{{item.description}}</p>
+                  
+                     <h4 class="box-title mt-5"> Date Debut souhaité</h4>
+                    <p>{{item.date_debut}}</p><h4 class="box-title mt-5"> Date fin d'emprunt</h4>
+                    <p>{{item.date_fin}}</p>
+                    <h4 class="box-title mt-5"> Emprunts</h4>
+                        <h6 style="color:red;">{{refus}} refus <h7 style="color:green;">{{accepte}} accepté</h7></h6>
                     </div>
-                </div>
+           
             </div>
         </div>
     </div>
@@ -114,15 +86,15 @@ import sidebarComponent from "@/components/Admin/sidebar.vue";
 import topbarComponent from "@/components/Admin/topbar.vue";
 export default {
   props: ["id"],
-  name: "demandedepotdetailsComponent",
+  name: "demandeempruntdetailsComponent",
   components: {
     sidebarComponent,
     topbarComponent,
   },
   data () {
     return {
-     info: null,
-     dmande_id:this.$route.params.id,
+     info: null,accepte:null,refus:null,
+     dmande_id:this.$route.params.id,nb:null,c:this.$route.params.c,
     test:'',
      values :{
       id:this.$route.params.id,
@@ -145,8 +117,18 @@ this.$router.push({
  async mounted () {
       
          axios
-      .get('http://127.0.0.1:8000/api/DemandeDepotDetails/'+this.$route.params.id)
+      .get('http://127.0.0.1:8000/api/DemandeEmpruntDetails/'+this.$route.params.id)
       .then(response => (this.info = response.data))
+        axios
+      .get('http://127.0.0.1:8000/api/User/'+this.$route.params.c+'/DemandeEmprunt')
+      .then(response => (this.nb = response.data.length))
+        axios
+      .get('http://127.0.0.1:8000/api/User/'+this.$route.params.c+'/nbEmpruntparUserRefuse')
+      .then(response => (this.refus = response.data.length))
+      
+        axios
+      .get('http://127.0.0.1:8000/api/User/'+this.$route.params.c+'/nbEmpruntparUserAccepte')
+      .then(response => (this.accepte = response.data.length))
 this.test=this.info
 
   }
