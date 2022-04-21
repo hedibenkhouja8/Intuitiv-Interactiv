@@ -4205,6 +4205,24 @@ td ul.list-inline li {
     padding: 6px 15px;
     border-radius: 50px;
 }
+.projects .btn.btn-danger {
+    color: #fff;
+    font-size: 12px;
+    border: none;
+    font-weight: 400;
+    padding: 6px 15px;
+    border-radius: 50px;
+}
+.projects .btn.btn-info {
+    
+    background: #1e86d0;
+    color: #fff;
+    font-size: 12px;
+    border: none;
+    font-weight: 400;
+    padding: 6px 15px;
+    border-radius: 50px;
+}
 
 table.projects tr td:first-child {
     text-align: center;

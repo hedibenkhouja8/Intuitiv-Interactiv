@@ -24,7 +24,7 @@ class DemandeEmpruntController extends Controller
     {
        // return orderBy('created_at')->get();;
         
-        return DemandeEmprunt::with('user')->with('memoire.demande_depot')->orderBy('created_at','desc')->take(4)->get();
+        return DemandeEmprunt::with('user')->where('status','=','EnAttente')->with('memoire.demande_depot')->orderBy('created_at','desc')->take(4)->get();
 
     }
 

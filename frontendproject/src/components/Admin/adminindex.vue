@@ -39,7 +39,7 @@
                            <div class="full counter_section margin_bottom_30">
                               <div class="couter_icon">
                                  <div> 
-                                    <i class="fa fa-cloud-download blue1_color"></i>
+                                    <i class="fa fa-cloud-upload blue1_color"></i>
                                  </div>
                               </div>
                               <div class="counter_no">
@@ -307,45 +307,22 @@
                            <div class="dash_blog">
                               <div class="dash_blog_inner">
                                  <div class="dash_head">
-                                    <h3><span><i class="fa fa-comments-o"></i> Updates</span><span class="plus_green_bt"><a href="#">+</a></span></h3>
+                                    <h3><span><i class="fa fa-cloud-download"></i> Demande de depots</span><span class="plus_green_bt"><a href="#">+</a></span></h3>
                                  </div>
                                  <div class="list_cont">
-                                    <p>User confirmation</p>
+                                    <p>Les recentes demande de depot</p>
                                  </div>
                                  <div class="msg_list_main">
                                     <ul class="msg_list">
-                                       <li>
+                                       <li v-bind:key="item.id" v-for="item in rec2">
                                           <span><img src="../../assets/images/layout_img/msg2.png" class="img-responsive" alt="#" /></span>
                                           <span>
-                                          <span class="name_user">John Smith</span>
-                                          <span class="msg_user">Sed ut perspiciatis unde omnis.</span>
-                                          <span class="time_ago">12 min ago</span>
+                                          <span class="name_user">{{item.user.name}}</span>
+                                          <span class="msg_user">{{item.titre}}</span>
+                                          <span class="time_ago"> {{ formatDate(item.created_at) }} </span>
                                           </span>
                                        </li>
-                                       <li>
-                                          <span><img src="../../assets/images/layout_img/msg3.png" class="img-responsive" alt="#" /></span>
-                                          <span>
-                                          <span class="name_user">John Smith</span>
-                                          <span class="msg_user">On the other hand, we denounce.</span>
-                                          <span class="time_ago">12 min ago</span>
-                                          </span>
-                                       </li>
-                                       <li>
-                                          <span><img src="../../assets/images/layout_img/msg2.png" class="img-responsive" alt="#" /></span>
-                                          <span>
-                                          <span class="name_user">John Smith</span>
-                                          <span class="msg_user">Sed ut perspiciatis unde omnis.</span>
-                                          <span class="time_ago">12 min ago</span>
-                                          </span>
-                                       </li>
-                                       <li>
-                                          <span><img src="../../assets/images/layout_img/msg3.png" class="img-responsive" alt="#" /></span>
-                                          <span>
-                                          <span class="name_user">John Smith</span>
-                                          <span class="msg_user">On the other hand, we denounce.</span>
-                                          <span class="time_ago">12 min ago</span>
-                                          </span>
-                                       </li>
+                                       
                                     </ul>
                                  </div>
                                  <div class="read_more">
@@ -386,7 +363,7 @@ components: {
       user:null,
       demande:null,
       a:null,      p:null,   m:null,   c:null,
-      users:null,i:null,rec:null
+      users:null,i:null,rec:null,rec2:null
     }
   }, methods: {
       formatDate(dateString) {
@@ -421,6 +398,9 @@ this.a=7,
        axios
       .get('http://127.0.0.1:8000/api/recentDemandeEmprunts')
       .then(response => (this.rec = response.data))
+         axios
+      .get('http://127.0.0.1:8000/api/recentDemandeDepots')
+      .then(response => (this.rec2 = response.data))
        axios
       .get('http://127.0.0.1:8000/api/User')
       .then(response => (this.user = response.data.length))

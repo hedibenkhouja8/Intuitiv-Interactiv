@@ -23,12 +23,13 @@
                      <li class="active">
                         <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-dashboard yellow_color"></i> <span>Dashboard</span></a>
                         <ul class="collapse list-unstyled" id="dashboard">
-                   <li><router-link  class="nav-link" to="/Admin">dashboard 1  </router-link></li> 
+                   <li><router-link  class="nav-link" to="/Admin">dashboard  </router-link></li> 
 
                         </ul>
                      </li>
                      <li><router-link  class="nav-link" to="/activity"><i class="fa fa-clock-o orange_color"></i> <span>activity</span> </router-link></li>
-                     <li><router-link  class="nav-link" to="/demandesdepot"><i class="fa  fa-envelope green_color"></i> <span>Demandes depot </span></router-link></li>
+                     <li><router-link  class="nav-link" to="/demandesdepot"><i class="fa fa-cloud -upload green_color"></i> <span>Demandes de depot </span></router-link></li>
+  <li><router-link  class="nav-link" to="/demandesemprunts"><i class="fa fa-cloud -upload blue_color"></i> <span>Demandes d'emprunts </span></router-link></li>
 
                      <li><router-link  class="nav-link" to="/table"><i class="fa fa-table purple_color2"></i> <span>Tables</span></router-link></li>
 

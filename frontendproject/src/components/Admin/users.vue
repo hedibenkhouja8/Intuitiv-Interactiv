@@ -116,9 +116,9 @@ this.$router.push({
     name:"profile",
     params : {id:id}
 })
-},/* <embed controlslist="nodownload" v-bind:src="'http://localhost:8000/storage/files/demandes/pdf/'+item.demande_depot.fichierpdf" toolbar=0 width="500" height="375" 
+},
+  }/* <embed controlslist="nodownload" v-bind:src="'http://localhost:8000/storage/files/demandes/pdf/'+item.demande_depot.fichierpdf" toolbar=0 width="500" height="375" 
  type="application/pdf">*/
-  }
 }
 </script>
 

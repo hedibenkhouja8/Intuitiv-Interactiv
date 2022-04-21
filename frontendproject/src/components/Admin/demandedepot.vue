@@ -36,26 +36,31 @@
                           >
                             <thead class="thead-dark">
                               <tr>
-                                <th style="width: 2%">id</th>
-                                <th style="width: 30%">Titre</th>
-                                <th>User</th>
+                                <th >Titre</th>
+                                <th>Etudiant</th>
                                 <th>Encadreur</th>
+                                <th>Domaine</th>
+                                <th>Critere</th>
                                 <th>Status</th>
                                 <th>actions</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr v-bind:key="item.id" v-for="item in info">
-                                <td>{{ item.id }}</td>
+                             
                                 <td>
                                   <a>{{ item.titre }}</a>
                                 </td>
 
                                 <td>
-                                  {{ item.user_id }}
+                                  {{ item.user.name}}
                                 </td>
                                 <td class="project_progress">
-                                  {{ item.encadreur_id }}
+                                  {{ item.encadreur.nom }}
+                                </td> <td>
+                                  <a>{{ item.domaine.nom }}</a>
+                                </td> <td>
+                                  <a>{{ item.critere.nom }}</a>
                                 </td>
                                 <td>
                                   {{ item.status }}
@@ -63,22 +68,22 @@
                                 <td>
                                   <button
                                     type="button"
-                                    class="btn btn-success btn-xs"
+                                    class="btn btn-info btn-xs"
                                     @click="details(item.id)"
                                   >
-                                    details
+                                    Details
                                   </button>
                                   <button
                                     type="button"
                                     class="btn btn-success btn-xs"
                                   >
-                                    accept
+                                    Accepter
                                   </button>
                                   <button
                                     type="button"
-                                    class="btn btn-success btn-xs"
+                                    class="btn btn-danger btn-xs"
                                   >
-                                    refuse
+                                    Refuser
                                   </button>
                                 </td>
                               </tr>

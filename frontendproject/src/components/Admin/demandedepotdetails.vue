@@ -1,5 +1,5 @@
 <template>
-
+<div>
   <div class="full_container">
     <div class="inner_container">
       <!-- Sidebar  -->
@@ -15,26 +15,33 @@
             <div class="row column_title">
               <div class="col-md-12">
                 <div class="page_title">
-                  <h2>Demandes</h2>
+                  <h2>Demande</h2>
                 </div>
               </div>
             </div>
              <!-- row -->
             <div class="row column1"   >
             <div class="card">
-        <div class="card-body">
-            <h3 class="card-title">{{values.titre}}</h3>
+        <div v-bind:key="item.id" v-for="item in info" class="card-body">
+            <h3 class="card-title">{{item.titre}}</h3>
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-6">
-                    <div class="white-box text-center"><img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+values.coverimage" class="img-responsive"></div>
+                    <div class="white-box text-center"><img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.coverimage" class="img-responsive"></div>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-6">
                     <h4 class="box-title mt-5"> Description</h4>
-                    <p>{{values.description}}</p>
-                    <h4 class="box-title mt-5"> User</h4>
-                    <p>{{values.user_id}}</p>
+                    <p>{{item.description}}</p>
+                    <h4 class="box-title mt-5"> Etudiant</h4>
+                    <p>{{item.user.name}}  <button
+                                    type="button"
+                                    class="btn "
+                                     @click="edit(item.user.id)"
+                                  >
+                                    <i class="fa fa-share green_color"> </i>
+                                  </button></p><embed controlslist="nodownload" v-bind:src="'http://localhost:8000/storage/files/demandes/pdf/'+item.fichierpdf" toolbar=0 width="500" height="375" 
+ type="application/pdf">
                      <h4 class="box-title mt-5"> Domaine</h4>
-                    <p>{{values.domaine_id}}</p>
+                    <p>{{item.domaine.nom}}</p>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">pdf file</button>
                 </div>
                 
@@ -45,19 +52,23 @@
                             <tbody>
                                 <tr>
                                     <td width="390">Entreprise</td>
-                                    <td>{{values.entreprise_id}}</td>
+                                    <td>{{item.entreprise.nom}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Etablisement</td>
-                                    <td>{{values.etablisement_id}}</td>
+                                    <td>Etablissement</td>
+                                    <td>{{item.etablisement.nom}}</td>
                                 </tr>
                                 <tr>
-                                    <td>nombres des pages</td>
-                                    <td>{{values.nbpages}}</td>
+                                    <td>Nombre des pages</td>
+                                    <td>{{item.nbpages}}</td>
                                 </tr>
                                 <tr>
-                                    <td>criteres</td>
-                                    <td>{{values.critere_id}}</td>
+                                    <td>Critere</td>
+                                    <td>{{item.critere.nom}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Date de demande</td>
+                                    <td>{{formatDate(item.created_at)}}</td>
                                 </tr>
                                 
                             </tbody>
@@ -95,7 +106,7 @@
         </div>
     </div>
   </div>
-</div>
+</div></div>
 </template>
 
 <script>
@@ -120,13 +131,22 @@ export default {
      
      
     }
-  },
+  },methods: {
+      formatDate(dateString) {
+            const date = new Date(dateString);
+                // Then specify how you want your dates to be formatted
+            return new Intl.DateTimeFormat('default', {dateStyle: 'long'}).format(date);
+        },edit(id){
+this.$router.push({
+    name:"profile",
+    params : {id:id}
+})
+},
+    },
  async mounted () {
       
-const res =axios.get('http://127.0.0.1:8000/api/DemandeDepot/'+this.$route.params.id)
-this.values=(await res).data
          axios
-      .get('http://127.0.0.1:8000/api/DemandeDepot/'+this.$route.params.id)
+      .get('http://127.0.0.1:8000/api/DemandeDepotDetails/'+this.$route.params.id)
       .then(response => (this.info = response.data))
 this.test=this.info
 

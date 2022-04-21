@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/frequentEtab', [AuthController::class, 'frequentEtab']);
 
 
 Route::resource('Domaine',DomaineController::class);
@@ -61,6 +62,10 @@ Route::get('/Memoire/{memoire}/DemandeEmprunt',[DemandeEmpruntController::class,
 Route::get('/Memoire/{memoire}/DemandeDepot',[MemoireController::class,'byDemande']);
 
 Route::get('/recentDemandeEmprunts',[DemandeEmpruntController::class,'recentDemandeEmprunts']);
+
+Route::get('/recentDemandeDepots',[DemandeDepotController::class,'recentDemandeDepots']);
+
+Route::get('/DemandeDepotDetails/{demandedepot}',[DemandeDepotController::class,'DemandeDepotDetails']);
 
 
 

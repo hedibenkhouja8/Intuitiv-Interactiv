@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Etablisement;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -79,6 +80,19 @@ class AuthController extends Controller
         ->where('id',$memoire->id)->get();*/
     }
     
+    public function frequentEtab()
+    {
+        $users = DB::table('users') 
+        ->select(DB::raw('count(*) as etab, etablisement_id'))->groupBy('etablisement_id')->orderBy('etab','desc')->limit(5)
+        ->get();
+        /*
+        
+        $users = DB::table('users')->join('etablisements', 'users.etablisement_id', '=', 'etablisements.id')
+        ->select('users.name','etablisements.nom')
+        ->select(DB::raw('count(*) as etab, etablisement_id'))->get();*/
+        return $users;
+
+    }
     public function users()
     {
       
