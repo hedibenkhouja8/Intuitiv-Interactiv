@@ -18,6 +18,10 @@ import settingsComponent from '../components/Admin/settings.vue'
 import usersComponent from '../components/Admin/users.vue'
 import tableComponent from '../components/Admin/table.vue'
 import profileComponent from '../components/Admin/profile.vue'
+import demandedepotComponent from '../components/Admin/demandedepot.vue'
+import demandedepotdetailsComponent from '../components/Admin/demandedepotdetails.vue'
+
+
 
 
 const routes = [
@@ -27,6 +31,14 @@ const routes = [
     component: HomePage,
     meta: {
       title: 'home'
+    }
+  },
+  {
+    path: "/demandesdepot",
+    name: "demandedepot",
+    component: demandedepotComponent,
+    meta: {
+      title: 'demandesdepot'
     }
   },
   {
@@ -100,7 +112,16 @@ const routes = [
     meta: {
       title: 'edit'
     }
-  }, {
+  },
+  {
+    path: "/Demandedepot/:id",
+    name: "Demandedepotdetails",
+    component: demandedepotdetailsComponent,
+    meta: {
+      title: 'edit'
+    }
+  },
+   {
     path: "/memoire/details/:id/:c",
     name: "DetailMemoire",
     component: DetailMemoire,

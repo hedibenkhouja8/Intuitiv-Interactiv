@@ -6,6 +6,11 @@
         <h2>
           Memoires
         </h2>
+         <div class="btn-box">
+        <router-link   to="/adddemandedepot">
+          faire une Demande depot 
+         </router-link>
+      </div>
       </div>
       <div class="row">
        

@@ -28,8 +28,10 @@
                         </ul>
                      </li>
                      <li><router-link  class="nav-link" to="/activity"><i class="fa fa-clock-o orange_color"></i> <span>activity</span> </router-link></li>
-                   
+                     <li><router-link  class="nav-link" to="/demandesdepot"><i class="fa  fa-envelope green_color"></i> <span>Demandes depot </span></router-link></li>
+
                      <li><router-link  class="nav-link" to="/table"><i class="fa fa-table purple_color2"></i> <span>Tables</span></router-link></li>
+
                      <li><router-link  class="nav-link" to="/email"><i class="fa fa-envelope-o yellow_color"></i> <span>Email</span></router-link></li>
 
                      <li>
