@@ -20,6 +20,13 @@ class DemandeEmpruntController extends Controller
         return DemandeEmprunt::all();
 
     }
+    public function recentDemandeEmprunts()
+    {
+       // return orderBy('created_at')->get();;
+        
+        return DemandeEmprunt::with('user')->with('memoire.demande_depot')->orderBy('created_at','desc')->take(4)->get();
+
+    }
 
     /**
      * Store a newly created resource in storage.

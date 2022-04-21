@@ -277,18 +277,24 @@
                            <div class="dash_blog">
                               <div class="dash_blog_inner">
                                  <div class="dash_head">
-                                    <h3><span><i class="fa fa-calendar"></i> 6 July 2018</span><span class="plus_green_bt"><a href="#">+</a></span></h3>
+                                    <h3><span><i class="fa fa-cloud-upload"></i> Demandes d'emprunt </span><span class="plus_green_bt"><a href="#">+</a></span></h3>
                                  </div>
                                  <div class="list_cont">
-                                    <p>Today Tasks for Ronney Jack</p>
+                                    <p>Les recentes demande d'emprunt</p>
                                  </div>
-                                 <div class="task_list_main">
-                                    <ul class="task_list">
-                                       <li><a href="#">Meeting about plan for Admin Template 2018</a><br><strong>10:00 AM</strong></li>
-                                       <li><a href="#">Create new task for Dashboard</a><br><strong>10:00 AM</strong></li>
-                                       <li><a href="#">Meeting about plan for Admin Template 2018</a><br><strong>11:00 AM</strong></li>
-                                       <li><a href="#">Create new task for Dashboard</a><br><strong>10:00 AM</strong></li>
-                                       <li><a href="#">Meeting about plan for Admin Template 2018</a><br><strong>02:00 PM</strong></li>
+                                      
+                                 <div class="msg_list_main">
+                                    <ul class="msg_list">
+                                       <li v-bind:key="item.id" v-for="item in rec">
+                                          <span><img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.memoire.demande_depot.coverimage" id="z" alt="#" /></span>
+                                          <span>
+                                          <span class="name_user">{{item.memoire.demande_depot.titre}}</span>
+                                          <span class="msg_user">{{item.user.name}}</span>
+                                          <span class="time_ago">
+        {{ formatDate(item.created_at) }} </span>
+                                          </span>
+                                       </li>
+                                    
                                     </ul>
                                  </div>
                                  <div class="read_more">
@@ -366,6 +372,7 @@ import axios from 'axios';
 import sidebarComponent from '@/components/Admin/sidebar.vue'
 import topbarComponent from '@/components/Admin/topbar.vue'
 
+
 export default {
 name: 'AdminComponent',
 components: {
@@ -379,9 +386,15 @@ components: {
       user:null,
       demande:null,
       a:null,      p:null,   m:null,   c:null,
-      users:null,i:null
+      users:null,i:null,rec:null
     }
-  },
+  }, methods: {
+      formatDate(dateString) {
+            const date = new Date(dateString);
+                // Then specify how you want your dates to be formatted
+            return new Intl.DateTimeFormat('default', {dateStyle: 'long'}).format(date);
+        }
+    },
   mounted () {
 this.a=7,
     axios
@@ -405,6 +418,9 @@ this.a=7,
        axios
       .get('http://127.0.0.1:8000/api/Emprunt')
       .then(response => (this.emprunt = response.data.length))
+       axios
+      .get('http://127.0.0.1:8000/api/recentDemandeEmprunts')
+      .then(response => (this.rec = response.data))
        axios
       .get('http://127.0.0.1:8000/api/User')
       .then(response => (this.user = response.data.length))

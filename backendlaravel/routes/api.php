@@ -60,6 +60,9 @@ Route::get('/Memoire/{memoire}/DemandeEmprunt',[DemandeEmpruntController::class,
 
 Route::get('/Memoire/{memoire}/DemandeDepot',[MemoireController::class,'byDemande']);
 
+Route::get('/recentDemandeEmprunts',[DemandeEmpruntController::class,'recentDemandeEmprunts']);
+
+
 
 Route::get('/Etablisement/{etablisement}/DemandeDepot',[DemandeDepotController::class,'byEtablisement']);
 
