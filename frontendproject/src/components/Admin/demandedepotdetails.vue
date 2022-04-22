@@ -1,18 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div>
-    <div class="full_container">
-      <div class="inner_container">
-        <!-- Sidebar  -->
-        <sidebar-component />
-        <!-- end sidebar -->
-        <!-- right content -->
-        <div id="content">
-          <!-- topbar -->
-          <topbar-component />
-          <!-- end topbar -->
-          <div class="midde_cont ">
-=======
 <div>
   <div class="full_container">
     <div class="inner_container">
@@ -94,7 +80,6 @@
               <!-- end row -->
             </div>
             <!-- footer -->
->>>>>>> cd3efb04e4a658986fa482775ece1df62c816b4f
             <div class="container-fluid">
               <div class="row column_title">
                 <div class="col-md-12">

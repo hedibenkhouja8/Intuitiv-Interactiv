@@ -126,9 +126,6 @@ const routes = [
     name: "Demandedepotdetails",
     component: demandedepotdetailsComponent,
     meta: {
-<<<<<<< HEAD
-      title: 'details'
-=======
       title: 'Demande Depot Details'
     }
   },{
@@ -137,7 +134,6 @@ const routes = [
     component: demandeempruntdetailsComponent,
     meta: {
       title: 'Demande Emprunt Details'
->>>>>>> cd3efb04e4a658986fa482775ece1df62c816b4f
     }
   },
    {
