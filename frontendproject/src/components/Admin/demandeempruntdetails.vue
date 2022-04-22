@@ -44,6 +44,25 @@
                     <p>{{item.date_fin}}</p>
                     <h4 class="box-title mt-5"> Emprunts</h4>
                         <h6 style="color:red;">{{refus}} refus <h7 style="color:green;">{{accepte}} accepté</h7></h6>
+                    <div class="text-center">
+                        <h3 class="box-title mt-5">Status</h3>
+                        <h4>{{ item.status }}</h4>
+                         <button
+                                    type="button"
+                                    class="btn btn-success btn-xs"
+                                    @click="accepter(item.id)"
+                                    style="margin: 10px"
+                                  >
+                                    Accepter
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-danger btn-xs"
+                                    @click="refuser(item.id)"
+                                  >
+                                    Refuser
+                                  </button>
+                        </div>
                     </div>
            
             </div>
@@ -103,6 +122,14 @@ export default {
      
     }
   },methods: {
+      accepter(id) {
+     axios.post('http://127.0.0.1:8000/api/DemandeEmpruntaccept/'+id);
+     window.location.reload();
+    },
+    refuser(id) {
+     axios.post('http://127.0.0.1:8000/api/DemandeEmpruntrefuse/'+id);
+     window.location.reload();
+    },
       formatDate(dateString) {
             const date = new Date(dateString);
                 // Then specify how you want your dates to be formatted

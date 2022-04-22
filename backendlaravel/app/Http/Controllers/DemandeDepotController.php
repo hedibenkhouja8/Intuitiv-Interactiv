@@ -6,6 +6,7 @@ use App\Models\DemandeDepot;
 use App\Models\Etablisement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Memoire;
 
 class DemandeDepotController extends Controller
 {
@@ -51,7 +52,7 @@ class DemandeDepotController extends Controller
         $demande->critere_id = $request->critere_id;
         
         $demande->description = $request->description;
-        $demande->status = $request->status;
+        $demande->status = "EnAttente";
         $demande->fichierpdf = $request->fichierpdf->hashName();
         $demande->fichierdemande = $request->fichierdemande->hashName();
         $demande->etablisement_id = $request->etablisement_id;
@@ -151,6 +152,32 @@ class DemandeDepotController extends Controller
       }
     public function notAccepted(){
         return DemandeDepot::with('memoire')->where('status','=','EnAttente')->get();
+
+    }
+
+    public function DemandeDepotaccept(DemandeDepot $demandedepot)
+    {
+        DB::table('demande_depots')
+        ->where('id',$demandedepot->id)
+        ->update(['status' => 'Accepte'
+        ]);
+        $memoire= new Memoire;
+        $memoire->date_acceptation  =date('m/d/Y');
+        $memoire->demande_depot_id = $demandedepot->id;
+        $memoire->save();
+  
+     
+
+    }
+    
+    public function DemandeDepotrefuse(DemandeDepot $demandedepot)
+    {
+        DB::table('demande_depots')
+        ->where('id',$demandedepot->id)
+        ->update(['status' => 'Refuse'
+        ]);
+
+     
 
     }
 }

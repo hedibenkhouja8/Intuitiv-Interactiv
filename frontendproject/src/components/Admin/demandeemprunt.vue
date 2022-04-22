@@ -74,15 +74,17 @@
                                   >
                                     Details
                                   </button>
-                                  <button
+                                     <button
                                     type="button"
                                     class="btn btn-success btn-xs"
+                                    @click="accepter(item.id)"
                                   >
                                     Accepter
                                   </button>
                                   <button
                                     type="button"
                                     class="btn btn-danger btn-xs"
+                                    @click="refuser(item.id)"
                                   >
                                     Refuser
                                   </button>
@@ -150,9 +152,16 @@ export default {
                 // Then specify how you want your dates to be formatted
             return new Intl.DateTimeFormat('default', {dateStyle: 'long'}).format(date);
         },
-    //http://127.0.0.1:8000/api/User/5
-    //http://127.0.0.1:8000/api/Encadreurs/1
+   accepter(id) {
+     axios.post('http://127.0.0.1:8000/api/DemandeEmpruntaccept/'+id);
+     window.location.reload();
+    },
+    refuser(id) {
+     axios.post('http://127.0.0.1:8000/api/DemandeEmpruntrefuse/'+id);
+     window.location.reload();
+    },
   },
+ 
 };
 </script>
 

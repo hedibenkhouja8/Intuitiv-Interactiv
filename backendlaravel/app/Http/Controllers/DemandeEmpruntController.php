@@ -147,4 +147,24 @@ return $users;
         })->get();
         return $memoiresnuser;*/
       }
+      public function DemandeEmpruntaccept(DemandeEmprunt $demandeemprunt)
+    {
+        DB::table('demande_emprunts')
+        ->where('id',$demandeemprunt->id)
+        ->update(['status' => 'Accepte'
+        ]);
+        
+
+    }
+    
+    public function DemandeEmpruntrefuse(DemandeEmprunt $demandeemprunt)
+    {
+        DB::table('demande_emprunts')
+        ->where('id',$demandeemprunt->id)
+        ->update(['status' => 'Refuse'
+        ]);
+
+     
+
+    }
 }

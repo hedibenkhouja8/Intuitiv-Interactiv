@@ -24,7 +24,7 @@ class CreateDemandeDepotsTable extends Migration
             
             $table->foreignId('critere_id')->constrained()->onDelete('cascade');
             $table->longText('description');
-            $table->string('status');
+            $table->enum('status',['EnAttente','Refuse','Accepte']);
             $table->string('fichierpdf');
             $table->string('fichierdemande');
             $table->string('coverimage');
