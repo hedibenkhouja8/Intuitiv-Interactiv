@@ -15,18 +15,25 @@ class AuthController extends Controller
     public function register(Request $request) {
         $fields = $request->validate([
             'name' => 'required|string',
+            'prenom'=> 'required|string',
             'email' => 'required|string|unique:users,email',
             'password' => 'required|string|confirmed',
             'fichierdemande' => 'required',
             'etablisement_id' => 'required'
         ]);
-        $fields['fichierdemande']->store('public/files/register');
+        $fields['fichierdemande']->store('public/files/register/demande');
+
+        $file = $request->file('profilepic');
+        $file->store('public/files/register/profilepic');
 
         $user = User::create([
             'name' => $fields['name'],
+            'prenom'=> $fields['prenom'],
             'email' => $fields['email'],
             'fichierdemande' => $fields['fichierdemande']->hashName(),
             'etablisement_id' =>$fields['etablisement_id'],
+            'tel'=>$request->tel,
+            'profilepic'=>$request->profilepic->hashName(),
             'password' => bcrypt($fields['password'])
         ]);
 

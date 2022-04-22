@@ -264,7 +264,7 @@ this.file4=e.target.files[0];
         .then(response=> {
           console.log("response",response.data)
         }).catch(err=>console.log(err))
-    
+
     },
   
   },
