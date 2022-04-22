@@ -7,6 +7,7 @@ import EditItem from '../components/Edit.vue';
 import AboutPage from '../components/about.vue';
 import UsersPage from '../components/users.vue';
 import loginComponent from '../components/login.vue';
+import registerComponent from '../components/register.vue';
 import contactusComponent from '../components/ContactUs.vue'
 import MemoireComponent from '../components/memoire.vue'
 import AddDemandeDepotComponent from '../components/adddemandedepot.vue'
@@ -136,6 +137,14 @@ const routes = [
     component: AdminComponent,
     meta: {
       title: 'Admin'
+    }
+  },
+  {
+    path: "/Register",
+    name: "register",
+    component: registerComponent,
+    meta: {
+      title: 'register'
     }
   },
   {

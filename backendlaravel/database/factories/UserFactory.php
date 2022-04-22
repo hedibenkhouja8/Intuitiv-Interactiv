@@ -26,6 +26,8 @@ class UserFactory extends Factory
         $etablisement = Etablisement::all()->pluck('id');
         return [
             'name' => $this->faker->name,
+            'prenom' => $this->faker->lastname,
+            'tel' => $this->faker->phoneNumber,
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
             'fichierdemande' =>$this->faker->name,

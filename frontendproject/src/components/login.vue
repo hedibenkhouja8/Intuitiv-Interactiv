@@ -12,9 +12,8 @@
               Create your free account now and get immediate access to 100s of
               online courses
             </p>
-            <a href="">
-              REGISTER NOW
-            </a>
+                       <router-link  to="/Register"> REGISTER NOW</router-link>
+
           </div>
         </div>
         <div class="col-md-6">
