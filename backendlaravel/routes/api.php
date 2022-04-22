@@ -73,6 +73,9 @@ Route::post('/DemandeDepotrefuse/{demandedepot}',[DemandeDepotController::class,
 
 Route::get('/DemandeEmpruntDetails/{demandeemprunt}',[DemandeEmpruntController::class,'DemandeEmpruntDetails']);
 
+Route::post('/DemandeEmpruntaccept/{demandeemprunt}',[DemandeEmpruntController::class,'DemandeEmpruntaccept']);
+Route::post('/DemandeEmpruntrefuse/{demandeemprunt}',[DemandeEmpruntController::class,'DemandeEmpruntrefuse']);
+
 
 
 Route::get('/Etablisement/{etablisement}/DemandeDepot',[DemandeDepotController::class,'byEtablisement']);
