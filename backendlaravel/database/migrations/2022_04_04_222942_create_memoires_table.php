@@ -15,7 +15,7 @@ class CreateMemoiresTable extends Migration
     {
         Schema::create('memoires', function (Blueprint $table) {
             $table->id();
-            $table->date('date_acceptation');
+            $table->string('date_acceptation');
             
             
            $table->foreignId('demande_depot_id')->constrained();

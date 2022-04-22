@@ -25,6 +25,7 @@
                   <div class="full graph_head">
                     <div class="heading1 margin_0">
                       <h2>Demandes Depot</h2>
+      
                     </div>
                   </div>
                   <div class="full price_table padding_infor_info">
@@ -76,12 +77,14 @@
                                   <button
                                     type="button"
                                     class="btn btn-success btn-xs"
+                                    @click="accepter(item.id)"
                                   >
                                     Accepter
                                   </button>
                                   <button
                                     type="button"
                                     class="btn btn-danger btn-xs"
+                                    @click="refuser(item.id)"
                                   >
                                     Refuser
                                   </button>
@@ -133,9 +136,11 @@ export default {
     };
   },
   mounted() {
+    
     axios
       .get("http://127.0.0.1:8000/api/DemandeDepot")
       .then((response) => (this.info = response.data));
+      
   },
   methods: {
     details(id) {
@@ -143,6 +148,14 @@ export default {
         name: "Demandedepotdetails",
         params: { id: id },
       });
+    },
+     accepter(id) {
+     axios.post('http://127.0.0.1:8000/api/DemandeDepotaccept/'+id);
+     window.location.reload();
+    },
+    refuser(id) {
+     axios.post('http://127.0.0.1:8000/api/DemandeDepotrefuse/'+id);
+     window.location.reload();
     },
     //http://127.0.0.1:8000/api/User/5
     //http://127.0.0.1:8000/api/Encadreurs/1

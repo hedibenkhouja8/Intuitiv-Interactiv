@@ -247,7 +247,6 @@ this.file4=e.target.files[0];
       data.append('domaine_id',this.selectedDomaine.id);
       data.append('critere_id',this.selectedCritere);
       data.append('description',this.description);
-      data.append('status','EnAttente');
       data.append('fichierpdf',this.file);
       data.append('fichierdemande',this.file1);
       data.append('etablisement_id',this.selectedEtablisement.id);

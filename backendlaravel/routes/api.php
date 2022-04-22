@@ -67,6 +67,11 @@ Route::get('/recentDemandeDepots',[DemandeDepotController::class,'recentDemandeD
 
 Route::get('/DemandeDepotDetails/{demandedepot}',[DemandeDepotController::class,'DemandeDepotDetails']);
 
+Route::post('/DemandeDepotaccept/{demandedepot}',[DemandeDepotController::class,'DemandeDepotaccept']);
+
+Route::post('/DemandeDepotrefuse/{demandedepot}',[DemandeDepotController::class,'DemandeDepotrefuse']);
+
+
 
 
 Route::get('/Etablisement/{etablisement}/DemandeDepot',[DemandeDepotController::class,'byEtablisement']);

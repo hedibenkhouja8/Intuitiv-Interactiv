@@ -23,7 +23,6 @@ import demandedepotdetailsComponent from '../components/Admin/demandedepotdetail
 
 
 
-
 const routes = [
   {
     path: "/",
@@ -118,7 +117,7 @@ const routes = [
     name: "Demandedepotdetails",
     component: demandedepotdetailsComponent,
     meta: {
-      title: 'edit'
+      title: 'details'
     }
   },
    {
