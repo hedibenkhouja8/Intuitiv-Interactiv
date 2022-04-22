@@ -19,7 +19,7 @@ class MemoireController extends Controller
     public function index()
     {
      
-        return Memoire::with('demande_depot.user')->get();
+        return Memoire::with('demande_depot.user')->with('demande_depot.critere')->with('demande_depot.domaine')->get();
 
     }
 
@@ -102,7 +102,8 @@ class MemoireController extends Controller
      public function byDemande(Memoire $memoire){
       //  return $memoire->demandedepot;
          //Si on veut les details du memoires avec ses Emprunts
-         return Memoire::with('demande_depot')
+         return Memoire::with('demande_depot.critere')->with('demande_depot.domaine')->with('demande_depot.user')->with('demande_depot.etablisement')
+         ->with('demande_depot.encadreur')->with('demande_depot.entreprise')
          ->where('id',$memoire->id)->get();
      }
      public function MemoireAccepted(){

@@ -18,7 +18,7 @@ class DemandeEmpruntController extends Controller
     public function index()
     {
         return DemandeEmprunt::with('user')->with('memoire.demande_depot')->where('status','!=','Accepte')
-        ->orderBy('status')->orderBy('created_at','ASC')->get();
+        ->orderBy('status')->orderBy('created_at','desc')->get();
 
     }
     public function DemandeEmpruntDetails(DemandeEmprunt $demandeemprunt){
@@ -31,7 +31,14 @@ class DemandeEmpruntController extends Controller
     {
        // return orderBy('created_at')->get();;
         
-        return DemandeEmprunt::with('user')->where('status','=','EnAttente')->with('memoire.demande_depot')->orderBy('created_at','ASC')->take(4)->get();
+        return DemandeEmprunt::with('user')->where('status','=','EnAttente')->with('memoire.demande_depot')->where('status','=','EnAttente')->orderBy('created_at','desc')->take(4)->get();
+
+    }
+    public function DemandeEmpruntsAccepted()
+    {
+       // return orderBy('created_at')->get();;
+        
+        return DemandeEmprunt::with('user')->where('status','=','Accepte')->with('memoire.demande_depot')->orderBy('created_at','desc')->get();
 
     }
 
@@ -90,9 +97,9 @@ class DemandeEmpruntController extends Controller
      * Route: /api/Memoire/{memoire}/DemandeEmprunt
      */
     public function byMemoire(Memoire $memoire){
-       return $memoire->demandeemprunts;
+       return $memoire->demande_emprunts;
         //Si on veut les details du memoires avec ses emprunts
-        /* return Memoire::with('demendeemprunts')
+       /* return Memoire::with('demande_emprunts')
         ->where('id',$memoire->id)->get();*/
     }
     public function byUser(User $user){

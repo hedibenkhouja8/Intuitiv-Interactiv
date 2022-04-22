@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Etablisement extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom','ville'];
+    protected $fillable = ['nom','ville','adresse'];
     public function memoires()
     {
         return $this->hasMany(Memoire::class);

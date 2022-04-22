@@ -15,7 +15,7 @@ class EtablisementFactory extends Factory
     public function definition()
     {
         return [
-            'nom' => $this->faker->name, 'ville' => $this->faker->name,
+            'nom' => $this->faker->name, 'ville' => $this->faker->name, 'adresse' => $this->faker->word,
         ];
     }
 }

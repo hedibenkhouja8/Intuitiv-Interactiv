@@ -27,14 +27,14 @@
                     v-for="item in info"
                     class="card-body"
                   >
-                    <h3 class="card-title">{{ item.titre }}</h3>
+                    <h3 class="card-title">{{ item.demande_depot.titre }}</h3>
                     <div class="row">
                       <div class="col-lg-5 col-md-5 col-sm-6">
                         <div class="white-box text-center">
                           <img
                             v-bind:src="
                               'http://localhost:8000/storage/files/demandes/cover/' +
-                              item.coverimage
+                              item.demande_depot.coverimage
                             "
                             class="img-responsive" width="350" height="500"
                           />
@@ -42,20 +42,21 @@
                       </div>
                       <div class="col-lg-7 col-md-7 col-sm-6">
                         <h4 class="box-title mt-5">Description</h4>
-                        <p>{{ item.description }}</p>
+                        <p>{{ item.demande_depot.description }}</p>
                         <h4 class="box-title mt-5">Etudiant</h4>
                         <p>
-                          {{ item.user.name }}
+                          {{ item.demande_depot.user.name }}
                           <button
                             type="button"
                             class="btn"
-                            @click="edit(item.user.id)"
+                            @click="edit(item.demande_depot.user_id)"
                           >
                             <i class="fa fa-share green_color"> </i>
                           </button>
                         </p>
                         <h4 class="box-title mt-5">Domaine</h4>
-                        <p>{{ item.domaine.nom }}</p>
+                        <p>{{ item.demande_depot.domaine.nom }}</p>
+                         <h4 class="box-title mt-5">Demandes d'Emprunt: <span>{{nb}}</span></h4>
                         <button
                           type="button"
                           class="btn btn-primary"
@@ -105,22 +106,22 @@
                             <tbody>
                               <tr>
                                 <td width="390">Entreprise</td>
-                                <td>{{ item.entreprise.nom }}</td>
+                                <td>{{ item.demande_depot.entreprise.nom }}</td>
                               </tr>
                               <tr>
                                 <td>Etablissement</td>
-                                <td>{{ item.etablisement.nom }}</td>
-                              </tr><tr>
+                                <td>{{ item.demande_depot.etablisement.nom }}</td>
+                              </tr> <tr>
                                 <td>Encadreur</td>
-                                <td>{{ item.encadreur.nom }}</td>
+                                <td>{{ item.demande_depot.encadreur.nom }}</td>
                               </tr>
                               <tr>
-                                <td>Nombre des pages</td>
-                                <td>{{ item.nbpages }}</td>
+                                <td>Nombre de pages</td>
+                                <td>{{ item.demande_depot.nbpages }}</td>
                               </tr>
                               <tr>
                                 <td>Critere</td>
-                                <td>{{ item.critere.nom }}</td>
+                                <td>{{ item.demande_depot.critere.nom }}</td>
                               </tr>
                               <tr>
                                 <td>Date de demande</td>
@@ -128,25 +129,7 @@
                               </tr>
                             </tbody>
                           </table>
-                          <div class="text-center">
-                        <h3 class="box-title mt-5">Status</h3>
-                        <h4>{{ item.status }}</h4>
-                         <button
-                                    type="button"
-                                    class="btn btn-success btn-xs"
-                                    @click="accepter(item.id)"
-                                    style="margin: 10px"
-                                  >
-                                    Accepter
-                                  </button>
-                                  <button
-                                    type="button"
-                                    class="btn btn-danger btn-xs"
-                                    @click="refuser(item.id)"
-                                  >
-                                    Refuser
-                                  </button>
-                        </div>
+                
                         </div>
                       </div>
                     </div>
@@ -181,7 +164,7 @@
                               controlslist="nodownload"
                               v-bind:src="
                                 'http://localhost:8000/storage/files/demandes/pdf/' +
-                                item.fichierpdf
+                                item.demande_depot.fichierpdf
                               "
                               toolbar="0"
                               width="1100"
@@ -233,7 +216,7 @@
                               controlslist="nodownload"
                               v-bind:src="
                                 'http://localhost:8000/storage/files/demandes/demande/' +
-                                item.fichierdemande
+                                item.demande_depot.fichierdemande
                               "
                               toolbar="0"
                               width="1100"
@@ -285,7 +268,7 @@
                               controlslist="nodownload"
                               v-bind:src="
                                 'http://localhost:8000/storage/files/demandes/fichierbrevet/' +
-                                item.fichierbrevet
+                                item.demande_depot.fichierbrevet
                               "
                               toolbar="0"
                               width="1100"
@@ -388,7 +371,7 @@ import sidebarComponent from "@/components/Admin/sidebar.vue";
 import topbarComponent from "@/components/Admin/topbar.vue";
 export default {
   props: ["id"],
-  name: "demandedepotdetailsComponent",
+  name: "memoireadmindetailComponent",
   components: {
     sidebarComponent,
     topbarComponent,
@@ -397,7 +380,7 @@ export default {
     return {
       info: null,
       dmande_id: this.$route.params.id,
-      test: "",
+      test: "",nb:null,
       values: {
         id: this.$route.params.id,
       },
@@ -433,10 +416,15 @@ export default {
     this.values = (await res).data;
     axios
       .get(
-        "http://127.0.0.1:8000/api/DemandeDepotDetails/" + this.$route.params.id
+        "http://127.0.0.1:8000/api/Memoire/" + this.$route.params.id+"/DemandeDepot"
       )
-      .then((response) => (this.info = response.data));
-    this.test = this.info;
+      .then((response) => (this.info = response.data))
+          axios
+      .get(
+        "http://127.0.0.1:8000/api/Memoire/" + this.$route.params.id+"/DemandeEmprunt"
+      )
+      .then((response) => (this.nb = response.data.length));
+   
   },
 };
 </script>

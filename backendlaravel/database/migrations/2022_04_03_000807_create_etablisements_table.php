@@ -17,6 +17,8 @@ class CreateEtablisementsTable extends Migration
             $table->id();
             $table->string('nom');
             $table->string('ville');
+            
+            $table->string('adresse');
             $table->timestamps();
         });
     }

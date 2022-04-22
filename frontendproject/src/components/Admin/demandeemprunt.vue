@@ -24,7 +24,7 @@
                 <div class="white_shd full margin_bottom_30">
                   <div class="full graph_head">
                     <div class="heading1 margin_0">
-                      <h2>Demandes Depot</h2>
+                      <h2>Demandes d'Emprunt</h2>
                     </div>
                   </div>
                   <div class="full price_table padding_infor_info">
@@ -43,7 +43,7 @@
                                 <th>Date Debut</th>
                                 <th>Date retour</th>
                                 <th>Status</th>
-                                <th>actions</th>
+                                <th>Actions</th>
                               </tr>
                             </thead>
                             <tbody>

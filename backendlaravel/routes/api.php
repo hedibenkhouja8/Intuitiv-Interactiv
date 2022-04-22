@@ -45,7 +45,7 @@ Route::resource('Domaine',DomaineController::class);
 Route::resource('DemandeDepot',DemandeDepotController::class);
 Route::resource('DemandeEmprunt',DemandeEmpruntController::class);
 Route::resource('Emprunt',EmpruntController::class);
-Route::resource('Encadreurs',EncadreursController::class);
+Route::resource('Encadreur',EncadreursController::class);
 Route::resource('Etablisement',EtablisementsController::class);
 
 Route::resource('Entreprise',EntrepriseController::class);
@@ -58,6 +58,8 @@ Route::get('/Memoire/{memoire}/Emprunt',[EmpruntController::class,'byMemoire']);
 Route::get('/Domaine/{domaine}/Critere',[DomaineController::class,'byDomaine']);
 
 Route::get('/Memoire/{memoire}/DemandeEmprunt',[DemandeEmpruntController::class,'byMemoire']);
+
+Route::get('/DemandeEmpruntAccepted',[DemandeEmpruntController::class,'DemandeEmpruntsAccepted']);
 
 Route::get('/Memoire/{memoire}/DemandeDepot',[MemoireController::class,'byDemande']);
 

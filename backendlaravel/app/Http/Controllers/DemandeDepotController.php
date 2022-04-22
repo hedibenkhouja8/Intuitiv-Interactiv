@@ -18,7 +18,7 @@ class DemandeDepotController extends Controller
     public function index()
     {
         return DemandeDepot::with('user')->with('domaine')->with('critere')->with('encadreur')->with('etablisement')->where('status','!=','Accepte')
-        ->orderBy('status')  ->orderBy('created_at','ASC')->get();
+        ->orderBy('status')  ->orderBy('created_at','desc')->get();
 
     }
 
@@ -141,13 +141,13 @@ class DemandeDepotController extends Controller
     {
        // return orderBy('created_at')->get();;
         
-        return DemandeDepot::with('user')->where('status','=','EnAttente')->orderBy('created_at','desc')->take(4)->get();
+        return DemandeDepot::with('user')->where('status','=','EnAttente')->where('status','=','EnAttente')->orderBy('created_at','desc')->take(4)->get();
 
     }
     public function DemandeDepotDetails(DemandeDepot $demandedepot){
         // return $domaine->demande_depots;
           //Si on veut les details du memoires avec ses Emprunts
-          return DemandeDepot::with('entreprise')->with('critere')->with('domaine')->with('etablisement')->with('user')
+          return DemandeDepot::with('entreprise')->with('critere')->with('domaine')->with('etablisement')->with('user')->with('encadreur')
           ->where('id',$demandedepot->id)->get();
       }
     public function notAccepted(){

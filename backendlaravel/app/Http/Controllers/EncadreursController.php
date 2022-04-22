@@ -15,7 +15,7 @@ class EncadreursController extends Controller
      */
     public function index()
     {
-        return Encadreur::all();
+        return Encadreur::with('etablisement')->get();
 
     }
 

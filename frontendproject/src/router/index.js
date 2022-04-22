@@ -16,12 +16,16 @@ import chartsComponent from '../components/Admin/charts.vue'
 import emailComponent from '../components/Admin/email.vue'
 import settingsComponent from '../components/Admin/settings.vue'
 import usersComponent from '../components/Admin/users.vue'
-import tableComponent from '../components/Admin/table.vue'
+import etabetencadComponent from '../components/Admin/etabetencad.vue'
 import profileComponent from '../components/Admin/profile.vue'
 import demandedepotComponent from '../components/Admin/demandedepot.vue'
 import demandeempruntComponent from '../components/Admin/demandeemprunt.vue'
+import historiqueempruntComponent from '../components/Admin/historique.vue'
 import demandedepotdetailsComponent from '../components/Admin/demandedepotdetails.vue'
 import demandeempruntdetailsComponent from '../components/Admin/demandeempruntdetails.vue'
+
+import memoireadminComponent from '../components/Admin/memoireadmin.vue'
+import memoireadmindetailComponent from '../components/Admin/memoireadmindetail.vue'
 
 
 
@@ -42,11 +46,32 @@ const routes = [
       title: 'demandesdepot'
     }
   },{
+    path: "/memoireadmin",
+    name: "memoireadmin",
+    component: memoireadminComponent,
+    meta: {
+      title: 'Memoires'
+    }
+  },{
+    path: "/memoireadmindetail/:id/:c",
+    name: "memoireadmindetail",
+    component: memoireadmindetailComponent,
+    meta: {
+      title: ' Detail Memoire'
+    }
+  },{
     path: "/demandesemprunt",
     name: "demandeemprunt",
     component: demandeempruntComponent,
     meta: {
       title: 'demandeemprunt'
+    }
+  },{
+    path: "/historiquesemprunt",
+    name: "historiqueemprunt",
+    component: historiqueempruntComponent,
+    meta: {
+      title: 'Historique demprunts'
     }
   },
   {
@@ -90,11 +115,11 @@ const routes = [
     }
   },
   {
-    path: "/table",
-    name: "table",
-    component: tableComponent,
+    path: "/etabetencad",
+    name: "etabetencad",
+    component: etabetencadComponent,
     meta: {
-      title: 'table'
+      title: 'Etablissements et encareurs'
     }
   },
   {

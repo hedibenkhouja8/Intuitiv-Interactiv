@@ -42,7 +42,7 @@
                      <h4 class="box-title mt-5"> Date Debut souhaité</h4>
                     <p>{{item.date_debut}}</p><h4 class="box-title mt-5"> Date fin d'emprunt</h4>
                     <p>{{item.date_fin}}</p>
-                    <h4 class="box-title mt-5"> Emprunts</h4>
+                    <h4 class="box-title mt-5"> Historique d'Emprunts</h4>
                         <h6 style="color:red;">{{refus}} refus <h7 style="color:green;">{{accepte}} accepté</h7></h6>
                     <div class="text-center">
                         <h3 class="box-title mt-5">Status</h3>

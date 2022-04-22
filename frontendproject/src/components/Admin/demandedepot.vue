@@ -43,7 +43,7 @@
                                 <th>Domaine</th>
                                 <th>Critere</th>
                                 <th>Status</th>
-                                <th>actions</th>
+                                <th>Actions</th>
                               </tr>
                             </thead>
                             <tbody>

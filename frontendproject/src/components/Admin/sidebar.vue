@@ -27,18 +27,20 @@
 
                         </ul>
                      </li>
-                     <li><router-link  class="nav-link" to="/activity"><i class="fa fa-clock-o orange_color"></i> <span>activity</span> </router-link></li>
+                     <li><router-link  class="nav-link" to="/memoireadmin"><i class="fa fa-book  red_color"></i> <span>Memoires </span></router-link></li>
                      <li><router-link  class="nav-link" to="/demandesdepot"><i class="fa fa-cloud -upload green_color"></i> <span>Demandes de depot </span></router-link></li>
   <li><router-link  class="nav-link" to="/demandesemprunt"><i class="fa fa-cloud -upload blue_color"></i> <span>Demandes d'emprunts </span></router-link></li>
-
-                     <li><router-link  class="nav-link" to="/table"><i class="fa fa-table purple_color2"></i> <span>Tables</span></router-link></li>
-
-                     <li><router-link  class="nav-link" to="/email"><i class="fa fa-envelope-o yellow_color"></i> <span>Email</span></router-link></li>
-
-                     <li>
+ <li>
                         <router-link  class="nav-link" to="/etudiants">
-                        <i class="fa fa-users red_color"></i> <span>etudiants</span></router-link>
+                        <i class="fa fa-users red_color"></i> <span>Etudiants</span></router-link>
                      </li>
+                     <li><router-link  class="nav-link" to="/etabetencad"><i class="fa fa-table purple_color2"></i> <span>Etablissement et Encadreur</span></router-link></li>
+                     <li><router-link  class="nav-link" to="/table"><i class="fa fa-table purple_color2"></i> <span>Domaines et Criteres</span></router-link></li>
+
+                     <li><router-link  class="nav-link" to="/email"><i class="fa fa-envelope-o yellow_color"></i> <span>Notifications</span></router-link></li>
+
+                     <li><router-link  class="nav-link" to="/historiquesemprunt"><i class="fa fa-clock-o orange_color"></i> <span>Historique D'emprunt</span> </router-link></li>
+                    
                    
                      <li><router-link  class="nav-link" to="/charts"><i class="fa fa-bar-chart-o green_color"></i> <span>Charts</span></router-link></li>
                      <li><router-link  class="nav-link" to="/settings"><i class="fa fa-cog yellow_color"></i> <span>Settings</span></router-link></li>
