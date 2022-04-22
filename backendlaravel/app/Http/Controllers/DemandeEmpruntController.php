@@ -17,9 +17,16 @@ class DemandeEmpruntController extends Controller
      */
     public function index()
     {
-        return DemandeEmprunt::all();
+        return DemandeEmprunt::with('user')->with('memoire.demande_depot')->where('status','!=','Accepte')
+        ->orderBy('status')->orderBy('created_at','ASC')->get();
 
     }
+    public function DemandeEmpruntDetails(DemandeEmprunt $demandeemprunt){
+        // return $domaine->demande_depots;
+          //Si on veut les details du memoires avec ses Emprunts
+          return DemandeEmprunt::with('user')->with('memoire.demande_depot')
+          ->where('id',$demandeemprunt->id)->get();
+      }
     public function recentDemandeEmprunts()
     {
        // return orderBy('created_at')->get();;
@@ -89,21 +96,36 @@ class DemandeEmpruntController extends Controller
         ->where('id',$memoire->id)->get();*/
     }
     public function byUser(User $user){
-       // return $user->demande_emprunts;
-        return DemandeEmprunt::with('memoire.demande_depot')
-        ->where('user_id',$user->id)->get();
+        // return $user->demande_emprunts;
+         return DemandeEmprunt::with('memoire.demande_depot')
+         ->where('user_id',$user->id)->get();
+ 
+ 
+ /*
+         $demandeemprunt = DemandEmprunt::whereHas('memoire', function($q){
+             $q->where('created_at', '>=', '2015-01-01 00:00:00');
+         })->get();
+ 
+         */
+          //Si on veut les details du memoires avec ses emprunts
+       //   return DemandeEmprunt::with('memoire')
+         // ->where('id',$user->id)->get();
+      } 
+      public function nbEmpruntparUserAccepte(User $user){
+        // return $user->demande_emprunts;
+      //   return DemandeEmprunt::all()->where('user_id',$user->id)->get();
+ 
+$users = DB::table('demande_emprunts')->where('user_id',$user->id)->where('status','=','Accepte')->get();
+return $users;
 
+      }public function nbEmpruntparUserRefuse(User $user){
+        // return $user->demande_emprunts;
+      //   return DemandeEmprunt::all()->where('user_id',$user->id)->get();
+ 
+$users = DB::table('demande_emprunts')->where('user_id',$user->id)->where('status','=','Refuse')->get();
+return $users;
 
-
-        $demandeemprunt = DemandEmprunt::whereHas('memoire', function($q){
-            $q->where('created_at', '>=', '2015-01-01 00:00:00');
-        })->get();
-
-        
-         //Si on veut les details du memoires avec ses emprunts
-      //   return DemandeEmprunt::with('memoire')
-        // ->where('id',$user->id)->get();
-     }
+      }
      public function X(User $user){
        return  $shares = DB::table('demande_emprunts')
         ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
