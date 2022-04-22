@@ -125,11 +125,17 @@ class DemandeDepotController extends Controller
         ->where('id',$memoire->id)->get();*/
     }
     public function byUser(User $user){
-        return $user->demandedepots;
+      //  return $user->demandedepots;
         //Si on veut les details du memoires avec ses Emprunts
-        /* return Memoire::with('Emprunts')
-        ->where('id',$memoire->id)->get();*/
+        return DemandeDepot::with('memoire')->where('status','!=','Accepte')
+        ->where('user_id',$user->id)->get();
     }
+    public function acceptebyUser(User $user){
+        //  return $user->demandedepots;
+          //Si on veut les details du memoires avec ses Emprunts
+          return DemandeDepot::with('memoire')->where('status','=','Accepte')
+          ->where('user_id',$user->id)->get();
+      }
     public function recentDemandeDepots()
     {
        // return orderBy('created_at')->get();;

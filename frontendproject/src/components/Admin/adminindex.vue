@@ -298,7 +298,7 @@
                                     </ul>
                                  </div>
                                  <div class="read_more">
-                                    <div class="center"><a class="main_bt read_bt" href="#">Read More</a></div>
+                                    <div class="center"><router-link  class="nav-link" to="/demandesemprunt"><span class="main_bt read_bt" >Voir plus</span></router-link></div>
                                  </div>
                               </div>
                            </div>
@@ -326,7 +326,7 @@
                                     </ul>
                                  </div>
                                  <div class="read_more">
-                                    <div class="center"><a class="main_bt read_bt" href="#">Read More</a></div>
+                                    <div class="center"><router-link  class="nav-link" to="/demandesdepot"><span class="main_bt read_bt" >Voir plus</span></router-link></div>
                                  </div>
                               </div>
                            </div>
@@ -405,7 +405,7 @@ this.a=7,
       .get('http://127.0.0.1:8000/api/User')
       .then(response => (this.user = response.data.length))
           axios
-      .get('http://127.0.0.1:8000/api/User')
+      .get('http://127.0.0.1:8000/api/User/Recents')
       .then(response => (this.users = response.data))
        axios
       .get('http://127.0.0.1:8000/api/DemandeNonAccepte')

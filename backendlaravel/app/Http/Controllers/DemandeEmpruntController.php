@@ -31,7 +31,7 @@ class DemandeEmpruntController extends Controller
     {
        // return orderBy('created_at')->get();;
         
-        return DemandeEmprunt::with('user')->where('status','=','EnAttente')->with('memoire.demande_depot')->orderBy('created_at','desc')->take(4)->get();
+        return DemandeEmprunt::with('user')->where('status','=','EnAttente')->with('memoire.demande_depot')->orderBy('created_at','ASC')->take(4)->get();
 
     }
 
@@ -126,12 +126,15 @@ $users = DB::table('demande_emprunts')->where('user_id',$user->id)->where('statu
 return $users;
 
       }
-     public function X(User $user){
+     public function X(){
        return  $shares = DB::table('demande_emprunts')
         ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
-        ->join('users', 'users.id', '=', 'demande_emprunts.user_id')
-        ->where('users.id',$user->id)
-        ->get();
+        
+        ->join('demande_depots', 'demande_depots.id', '=', 'memoires.demande_depot_id')
+        
+        ->join('domaines', 'domaines.id', '=', 'demande_depots.domaine_id')
+    ->get()
+        ;
    /*   $latestPosts  = DB::table('users')
         ->join('demande_emprunts', function ($join) {
             $join->on('users.id', '=', 'demande_emprunts.user_id');

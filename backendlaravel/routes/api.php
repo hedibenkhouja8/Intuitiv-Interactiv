@@ -97,12 +97,17 @@ Route::get('/User/{user}/DemandeEmprunt',[DemandeEmpruntController::class,'byUse
 
 Route::get('/User/{user}/DemandeDepot',[DemandeDepotController::class,'byUser']);
 
+Route::get('/User/{user}/AccepteDemandeDepot',[DemandeDepotController::class,'acceptebyUser']);
+
+
 
 Route::get('/User/{user}/nbEmpruntparUserAccepte',[DemandeEmpruntController::class,'nbEmpruntparUserAccepte']);
 Route::get('/User/{user}/nbEmpruntparUserRefuse',[DemandeEmpruntController::class,'nbEmpruntparUserRefuse']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::get('/informatique', [MemoireController::class, 'MemoireInformatique']);
+
+Route::get('/X', [DemandeEmpruntController::class, 'X']);
 Route::get('/physique', [MemoireController::class, 'MemoirePhysique']);
 Route::get('/chimie', [MemoireController::class, 'MemoireChimie']);
 Route::get('/math', [MemoireController::class, 'MemoireMath']);

@@ -14,7 +14,7 @@
                      <div class="row column_title">
                         <div class="col-md-12">
                            <div class="page_title">
-                              <h2>Profil</h2>
+                              <h2>Memoires</h2>
                            </div>
                         </div>
                      </div>
@@ -120,10 +120,29 @@
                                                             
                                                          </ul>
                                                       </div>
-                                                   </div>   <div class="tab-pane fade" id="profile_section" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                                      <p>Sed ut perspiciatis undeicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
-                                                         qui ratione voluptatem sequi nesciunt.
-                                                      </p>
+                                                   </div>   <div  class="tab-pane fade" id="profile_section" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                  <div class="msg_list_main">
+                                                         <ul  class="msg_list">
+                                                            <li v-bind:key="item.id" v-for="item in acceptedemandedepots"><div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.coverimage" width="100" height="200" ,bjknlkclass="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+                                                              
+                                                            </li>
+                                                            
+                                                         </ul>
+                                                      </div>
+
                                                    </div>
                                                   
                                                 </div>
@@ -172,6 +191,7 @@ components: {
      info: null,
      emprunts:null,
      demandedepots:null,
+     acceptedemandedepots:null,
      nb:null,refus:null,accepte:null
    
      
@@ -188,6 +208,9 @@ components: {
        axios
       .get('http://127.0.0.1:8000/api/User/'+this.$route.params.id+'/DemandeDepot')
       .then(response => (this.demandedepots = response.data))
+        axios
+      .get('http://127.0.0.1:8000/api/User/'+this.$route.params.id+'/AccepteDemandeDepot')
+      .then(response => (this.acceptedemandedepots = response.data))
 axios
       .get('http://127.0.0.1:8000/api/MemoireDeMemeDomaine/'+this.$route.params.c)
       .then(response => (this.dom = response.data))

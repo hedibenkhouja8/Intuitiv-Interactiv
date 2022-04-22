@@ -108,7 +108,7 @@ class AuthController extends Controller
        public function Recentusers()
        {
          
-           return User::with('etablisement')->orderBy('created_at', 'desc')->get();
+           return User::with('etablisement')->orderBy('created_at', 'desc')->limit(5)->get();
    
        }
 }
