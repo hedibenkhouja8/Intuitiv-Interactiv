@@ -185,6 +185,7 @@ export default {
       file2: null,
       file3: null,
       file4: null,
+      userid: localStorage.getItem('id')
     };
   },
   mounted() {
@@ -242,7 +243,7 @@ this.file4=e.target.files[0];
     onCreate() {
       let data = new FormData();
       data.append('titre',this.titre);
-      data.append('user_id',1);
+      data.append('user_id',this.userid);
       data.append('encadreur_id',this.selectedEncadreur);
       data.append('domaine_id',this.selectedDomaine.id);
       data.append('critere_id',this.selectedCritere);

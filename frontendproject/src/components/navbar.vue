@@ -38,7 +38,13 @@
               <li class="nav-item">
                  <router-link class="nav-link" to="/Admin">  Admin </router-link>
               </li>
-
+               <li class="nav-item">
+                 <h3> hello {{username}}</h3>
+              </li>
+              
+<li>
+  <button class="btn btn-danger" @click="logout()">logout</button>
+</li>
               </ul>
             </div>
            
@@ -51,8 +57,24 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
-name: 'NavbarComponent'
+name: 'NavbarComponent',
+data () {
+    return {
+      username: localStorage.getItem('name')
+    }
+  },
+  mounted(){
+    console.log(localStorage.getItem('name'))
+  },
+  methods:{
+    logout() {
+localStorage.clear();
+axios.post('http://127.0.0.1:8000/api/logout');
+this.$router.push('/login');
+    }
+  }
 }
 </script>
 

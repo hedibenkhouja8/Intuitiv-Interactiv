@@ -460,6 +460,8 @@ import FooterComponent from '@/components/footer.vue'
 import axios from 'axios'
 export default {
   name: 'HomePage',
+
+
   components: {
     NavbarComponent,
     FooterComponent

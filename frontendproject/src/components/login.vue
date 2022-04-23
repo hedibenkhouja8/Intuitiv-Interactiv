@@ -21,12 +21,12 @@
             <h5>
               Login Now
             </h5>
-            <form action="">
+            <form action="" @submit.prevent="onCreate">
               <div>
-                <input type="email" placeholder="Email " />
+                <input type="email" placeholder="Email" v-model="email" />
               </div>
               <div>
-                <input type="password" placeholder="Password" />
+                <input type="password"  v-model="password"  placeholder="Password" />
               </div>
               <button type="submit">Login</button>
             </form>
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import NavbarComponent from '@/components/navbar.vue'
 import FooterComponent from '@/components/footer.vue'
 export default {
@@ -47,7 +48,41 @@ name: 'loginComponent',
 components: {
     NavbarComponent,
     FooterComponent
-  }
+  },
+   data() {
+    return {
+      email: "",
+      password: "",
+      values :{
+      id:'',
+      nom:''
+      }
+    };
+  },
+  methods: {
+  
+    onCreate() {
+      let data = new FormData();
+      data.append("email", this.email);
+      data.append("password", this.password);
+      axios({
+        headers: { "Content-Type": "multipart/form-data" },
+        method: "post",
+        url: "http://127.0.0.1:8000/api/login",
+        data: data,
+      })
+        .then((response) => {
+          console.log("response", response.data);
+          localStorage.setItem('token',response.data.token)
+          localStorage.setItem('name',response.data.user.name)
+          localStorage.setItem('id',response.data.user.id)
+
+        })
+        .catch((err) => console.log(err));
+        this.$router.push('/memoire');
+      
+    },
+  },
 
 }
 </script>
