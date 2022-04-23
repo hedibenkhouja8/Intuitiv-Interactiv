@@ -47,7 +47,7 @@
                     <div class="text-center">
                         <h3 class="box-title mt-5">Status</h3>
                         <h4>{{ item.status }}</h4>
-                         <button
+                         <button 
                                     type="button"
                                     class="btn btn-success btn-xs"
                                     @click="accepter(item.id)"
@@ -55,7 +55,7 @@
                                   >
                                     Accepter
                                   </button>
-                                  <button
+                                  <button  
                                     type="button"
                                     class="btn btn-danger btn-xs"
                                     @click="refuser(item.id)"

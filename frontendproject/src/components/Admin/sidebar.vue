@@ -35,9 +35,10 @@
                         <i class="fa fa-users red_color"></i> <span>Etudiants</span></router-link>
                      </li>
                      <li><router-link  class="nav-link" to="/etabetencad"><i class="fa fa-table purple_color2"></i> <span>Etablissement et Encadreur</span></router-link></li>
-                     <li><router-link  class="nav-link" to="/table"><i class="fa fa-table purple_color2"></i> <span>Domaines et Criteres</span></router-link></li>
+                     <li><router-link  class="nav-link" to="/domainecritere"><i class="fa fa-table purple_color2"></i> <span>Domaines et Criteres</span></router-link></li>
 
                      <li><router-link  class="nav-link" to="/email"><i class="fa fa-envelope-o yellow_color"></i> <span>Notifications</span></router-link></li>
+ <li><router-link  class="nav-link" to="/etudiantsenattente"><i class="fa fa-envelope-o yellow_color"></i> <span>Etudiant en attente</span></router-link></li>
 
                      <li><router-link  class="nav-link" to="/historiquesemprunt"><i class="fa fa-clock-o orange_color"></i> <span>Historique D'emprunt</span> </router-link></li>
                     

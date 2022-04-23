@@ -14,7 +14,7 @@
                      <div class="row column_title">
                         <div class="col-md-12">
                            <div class="page_title">
-                              <h2>Tables</h2>
+                              <h2>Etablissements et Encadreurs </h2>
                            </div>
                         </div>
                      </div>
@@ -25,7 +25,7 @@
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>Etablissements</h2>
+                                    <h2>Etablissements <button class="btn btn-warning" type="button"  data-toggle="modal" data-target="#exampleModal2">Ajouter</button></h2>
                                  </div>
                               </div>
                               <div class="table_section padding_infor_info">
@@ -56,17 +56,68 @@
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>Encadreurs</h2>
+                                    <h2>Encadreurs <button class="btn btn-warning" type="button"  data-toggle="modal" data-target="#exampleModal">Ajouter</button></h2>
                                  </div>
                               </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter un Encadreur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form @submit.prevent="onCreate">
+      <div class="form-group">
+      <h6 for="disabledTextInput">Nom </h6> 
+   
+      <div class="input-group mb-3 input-group-lg">
+
+  <input v-model="nom"  type="text" class="form-control" aria-label="Sizing example input" placeholder="Nom" aria-describedby="inputGroup-sizing-default">
+</div>
+      <h6 for="disabledTextInput">Prénom </h6>  <div class="input-group mb-3 input-group-lg">
+ 
+  <input  v-model="prenom" type="text" placeholder="Prénom" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+      <h6 for="validationCustom03">Etablissement</h6>
+      <div class="input-group mb-3 input-group-lg">
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  v-model="selectedEtablisement"
+                >
+                  <option
+                    v-bind:key="etablisement.id"
+                    v-bind:value="etablisement.id"
+                    v-for="etablisement in info"
+                  >
+                    {{ etablisement.nom }}
+                  </option>
+                </select>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button  type="submit" class="btn btn-primary" data-bs-dismiss="modal" >Confirmer La demande</button>
+        
+      </div></form>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
                               <div class="table_section padding_infor_info">
                                  <div class="table-responsive-sm">
                                    <table class="table table-striped">
                                        <thead>
                                           <tr>
-                                             <th>Firstname</th>
-                                             <th>Lastname</th>
-                                             <th>Email</th>
+                                             <th>Nom</th>
+                                             <th>Prénom</th>
+                                             <th>Etablissement</th>
                                           </tr>
                                        </thead>
                                        <tbody>
@@ -98,6 +149,45 @@
 
             </div>
          </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter un Encadreur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form @submit.prevent="onCreate2">
+      <div class="form-group">
+      <h6 for="disabledTextInput">Nom </h6> 
+   
+      <div class="input-group mb-3 input-group-lg">
+
+  <input v-model="nom2"  type="text" class="form-control" aria-label="Sizing example input" placeholder="Nom" aria-describedby="inputGroup-sizing-default">
+</div>
+      <h6 for="disabledTextInput">Ville </h6>  <div class="input-group mb-3 input-group-lg">
+ 
+  <input  v-model="ville" type="text" placeholder="Ville" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+      <h6 for="validationCustom03">Adresse</h6>
+     <div class="input-group mb-3 input-group-lg">
+ 
+  <input  v-model="adresse" type="text" placeholder="Adresse" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button  type="submit" class="btn btn-primary" data-bs-dismiss="modal" >Confirmer La demande</button>
+        
+      </div></form>
+      </div>
+    
+    </div>
+  </div>
+</div>
       </div>
 </template>
 
@@ -112,7 +202,7 @@ components: {
   topbarComponent
   }, data () {
     return {
-      info: null,info2:null,    }
+      info: null,info2:null,nom:'',prenom:'',selectedEtablisement:0 ,nom2:'',ville:'',adresse:''   }
   },
   mounted () {
       axios
@@ -121,7 +211,29 @@ components: {
        axios
       .get('http://127.0.0.1:8000/api/Encadreur')
       .then(response => (this.info2 = response.data))
-  },
+  },methods: {
+       onCreate(){
+      axios
+      .post('http://127.0.0.1:8000/api/Encadreur',
+     {nom:this.nom,prenom:this.prenom,etablisement_id:this.selectedEtablisement} )
+     .then((response)=>{if(response.status === 201) {
+            
+  window.location.reload();    
+ 
+            }
+            })
+    },  onCreate2(){
+      axios
+      .post('http://127.0.0.1:8000/api/Etablisement',
+     {nom:this.nom2,ville:this.ville,adresse:this.adresse} )
+     .then((response)=>{if(response.status === 201) {
+            
+  window.location.reload();    
+ 
+            }
+            })
+    },
+  }
 }
 </script>
 

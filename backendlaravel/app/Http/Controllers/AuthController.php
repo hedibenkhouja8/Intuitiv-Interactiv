@@ -112,6 +112,12 @@ class AuthController extends Controller
            return User::with('etablisement')->with('demande_emprunts')
            ->where('id',$user->id)->get();
        }
+       public function usersenattente(){
+        //  return $memoire->demandedepot;
+           //Si on veut les details du memoires avec ses Emprunts
+           return User::with('etablisement')
+           ->where('etatdecompte','=','notactive')->get();
+       }
        public function Recentusers()
        {
          

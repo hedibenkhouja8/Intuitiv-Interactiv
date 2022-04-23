@@ -13,7 +13,7 @@ class DomaineController extends Controller
      */
     public function index()
     {
-        return Domaine::all();
+        return Domaine::with('criteres')->get();
 
     }
 

@@ -34,14 +34,14 @@
                                     <!-- profile image -->
                                     <div class="col-lg-12">
                                        <div class="full dis_flex center_text">
-                                          <div class="profile_img"><img width="180" class="rounded-circle" src="../../assets/images/layout_img/user_img.jpg" alt="#" /></div>
+                                          <div class="profile_img"><img width="180" class="rounded-circle" v-bind:src="'http://localhost:8000/storage/files/register/profilepic/'+item.profilepic" alt="#" /></div>
                                           <div class="profile_contant">
                                              <div class="contact_inner">
                                                 <h3>{{item.name}}</h3>
                                                 <p><strong>Etablissement: </strong>{{item.etablisement.nom}}</p>
                                                 <ul class="list-unstyled">
                                                    <li><i class="fa fa-envelope-o"></i> : {{item.email}}</li>
-                                                   <li><i class="fa fa-phone"></i> : 987 654 3210</li>
+                                                   <li><i class="fa fa-phone"></i> {{item.tel}}</li>
                                                    
                                                 </ul>
                                                 <p><strong>Nombre de demandes d'emprunts: </strong>{{nb}}</p>
@@ -76,8 +76,8 @@
                                                 <nav>
                                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                       <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#recent_activity" role="tab" aria-selected="true"> Emprunts</a>
-                                                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#project_worked" role="tab" aria-selected="false">Demande de depot</a>
-                                                      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#profile_section" role="tab" aria-selected="false">Profile</a>
+                                                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#project_worked" role="tab" aria-selected="false">Demandes de depot</a>
+                                                      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#profile_section" role="tab" aria-selected="false">Memoires</a>
                                                    </div>
                                                 </nav>
                                                 <div  class="tab-content" id="nav-tabContent">
@@ -123,16 +123,22 @@
                                                    </div>   <div  class="tab-pane fade" id="profile_section" role="tabpanel" aria-labelledby="nav-contact-tab">
                                                   <div class="msg_list_main">
                                                          <ul  class="msg_list">
-                                                            <li v-bind:key="item.id" v-for="item in acceptedemandedepots"><div class="card mb-3" style="max-width: 540px;">
+                                                            <li v-bind:key="item.id" v-for="item in acceptedemandedepots"><div class="card mb-3" style="max-width: 8000px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.coverimage" width="100" height="200" ,bjknlkclass="img-fluid rounded-start" alt="...">
+      <img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.coverimage" width="100" height="200" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <h5 class="card-title">{{ item.titre}} <button
+                                    type="button"
+                                    class="btn "
+                                     @click="detailsmemoires(item.memoire.id,item.user_id)"
+                                  >
+                                    <i class="fa fa-share green_color"> </i>
+                                  </button></h5>
+        <p class="card-text">{{item.description}}</p>
+        <p class="card-text"><small class="text-muted">Deposé le :{{formatDate(item.created_at) }}</small></p>
       </div>
     </div>
   </div>
@@ -231,12 +237,21 @@ axios
         name: "Demandeempruntdetails",
         params: { id: id ,c:c},
       });
+    },  detailsmemoires(id,c) {
+      this.$router.push({
+        name: "memoireadmindetail",
+        params: { id: id ,c:c},
+      });
     }, edit(id) {
       this.$router.push({
         name: "Demandedepotdetails",
         params: { id: id },
       });
-    }
+    } , formatDate(dateString) {
+            const date = new Date(dateString);
+                // Then specify how you want your dates to be formatted
+            return new Intl.DateTimeFormat('default', {dateStyle: 'long'}).format(date);
+        },
   }
 }
 </script>

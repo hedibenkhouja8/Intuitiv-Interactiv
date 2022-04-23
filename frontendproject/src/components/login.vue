@@ -1,4 +1,4 @@
-<template>
+<template><div>
   <navbar-component/>
   <section class="login_section layout_padding">
     <div class="container">
@@ -36,7 +36,7 @@
     </div>
   </section>
   <footer-component/>
-
+          </div>
 </template>
 
 <script>
@@ -76,10 +76,12 @@ components: {
           localStorage.setItem('token',response.data.token)
           localStorage.setItem('name',response.data.user.name)
           localStorage.setItem('id',response.data.user.id)
-
+if(response.status === 201) {
+            
+               this.$router.push({ path : '/Memoire' });
+            }
         })
-        .catch((err) => console.log(err));
-        this.$router.push('/memoire');
+        .catch((err) => console.log(err))
       
     },
   },

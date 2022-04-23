@@ -47,6 +47,8 @@ Route::resource('Emprunt',EmpruntController::class);
 Route::resource('Encadreur',EncadreursController::class);
 Route::resource('Etablisement',EtablisementsController::class);
 
+Route::resource('Critere',CritereController::class);
+
 Route::resource('Entreprise',EntrepriseController::class);
 Route::get('/Entreprise/search/{name}', [EntrepriseController::class, 'search']);
 Route::resource('Memoire',MemoireController::class);
@@ -84,6 +86,8 @@ Route::get('/Etablisement/{etablisement}/DemandeDepot',[DemandeDepotController::
 Route::get('/Etablisement/{etablisement}/User',[AuthController::class,'byEtablisement']);
 
 Route::get('/User',[AuthController::class,'users']);
+
+Route::get('/UserEnAttente',[AuthController::class,'usersenattente']);
 
 Route::get('/UserJoin/{user}',[DemandeEmpruntController::class,'X']);
 

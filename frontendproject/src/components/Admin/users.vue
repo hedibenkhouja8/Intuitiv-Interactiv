@@ -44,7 +44,7 @@
                                              </div>
                                              <div class="right">
                                                 <div class="profile_contacts">
-                                                   <img class="img-responsive" src="../../assets/images/layout_img/msg2.png" alt="#" />
+                                                   <img class="img-responsive" v-bind:src="'http://localhost:8000/storage/files/register/profilepic/'+item.profilepic" alt="#" />
                                                 </div>
                                              </div>
                                              <div class="bottom_list">

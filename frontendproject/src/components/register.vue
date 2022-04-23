@@ -1,4 +1,4 @@
-<template>
+<template><div>
   <navbar-component />
   <section class="login_section layout_padding">
     <div class="container">
@@ -67,7 +67,7 @@
       </div>
     </div>
   </section>
-  <footer-component />
+  <footer-component /></div>
 </template>
 
 <script>

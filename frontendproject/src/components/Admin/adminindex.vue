@@ -315,7 +315,7 @@
                                  <div class="msg_list_main">
                                     <ul class="msg_list">
                                        <li v-bind:key="item.id" v-for="item in rec2">
-                                          <span><img src="../../assets/images/layout_img/msg2.png" class="img-responsive" alt="#" /></span>
+                                          <span><img v-bind:src="'http://localhost:8000/storage/files/register/profilepic/'+item.user.profilepic" class="img-responsive" alt="#" /></span>
                                           <span>
                                           <span class="name_user">{{item.user.name}}</span>
                                           <span class="msg_user">{{item.titre}}</span>

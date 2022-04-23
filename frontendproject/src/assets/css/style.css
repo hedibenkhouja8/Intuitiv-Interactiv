@@ -43,7 +43,9 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
 }
-
+.xx {
+  border-radius: 50%;
+}
 .heading_container h2 {
   position: relative;
   font-weight: bold;

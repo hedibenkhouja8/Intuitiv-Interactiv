@@ -1458,7 +1458,11 @@ a:focus {
 .orange_color {
     color: #ff5722 !important;
 }
-
+.xx {
+    border-radius: 50%;
+    width:40px;
+    height: 40px;
+  }
 .orange_bg {
     background: #ff5722 !important;
 }

@@ -33,17 +33,17 @@
 
               </li>
               <li class="nav-item">
-                 <router-link class="nav-link" to="/login"> login </router-link>
+                 <router-link v-if="username === null" class="nav-link" to="/login"> login </router-link>
               </li>
               <li class="nav-item">
                  <router-link class="nav-link" to="/Admin">  Admin </router-link>
               </li>
-               <li class="nav-item">
+               <li v-if="username !== null" class="nav-item">
                  <h3> hello {{username}}</h3>
               </li>
               
 <li>
-  <button class="btn btn-danger" @click="logout()">logout</button>
+  <button v-if="username !== null" class="btn btn-danger" @click="logout()">logout</button>
 </li>
               </ul>
             </div>
