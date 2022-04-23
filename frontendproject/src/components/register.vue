@@ -128,9 +128,10 @@ export default {
       })
         .then((response) => {
           console.log("response", response.data);
+          
         })
         .catch((err) => console.log(err));
-          
+          this.$router.push('/login');
     },
   },
 };

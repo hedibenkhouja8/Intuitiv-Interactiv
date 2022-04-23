@@ -87,9 +87,11 @@ components: {
     }
   },
   mounted () {
+    
     axios
       .get('http://127.0.0.1:8000/api/Memoire')
       .then(response => (this.info = response.data))
+      
   },
  methods :{edit(id,c){
 this.$router.push({
