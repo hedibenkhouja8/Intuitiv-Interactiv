@@ -128,10 +128,13 @@ export default {
       })
         .then((response) => {
           console.log("response", response.data);
-          
+          if(response.status === 201) {
+            
+               this.$router.push({ path : '/login' });
+            }
         })
         .catch((err) => console.log(err));
-          this.$router.push('/login');
+          
     },
   },
 };

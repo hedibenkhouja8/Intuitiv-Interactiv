@@ -14,10 +14,10 @@
               <img src="../assets/images/t1.jpg" alt="">
             </div>
             <div class="detail-box">
-              <h5>
+              <h5 style="color:white">
                 Alice Stark
               </h5>
-              <h6>
+              <h6 style="color:white">
                 Teacher
               </h6>
             </div>
@@ -29,10 +29,10 @@
               <img src="../assets/images/t2.jpg" alt="">
             </div>
             <div class="detail-box">
-              <h5>
+              <h5 style="color:white">
                 Martin Evans
               </h5>
-              <h6>
+              <h6 style="color:white">
                 Teacher
               </h6>
             </div>
@@ -44,10 +44,10 @@
               <img src="../assets/images/t3.jpg" alt="">
             </div>
             <div class="detail-box">
-              <h5>
+              <h5 style="color:white">
                 Jane Dunn
               </h5>
-              <h6>
+              <h6 style="color:white">
                 Teacher
               </h6>
             </div>
@@ -59,10 +59,10 @@
               <img src="../assets/images/t4.jpg" alt="">
             </div>
             <div class="detail-box">
-              <h5>
+              <h5 style="color:white">
                 Clara Mark
               </h5>
-              <h6>
+              <h6 style="color:white">
                 Teacher
               </h6>
             </div>

@@ -62,6 +62,11 @@ Route::get('/Memoire/{memoire}/DemandeEmprunt',[DemandeEmpruntController::class,
 
 Route::get('/DemandeEmpruntAccepted',[DemandeEmpruntController::class,'DemandeEmpruntsAccepted']);
 
+Route::post('/Acceptuser/{user}', [AuthController::class, 'Acceptuser']);
+Route::post('/Refuseuser/{user}', [AuthController::class, 'Refuseuser']);
+
+
+
 Route::get('/Memoire/{memoire}/DemandeDepot',[MemoireController::class,'byDemande']);
 
 Route::get('/recentDemandeEmprunts',[DemandeEmpruntController::class,'recentDemandeEmprunts']);

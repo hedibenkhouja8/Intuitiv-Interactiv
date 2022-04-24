@@ -100,7 +100,7 @@
       </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">Close</button>
         <button  type="submit" class="btn btn-primary" data-bs-dismiss="modal" >Confirmer La demande</button>
         
       </div></form>
@@ -158,7 +158,7 @@ axios
       .post('http://127.0.0.1:8000/api/DemandeEmprunt',
      {date_debut:this.date_debut,date_fin:this.date_fin,memoire_id:this.memoire_id,user_id:this.user_id,description:this.description,status:this.status,type:this.type} )
      .then((response)=>{if(response.status === 201) {
-            
+            document.getElementById('close').click();
                this.$router.push({ path : '/Memoire' });
             }
             })

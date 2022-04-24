@@ -62,6 +62,11 @@ class AuthController extends Controller
                 'message' => 'pass incorect '
             ], 401);
         }
+        if($user->etatdecompte != 'active') {
+            return response([
+                'message' => 'account not  active '
+            ], 401);
+        }
 
         $token = $user->createToken('myapptoken')->plainTextToken;
 
@@ -124,4 +129,24 @@ class AuthController extends Controller
            return User::with('etablisement')->orderBy('created_at', 'desc')->limit(5)->get();
    
        }
+       public function Acceptuser(User $user)
+    {
+        DB::table('users')
+        ->where('id',$user->id)
+        ->update(['etatdecompte' => 'active'
+        ]);
+
+     
+
+    }
+    public function Refuseuser(User $user)
+    {
+        DB::table('users')
+        ->where('id',$user->id)
+        ->update(['etatdecompte' => 'refused'
+        ]);
+
+     
+
+    }
 }
