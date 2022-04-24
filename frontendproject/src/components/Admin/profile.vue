@@ -37,7 +37,9 @@
                                           <div class="profile_img"><img width="180" class="rounded-circle" v-bind:src="'http://localhost:8000/storage/files/register/profilepic/'+item.profilepic" alt="#" /></div>
                                           <div class="profile_contant">
                                              <div class="contact_inner">
-                                                <h3>{{item.name}}</h3>
+                                                <h3>{{item.name}} {{item.prenom}}&nbsp;<button v-if="item.etatdecompte === 'active'"
+                              @click="restreindre(item.id)" class="btn btn-warning">Restrindre l'acces</button><button 
+                              @click="derestreindre(item.id)" class="btn btn-success"  v-if="item.etatdecompte === 'restreint'" >Renouveler accés</button></h3>
                                                 <p><strong>Etablissement: </strong>{{item.etablisement.nom}}</p>
                                                 <ul class="list-unstyled">
                                                    <li><i class="fa fa-envelope-o"></i> : {{item.email}}</li>
@@ -231,7 +233,14 @@ axios
       .get('http://127.0.0.1:8000/api/User/'+this.$route.params.id+'/nbEmpruntparUserAccepte')
       .then(response => (this.accepte = response.data.length))
 
-  },methods:{
+  },methods:{   restreindre(id) {
+      axios.post("http://127.0.0.1:8000/api/restreindre/" + id);
+      window.location.reload();
+    },
+    derestreindre(id) {
+      axios.post("http://127.0.0.1:8000/api/derestrindre/" + id);
+      window.location.reload();
+    },
        details(id,c) {
       this.$router.push({
         name: "Demandeempruntdetails",

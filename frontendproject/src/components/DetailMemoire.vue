@@ -25,8 +25,8 @@
             </p>
             <p>
              nb pages : {{ item.demande_depot.nbpages}}
-            </p>
-            <a v-if="user_id !== null" href="" data-toggle="modal" data-target=".bd-example-modal-lg">
+            </p><h3 v-if="user_status === 'restreint'">Votre compte est désactivé veuillez nous contacter</h3>
+            <a v-if="user_id !== null && user_status !== 'restreint' " href="" data-toggle="modal" data-target=".bd-example-modal-lg">
            Empruntez
             </a> <router-link v-if="user_id === null"  to="/login" >
           Connecter vous pour empruntez cette memoire</router-link>
@@ -132,6 +132,7 @@ export default {
      
       username: localStorage.getItem('name'),
       user_id: localStorage.getItem('id'),
+      user_status:localStorage.getItem('etatdecompte'),
      description:'',
      status:'en attente',
      type:'indefini',
@@ -143,7 +144,7 @@ export default {
      
      
     }
-  },
+  },//
      async mounted () {
       
 const res =axios.get('http://127.0.0.1:8000/api/Memoire/'+this.$route.params.id+'/DemandeDepot')

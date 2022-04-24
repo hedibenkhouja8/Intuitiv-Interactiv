@@ -36,9 +36,9 @@
                                           </thead>
                                           <tbody>
                                              <tr v-bind:key="item.id" v-for="item in info">
-                                                <td>{{ item.memoire.demande_depot.titre }}</td>
+                                                <td><a cursor: pointer  @click="details(item.memoire.id,item.memoire.demande_depot.user_id)">{{ item.memoire.demande_depot.titre }}</a></td>
                                                 
-                                                <td>{{ item.user.name }}</td>
+                                                <td><a @click="details2(item.user_id)">{{ item.user.name }}</a> </td>
                                                   <td>{{ formatDate(item.created_at) }}</td>
                                                 <td>{{ item.date_debut }}</td>
                                                 <td>{{ item.date_fin }}</td>
@@ -94,8 +94,13 @@ export default {
   methods: {
     details(id,c) {
       this.$router.push({
-        name: "Demandeempruntdetails",
+        name: "memoireadmindetail",
         params: { id: id ,c:c},
+      });
+    },  details2(id) {
+      this.$router.push({
+        name: "profile",
+        params: { id: id },
       });
     }
  , formatDate(dateString) {

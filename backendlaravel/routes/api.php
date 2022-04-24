@@ -68,6 +68,8 @@ Route::get('/AcceptedByUserAndDone/{user}',[DemandeEmpruntController::class,'acc
 
 Route::post('/Acceptuser/{user}', [AuthController::class, 'Acceptuser']);
 Route::post('/Refuseuser/{user}', [AuthController::class, 'Refuseuser']);
+Route::post('/restreindre/{user}', [AuthController::class, 'Restreintuser']);
+Route::post('/derestrindre/{user}', [AuthController::class, 'Derestreintuser']);
 Route::post('/desarchivememoire/{memoire}', [MemoireController::class, 'desarchivememoire']);
 Route::post('/archivememoire/{memoire}', [MemoireController::class, 'archivememoire']);
 
@@ -97,6 +99,8 @@ Route::get('/Etablisement/{etablisement}/DemandeDepot',[DemandeDepotController::
 Route::get('/Etablisement/{etablisement}/User',[AuthController::class,'byEtablisement']);
 
 Route::get('/User',[AuthController::class,'users']);
+
+Route::get('/UserX',[AuthController::class,'users2']);
 
 Route::get('/UserEnAttente',[AuthController::class,'usersenattente']);
 

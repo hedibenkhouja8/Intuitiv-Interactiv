@@ -14,7 +14,7 @@
                      <div class="row column_title">
                         <div class="col-md-12">
                            <div class="page_title">
-                              <h2>Contacts</h2>
+                              <h2>Etudiants</h2>
                            </div>
                         </div>
                      </div>
@@ -24,7 +24,7 @@
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>Contacts</h2>
+                                    <h2>Etudiants Active</h2>
                                  </div>
                               </div>
                               <div class="full price_table padding_infor_info">
@@ -70,7 +70,54 @@
                                        </div>
                                     </div>
                                     <!-- end column contact blog -->
-                                 </div></div></div>
+                                 </div></div>   <div class="full graph_head">
+                                 <div class="heading1 margin_0">
+                                    <h2>Etudiants avec accés retreint</h2>
+                                 </div> <div class="full price_table padding_infor_info">
+                                 <div class="row">
+                                    <!-- column contact --> 
+                                    <div  v-bind:key="item.id" v-for="item in info2" class="col-lg-4 col-md-6 col-sm-6 col-xs-12 profile_details margin_bottom_30">
+                                       <div class="contact_blog">
+                                          <h4 class="brief"></h4>
+                                          <div class="contact_inner">
+                                             <div class="left">
+                                                <h3>{{item.name}}</h3>
+                                                <p><strong>Etablissement: </strong>{{item.etablisement.nom}}</p>
+                                                <ul class="list-unstyled">
+                                                   <li><i class="fa fa-envelope-o"></i> {{item.email}}</li>
+                                                   <li><i class="fa fa-phone"></i> {{item.tel}}</li>
+                                                </ul>
+                                             </div>
+                                             <div class="right">
+                                                <div class="profile_contacts">
+                                                   <img class="img-responsive" v-bind:src="'http://localhost:8000/storage/files/register/profilepic/'+item.profilepic" alt="#" />
+                                                </div>
+                                             </div>
+                                             <div class="bottom_list">
+                                                <div class="left_rating">
+                                                   <p class="ratings">
+                                                      <a href="#"><span class="fa fa-star"></span></a>
+                                                      <a href="#"><span class="fa fa-star"></span></a>
+                                                      <a href="#"><span class="fa fa-star"></span></a>
+                                                      <a href="#"><span class="fa fa-star"></span></a>
+                                                      <a href="#"><span class="fa fa-star-o"></span></a>
+                                                   </p>
+                                                </div>
+                                                <div class="right_button">
+                                                   <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-user">
+                                                   </i> <i class="fa fa-comments-o"></i> 
+                                                   </button>
+                                                   <button type="button" @click="edit(item.id)" class="btn btn-primary btn-xs">
+                                                   <i class="fa fa-user"> </i> View Profile
+                                                   </button>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!-- end column contact blog -->
+                                 </div></div>
+                              </div></div>
                         </div>
                         <!-- end row -->
                      </div>
@@ -103,13 +150,17 @@ components: {
   topbarComponent
   } , data () {
     return {
-      info: null
+      info: null,   info2: null
     }
   },
   mounted () {
     axios
       .get('http://127.0.0.1:8000/api/User')
       .then(response => (this.info = response.data))
+      
+    axios
+      .get('http://127.0.0.1:8000/api/UserX')
+      .then(response => (this.info2 = response.data))
   },
    methods :{edit(id){
 this.$router.push({

@@ -76,6 +76,8 @@ components: {
           localStorage.setItem('token',response.data.token)
           localStorage.setItem('name',response.data.user.name)
           localStorage.setItem('id',response.data.user.id)
+          localStorage.setItem('prenom',response.data.user.prenom)
+          localStorage.setItem('etatdecompte',response.data.user.etatdecompte)
 if(response.status === 201) {
             
                this.$router.push({ path : '/Memoire' });

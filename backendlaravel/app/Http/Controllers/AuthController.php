@@ -62,7 +62,7 @@ class AuthController extends Controller
                 'message' => 'pass incorect '
             ], 401);
         }
-        if($user->etatdecompte != 'active') {
+        if($user->etatdecompte != 'active' and $user->etatdecompte != 'restreint'  ) {
             return response([
                 'message' => 'account not  active '
             ], 401);
@@ -108,7 +108,12 @@ class AuthController extends Controller
     public function users()
     {
       
-        return User::with('etablisement')->get();
+        return User::with('etablisement')->where('etatdecompte','=','active')->get();
+
+    } public function users2()
+    {
+      
+        return User::with('etablisement')->where('etatdecompte','=','restreint')->get();
 
     }
     public function userById(User $user){
@@ -121,7 +126,7 @@ class AuthController extends Controller
         //  return $memoire->demandedepot;
            //Si on veut les details du memoires avec ses Emprunts
            return User::with('etablisement')
-           ->where('etatdecompte','=','notactive')->get();
+           ->where('etatdecompte','=','notactive')->orderBy('created_at', 'desc')->get();
        }
        public function Recentusers()
        {
@@ -144,6 +149,26 @@ class AuthController extends Controller
         DB::table('users')
         ->where('id',$user->id)
         ->update(['etatdecompte' => 'refused'
+        ]);
+
+     
+
+    }
+    public function Restreintuser(User $user)
+    {
+        DB::table('users')
+        ->where('id',$user->id)
+        ->update(['etatdecompte' => 'restreint'
+        ]);
+
+     
+
+    }
+    public function Derestreintuser(User $user)
+    {
+        DB::table('users')
+        ->where('id',$user->id)
+        ->update(['etatdecompte' => 'active'
         ]);
 
      
