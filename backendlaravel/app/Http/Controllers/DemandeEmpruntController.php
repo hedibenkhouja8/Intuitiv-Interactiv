@@ -21,6 +21,19 @@ class DemandeEmpruntController extends Controller
         ->orderBy('status')->orderBy('created_at','desc')->get();
 
     }
+    public function acceptedbyUser($user)
+    {
+        $currentDate = date('Y-m-d');
+        return DemandeEmprunt::with('user')->with('memoire.demande_depot')->where('status','=','Accepte')->where('user_id','=',$user)->where('date_fin','>=',$currentDate)
+        ->orderBy('status')->orderBy('created_at','desc')->get();
+
+    } public function acceptedanddonebyUser($user)
+    {
+        $currentDate = date('Y-m-d');
+        return DemandeEmprunt::with('user')->with('memoire.demande_depot')->where('status','=','Accepte')->where('user_id','=',$user)->where('date_fin','<=',$currentDate)
+        ->orderBy('status')->orderBy('created_at','desc')->get();
+
+    }
     public function DemandeEmpruntDetails(DemandeEmprunt $demandeemprunt){
         // return $domaine->demande_depots;
           //Si on veut les details du memoires avec ses Emprunts

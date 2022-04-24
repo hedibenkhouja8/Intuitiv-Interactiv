@@ -54,17 +54,7 @@
                           <td>{{ item.prenom }}</td>
                           <td>{{ item.email }}</td>
                           <td>{{ item.etablisement.nom }}</td>
-                          <td>
-                            <button
-                              type="button"
-                              class="btn btn-primary"
-                              data-toggle="modal"
-                              data-target="#modalCart"
-                            >
-                              <i class="fa fa-file-pdf-o"> </i>
-                              
-                            </button>
-                              <div
+                          <td>        <div
                       class="modal fade"
                       id="modalCart"
                       tabindex="-1"
@@ -77,7 +67,7 @@
                           <!--Header-->
                           <div class="modal-header">
                             <h4 class="modal-title" id="myModalLabel">
-                              pdf file
+                              pdf file {{item.fichierdemande }}
                             </h4>
                             <button
                               type="button"
@@ -115,6 +105,16 @@
                         </div>
                       </div>
                     </div>
+                            <button
+                              type="button"
+                              class="btn btn-primary"
+                              data-toggle="modal"
+                              data-target="#modalCart"
+                            >
+                              <i class="fa fa-file-pdf-o"> </i>
+                              
+                            </button>
+                      
                           </td>
 
                           <td>

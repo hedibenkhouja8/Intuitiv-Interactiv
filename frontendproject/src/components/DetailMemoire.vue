@@ -26,9 +26,11 @@
             <p>
              nb pages : {{ item.demande_depot.nbpages}}
             </p>
-            <a href="" data-toggle="modal" data-target=".bd-example-modal-lg">
-              Read More
-            </a>
+            <a v-if="user_id !== null" href="" data-toggle="modal" data-target=".bd-example-modal-lg">
+           Empruntez
+            </a> <router-link v-if="user_id === null"  to="/login" >
+          Connecter vous pour empruntez cette memoire</router-link>
+      
           </div>
         </div>
       </div>
@@ -127,7 +129,9 @@ export default {
     return {
      info: null,
      memoire_id:this.$route.params.id,
-     user_id:5,
+     
+      username: localStorage.getItem('name'),
+      user_id: localStorage.getItem('id'),
      description:'',
      status:'en attente',
      type:'indefini',
