@@ -90,7 +90,7 @@
                           </div>
                           <!--Body-->
                           <div class="modal-body">
-                            <embed
+                            <embed 
                               controlslist="nodownload"
                               v-bind:src="
                                 'http://localhost:8000/storage/files/register/demande/' +

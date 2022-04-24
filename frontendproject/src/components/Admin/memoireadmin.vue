@@ -25,37 +25,25 @@
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>Pricing Table</h2>
+                                    <h2>Memoires disponible</h2>
                                  </div>
-                              </div>
-                              <div class="full price_table padding_infor_info">
-                                 <div class="row" >
-                                    <!-- column price --> 
-                                    <div  v-bind:key="item.id" v-for="item in info"  class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
-                                   
-                                       <div  class="table_price full">
-                                          <div class="inner_table_price">
-                                             <div class="price_table_head blue1_bg">
-                                                <h2>{{item.demande_depot.titre}}</h2>
-                                             </div>
-                                             <div class="price_table_inner">
-                                               
-                                                <div class="cont_table_price"> <img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.demande_depot.coverimage" width="300" height="450" class="p"  alt="...">
- 
-                                                </div>
-                                             </div>
-                                             <div class="price_table_bottom">
-                                                <div class="center"><a class="main_bt" 
-                                    @click="details(item.id,item.demande_depot.user_id)">Details</a></div>
-                                             </div>
-                                         
-                                       </div></div>
-                                    </div>
-                                    <!-- end column price -->
                                 
-                                    <!-- end column price -->
+                                    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Archive&nbsp;<router-link to="archive"><i class="fa fa-archive color-red"></i></router-link></h2>
+                              </div>   <div class="full gallery_section_inner padding_infor_info">
+                                 <div class="row">
+                                    <div v-bind:key="item.id" v-for="item in info" class="col-sm-4 col-md-3 margin_bottom_30">
+                                       <div class="column2">
+                                          <a  @click="details(item.id,item.demande_depot.user_id)" ><img  v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.demande_depot.coverimage"  alt="#" /></a>
+                                       </div>
+                                       <div class="heading_section">
+                                          <h4>{{item.demande_depot.titre}}</h4>
+                                       </div>
+                                    </div>
+                                  
+                                   
                                  </div>
                               </div>
+                          
                            </div>
                         </div>
                      </div>

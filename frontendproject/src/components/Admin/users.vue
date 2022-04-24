@@ -39,7 +39,7 @@
                                                 <p><strong>Etablissement: </strong>{{item.etablisement.nom}}</p>
                                                 <ul class="list-unstyled">
                                                    <li><i class="fa fa-envelope-o"></i> {{item.email}}</li>
-                                                   <li><i class="fa fa-phone"></i> : 987 654 3210</li>
+                                                   <li><i class="fa fa-phone"></i> {{item.tel}}</li>
                                                 </ul>
                                              </div>
                                              <div class="right">

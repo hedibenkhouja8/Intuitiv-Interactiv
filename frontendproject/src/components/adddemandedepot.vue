@@ -125,13 +125,12 @@
                 />
               </div>
               <div>
-                <input
+                <textarea class="form-control " style="height: 100px"
                   type="text"
-                  class="message-box"
                   placeholder="Description"
                   v-model="description"
-                />
-              </div>
+                ></textarea>
+              </div><br><br>
               <div class="btn_box">
                 <button type="submit">SEND</button>
               </div>

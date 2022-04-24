@@ -15,7 +15,7 @@
               <div class="row column_title">
                 <div class="col-md-12">
                   <div class="page_title">
-                    <h2>Demande</h2>
+                    <h2>Memoire</h2>
                   </div>
                 </div>
               </div>
@@ -96,7 +96,25 @@
                         >
                         <i class="fa fa-file-pdf-o"> </i>
                            recherche  
-                        </button>
+                        </button><div v-if="item.archive === 'no'">
+                         <h4 class="box-title mt-5">Archiver: <span></span><button
+                          type="button"
+                          class="btn btn-danger" 
+                              @click="archivememoire(item.id)"
+                        >
+                        <i class="fa fa-archive"> </i>
+                           Archive  
+                        </button></h4>
+                     </div><div v-if="item.archive === 'yes'">
+                         <h4 class="box-title mt-5">Désarchiver: <span></span><button
+                          type="button"
+                          class="btn btn-success" 
+                              @click="desarchivememoire(item.id)"
+                        >
+                        <i class="fa fa-book"> </i>
+                           Memoires  
+                        </button></h4>
+                     </div>
                       </div>
 
                       <div class="col-lg-12 col-md-12 col-sm-12">
@@ -124,7 +142,7 @@
                                 <td>{{ item.demande_depot.critere.nom }}</td>
                               </tr>
                               <tr>
-                                <td>Date de demande</td>
+                                <td>Date d'ajout</td>
                                 <td>{{ formatDate(item.created_at) }}</td>
                               </tr>
                             </tbody>
@@ -400,12 +418,12 @@ export default {
         params: { id: id },
       });
     },
-     accepter(id) {
-     axios.post('http://127.0.0.1:8000/api/DemandeDepotaccept/'+id);
+     archivememoire(id) {
+     axios.post('http://127.0.0.1:8000/api/archivememoire/'+id);
      window.location.reload();
     },
-    refuser(id) {
-     axios.post('http://127.0.0.1:8000/api/DemandeDepotrefuse/'+id);
+    desarchivememoire(id) {
+     axios.post('http://127.0.0.1:8000/api/desarchivememoire/'+id);
      window.location.reload();
     },
   },

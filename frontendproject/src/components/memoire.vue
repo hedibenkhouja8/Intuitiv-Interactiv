@@ -122,8 +122,9 @@
       <div class="row" >
        <div class="col-md-6 "  v-bind:key="item.id" v-for="item in info">
      <div class="course" >
-						<a href="#" class="course-img" style="background-image: url(http://localhost:8000/storage/files/demandes/cover/+ {{ item.demande_depot.coverimage }});">
-						</a>
+						
+						<img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.demande_depot.coverimage" width="250" height="380" class="p"  alt="...">
+ 
 						<div class="desc">
 							<h3> {{ item.demande_depot.titre}}</h3>
               <h4>{{ item.demande_depot.user.name}}</h4>

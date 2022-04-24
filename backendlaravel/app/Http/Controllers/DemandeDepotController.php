@@ -162,7 +162,7 @@ class DemandeDepotController extends Controller
         ->update(['status' => 'Accepte'
         ]);
         $memoire= new Memoire;
-        $memoire->date_acceptation  =date('m/d/Y');
+        $memoire->archive  ='no';
         $memoire->demande_depot_id = $demandedepot->id;
         $memoire->save();
   

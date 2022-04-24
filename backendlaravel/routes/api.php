@@ -54,6 +54,7 @@ Route::get('/Entreprise/search/{name}', [EntrepriseController::class, 'search'])
 Route::resource('Memoire',MemoireController::class);
 
 Route::get('/Memoire',[MemoireController::class,'index']); 
+Route::get('/Archive',[MemoireController::class,'archive']); 
 Route::get('/Memoire/{memoire}/Emprunt',[EmpruntController::class,'byMemoire']);
 
 Route::get('/Domaine/{domaine}/Critere',[DomaineController::class,'byDomaine']);
@@ -64,6 +65,8 @@ Route::get('/DemandeEmpruntAccepted',[DemandeEmpruntController::class,'DemandeEm
 
 Route::post('/Acceptuser/{user}', [AuthController::class, 'Acceptuser']);
 Route::post('/Refuseuser/{user}', [AuthController::class, 'Refuseuser']);
+Route::post('/desarchivememoire/{memoire}', [MemoireController::class, 'desarchivememoire']);
+Route::post('/archivememoire/{memoire}', [MemoireController::class, 'archivememoire']);
 
 
 

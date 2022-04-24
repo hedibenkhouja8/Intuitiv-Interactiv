@@ -29,6 +29,8 @@ import memoireadminComponent from '../components/Admin/memoireadmin.vue'
 import memoireadmindetailComponent from '../components/Admin/memoireadmindetail.vue'
 import etudiantsenattenteComponent from '../components/Admin/etudiantsenattente.vue'
 import domainecritereComponent from '../components/Admin/domainecritere.vue'
+import archiveComponent from '../components/Admin/archive.vue'
+import mesempruntsComponent from '../components/mesemprunts.vue'
 
 
 
@@ -48,6 +50,14 @@ const routes = [
     meta: {
       title: 'demandesdepot'
     }
+  },
+  {
+    path: "/archive",
+    name: "archive",
+    component: archiveComponent,
+    meta: {
+      title: 'archive'
+    }
   }, {
     path: "/etudiantsenattente",
     name: "etudiantsenattente",
@@ -61,6 +71,13 @@ const routes = [
     component: domainecritereComponent,
     meta: {
       title: 'Domaines Et Critere'
+    }
+  }, {
+    path: "/mesemprunts",
+    name: "mesemprunts",
+    component: mesempruntsComponent,
+    meta: {
+      title: 'Mes Emprunts'
     }
   },
   {

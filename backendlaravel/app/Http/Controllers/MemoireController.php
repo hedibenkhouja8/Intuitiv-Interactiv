@@ -8,6 +8,7 @@ use App\Models\Memoire;
 use App\Models\DemandeDepot;
 use App\Models\Etablisement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MemoireController extends Controller
 {
@@ -19,7 +20,12 @@ class MemoireController extends Controller
     public function index()
     {
      
-        return Memoire::with('demande_depot.user')->with('demande_depot.critere')->with('demande_depot.domaine')->get();
+        return Memoire::with('demande_depot.user')->with('demande_depot.critere')->with('demande_depot.domaine')->where('archive','=','no')->get();
+
+    } public function archive()
+    {
+     
+        return Memoire::with('demande_depot.user')->with('demande_depot.critere')->with('demande_depot.domaine')->where('archive','=','yes')->get();
 
     }
 
@@ -150,5 +156,23 @@ class MemoireController extends Controller
 
      return DemandeDepot::with('memoire')->where('domaine_id','!=',1)->where('status','=','Accepte')->where('domaine_id','!=',6)->where('domaine_id','!=',4)->where('domaine_id','!=',5)->get();
     }
+    public function archivememoire(Memoire $memoire)
+    {
+        DB::table('memoires')
+        ->where('id',$memoire->id)
+        ->update(['archive' => 'yes'
+        ]);
+
      
+
+    }   public function desarchivememoire(Memoire $memoire)
+    {
+        DB::table('memoires')
+        ->where('id',$memoire->id)
+        ->update(['archive' => 'no'
+        ]);
+
+     
+
+    }
 }

@@ -25,7 +25,8 @@ class MemoireFactory extends Factory
        $encadreur = Encadreur::all();
        $domaine = Domaine::all();
         return [
-            'date_acceptation' => $this->faker->date,
+            'archive' => $this->faker->  randomElement($array = array ('no','yes')) ,// 'b'  
+
             
            'demande_depot_id'=>DemandeDepot::factory(),         
         ];

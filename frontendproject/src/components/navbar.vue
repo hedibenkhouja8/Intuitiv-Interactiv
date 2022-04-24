@@ -38,13 +38,25 @@
               <li class="nav-item">
                  <router-link class="nav-link" to="/Admin">  Admin </router-link>
               </li>
-               <li v-if="username !== null" class="nav-item">
-                 <h3> hello {{username}}</h3>
-              </li>
+               <li class="nav-item" v-if="username !== null" >
+             <div class="dropdown show">
+  <a  class="nav-link nav-item " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  {{username+'  '+prenom}}&nbsp;&nbsp;<i class="fa fa-user"></i>
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="#"><i class="fa fa-home"></i>&nbsp;&nbsp; Acceuil</a>
+    <router-link class="dropdown-item" to="/mesemprunts" > <i class="fa fa-history"></i>&nbsp;&nbsp;
+                Mes Emprunts </router-link> <router-link class="dropdown-item" to="/mesemprunts" > <i class="fa fa-cloud-upload"></i>&nbsp;&nbsp;
+                Mes Demandes d'emprunt </router-link> <router-link class="dropdown-item" to="/mesemprunts" > <i class="fa fa-cloud-download"></i>&nbsp;&nbsp;
+                Mes Demandes de depot </router-link>
+    
+    
+    <a class="dropdown-item" @click="logout()"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;Log Out</a>
+  </div>
+</div>
               
-<li>
-  <button v-if="username !== null" class="btn btn-danger" @click="logout()">logout</button>
-</li>
+               </li> 
               </ul>
             </div>
            
@@ -62,7 +74,9 @@ export default {
 name: 'NavbarComponent',
 data () {
     return {
-      username: localStorage.getItem('name')
+      username: localStorage.getItem('name'),
+      
+      prenom: localStorage.getItem('prenom')
     }
   },
   mounted(){
