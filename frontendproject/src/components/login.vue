@@ -79,8 +79,13 @@ components: {
           localStorage.setItem('prenom',response.data.user.prenom)
           localStorage.setItem('etatdecompte',response.data.user.etatdecompte)
 if(response.status === 201) {
-            
-               this.$router.push({ path : '/Memoire' });
+            if(response.data.user.role === 'admin') {
+             this.$router.push({ path : '/Admin' });
+            }
+            else{
+              this.$router.push({ path : '/Memoire' });
+            }
+              
             }
         })
         .catch((err) => console.log(err))

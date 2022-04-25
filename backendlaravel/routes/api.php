@@ -23,24 +23,12 @@ use App\Http\Controllers\DemandeEmpruntController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-
-
-//protected routes LOGIN
-
-Route::group(['middleware' => ['auth:sanctum']], function () {
-
-});
-//public
-
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/frequentEtab', [AuthController::class, 'frequentEtab']);
 
-
-
 Route::resource('Domaine',DomaineController::class);
-
+        
 Route::resource('DemandeDepot',DemandeDepotController::class);
 Route::resource('DemandeEmprunt',DemandeEmpruntController::class);
 Route::resource('Emprunt',EmpruntController::class);
@@ -217,4 +205,26 @@ Route::get('/physique', [MemoireController::class, 'MemoirePhysique']);
 Route::get('/chimie', [MemoireController::class, 'MemoireChimie']);
 Route::get('/math', [MemoireController::class, 'MemoireMath']);
 Route::get('/autre', [MemoireController::class, 'MemoireAutre']);
+
+//protected routes LOGIN
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    Route::middleware('admin')->group(function () {
+
+        
+        
+        
+        
+      
+        
+     });
+
+
+
+
+
+});
+//public
+
 

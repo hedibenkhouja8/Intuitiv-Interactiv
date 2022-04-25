@@ -7,6 +7,8 @@ import EditItem from '../components/Edit.vue';
 import AboutPage from '../components/about.vue';
 import UsersPage from '../components/users.vue';
 import loginComponent from '../components/login.vue';
+import myprofileComponent from '../components/myprofile.vue';
+
 import registerComponent from '../components/register.vue';
 import contactusComponent from '../components/ContactUs.vue'
 import MemoireComponent from '../components/memoire.vue'
@@ -161,6 +163,14 @@ const routes = [
     path: "/profile/:id",
     name: "profile",
     component: profileComponent,
+    meta: {
+      title: 'profile'
+    }
+  },
+  {
+    path: "/myprofile/:id",
+    name: "profile",
+    component: myprofileComponent,
     meta: {
       title: 'profile'
     }
