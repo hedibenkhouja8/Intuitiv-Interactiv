@@ -5,20 +5,9 @@
  <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4">Memoire Disponible</h2>
          <div class="row" >
-       <div class="col-md-6 "  v-bind:key="item.id" v-for="item in info">
-     <div class="course" >
-						
-						<img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.memoire.demande_depot.coverimage" width="250" height="380" class="p"  alt="...">
- 
-						<div class="desc">
-							<h3> {{ item.memoire.demande_depot.titre}}</h3>
-              <h4>{{ item.memoire.demande_depot.user.name}}</h4>
-							<p>{{ item.memoire.demande_depot.description}}</p>
-							<span><button class="btn btn-primary btn-sm btn-course"  @click="edit(item.memoire.demande_depot.fichierpdf)" >Visulaiser</button></span>
-						</div>
-					</div>
-       </div>
-      
+    
+      <embed controlslist="nodownload" v-bind:src="'http://localhost:8000/storage/files/demandes/pdf/'+fichier" toolbar=0 width="500" height="1300" 
+ type="application/pdf">
       </div>  </div>
 
 </div>
@@ -30,7 +19,7 @@ import NavbarComponent from '@/components/navbar.vue'
 import sidebarComponent from '@/components/sidebar.vue'
 import axios from 'axios'
 export default {
-name: 'myprofileComponent',
+name: 'fichierComponent',
 components: {
     NavbarComponent,
     sidebarComponent
@@ -38,6 +27,7 @@ components: {
   data() {
     return {
       info: null,
+      fichier:this.$route.params.fichierpdf,
       username: localStorage.getItem("name"),
 
       prenom: localStorage.getItem("prenom"),
@@ -46,12 +36,7 @@ components: {
   },mounted () { axios
       .get('http://127.0.0.1:8000/api/AcceptedByUser/'+localStorage.getItem("id"))
       .then(response => (this.info = response.data))
- },methods: {edit(fichierpdf){
-this.$router.push({
-    name:"fichier",
-    params : {fichierpdf:fichierpdf}
-})
-}}
+ }
 }
 
 

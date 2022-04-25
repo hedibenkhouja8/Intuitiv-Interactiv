@@ -34,6 +34,9 @@ import domainecritereComponent from '../components/Admin/domainecritere.vue'
 import archiveComponent from '../components/Admin/archive.vue'
 import mesempruntsComponent from '../components/mesemprunts.vue'
 
+import fichierComponent from '../components/fichier.vue'
+import historyprofileComponent from '../components/historyprofile.vue'
+
 
 
 const routes = [
@@ -51,6 +54,21 @@ const routes = [
     component: demandedepotComponent,
     meta: {
       title: 'demandesdepot'
+    }
+  },
+  {
+    path: "/historyprofile",
+    name: "historyprofile",
+    component: historyprofileComponent,
+    meta: {
+      title: 'History'
+    }
+  }, {
+    path: "/fichier/:fichierpdf",
+    name: "fichier",
+    component: fichierComponent,
+    meta: {
+      title: 'fichier'
     }
   },
   {
@@ -169,7 +187,7 @@ const routes = [
   },
   {
     path: "/myprofile/:id",
-    name: "profile",
+    name: "myprofile",
     component: myprofileComponent,
     meta: {
       title: 'profile'

@@ -4,31 +4,22 @@
 			
 	  		<div class="img bg-wrap text-center py-4" style="background-image: url(../assets/images/bg_1.jpg);">
 	  			<div class="user-logo">
-	  				<div class="img" style="background-image: url(images/logo.jpg);"></div>
+	  				<div class="img"><img width="100" class="rounded-circle" v-bind:src="'http://localhost:8000/storage/files/register/profilepic/'+profilepic" alt="#" /></div>
 	  				<h3>{{username + "  " + prenom}} </h3>
 	  			</div>
 	  		</div>
         <ul class="list-unstyled components mb-5">
-          <li class="active">
-            <a href="#"><span class="fa fa-home mr-3"></span> Home</a>
-          </li>
+          <li class="active"> 
+          </li>  <li><router-link  class="nav-link" :to="'/myprofile/'+ id"><i class="fa fa-book"></i> <span>Mes Emprunts</span></router-link></li>
+                 <li><router-link  class="nav-link" to="/historyprofile"><i class="fa fa-history"></i> <span> Historique d'emprunt</span></router-link></li>
+                 <li><router-link  class="nav-link" to="/historyprofile"><i class="fa fa-cloud"></i> <span> Mes demandes de depot</span></router-link></li>
+                 <li><router-link  class="nav-link" to="/adddemandedepot"><i class="fa fa-download"></i> <span> Deposer une memoire</span></router-link></li>
+                 <li><router-link  class="nav-link" to="/historyprofile"><i class="fa fa-cog"></i> <span>Parametres</span></router-link></li>
+                 
+          
+        
           <li>
-              <a href="#"><span class="fa fa-download mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span> Download</a>
-          </li>
-          <li>
-            <a href="#"><span class="fa fa-gift mr-3"></span> Gift Code</a>
-          </li>
-          <li>
-            <a href="#"><span class="fa fa-trophy mr-3"></span> Top Review</a>
-          </li>
-          <li>
-            <a href="#"><span class="fa fa-cog mr-3"></span> Settings</a>
-          </li>
-          <li>
-            <a href="#"><span class="fa fa-support mr-3"></span> Support</a>
-          </li>
-          <li>
-            <a href="#"  @click="logout()"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+            <a href="#"  @click="logout()"><span class="fa fa-sign-out "></span> Deconnecter </a>
            
           </li>
         </ul>
@@ -50,7 +41,8 @@ data() {
       username: localStorage.getItem("name"),
 
       prenom: localStorage.getItem("prenom"),
-      id: localStorage.getItem("id")
+      id: localStorage.getItem("id"),
+      profilepic: localStorage.getItem("profilepic")
     };
   },
    methods: {

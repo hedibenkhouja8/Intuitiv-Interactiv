@@ -53,6 +53,8 @@ Route::get('/DemandeEmpruntAccepted',[DemandeEmpruntController::class,'DemandeEm
 
 Route::get('/AcceptedByUser/{user}',[DemandeEmpruntController::class,'acceptedbyUser']);
 Route::get('/AcceptedByUserAndDone/{user}',[DemandeEmpruntController::class,'acceptedanddonebyUser']);
+Route::get('/refusedanddonebyUser/{user}',[DemandeEmpruntController::class,'refusedanddonebyUser']);
+Route::get('/enattentebyUser/{user}',[DemandeEmpruntController::class,'enattentebyUser']);
 
 Route::post('/Acceptuser/{user}', [AuthController::class, 'Acceptuser']);
 Route::post('/Refuseuser/{user}', [AuthController::class, 'Refuseuser']);

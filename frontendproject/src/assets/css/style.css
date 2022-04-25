@@ -46,6 +46,11 @@ body {
 .xx {
   border-radius: 50%;
 }
+.btnx {
+  border-radius: 5%;
+  background-color:black;
+  color: black;
+}
 .heading_container h2 {
   position: relative;
   font-weight: bold;

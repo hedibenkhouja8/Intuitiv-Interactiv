@@ -4249,9 +4249,21 @@ table.projects tr td:first-child {
 }
 
 .table.projects thead.thead-dark th {
-    background: #15283c;
-    font-weight: 300;
-    padding: 15px 15px;
+  background: #15283c;
+  font-weight: 300;
+  padding: 15px 15px;
+}.thead-success {
+  background: #c3e6cb;
+  font-weight: 300;
+  padding: 15px 15px;
+}.thead-danger {
+  background: #F5C6CB;
+  font-weight: 300;
+  padding: 15px 15px;
+}.thead-warning {
+  background: #FFEEBA;
+  font-weight: 300;
+  padding: 15px 15px;
 }
 
 .table.projects tbody td {

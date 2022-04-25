@@ -97,7 +97,7 @@
 </div>
       <h6 for="validationCustom03">Dites Pourquoi voulez vous Emprunter cette memoire?</h6>
       <div class="input-group mb-3 input-group-lg">
-      <textarea v-model="description" type="text" class="form-control" id="validationCustom03" placeholder="Decrire vos raisons" required></textarea>
+      <textarea v-model="description" height="200px" type="text" class="form-control" id="validationCustom03" placeholder="Decrire vos raisons" required></textarea>
      
       </div>
       </div>
@@ -134,7 +134,7 @@ export default {
       user_id: localStorage.getItem('id'),
       user_status:localStorage.getItem('etatdecompte'),
      description:'',
-     status:'en attente',
+     status:'EnAttente',
      type:'indefini',
      date_debut:'',
      date_fin:'',

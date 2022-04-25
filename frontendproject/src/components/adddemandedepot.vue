@@ -1,28 +1,37 @@
 <template><div>
   <navbar-component/>
-  <section class="contact_section layout_padding">
-    <div class="container">
-      <div class="heading_container">
-        <h2>Contact Us</h2>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form_container">
-            <form action="" @submit.prevent="onCreate">
-              <div>
-                <input
+<div class="wrapper d-flex align-items-stretch">
+<sidebar-component/>
+ <div id="content" class="p-4 p-md-5 pt-5">
+        <h2 class="mb-4">Ajouter votre propre Memoire</h2>
+         <div class="row" >
+        <div class="col-md-20">
+                           <div class="white_shd full margin_bottom_30">
+                              <div class="full graph_head">
+                                 <div class="heading1 margin_0">
+                                    <h4>Veuillez Remplir la formulaire attentivement avec tous les fichiers nécessaires <small style="font-size:15px">(*) champ obligatoire</small> </h4>
+                                 </div>
+                              </div>
+   
+  
+                              <div class="table_section padding_infor_info">
+        <div class="col-md-12">
+          <div class="row ">
+            <form action="" @submit.prevent="onCreate"><div class="row">
+  <div class="col-md-8">
+              <label for="basic-url" class="form-label">Titre du memoire *</label> <input class="form-control"
                   type="text"
-                  placeholder="Titre du memoire"
+                  placeholder="Titre "
                   v-model="titre"
                 />
-              </div>
-              <div>
-                <select
+  </div>
+  <div class="col-md-4">
+              <label for="basic-url" class="form-label">Entreprise d'acceuil *</label><select
                   class="form-select"
                   aria-label="Default select example"
-                  v-model="selectedEntreprise"
+                  v-model="selectedEntreprise"  placeholder="entreprise"
                 >
-                  <option >Entreprise d'acceuil</option>
+                  <option selected >Entreprise d'acceuil</option>
                   <option
                     v-bind:key="entreprise.id"
                     v-bind:value="entreprise.id"
@@ -31,10 +40,10 @@
                     {{ entreprise.nom }}
                   </option>
                 </select>
-
-              </div>
-              <div>
-                <select
+  </div>
+</div><div class="row">
+  <div class="col-md-8">
+              <label for="basic-url" class="form-label">Domaine de la memoire *</label>    <select
                   class="form-select"
                   aria-label="Default select example"
                   v-model="selectedDomaine"
@@ -49,9 +58,9 @@
                     {{ domaine.nom }}
                   </option>
                 </select>
-              </div>
-              <div>
-                <select
+  </div>
+  <div class="col-md-4">
+              <label for="basic-url" class="form-label">Critere de la memoire *</label>  <select
                   class="form-select"
                   aria-label="Default select example"
                   v-model="selectedCritere"
@@ -61,11 +70,10 @@
                     {{ critere.nom }}
                   </option>
                 </select>
-
-              </div>
-
-              <div>
-                <select
+  </div>
+</div><div class="row">
+  <div class="col-md-8">
+              <label for="basic-url" class="form-label">Etablissement *</label>  <select
                   class="form-select"
                   aria-label="Default select example"
                   v-model="selectedEtablisement"
@@ -80,9 +88,9 @@
                     {{ etablisement.nom }}
                   </option>
                 </select>
-
-              </div>
-              <div>
+  </div>
+  <div class="col-md-4">
+              <label for="basic-url" class="form-label">Encadreur *</label>
                 <select
                   class="form-select"
                   aria-label="Default select example"
@@ -97,42 +105,51 @@
                     {{ encadreur.nom }}
                   </option>
                 </select>
-                                  
-
-              </div>
-
-              <div>
+                             
+  </div>
+</div><div class="row">
+  <div class="col-md-8">
+              <label for="basic-url" class="form-label">Fichier initial de la memoire *</label>
                 <input class="form-control" type="file" @change="onchange" />
-              </div>
-              <div>
+  </div>
+  <div class="col-md-4">
+              <label for="basic-url" class="form-label">Fichier de la demande *</label>
                 <input class="form-control" type="file" @change="onchange1" />
-              </div>
-              <div>
+  </div>
+</div><div class="row">
+  <div class="col-md-8">
+              <label for="basic-url" class="form-label">Photo de Couverture *</label>
                 <input class="form-control" type="file" @change="onchange2" />
-              </div>
-              <div>
+  </div>
+  <div class="col-md-4">
+              <label for="basic-url" class="form-label">Fichier du brevet</label>
                 <input class="form-control" type="file" @change="onchange3" />
-              </div>
-              <div>
-                <input class="form-control" type="file"  @change="onchange4"/>
-              </div>
-              <div>
-                <input
+  </div>
+</div><div class="row">
+  <div class="col-md-8">
+              <label for="basic-url" class="form-label">Fichier du recherche</label>
+                <input class="form-control" type="file" @change="onchange4" />
+  </div>
+  <div class="col-md-4">
+              <label for="basic-url" class="form-label">Nombre de pages</label> <input
                   class="form-control"
                   type="number"
                   placeholder="nombre de page"
-                  v-model="nbpages"
+                  v-model="nbpages" min="0"
                 />
-              </div>
-              <div>
-                <textarea class="form-control " style="height: 100px"
+  </div>
+</div><div class="row">
+  <div class="col-md-12">
+              <label for="basic-url" class="form-label">Description</label>
+                <textarea  style="height: 500px" class="form-control "
                   type="text"
                   placeholder="Description"
                   v-model="description"
                 ></textarea>
-              </div><br><br>
-              <div class="btn_box">
-                <button type="submit">SEND</button>
+  </div>
+</div><br>
+              <div class="input-group mb-3">
+                <button onclick="return confirm('Vous confirmez le dépot de cette memoire?');" type="submit" class=" btn btn-dark " style="background-color:#0e3746">Déposer ma demande</button>
               </div>
             </form>
           </div>
@@ -146,21 +163,21 @@
         </div>
       </div>
     </div>
-  </section>
-  
-<footer-component/>
-          </div>
+                           </div>
+                        </div>
+      </div>  </div>
 
+</div>
 </template>
 <script>
 import NavbarComponent from '@/components/navbar.vue'
-import FooterComponent from '@/components/footer.vue'
+import sidebarComponent from '@/components/sidebar.vue'
 import axios from "axios";
 export default {
   name: "AddDemandeDepotComponent",
   components: {
     NavbarComponent,
-    FooterComponent
+    sidebarComponent
   },
   data() {
     return {
