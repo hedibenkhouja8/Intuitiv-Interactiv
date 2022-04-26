@@ -1,18 +1,21 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
 import HomePage from "../components/Home.vue";
-
 import DetailMemoire from "../components/DetailMemoire.vue";
 import EditItem from '../components/Edit.vue';
 import AboutPage from '../components/about.vue';
 import UsersPage from '../components/users.vue';
 import loginComponent from '../components/login.vue';
 import myprofileComponent from '../components/myprofile.vue';
-
+import mesempruntsComponent from '../components/mesemprunts.vue'
+import fichierComponent from '../components/fichier.vue'
+import historyprofileComponent from '../components/historyprofile.vue'
 import registerComponent from '../components/register.vue';
 import contactusComponent from '../components/ContactUs.vue'
 import MemoireComponent from '../components/memoire.vue'
 import AddDemandeDepotComponent from '../components/adddemandedepot.vue'
+
+
 import AdminComponent from '../components/Admin/adminindex.vue'
 import activityComponent from '../components/Admin/activity.vue'
 import chartsComponent from '../components/Admin/charts.vue'
@@ -26,16 +29,12 @@ import demandeempruntComponent from '../components/Admin/demandeemprunt.vue'
 import historiqueempruntComponent from '../components/Admin/historique.vue'
 import demandedepotdetailsComponent from '../components/Admin/demandedepotdetails.vue'
 import demandeempruntdetailsComponent from '../components/Admin/demandeempruntdetails.vue'
-
 import memoireadminComponent from '../components/Admin/memoireadmin.vue'
 import memoireadmindetailComponent from '../components/Admin/memoireadmindetail.vue'
 import etudiantsenattenteComponent from '../components/Admin/etudiantsenattente.vue'
 import domainecritereComponent from '../components/Admin/domainecritere.vue'
 import archiveComponent from '../components/Admin/archive.vue'
-import mesempruntsComponent from '../components/mesemprunts.vue'
 
-import fichierComponent from '../components/fichier.vue'
-import historyprofileComponent from '../components/historyprofile.vue'
 
 
 
@@ -53,7 +52,9 @@ const routes = [
     name: "demandedepot",
     component: demandedepotComponent,
     meta: {
-      title: 'demandesdepot'
+      title: 'demandesdepot',
+      needsAuth : true,
+      needsAdmin :true
     }
   },
   {
@@ -61,14 +62,16 @@ const routes = [
     name: "historyprofile",
     component: historyprofileComponent,
     meta: {
-      title: 'History'
+      title: 'History',
+      needsAuth : true
     }
   }, {
     path: "/fichier/:fichierpdf",
     name: "fichier",
     component: fichierComponent,
     meta: {
-      title: 'fichier'
+      title: 'fichier',
+      needsAuth : true
     }
   },
   {
@@ -76,28 +79,35 @@ const routes = [
     name: "archive",
     component: archiveComponent,
     meta: {
-      title: 'archive'
+      title: 'archive',
+      needsAuth : true,
+      needsAdmin :true
     }
   }, {
     path: "/etudiantsenattente",
     name: "etudiantsenattente",
     component: etudiantsenattenteComponent,
     meta: {
-      title: 'Etudiants En Attente'
+      title: 'Etudiants En Attente',
+      needsAuth : true,
+      needsAdmin :true
     }
   }, {
     path: "/domainecritere",
     name: "domainecritere",
     component: domainecritereComponent,
     meta: {
-      title: 'Domaines Et Critere'
+      title: 'Domaines Et Critere',
+      needsAuth : true,
+      needsAdmin :true
     }
   }, {
     path: "/mesemprunts",
     name: "mesemprunts",
     component: mesempruntsComponent,
     meta: {
-      title: 'Mes Emprunts'
+      title: 'Mes Emprunts',
+      needsAuth : true
     }
   },
   {
@@ -105,28 +115,36 @@ const routes = [
     name: "memoireadmin",
     component: memoireadminComponent,
     meta: {
-      title: 'Memoires'
+      title: 'Memoires',
+      needsAuth : true,
+      needsAdmin :true
     }
   },{
     path: "/memoireadmindetail/:id/:c",
     name: "memoireadmindetail",
     component: memoireadmindetailComponent,
     meta: {
-      title: ' Detail Memoire'
+      title: ' Detail Memoire',
+      needsAuth : true,
+      needsAdmin :true
     }
   },{
     path: "/demandesemprunt",
     name: "demandeemprunt",
     component: demandeempruntComponent,
     meta: {
-      title: 'demandeemprunt'
+      title: 'demandeemprunt',
+      needsAuth : true,
+      needsAdmin :true
     }
   },{
     path: "/historiquesemprunt",
     name: "historiqueemprunt",
     component: historiqueempruntComponent,
     meta: {
-      title: 'Historique demprunts'
+      title: 'Historique demprunts',
+      needsAuth : true,
+      needsAdmin :true
     }
   },
   {
@@ -134,7 +152,9 @@ const routes = [
     name: "email",
     component: emailComponent,
     meta: {
-      title: 'email'
+      title: 'email',
+      needsAuth : true,
+      needsAdmin :true
     }
   },
   {
@@ -142,7 +162,9 @@ const routes = [
     name: "settings",
     component: settingsComponent,
     meta: {
-      title: 'settings'
+      title: 'settings',
+      needsAuth : true,
+      needsAdmin :true
     }
   },
   {
@@ -150,7 +172,9 @@ const routes = [
     name: "charts",
     component: chartsComponent,
     meta: {
-      title: 'charts'
+      title: 'charts',
+      needsAuth : true,
+      needsAdmin :true
     }
   },
   {
@@ -158,7 +182,9 @@ const routes = [
     name: "etudiants",
     component: usersComponent,
     meta: {
-      title: 'etudiants'
+      title: 'etudiants',
+      needsAuth : true,
+      needsAdmin :true
     }
   },
   {
@@ -166,7 +192,9 @@ const routes = [
     name: "activity",
     component: activityComponent,
     meta: {
-      title: 'activity'
+      title: 'activity',
+      needsAuth : true,
+      needsAdmin :true
     }
   },
   {
@@ -174,7 +202,9 @@ const routes = [
     name: "etabetencad",
     component: etabetencadComponent,
     meta: {
-      title: 'Etablissements et encareurs'
+      title: 'Etablissements et encareurs',
+      needsAuth : true,
+      needsAdmin :true
     }
   },
   {
@@ -182,7 +212,9 @@ const routes = [
     name: "profile",
     component: profileComponent,
     meta: {
-      title: 'profile'
+      title: 'profile',
+      needsAuth : true,
+      needsAdmin :true
     }
   },
   {
@@ -190,7 +222,8 @@ const routes = [
     name: "myprofile",
     component: myprofileComponent,
     meta: {
-      title: 'profile'
+      title: 'profile',
+      needsAuth : true
     }
   },
   {
@@ -198,7 +231,9 @@ const routes = [
     name: "Admin",
     component: AdminComponent,
     meta: {
-      title: 'Admin'
+      title: 'Admin',
+      needsAuth : true,
+      needsAdmin :true
     }
   },
   {
@@ -214,7 +249,8 @@ const routes = [
     name: "Edit",
     component: EditItem,
     meta: {
-      title: 'edit'
+      title: 'edit',
+      needsAuth : true
     }
   },
   {
@@ -222,14 +258,18 @@ const routes = [
     name: "Demandedepotdetails",
     component: demandedepotdetailsComponent,
     meta: {
-      title: 'Demande Depot Details'
+      title: 'Demande Depot Details',
+      needsAuth : true,
+      needsAdmin :true
     }
   },{
     path: "/Demandeemprunt/:id/:c",
     name: "Demandeempruntdetails",
     component: demandeempruntdetailsComponent,
     meta: {
-      title: 'Demande Emprunt Details'
+      title: 'Demande Emprunt Details',
+      needsAuth : true,
+      needsAdmin :true
     }
   },
    {
@@ -253,7 +293,8 @@ const routes = [
     name: "adddemandedepot",
     component: AddDemandeDepotComponent,
     meta: {
-      title: 'Add new demande depot'
+      title: 'Add new demande depot',
+      needsAuth : true
     }
   },
   {
@@ -299,4 +340,37 @@ router.afterEach((to, from) => {
   document.title = to.meta.title;
 })
 
+
+
+router.beforeEach((to,from,next) => {
+const username= localStorage.getItem("name");
+const role = localStorage.getItem("role");
+var loggedin =false;
+if (username !== null){
+  loggedin=true;
+} else {
+  loggedin=false;
+}
+  if(to.meta.needsAuth){
+    if(loggedin){
+      if(to.meta.needsAdmin){
+        if(role == "admin"){
+          next();
+        }
+        else{
+          next("/Memoire");
+        }
+      }
+      else{
+        next();
+      }   
+    }else {
+      next("/login");
+
+    }
+  } 
+  else{
+    next();
+  }
+})
 export default router; 

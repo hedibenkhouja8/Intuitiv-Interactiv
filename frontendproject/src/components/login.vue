@@ -76,6 +76,7 @@ components: {
           localStorage.setItem('token',response.data.token)
           localStorage.setItem('name',response.data.user.name)
           localStorage.setItem('id',response.data.user.id)
+          localStorage.setItem('role',response.data.user.role)
           localStorage.setItem('prenom',response.data.user.prenom)
           localStorage.setItem('etatdecompte',response.data.user.etatdecompte)
           localStorage.setItem('profilepic',response.data.user.profilepic)
