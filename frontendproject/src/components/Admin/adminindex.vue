@@ -1,13 +1,16 @@
 <template>
-<div class="full_container">
+<sidebaradmin-component/>
+<topbar-component/>
+<div class="full_container" style="width:80%; margin-left: 21%;  ">
+   
          <div class="inner_container">
             <!-- Sidebar  -->
-           <sidebar-component/>
+           
             <!-- end sidebar -->
             <!-- right content -->
             <div id="content">
                <!-- topbar -->
-               <topbar-component/>
+               
                <!-- end topbar -->
                <!-- dashboard inner -->
              <div class="midde_cont">
@@ -346,14 +349,14 @@
 
 <script>
 import axios from 'axios';
-import sidebarComponent from '@/components/Admin/sidebar.vue'
+import sidebaradminComponent from '@/components/Admin/sidebaradmin.vue'
 import topbarComponent from '@/components/Admin/topbar.vue'
 
 
 export default {
 name: 'AdminComponent',
 components: {
-  sidebarComponent,
+  sidebaradminComponent,
   topbarComponent
   },
   data () {

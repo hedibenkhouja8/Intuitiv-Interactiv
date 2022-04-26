@@ -58,15 +58,5 @@ this.$router.push({
 </script>
 
 <style>
-#content {
-  width:320%;
-  padding: 0;
-  min-height: 100vh;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s; }
-  .p-4 {
-  padding: 1.5rem !important; }
-    .p-md-5 {
-    padding: 3rem !important; }
+
 </style>

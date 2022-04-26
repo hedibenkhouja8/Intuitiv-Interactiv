@@ -1,13 +1,11 @@
 <template>
-  <div class="full_container">
-         <div class="inner_container">
+<sidebar-component/><topbar-component/>
+<div class="full_container" style="width:80%; margin-left: 21%;  ">         <div class="inner_container">
             <!-- Sidebar  -->
-           <sidebar-component/>
             <!-- end sidebar -->
             <!-- right content -->
             <div id="content">
                <!-- topbar -->
-               <topbar-component/>
                <!-- end topbar -->
       <div class="midde_cont">
                   <div class="container-fluid">
@@ -657,7 +655,7 @@
 </template>
 
 <script>
-import sidebarComponent from '@/components/Admin/sidebar.vue'
+import sidebarComponent from '@/components/Admin/sidebaradmin.vue'
 import topbarComponent from '@/components/Admin/topbar.vue'
 export default {
 name: 'settingsComponent',
