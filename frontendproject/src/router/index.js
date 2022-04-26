@@ -2,9 +2,10 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 import HomePage from "../components/Home.vue";
 import DetailMemoire from "../components/DetailMemoire.vue";
+import DetailEncadreurComponent from "../components/DetailEncadreur.vue";
 import EditItem from '../components/Edit.vue';
 import AboutPage from '../components/about.vue';
-import UsersPage from '../components/users.vue';
+import encadreursComponent from '../components/encadreurs.vue';
 import loginComponent from '../components/login.vue';
 import myprofileComponent from '../components/myprofile.vue';
 import mesempruntsComponent from '../components/mesemprunts.vue'
@@ -14,6 +15,7 @@ import registerComponent from '../components/register.vue';
 import contactusComponent from '../components/ContactUs.vue'
 import MemoireComponent from '../components/memoire.vue'
 import AddDemandeDepotComponent from '../components/adddemandedepot.vue'
+import mesdemandesComponent from '../components/mesdemandes.vue'
 
 
 import AdminComponent from '../components/Admin/adminindex.vue'
@@ -272,14 +274,22 @@ const routes = [
       needsAdmin :true
     }
   },
-   {
-    path: "/memoire/details/:id/:c",
-    name: "DetailMemoire",
-    component: DetailMemoire,
-    meta: {
-      title: 'Memoire Details'
-    }
-  },
+  {
+   path: "/memoire/details/:id/:c",
+   name: "DetailMemoire",
+   component: DetailMemoire,
+   meta: {
+     title: 'Memoire Details'
+   }
+ },
+ {
+  path: "/encadreur/details/:id",
+  name: "DetailEncadreur",
+  component: DetailEncadreurComponent,
+  meta: {
+    title: 'Details de l encadreur'
+  }
+},
   {
     path: "/about",
     name: "about",
@@ -294,6 +304,15 @@ const routes = [
     component: AddDemandeDepotComponent,
     meta: {
       title: 'Add new demande depot',
+      needsAuth : true
+    }
+  },
+  {
+    path: "/mesdemandes",
+    name: "mesdemandes",
+    component: mesdemandesComponent,
+    meta: {
+      title: 'Mes Demandes de depot',
       needsAuth : true
     }
   },
@@ -321,11 +340,11 @@ const routes = [
     }
   },
   {
-    path: "/users",
-    name: "users",
-    component: UsersPage,
+    path: "/encadreurs",
+    name: "encadreurs",
+    component: encadreursComponent,
     meta: {
-      title: 'users'
+      title: 'Nos Encadreurs'
     }
   }
 ];

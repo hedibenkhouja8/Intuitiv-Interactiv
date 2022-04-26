@@ -141,7 +141,7 @@
 </div><div class="row">
   <div class="col-md-12">
               <label for="basic-url" class="form-label">Description</label>
-                <textarea  style="height: 500px" class="form-control "
+                <textarea  style="height: 200px" class="form-control "
                   type="text"
                   placeholder="Description"
                   v-model="description"

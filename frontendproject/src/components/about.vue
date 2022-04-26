@@ -1,4 +1,4 @@
-<template>
+<template><div>
   <navbar-component/>
     <!-- about section -->
   <section class="about_section layout_padding ">
@@ -29,7 +29,7 @@
   </section>
 
 <footer-component/>
-
+          </div>
 </template>
 
 <script>

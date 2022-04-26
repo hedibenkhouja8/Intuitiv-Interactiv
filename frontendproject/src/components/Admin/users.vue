@@ -1,5 +1,5 @@
-<template>
-<sidebar-component/><topbar-component/>
+<template><div>
+<sidebar-component/><topbar-component/><br><br><br><br>
 <div class="full_container" style="width:80%; margin-left: 21%;  ">         <div class="inner_container">
             <!-- Sidebar  -->
             <!-- end sidebar -->
@@ -135,8 +135,8 @@
             </div>
          </div>
       </div>
+</div>
 </template>
-
 <script>
 import sidebarComponent from '@/components/Admin/sidebaradmin.vue'
 import topbarComponent from '@/components/Admin/topbar.vue'

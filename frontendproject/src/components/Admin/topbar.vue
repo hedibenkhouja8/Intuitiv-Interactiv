@@ -21,7 +21,7 @@
                                        <a class="dropdown-item" href="profile.html">My Profile</a>
                                        <a class="dropdown-item" href="settings.html">Settings</a>
                                        <a class="dropdown-item" href="help.html">Help</a>
-                                       <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                       <a class="dropdown-item"  @click="logout()"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                     </div>
                                  </li>
                               </ul>
@@ -34,8 +34,16 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-name: 'topbarComponent'
+name: 'topbarComponent',
+  methods: {
+    logout() {
+      localStorage.clear();
+      axios.post("http://127.0.0.1:8000/api/logout");
+      this.$router.push("/login");
+    },
+  },
 }
 
 </script>

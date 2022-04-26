@@ -1,4 +1,4 @@
-<template>
+<template><div>
   <navbar-component/>
   <section class="contact_section layout_padding">
     <div class="container">
@@ -42,7 +42,7 @@
     </div>
   </section>
   <footer-component/>
-
+          </div>
 </template>
 
 <script>

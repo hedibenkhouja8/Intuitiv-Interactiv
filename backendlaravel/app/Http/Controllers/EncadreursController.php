@@ -39,8 +39,8 @@ class EncadreursController extends Controller
      */
     public function show($id)
     {
-        return Encadreur::find($id);
-    }
+        return Encadreur::with('etablisement')->where('id', $id)->get();
+    } 
 
     /**
      * Update the specified resource in storage.

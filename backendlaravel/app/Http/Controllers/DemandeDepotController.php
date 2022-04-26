@@ -149,6 +149,21 @@ class DemandeDepotController extends Controller
           //Si on veut les details du memoires avec ses Emprunts
           return DemandeDepot::with('entreprise')->with('critere')->with('domaine')->with('etablisement')->with('user')->with('encadreur')
           ->where('id',$demandedepot->id)->get();
+      }  public function DemandeDepotByUser($user){
+        // return $domaine->demande_depots;
+          //Si on veut les details du memoires avec ses Emprunts
+          return DemandeDepot::with('entreprise')->with('critere')->with('domaine')->with('etablisement')->with('user')->with('encadreur')
+          ->where('user_id','=',$user)->where('status','=','EnAttente')->get();
+      } public function DemandeDepotByUserA($user){
+        // return $domaine->demande_depots;
+          //Si on veut les details du memoires avec ses Emprunts
+          return DemandeDepot::with('entreprise')->with('critere')->with('domaine')->with('etablisement')->with('user')->with('encadreur')
+          ->where('user_id','=',$user)->where('status','=','Accepte')->get();
+      } public function DemandeDepotByUserR($user){
+        // return $domaine->demande_depots;
+          //Si on veut les details du memoires avec ses Emprunts
+          return DemandeDepot::with('entreprise')->with('critere')->with('domaine')->with('etablisement')->with('user')->with('encadreur')
+          ->where('user_id','=',$user)->where('status','=','Refuse')->get();
       }
     public function notAccepted(){
         return DemandeDepot::with('memoire')->where('status','=','EnAttente')->get();

@@ -32,7 +32,7 @@
                 <router-link class="nav-link" to="/about"> about </router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" to="/users"> users </router-link>
+                <router-link class="nav-link" to="/encadreurs"> Encadreurs </router-link>
               </li>
               <li class="nav-item">
                 <router-link class="nav-link" to="/memoire">

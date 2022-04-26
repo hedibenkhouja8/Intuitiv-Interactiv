@@ -4,30 +4,39 @@
   <section class="about_section layout_padding ">
     <div class="container">
       <div class="row" v-bind:key="item.id" v-for="item in info">
-        <div class="col-md-6">
-          <div class="img-box">
-            <img width="200" height="600" v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.demande_depot.coverimage" alt="">
+        <div class="col-md-3">
+          <div >
+            <img width="300" height="500" v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.demande_depot.coverimage" alt="">
           </div>
         </div>
         <div class="col-md-6">
           <div class="detail-box">
             <div class="heading_container">
-              <h2>{{item.id}}
+              <h2>
                titre : {{ item.demande_depot.titre}}
               </h2>
-            </div>
-            <h3>
-             desc : {{ item.demande_depot.description }}
-             id domaine:{{item.demande_depot.domaine_id}}
-            </h3>
-            <p>
-               date : {{ item.date_acceptation}} {{item.id}}
-            </p>
-            <p>
-             nb pages : {{ item.demande_depot.nbpages}}
-            </p><h3 v-if="user_status === 'restreint'">Votre compte est désactivé veuillez nous contacter</h3>
+              <h6>
+              <strong>  Plus de   {{ nb}} demandes d'emprunts sur cette memoire</strong>
+            </h6>
+            </div><hr>
+            <h6>
+            <strong> Etablissement</strong> : {{ item.demande_depot.etablisement.nom }}
+            </h6>  <h6><br>
+             <strong>   Encadreur : </strong>{{ item.demande_depot.encadreur.nom }}
+            </h6>  <h6>
+             <strong>   Description :</strong> {{ item.demande_depot.description }}
+            </h6><br>
+            <h6>
+             <strong>   Domaine: </strong>{{item.demande_depot.domaine.nom}}</h6><br>
+            <h6>
+             <strong>   Critere:</strong> {{item.demande_depot.critere.nom}}</h6><br>
+         
+            <h6>
+              <strong>  Nombre de pages :</strong> {{ item.demande_depot.nbpages}}
+            </h6>
+            <h3 v-if="user_status === 'restreint'">Votre compte est désactivé veuillez nous contacter</h3><br>
             <a v-if="user_id !== null && user_status !== 'restreint' " href="" data-toggle="modal" data-target=".bd-example-modal-lg">
-           Empruntez
+             Empruntez
             </a> <router-link v-if="user_id === null"  to="/login" >
           Connecter vous pour empruntez cette memoire</router-link>
       
@@ -43,25 +52,21 @@
       </div>
       <div class="row">
        
-     
+       <div class="col-md-6 "  v-bind:key="item" v-for="item in dom">
+     <div class="course" >
+						
+						<img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.coverimage" width="250" height="380" class="p"  alt="...">
+ 
+						<div class="desc">
+							<h3> {{ item.titre}}</h3>
+              <h4>{{ item.user.name}}</h4>
+							<p>{{ item.description}}</p>
+							<span><button class="btn btn-primary btn-sm btn-course"  @click="edit(item.memoire.id,item.domaine_id)" >View Details</button></span>
+						</div>
+					</div>
+       </div>
       
-         <div class="col-sm-6 col-lg-3" v-bind:key="item" v-for="item in dom">
-          <div class="box">
-            <div class="img-box">
-              <img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.coverimage" width=" 50" height="350" alt="">
-             
-            </div>
-            <div class="detail-box">
-              <h5>
-                {{ item.titre}} 
-              </h5>
-              <h6>
-                {{ item.user.name}}
-              </h6>
-              <button @click="edit(item.memoire.id,item.domaine_id)">edit</button>
-            </div>
-          </div>
-        </div>
+      
       </div>
       <div class="btn-box">
         <a href="">
@@ -128,7 +133,7 @@ export default {
   data () {
     return {
      info: null,
-     memoire_id:this.$route.params.id,
+     memoire_id:this.$route.params.id,nb:null,
      
       username: localStorage.getItem('name'),
       user_id: localStorage.getItem('id'),
@@ -152,6 +157,10 @@ this.values=(await res).data
          axios
       .get('http://127.0.0.1:8000/api/Memoire/'+this.$route.params.id+'/DemandeDepot')
       .then(response => (this.info = response.data))
+      
+         axios
+      .get('http://127.0.0.1:8000/api/Memoire/'+this.$route.params.id+'/DemandeEmprunt')
+      .then(response => (this.nb = response.data.length))
 axios
       .get('http://127.0.0.1:8000/api/MemoireDeMemeDomaine/'+this.$route.params.c)
       .then(response => (this.dom = response.data))

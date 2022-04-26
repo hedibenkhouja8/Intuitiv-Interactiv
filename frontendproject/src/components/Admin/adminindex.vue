@@ -1,6 +1,6 @@
-<template>
+<template><div >
 <sidebaradmin-component/>
-<topbar-component/>
+<topbar-component/><br><br><br>
 <div class="full_container" style="width:80%; margin-left: 21%;  ">
    
          <div class="inner_container">
@@ -344,7 +344,7 @@
          </div>
       </div>
 
-
+</div>
 </template>
 
 <script>

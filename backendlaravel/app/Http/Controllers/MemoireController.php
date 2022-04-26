@@ -121,9 +121,14 @@ class MemoireController extends Controller
         // return $memoire->demandedepot;
         //return DemandeDep
            //Si on veut les details du memoires avec ses Emprunts
-        return DemandeDepot::with('memoire')->with('user')->where('domaine_id',$domaine)->where('status','=','Accepte')->get();
+        return DemandeDepot::with('memoire')->with('user')->with('domaine')->with('critere')->with('etablisement')->with('encadreur')->where('domaine_id',$domaine)->where('status','=','Accepte')->get();
        }
-       
+       public function MemoireEncadreur( $encadreur){
+        // return $memoire->demandedepot;
+        //return DemandeDep
+           //Si on veut les details du memoires avec ses Emprunts
+        return DemandeDepot::with('memoire')->with('user')->with('domaine')->with('critere')->with('etablisement')->with('encadreur')->where('encadreur_id',$encadreur)->where('status','=','Accepte')->get();
+       }
     public function MemoireInformatique()
     {
      

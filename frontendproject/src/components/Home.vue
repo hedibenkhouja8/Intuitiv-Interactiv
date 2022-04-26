@@ -1,4 +1,4 @@
-<template>
+<template><div>
   <navbar-component/>
 <div>
 <div class="hero_area">
@@ -451,7 +451,7 @@
   <!-- end contact section -->
 </div>
 <footer-component/>
-
+          </div>
 </template>
 
 <script>
