@@ -10,7 +10,8 @@
 	  		</div>
         <ul class="list-unstyled components mb-5">
           <li class="active"> 
-          </li>  <li><router-link  class="nav-link" :to="'/myprofile/'+ id"><i class="fa fa-book"></i> <span>Mes Emprunts</span></router-link></li>
+          </li>  <li><router-link  class="nav-link" :to="'/myprofile/'+ id"><i class="fa fa-book"></i> <span>profile</span></router-link></li>
+          <li><router-link  class="nav-link" to="/mesemprunts"><i class="fa fa-book"></i> <span>Mes Emprunts</span></router-link></li>
                  <li><router-link  class="nav-link" to="/historyprofile"><i class="fa fa-history"></i> <span> Historique d'emprunt</span></router-link></li>
                  <li><router-link  class="nav-link" to="/mesdemandes"><i class="fa fa-cloud"></i> <span> Mes demandes de depot</span></router-link></li>
                  <li><router-link  class="nav-link" to="/adddemandedepot"><i class="fa fa-download"></i> <span> Deposer une memoire</span></router-link></li>

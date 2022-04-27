@@ -46,7 +46,8 @@ const routes = [
     name: "Home",
     component: HomePage,
     meta: {
-      title: 'home'
+      title: 'home',
+      needsetudiant :true
     }
   },
   {
@@ -65,7 +66,8 @@ const routes = [
     component: historyprofileComponent,
     meta: {
       title: 'History',
-      needsAuth : true
+      needsAuth : true,
+      needsetudiant :true
     }
   }, {
     path: "/fichier/:fichierpdf",
@@ -73,7 +75,8 @@ const routes = [
     component: fichierComponent,
     meta: {
       title: 'fichier',
-      needsAuth : true
+      needsAuth : true,
+      needsetudiant :true
     }
   },
   {
@@ -109,7 +112,8 @@ const routes = [
     component: mesempruntsComponent,
     meta: {
       title: 'Mes Emprunts',
-      needsAuth : true
+      needsAuth : true,
+      needsetudiant :true
     }
   },
   {
@@ -225,7 +229,8 @@ const routes = [
     component: myprofileComponent,
     meta: {
       title: 'profile',
-      needsAuth : true
+      needsAuth : true,
+      needsetudiant :true
     }
   },
   {
@@ -243,7 +248,9 @@ const routes = [
     name: "register",
     component: registerComponent,
     meta: {
-      title: 'register'
+      title: 'register',
+      needslogout :true
+    
     }
   },
   {
@@ -252,7 +259,8 @@ const routes = [
     component: EditItem,
     meta: {
       title: 'edit',
-      needsAuth : true
+      needsAuth : true,
+      needsetudiant :true
     }
   },
   {
@@ -279,7 +287,8 @@ const routes = [
    name: "DetailMemoire",
    component: DetailMemoire,
    meta: {
-     title: 'Memoire Details'
+     title: 'Memoire Details',
+     needsetudiant :true
    }
  },
  {
@@ -287,7 +296,8 @@ const routes = [
   name: "DetailEncadreur",
   component: DetailEncadreurComponent,
   meta: {
-    title: 'Details de l encadreur'
+    title: 'Details de l encadreur',
+    needsetudiant :true
   }
 },
   {
@@ -295,7 +305,8 @@ const routes = [
     name: "about",
     component: AboutPage,
     meta: {
-      title: 'About'
+      title: 'About',
+      needsetudiant :true
     }
   },
   {
@@ -304,7 +315,18 @@ const routes = [
     component: AddDemandeDepotComponent,
     meta: {
       title: 'Add new demande depot',
-      needsAuth : true
+      needsAuth : true,
+      needsetudiant :true
+    }
+  },
+  {
+    path: "/mesemprunts",
+    name: "mesempruntsComponent",
+    component: mesempruntsComponent,
+    meta: {
+      title: 'Mes Emprunts',
+      needsAuth : true,
+      needsetudiant :true
     }
   },
   {
@@ -313,7 +335,8 @@ const routes = [
     component: mesdemandesComponent,
     meta: {
       title: 'Mes Demandes de depot',
-      needsAuth : true
+      needsAuth : true,
+      needsetudiant :true
     }
   },
   {
@@ -321,7 +344,8 @@ const routes = [
     name: "memoire",
     component: MemoireComponent,
     meta: {
-      title: 'Memoire'
+      title: 'Memoire',
+      needsetudiant :true
     }
   },
   {
@@ -329,14 +353,16 @@ const routes = [
     name: "login",
     component: loginComponent,
     meta: {
-      title: 'Login'
+      title: 'Login',
+      needslogout :true
     }
   },{
     path: "/contactus",
     name: "contactus",
     component: contactusComponent,
     meta: {
-      title: 'contactus'
+      title: 'contactus',
+      needsetudiant :true
     }
   },
   {
@@ -344,7 +370,8 @@ const routes = [
     name: "encadreurs",
     component: encadreursComponent,
     meta: {
-      title: 'Nos Encadreurs'
+      title: 'Nos Encadreurs',
+      needsetudiant :true
     }
   }
 ];
@@ -367,12 +394,17 @@ const role = localStorage.getItem("role");
 var loggedin =false;
 if (username !== null){
   loggedin=true;
+       if(to.meta.needslogout){
+         next('/');
+       }
+  
 } else {
   loggedin=false;
 }
   if(to.meta.needsAuth){
     if(loggedin){
-      if(to.meta.needsAdmin){
+      
+       if(to.meta.needsAdmin){
         if(role == "admin"){
           next();
         }
@@ -380,6 +412,14 @@ if (username !== null){
           next("/Memoire");
         }
       }
+       else if(to.meta.needsetudiant){
+          if(role == "etudiant"){
+            next();
+          }
+          else{
+            next("/Admin");
+          }
+        }
       else{
         next();
       }   
@@ -388,6 +428,19 @@ if (username !== null){
 
     }
   } 
+  else if(to.meta.needsetudiant){
+    if(loggedin){
+    if(role == "etudiant"){
+      next();
+    }
+    else{
+      next("/Admin");
+    }
+  }
+  else{
+    next();
+  }
+  }
   else{
     next();
   }

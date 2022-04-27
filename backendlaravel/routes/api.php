@@ -102,6 +102,9 @@ Route::get('/UserJoin/{user}',[DemandeEmpruntController::class,'X']);
 Route::get('/User/Recents',[AuthController::class,'Recentusers']);
 Route::get('/User/{user}',[AuthController::class,'userById']);
 
+Route::put('/updateuser/{user}',[AuthController::class,'updateuser']);
+
+
 Route::get('/DemandeNonAccepte',[DemandeDepotController::class,'notAccepted']);
 
 

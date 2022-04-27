@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Criter;
+use App\Models\Critere;
 use Illuminate\Http\Request;
 
 class CriterController extends Controller

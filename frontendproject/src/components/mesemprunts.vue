@@ -1,56 +1,59 @@
-<template>
-
-<div>
+<template><div>
   <navbar-component/>
+<div class="wrapper d-flex align-items-stretch">
+<sidebar-component/>
+ <div id="content" class="p-4 p-md-5 pt-5">
+        <h2 class="mb-4">Memoire Disponible</h2>
+         <div class="row" >
+       <div class="col-md-6 "  v-bind:key="item.id" v-for="item in info">
+     <div class="course" >
+						
+						<img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.memoire.demande_depot.coverimage" width="250" height="380" class="p"  alt="...">
+ 
+						<div class="desc">
+							<h3> {{ item.memoire.demande_depot.titre}}</h3>
+              <h4>{{ item.memoire.demande_depot.user.name}}</h4>
+							<p>{{ item.memoire.demande_depot.description}}</p>
+							<span><button class="btn btn-primary btn-sm btn-course"  @click="edit(item.memoire.demande_depot.fichierpdf)" >Visulaiser</button></span>
+						</div>
+					</div>
+       </div>
+      
+      </div>  </div>
 
-    
-  
-
-
-
-
-
-
-
-
-
-
-<footer-component/></div>
-
+</div>
+          </div>
 </template>
 
 <script>
-
-import axios from 'axios';
 import NavbarComponent from '@/components/navbar.vue'
-import FooterComponent from '@/components/footer.vue'
+import sidebarComponent from '@/components/sidebar.vue'
+import axios from 'axios'
 export default {
 name: 'mesempruntsComponent',
 components: {
     NavbarComponent,
-    FooterComponent
+    sidebarComponent
   },
-  data () {
+  data() {
     return {
-      info: null
-    }
-  },
-  mounted () {
-    
-    axios
-      .get('http://127.0.0.1:8000/api/Memoire')
+      info: null,
+      username: localStorage.getItem("name"),
+
+      prenom: localStorage.getItem("prenom"),
+      id: localStorage.getItem("id")
+    };
+  },mounted () { axios
+      .get('http://127.0.0.1:8000/api/AcceptedByUser/'+localStorage.getItem("id"))
       .then(response => (this.info = response.data))
-      
-  },
- methods :{edit(id,c){
+ },methods: {edit(fichierpdf){
 this.$router.push({
-    name:"DetailMemoire",
-    params : {id:id,c:c}
+    name:"fichier",
+    params : {fichierpdf:fichierpdf}
 })
-},/* <embed controlslist="nodownload" v-bind:src="'http://localhost:8000/storage/files/demandes/pdf/'+item.demande_depot.fichierpdf" toolbar=0 width="500" height="375" 
- type="application/pdf">*/
-  }
+}}
 }
+
 
 </script>
 

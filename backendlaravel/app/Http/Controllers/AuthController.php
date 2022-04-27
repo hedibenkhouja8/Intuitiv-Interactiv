@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Validation\Rule;
 
 class AuthController extends Controller
 {
@@ -173,5 +173,32 @@ class AuthController extends Controller
 
      
 
+    }
+    public function updateuser(Request $request,$id) {
+        $user = User::find($id);
+
+        $fields = $request->validate([
+            'name' => 'string',
+            'prenom'=> 'string',
+            'email' =>[ 'email',Rule::unique('users')->ignore($user->id)],
+            'password' => 'string|confirmed',
+        ]);
+
+
+        
+            $user->name =$fields['name'];
+            $user->prenom = $fields['prenom'];
+            $user->email = $fields['email'];
+            $user->fichierdemande = $user->fichierdemande;
+            $user->etablisement_id = $user->etablisement_id;
+            $user->tel = $request->tel;
+            $user->profilepic = $user->profilepic;
+            $user->password = bcrypt($fields['password']);
+            $user->save();
+            
+
+     
+
+        return response(201);
     }
 }
