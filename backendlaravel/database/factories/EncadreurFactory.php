@@ -20,6 +20,7 @@ class EncadreurFactory extends Factory
             'nom' => $this->faker->name,
             'prenom' => $this->faker->name,
             'etablisement_id'=>$this->faker->randomElement($etablisement),
+            'description' =>$this->faker->paragraph($nbSentences = 5, $variableNbSentences = true),
         ];
     }
 }

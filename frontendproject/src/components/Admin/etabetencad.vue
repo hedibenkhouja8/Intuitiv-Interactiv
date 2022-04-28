@@ -97,6 +97,16 @@
                   </option>
                 </select>
       </div>
+      <label for="pic"> profile pic</label>
+            <input class="form-control" id="pic" type="file" @change="onchange" />
+             <div>
+              <label for="basic-url" class="form-label">Description</label>
+                <textarea  style="height: 200px" class="form-control "
+                  type="text"
+                  placeholder="Description"
+                  v-model="description"
+                ></textarea>
+  </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -201,7 +211,7 @@ components: {
   topbarComponent
   }, data () {
     return {
-      info: null,info2:null,nom:'',prenom:'',selectedEtablisement:0 ,nom2:'',ville:'',adresse:''   }
+      info: null,info2:null,nom:'',description:'',file: null,prenom:'',selectedEtablisement:0 ,nom2:'',ville:'',adresse:''   }
   },
   mounted () {
       axios
@@ -211,17 +221,33 @@ components: {
       .get('http://127.0.0.1:8000/api/Encadreur')
       .then(response => (this.info2 = response.data))
   },methods: {
+     onchange(e) {
+      this.file = e.target.files[0];
+    },
        onCreate(){
-      axios
-      .post('http://127.0.0.1:8000/api/Encadreur',
-     {nom:this.nom,prenom:this.prenom,etablisement_id:this.selectedEtablisement} )
-     .then((response)=>{if(response.status === 201) {
-            
+          let data = new FormData();
+      data.append("nom", this.nom);
+      data.append("prenom", this.prenom);
+      data.append("description", this.description);
+      data.append("etablisement_id",this.selectedEtablisement);
+      data.append("profilepic", this.file);
+      axios({
+        headers: { "Content-Type": "multipart/form-data" },
+        method: "post",
+        url: 'http://127.0.0.1:8000/api/Encadreur',
+        data: data,
+      })
+        .then((response) => {
+       
+if(response.status === 200) {
   window.location.reload();    
- 
             }
-            })
-    },  onCreate2(){
+        })
+        .catch((err) => console.log(err))
+   
+           
+    }, 
+     onCreate2(){
       axios
       .post('http://127.0.0.1:8000/api/Etablisement',
      {nom:this.nom2,ville:this.ville,adresse:this.adresse} )

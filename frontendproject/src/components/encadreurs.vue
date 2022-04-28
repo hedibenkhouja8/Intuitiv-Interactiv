@@ -12,7 +12,7 @@
         <div class="col-sm-6 col-lg-3"  v-bind:key="item.id" v-for="item in info">
           <div class="box">
             <div class="img-box">
-              <img src="../assets/images/t4.jpg" alt="">
+              <img v-bind:src="'http://localhost:8000/storage/files/encadreurs/profilepic/'+item.profilepic" alt="">
             </div>
             <div class="detail-box">
               <h5 style="color:white">

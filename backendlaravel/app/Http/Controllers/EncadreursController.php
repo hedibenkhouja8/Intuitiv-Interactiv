@@ -27,7 +27,25 @@ class EncadreursController extends Controller
      */
     public function store(Request $request)
     {
-        return Encadreur::create($request->all());
+        if($request->hasFile('profilepic') ) {
+            $file = $request->file('profilepic');
+            $file->store('public/files/encadreurs/profilepic');
+            $file = $request->file('profilepic')->hashName();
+
+           }  
+           else{
+               $file ='user.jpg';
+           }
+           $encadreur = new Encadreur;
+           $encadreur->nom = $request->nom;
+           $encadreur->prenom = $request->prenom;
+           $encadreur->profilepic = $file;
+           $encadreur->description = $request->description;
+           $encadreur->etablisement_id = $request->etablisement_id;
+           $encadreur->save();
+
+           
+
     
     }
 

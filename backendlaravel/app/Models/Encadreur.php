@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Encadreur extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom','prenom','etablisement_id'];
+    protected $fillable = ['nom','prenom','etablisement_id','description','profilepic'];
    public function demandedepots()
     {
         return $this->hasMany(DemandeDepot::class);
