@@ -15,7 +15,7 @@
                  <li><router-link  class="nav-link" to="/historyprofile"><i class="fa fa-history"></i> <span> Historique d'emprunt</span></router-link></li>
                  <li><router-link  class="nav-link" to="/mesdemandes"><i class="fa fa-cloud"></i> <span> Mes demandes de depot</span></router-link></li>
                  <li><router-link  class="nav-link" to="/adddemandedepot"><i class="fa fa-download"></i> <span> Deposer une memoire</span></router-link></li>
-                 <li><router-link  class="nav-link" to="/historyprofile"><i class="fa fa-cog"></i> <span>Parametres</span></router-link></li>
+                 <li><router-link  class="nav-link" to="/parametresprofile"><i class="fa fa-cog"></i> <span>Parametres</span></router-link></li>
                  
           
         

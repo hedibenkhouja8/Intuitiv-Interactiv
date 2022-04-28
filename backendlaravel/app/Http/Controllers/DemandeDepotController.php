@@ -33,15 +33,29 @@ class DemandeDepotController extends Controller
         $file = $request->file('fichierpdf');
         $file1 = $request->file('fichierdemande');
         $file2 = $request->file('coverimage');
-        $file3 = $request->file('fichierbrevet');
-        $file4 = $request->file('fichierrecherche');
-
         $file->store('public/files/demandes/pdf');
         //$request->fichierpdf->store('public/files/demandes/pdf');
         $file1->store('public/files/demandes/demande');
         $file2->store('public/files/demandes/cover');
-        $file3->store('public/files/demandes/fichierbrevet');
-        $file4->store('public/files/demandes/fichierrecherche');
+
+        if($request->hasFile('fichierbrevet') ) {
+            $file3 = $request->file('fichierbrevet');
+            $file3->store('public/files/demandes/fichierbrevet');
+            $file3 = $request->file('fichierbrevet')->hashName();
+           }  
+           else{
+               $file3 =NULL;
+           }
+           if($request->hasFile('fichierrecherche') ) {
+            $file4 = $request->file('fichierrecherche');
+            $file4->store('public/files/demandes/fichierrecherche');
+            $file4 = $request->file('fichierrecherche')->hashName();
+           }  
+           else{
+               $file4 =NULL;
+           }
+
+       
 
         $demande = new DemandeDepot;
         $demande->titre = $request->titre;
@@ -59,8 +73,8 @@ class DemandeDepotController extends Controller
         $demande->nbpages = $request->nbpages;
         $demande->entreprise_id = $request->entreprise_id;
         $demande->coverimage = $request->coverimage->hashName();
-        $demande->fichierbrevet = $request->fichierbrevet->hashName();
-        $demande->fichierrecherche = $request->fichierrecherche->hashName();
+        $demande->fichierbrevet = $file3;
+        $demande->fichierrecherche = $file4;
         $demande->save();
 
     

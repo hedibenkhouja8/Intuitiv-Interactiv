@@ -19,7 +19,8 @@
           <div class="row ">
             <form action="" @submit.prevent="onCreate"><div class="row">
   <div class="col-md-8">
-              <label for="basic-url" class="form-label">Titre du memoire *</label> <input class="form-control"
+              <label for="basic-url" class="form-label">Titre du memoire *</label> 
+              <input class="form-control"
                   type="text"
                   placeholder="Titre "
                   v-model="titre"

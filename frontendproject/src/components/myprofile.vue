@@ -1,6 +1,5 @@
 <template>
-  <navbar-component />
-  <div class="wrapper d-flex align-items-stretch">
+  <navbar-component/> <div class="wrapper d-flex align-items-stretch">
     <sidebar-component />
     <div id="content" class="p-4 p-md-5 pt-5">
       <section
@@ -23,12 +22,14 @@
                     style="width: 150px"
                   />
                   <h5 class="my-3">{{ username + " " + prenom }}</h5>
-                  <p class="text-muted mb-1">{{ item.etablisement_id }}</p>
+                  <p class="text-muted mb-1">{{ item.etablisement.nom }}</p>
                   <div class="d-flex justify-content-center mb-2">
-                    <button type="button" class="btn btn-primary">Edit</button>
+                    <router-link  class="btn btn-primary" to="/parametresprofile"><i class="fa fa-cog"></i> <span>Edit</span></router-link>
                   </div>
+                    
                 </div>
               </div>
+           
               <div class="card mb-4 mb-lg-0">
                 <div class="card-body p-0">
                   <ul class="list-group list-group-flush rounded-3">
@@ -142,7 +143,7 @@
                       <p class="mb-0">Etablisement</p>
                     </div>
                     <div class="col-sm-9">
-                      <p class="text-muted mb-0">{{ item.etablisement_id }}</p>
+                      <p class="text-muted mb-0">{{ item.etablisement.nom }}</p>
                     </div>
                   </div>
                 </div>
@@ -302,9 +303,11 @@
             </div>
           </div>
         </div>
+      
       </section>
     </div>
   </div>
+  
 </template>
 
 <script>

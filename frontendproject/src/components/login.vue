@@ -80,6 +80,9 @@ components: {
           localStorage.setItem('prenom',response.data.user.prenom)
           localStorage.setItem('etatdecompte',response.data.user.etatdecompte)
           localStorage.setItem('profilepic',response.data.user.profilepic)
+          localStorage.setItem('tel',response.data.user.tel)
+          localStorage.setItem('email',response.data.user.email)
+
 if(response.status === 201) {
             if(response.data.user.role === 'admin') {
              this.$router.push({ path : '/Admin' });

@@ -16,7 +16,7 @@ import contactusComponent from '../components/ContactUs.vue'
 import MemoireComponent from '../components/memoire.vue'
 import AddDemandeDepotComponent from '../components/adddemandedepot.vue'
 import mesdemandesComponent from '../components/mesdemandes.vue'
-
+import parametresComponent from '../components/Parametresprofile.vue'
 
 import AdminComponent from '../components/Admin/adminindex.vue'
 import activityComponent from '../components/Admin/activity.vue'
@@ -325,6 +325,16 @@ const routes = [
     component: mesempruntsComponent,
     meta: {
       title: 'Mes Emprunts',
+      needsAuth : true,
+      needsetudiant :true
+    }
+  },
+  {
+    path: "/parametresprofile",
+    name: "parametresprofile",
+    component: parametresComponent,
+    meta: {
+      title: 'Parametres Profile ',
       needsAuth : true,
       needsetudiant :true
     }

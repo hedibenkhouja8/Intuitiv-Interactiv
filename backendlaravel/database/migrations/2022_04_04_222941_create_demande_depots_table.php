@@ -27,9 +27,9 @@ class CreateDemandeDepotsTable extends Migration
             $table->enum('status',['EnAttente','Refuse','Accepte']);
             $table->string('fichierpdf');
             $table->string('fichierdemande');
-            $table->string('coverimage');
-            $table->string('fichierbrevet');
-            $table->string('fichierrecherche');
+            $table->string('coverimage')->default('nocover.jpg');
+            $table->string('fichierbrevet')->nullable();
+            $table->string('fichierrecherche')->nullable();
            $table->foreignId('entreprise_id')->constrained()->onDelete('cascade');
             $table->foreignId('etablisement_id')->constrained();
             $table->integer('nbpages');

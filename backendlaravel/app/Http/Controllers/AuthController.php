@@ -23,8 +23,15 @@ class AuthController extends Controller
         ]);
         $fields['fichierdemande']->store('public/files/register/demande');
 
-        $file = $request->file('profilepic');
-        $file->store('public/files/register/profilepic');
+        if($request->hasFile('profilepic') ) {
+            $file = $request->file('profilepic');
+            $file->store('public/files/register/profilepic');
+            $file = $request->file('profilepic')->hashName();
+
+           }  
+           else{
+               $file ='user.jpg';
+           }
 
         $user = User::create([
             'name' => $fields['name'],
@@ -33,7 +40,7 @@ class AuthController extends Controller
             'fichierdemande' => $fields['fichierdemande']->hashName(),
             'etablisement_id' =>$fields['etablisement_id'],
             'tel'=>$request->tel,
-            'profilepic'=>$request->profilepic->hashName(),
+            'profilepic'=>$file,
             'password' => bcrypt($fields['password'])
         ]);
 
@@ -174,29 +181,52 @@ class AuthController extends Controller
      
 
     }
-    public function updateuser(Request $request,$id) {
-        $user = User::find($id);
+    public function updateuser(Request $request,User $user) {
+       // $user = User::find($id);
 
-        $fields = $request->validate([
-            'name' => 'string',
-            'prenom'=> 'string',
-            'email' =>[ 'email',Rule::unique('users')->ignore($user->id)],
-            'password' => 'string|confirmed',
-        ]);
+        //$fields = $request->validate([
+          //  'name' => 'string',
+            //'prenom'=> 'string',
+            //'email' =>[ 'email',Rule::unique('users')->ignore($user->id)],
+            //'password' => 'string|confirmed',
+        //]);
 
 
         
-            $user->name =$fields['name'];
-            $user->prenom = $fields['prenom'];
-            $user->email = $fields['email'];
-            $user->fichierdemande = $user->fichierdemande;
-            $user->etablisement_id = $user->etablisement_id;
-            $user->tel = $request->tel;
-            $user->profilepic = $user->profilepic;
-            $user->password = bcrypt($fields['password']);
-            $user->save();
+          //  $user->name =$fields['name'];
+            //$user->prenom = $fields['prenom'];
+            //$user->email = $fields['email'];
+            //$user->tel = $request->tel;
+            //$user->password = bcrypt($fields['password']);
+
+            //$user->profilepic = $user->profilepic;
+            //$user->fichierdemande = $user->fichierdemande;
+            //$user->etablisement_id = $user->etablisement_id;
+            //$user->save();
+            
+            if($request->hasFile('profilepic') ) {
+             $file = $request->file('profilepic');
+             $file->store('public/files/register/profilepic');
+             $file = $request->file('profilepic')->hashName();
+
+            }  
+            else{
+                $file =$user->profilepic;
+            }
             
 
+            DB::table('users')
+            ->where('id',$user->id)
+            ->update([
+    
+            'name'    => $request->name,
+            'prenom'    => $request->prenom,
+            'tel'    => $request->tel,
+            'profilepic'=>$file,
+            'email'      => $request->email,
+            'password' => Hash::make($request->password),
+    
+            ]);
      
 
         return response(201);
