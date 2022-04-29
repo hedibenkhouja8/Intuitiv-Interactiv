@@ -4,9 +4,9 @@
   <section class="about_section layout_padding ">
     <div class="container">
       <div class="row" v-bind:key="item.id" v-for="item in info">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div >
-            <img width="280" height="400" src="" alt="">
+            <img v-bind:src="'http://localhost:8000/storage/files/encadreurs/profilepic/'+item.profilepic"  width="400" height="500"  alt="">
           </div>
         </div>
         <div class="col-md-4">
@@ -17,12 +17,13 @@
               </h2>
             </div>
             <h3>
-             Etablissement : {{ item.etablisement.nom }}
+             Etablissement : 
           
-            </h3>
-            <h2>
-               Devenue membre le : {{ formatDate(item.created_at)}} 
-            </h2>
+            </h3><strong>{{ item.etablisement.nom }}</strong>
+            <h2>Description :</h2><strong>{{ item.description}}</strong>
+            <h3>
+               Devenue membre le :
+            </h3><strong> {{ formatDate(item.created_at)}} </strong>
           
       
           </div>

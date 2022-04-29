@@ -115,7 +115,7 @@ class AuthController extends Controller
     public function users()
     {
       
-        return User::with('etablisement')->where('etatdecompte','=','active')->get();
+        return User::with('etablisement')->where('etatdecompte','=','active')->where('role','=','etudiant')->get();
 
     } public function users2()
     {

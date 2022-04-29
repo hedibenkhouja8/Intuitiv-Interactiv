@@ -54,7 +54,7 @@
                         </p>
                         <h4 class="box-title mt-5">Domaine</h4>
                         <p>{{ item.demande_depot.domaine.nom }}</p>
-                         <h4 class="box-title mt-5">Demandes d'Emprunt: <span>{{nb}}</span></h4>
+                         <h4 class="box-title mt-5">Demandes d'Emprunt: <span>{{nb}}</span></h4><div><p>
                         <button
                           type="button"
                           class="btn btn-primary"
@@ -74,7 +74,7 @@
                         <i class="fa fa-file-pdf-o"> </i>
                            demande 
                         </button>
-                         <button
+                         <button v-if="item.demande_depot.fichierbrevet!== null"
                           type="button"
                           
                           class="btn btn-primary"
@@ -91,10 +91,11 @@
                           class="btn btn-primary"
                           data-toggle="modal"
                           data-target="#modalCart3"
+                          v-if="item.demande_depot.fichierrecherche!== null"
                         >
                         <i class="fa fa-file-pdf-o"> </i>
                            recherche  
-                        </button><div v-if="item.archive === 'no'">
+                        </button></p></div><div v-if="item.archive === 'no'">
                          <h4 class="box-title mt-5">Archiver: <span></span><button
                           type="button"
                           class="btn btn-danger" 
@@ -267,7 +268,7 @@
                           <!--Header-->
                           <div class="modal-header">
                             <h4 class="modal-title" id="myModalLabel">
-                              brevet file
+                              brevet fichier
                             </h4>
                             <button
                               type="button"

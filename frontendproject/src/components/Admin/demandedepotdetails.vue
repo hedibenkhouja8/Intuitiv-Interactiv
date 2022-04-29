@@ -55,7 +55,7 @@
                         </p>
                         <h4 class="box-title mt-5">Domaine</h4>
                         <p>{{ item.domaine.nom }}</p>
-                        <button
+                        <button 
                           type="button"
                           class="btn btn-primary"
                           data-toggle="modal"
@@ -74,7 +74,7 @@
                         <i class="fa fa-file-pdf-o"> </i>
                            demande 
                         </button>
-                         <button
+                         <button v-if="item.fichierbrevet!== null"
                           type="button"
                           
                           class="btn btn-primary"
@@ -85,14 +85,14 @@
                            brevet 
                         </button>
 
-                         <button
+                         <button v-if="item.fichierrecherche!== null"
                           type="button"
                           style="margin: 10px"
                           class="btn btn-primary"
                           data-toggle="modal"
                           data-target="#modalCart3"
                         >
-                        <i class="fa fa-file-pdf-o"> </i>
+                        <i class="fa fa-file-pdf-o"  > </i>
                            recherche  
                         </button>
                       </div>

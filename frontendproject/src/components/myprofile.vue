@@ -1,4 +1,4 @@
-<template>
+<template><div>
   <navbar-component/> <div class="wrapper d-flex align-items-stretch">
     <sidebar-component />
     <div id="content" class="p-4 p-md-5 pt-5">
@@ -307,7 +307,7 @@
       </section>
     </div>
   </div>
-  
+          </div>
 </template>
 
 <script>

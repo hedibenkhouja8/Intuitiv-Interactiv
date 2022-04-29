@@ -36,7 +36,7 @@
                                           <div class="profile_contant">
                                              <div class="contact_inner">
                                                 <h3>{{item.name}} {{item.prenom}}&nbsp;<button v-if="item.etatdecompte === 'active'"
-                              @click="restreindre(item.id)" class="btn btn-warning">Restrindre l'acces</button><button 
+                              @click="restreindre(item.id)" class="btn btn-warning">Restreindre l'acces</button><button 
                               @click="derestreindre(item.id)" class="btn btn-success"  v-if="item.etatdecompte === 'restreint'" >Renouveler accés</button></h3>
                                                 <p><strong>Etablissement: </strong>{{item.etablisement.nom}}</p>
                                                 <ul class="list-unstyled">

@@ -46,7 +46,7 @@ class DemandeDepotFactory extends Factory
             
             'status' =>$this->faker->  randomElement($array = array ('EnAttente','Accepte','Refuse')) ,// 'b',
             'nbpages' =>$this->faker->randomDigit,   
-            'coverimage'=>'nocover.jpg', 
+            'coverimage'=>'these.png', 
             'fichierdemande' =>$this->faker->name,   
             'fichierpdf' =>$this->faker->name,  
             

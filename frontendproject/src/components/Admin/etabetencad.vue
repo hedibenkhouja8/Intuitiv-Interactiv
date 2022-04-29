@@ -101,7 +101,7 @@
             <input class="form-control" id="pic" type="file" @change="onchange" />
              <div>
               <label for="basic-url" class="form-label">Description</label>
-                <textarea  style="height: 200px" class="form-control "
+                <textarea  style="height: 100px" class="form-control "
                   type="text"
                   placeholder="Description"
                   v-model="description"

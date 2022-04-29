@@ -9,9 +9,9 @@
                   <div class="sidebar_user_info">
                      <div class="icon_setting"></div>
                      <div class="user_profle_side">
-                        <div class="user_img"><img class="img-responsive" src="../../assets/images/layout_img/user_img.jpg"  alt="#" /></div>
+                        <div class="user_img"><img class="img-responsive" v-bind:src="'http://localhost:8000/storage/files/register/profilepic/'+profilepic" alt="#" /></div>
                         <div class="user_info">
-                           <h6>John David</h6>
+                           <h6> {{prenom}} {{username}} </h6>
                            <p><span class="online_animation"></span> Online</p>
                         </div>
                      </div>
@@ -52,7 +52,14 @@
 
 <script>
 export default {
-name: 'sidebaradminComponent'
+name: 'sidebaradminComponent', data() {
+    return {
+      username: localStorage.getItem("name"),
+      profilepic: localStorage.getItem("profilepic"),
+
+      prenom: localStorage.getItem("prenom"),
+    };
+  },
 }
 </script>
 

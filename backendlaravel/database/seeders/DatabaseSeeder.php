@@ -28,19 +28,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {     DB::table('domaines')->insert([
-        'nom' => 'Informtique',
+        'nom' => 'Informatique',
     ]); DB::table('domaines')->insert([
-        'nom' => 'Biologie',
+        'nom' => 'Comptabilité',
     ]); DB::table('domaines')->insert([
-        'nom' => 'Geologie',
-    ]); DB::table('domaines')->insert([
-        'nom' => 'Physique',
+        'nom' => 'Business',
     ]); DB::table('domaines')->insert([
         'nom' => 'Chimie',
     ]); DB::table('domaines')->insert([
         'nom' => 'Math',
     ]); DB::table('domaines')->insert([
         'nom' => 'Autre',
+    ]);DB::table('domaines')->insert([
+        'nom' => 'Medecine',
+    ]);DB::table('domaines')->insert([
+        'nom' => 'Art',
+    ]);DB::table('domaines')->insert([
+        'nom' => 'Langues',
     ]);
         
         Etablisement::factory()->count(3)
@@ -53,9 +57,9 @@ class DatabaseSeeder extends Seeder
        Critere::factory(10)->create();
        
        User::factory(10)->create();
-       DemandeEmprunt::factory(10)->create();
+       DemandeEmprunt::factory(1000)->create();
        
-       DemandeDepot::factory(10)->create();
+       DemandeDepot::factory(100)->create();
         
   /*  foreach (DemandeDepot::all() as $DemandeDepot){
 
@@ -69,7 +73,7 @@ class DatabaseSeeder extends Seeder
         $DemandeDepot->criteres()->attach($critere);
     }*/
        
-Memoire::factory()->count(3)
+Memoire::factory()->count(30)
     ->create();
     
    /* foreach (Memoire::all() as $memoire){
