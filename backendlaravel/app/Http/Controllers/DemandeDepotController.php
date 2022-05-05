@@ -30,6 +30,22 @@ class DemandeDepotController extends Controller
      */
     public function store(Request $request)
     {
+        $fields = $request->validate([
+            'titre' => 'required|string',
+            'critere_id'=> 'required',
+            'domaine_id'=> 'required',
+            'encadreur_id'=> 'required',
+            'user_id'=> 'required',
+            'description' => 'required|string|min:20',
+            'nbpages'=> 'required',
+            'etablisement_id' => 'required',
+            'fichierpdf' => 'required',
+            'fichierdemande' => 'required',
+            'entreprise_id' => 'required'
+
+
+        ]);
+
         $file = $request->file('fichierpdf');
         $file1 = $request->file('fichierdemande');
         $file2 = $request->file('coverimage');
@@ -54,28 +70,27 @@ class DemandeDepotController extends Controller
            else{
                $file4 =NULL;
            }
-
+           
+           $demande = new DemandeDepot;
+           $demande->titre = $fields['titre'];
+           $demande->user_id = $fields['user_id'];
+           $demande->encadreur_id = $fields['encadreur_id'];
+           $demande->domaine_id = $fields['domaine_id'];
+           $demande->critere_id = $fields['critere_id'];
+           $demande->description = $fields['description'];
+           $demande->status = "EnAttente";
+           $demande->fichierpdf = $fields['fichierpdf']->hashName();
+           $demande->fichierdemande = $fields['fichierdemande']->hashName();
+           $demande->etablisement_id = $fields['etablisement_id'];
+           $demande->nbpages = $fields['nbpages'];
+           $demande->entreprise_id = $fields['entreprise_id'];
+           $demande->coverimage = $request->coverimage->hashName();
+           $demande->fichierbrevet = $file3;
+           $demande->fichierrecherche = $file4;
+           $demande->save();
        
 
-        $demande = new DemandeDepot;
-        $demande->titre = $request->titre;
-        $demande->user_id = $request->user_id;
-        
-        $demande->encadreur_id = $request->encadreur_id;
-        $demande->domaine_id = $request->domaine_id;
-        $demande->critere_id = $request->critere_id;
-        
-        $demande->description = $request->description;
-        $demande->status = "EnAttente";
-        $demande->fichierpdf = $request->fichierpdf->hashName();
-        $demande->fichierdemande = $request->fichierdemande->hashName();
-        $demande->etablisement_id = $request->etablisement_id;
-        $demande->nbpages = $request->nbpages;
-        $demande->entreprise_id = $request->entreprise_id;
-        $demande->coverimage = $request->coverimage->hashName();
-        $demande->fichierbrevet = $file3;
-        $demande->fichierrecherche = $file4;
-        $demande->save();
+       
 
     
     }

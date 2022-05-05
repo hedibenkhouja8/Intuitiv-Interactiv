@@ -171,7 +171,7 @@ axios
       axios
       .post('http://127.0.0.1:8000/api/DemandeEmprunt',
      {date_debut:this.date_debut,date_fin:this.date_fin,memoire_id:this.memoire_id,user_id:this.user_id,description:this.description,status:this.status,type:this.type} )
-     .then((response)=>{if(response.status === 201) {
+     .then((response)=>{if(response.status === 200) {
             document.getElementById('close').click();
                this.$router.push({ path : '/Memoire' });
             }

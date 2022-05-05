@@ -27,6 +27,7 @@ class CritereController extends Controller
      */
     public function store(Request $request)
     {
+        
         return Critere::create($request->all());
     
     }

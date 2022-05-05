@@ -75,7 +75,27 @@ class DemandeEmpruntController extends Controller
      */
     public function store(Request $request)
     {
-        return DemandeEmprunt::create($request->all());
+        $fields = $request->validate([
+            'user_id'=> 'required',
+            'description' => 'required|string|min:20',
+            'memoire_id'=> 'required',
+            'date_debut' => 'required',
+            'date_fin' => 'required',
+            'type' => 'required', 
+
+        ]);
+       
+        $demande = new DemandeEmprunt;
+           $demande->user_id = $fields['user_id'];
+           $demande->memoire_id = $fields['memoire_id'];
+           $demande->date_fin = $fields['date_fin'];
+           $demande->date_debut = $fields['date_debut'];
+           $demande->description = $fields['description'];
+           $demande->type = $fields['type'];
+           $demande->status = "EnAttente";
+
+          
+           $demande->save();
     
     }
 
