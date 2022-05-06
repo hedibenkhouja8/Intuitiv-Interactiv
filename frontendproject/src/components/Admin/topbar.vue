@@ -34,6 +34,8 @@
 
 <script>
 import axios from 'axios'
+import swal from 'sweetalert';
+
 export default {
 name: 'topbarComponent', data() {
     return {
@@ -45,9 +47,27 @@ name: 'topbarComponent', data() {
   },
   methods: {
     logout() {
-      localStorage.clear();
+      swal({
+  title: "Are you sure?",
+  text: " you will Logout!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    localStorage.clear();
       axios.post("http://127.0.0.1:8000/api/logout");
-      this.$router.push("/login");
+      
+    swal("you are loged out!", {
+      icon: "success",
+    });
+    this.$router.push("/login");
+  } else {
+    swal("You are not loged out");
+  }
+});
+      
     },
   },
 }

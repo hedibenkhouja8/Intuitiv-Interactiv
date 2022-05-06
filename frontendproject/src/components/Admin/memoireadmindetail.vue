@@ -386,6 +386,8 @@
 import axios from "axios";
 import sidebarComponent from "@/components/Admin/sidebaradmin.vue";
 import topbarComponent from "@/components/Admin/topbar.vue";
+import swal from 'sweetalert';
+
 export default {
   props: ["id"],
   name: "memoireadmindetailComponent",
@@ -418,12 +420,46 @@ export default {
       });
     },
      archivememoire(id) {
+           swal({
+  title: "Are you sure?",
+  text: " archiver cette memoire ?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
      axios.post('http://127.0.0.1:8000/api/archivememoire/'+id);
-     window.location.reload();
+     swal("Memoire archivée ", {
+      icon: "success",
+    });
+    window.location.reload();
+  } else {
+    swal("Memoire non archivée");
+  }
+});
+     
     },
     desarchivememoire(id) {
+             swal({
+  title: "Are you sure?",
+  text: " desarchiver cette memoire?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
      axios.post('http://127.0.0.1:8000/api/desarchivememoire/'+id);
-     window.location.reload();
+     swal("Memoire desarchivée ", {
+      icon: "success",
+    });
+    window.location.reload();
+  } else {
+    swal("Memoire non desarchivée");
+  }
+});
+     
     },
   },
   async mounted() {

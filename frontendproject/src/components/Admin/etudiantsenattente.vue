@@ -161,6 +161,8 @@
 import axios from "axios";
 import sidebarComponent from "@/components/Admin/sidebaradmin.vue";
 import topbarComponent from "@/components/Admin/topbar.vue";
+import swal from 'sweetalert';
+
 export default {
   name: "etudiantsenattenteComponent",
   components: {
@@ -193,13 +195,49 @@ export default {
       );
     },
     accepter(id) {
+        swal({
+  title: "Are you sure?",
+  text: " accepter cet etudiant ?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
       axios.post("http://127.0.0.1:8000/api/Acceptuser/" + id);
-      window.location.reload();
+     swal("etudiant acceptée ", {
+      icon: "success",
+    });
+    window.location.reload();
+  } else {
+    swal("etudiant non acceptée");
+  }
+});
+     
     },
+   
     refuser(id) {
+           swal({
+  title: "Are you sure?",
+  text: " refuser cet etudiant ?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
       axios.post("http://127.0.0.1:8000/api/Refuseuser/" + id);
-      window.location.reload();
+     swal("etudiant refusée ", {
+      icon: "success",
+    });
+    window.location.reload();
+  } else {
+    swal("etudiant non refusée");
+  }
+});
+     
     },
+   
   },
 };
 </script>

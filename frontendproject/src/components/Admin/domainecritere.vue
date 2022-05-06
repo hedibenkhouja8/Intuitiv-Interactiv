@@ -65,14 +65,16 @@
 
                   <div class="table_section padding_infor_info">
                     <div class="table-responsive-sm">
-                      <form @submit.prevent="onCreate">
+                      <Form action="" @submit="onCreate">
                         <div class="form-group">
                           <h6 for="disabledTextInput">
                             Ajouter un nouveau domaine
                           </h6>
 
                           <div class="input-group mb-3 input-group-lg">
-                            <input
+                            <Field
+                            name="nom"
+                            :rules="isRequired"
                               v-model="nom"
                               type="text"
                               class="form-control"
@@ -80,19 +82,27 @@
                               placeholder="Nom de domaine"
                               aria-describedby="inputGroup-sizing-default"
                             />
+                             <div class="input-group mb-3 input-group-lg">
+                          
+                            <ErrorMessage style="color: red" name="nom" />
+
+                          </div>
+                            
                             <button type="submit" class="btn btn-warning">
                               Ajouter
                             </button>
                           </div>
                         </div>
-                      </form>
+                      </Form>
                       <br /><br />
-                      <form @submit.prevent="onCreate2">
+                      <Form action="" @submit="onCreate2">
                         <div class="form-group">
                           <h5>Ajouter un nouveau critere a un domaine</h5>
 
                           <div class="input-group mb-3 input-group-lg">
-                            <input
+                            <Field
+                            name="nom2"
+                            :rules="isRequired"
                               v-model="nom2"
                               type="text"
                               class="form-control"
@@ -101,10 +111,17 @@
                               aria-describedby="inputGroup-sizing-default"
                             />
                           </div>
+                          <div class="input-group mb-3 input-group-lg">
+                          
+                            <ErrorMessage style="color: red" name="nom2" />
+                          </div>
 
                           <h6 for="validationCustom03">Domaine</h6>
                           <div class="input-group mb-3 input-group-lg">
-                            <select
+                            <Field
+                            name="domaine"
+                            as="select"
+                            :rules="isRequired"
                               class="form-select"
                               aria-label="Default select example"
                               v-model="selectedDomaine"
@@ -116,13 +133,19 @@
                               >
                                 {{ domaine.nom }}
                               </option>
-                            </select>
+                            </Field>
+                            
+                                                     </div>
+                           <div class="input-group mb-3 input-group-lg">
+                          
+                            <ErrorMessage style="color: red" name="domaine" />
+
                           </div>
                           <button type="submit" class="btn btn-warning">
                             Ajouter
                           </button>
                         </div>
-                      </form>
+                      </Form>
                     </div>
                   </div>
                 </div>
@@ -149,11 +172,16 @@
 import axios from "axios";
 import sidebarComponent from "@/components/Admin/sidebaradmin.vue";
 import topbarComponent from "@/components/Admin/topbar.vue";
+import { Field, Form, ErrorMessage } from "vee-validate";
+
 export default {
   name: "domainecritereComponent",
   components: {
     sidebarComponent,
     topbarComponent,
+    Field,
+    Form,
+    ErrorMessage,
   },
   data() {
     return {
@@ -176,6 +204,13 @@ export default {
       .then((response) => (this.info2 = response.data));
   },
   methods: {
+    isRequired(value) {
+      if (!value) {
+        return "this field is required";
+      }
+
+      return true;
+    },
     onCreate() {
       axios
         .post("http://127.0.0.1:8000/api/Domaine", { nom: this.nom })

@@ -122,6 +122,7 @@
 import axios from "axios";
 import sidebarComponent from "@/components/Admin/sidebaradmin.vue";
 import topbarComponent from "@/components/Admin/topbar.vue";
+import swal from 'sweetalert';
 export default {
   name: "demandedepotComponent",
   components: {
@@ -149,12 +150,51 @@ export default {
       });
     },
      accepter(id) {
-     axios.post('http://127.0.0.1:8000/api/DemandeDepotaccept/'+id);
-     window.location.reload();
+         swal({
+  title: "Are you sure?",
+  text: " accepter cette demande ?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+ axios.post('http://127.0.0.1:8000/api/DemandeDepotaccept/'+id);
+     
+      
+    swal("demande acceptée ", {
+      icon: "success",
+    });
+    window.location.reload();
+  } else {
+    swal("demande non acceptée");
+  }
+});
+     
     },
     refuser(id) {
-     axios.post('http://127.0.0.1:8000/api/DemandeDepotrefuse/'+id);
-     window.location.reload();
+          swal({
+  title: "Are you sure?",
+  text: " refuser cette demande ?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+axios.post('http://127.0.0.1:8000/api/DemandeDepotrefuse/'+id);
+     
+     
+      
+    swal("demande refusée ", {
+      icon: "success",
+    });
+    window.location.reload();
+  } else {
+    swal("demande non refusée");
+  }
+});
+     
     },
     //http://127.0.0.1:8000/api/User/5
     //http://127.0.0.1:8000/api/Encadreurs/1

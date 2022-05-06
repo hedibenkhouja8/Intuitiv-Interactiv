@@ -100,6 +100,7 @@
 
 <script>
 import axios from "axios";
+import swal from 'sweetalert';
 import sidebarComponent from "@/components/Admin/sidebaradmin.vue";
 import topbarComponent from "@/components/Admin/topbar.vue";
 export default {
@@ -121,13 +122,47 @@ export default {
      
     }
   },methods: {
-      accepter(id) {
+     accepter(id) {
+         swal({
+  title: "Are you sure?",
+  text: " accepter cette demande ?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
      axios.post('http://127.0.0.1:8000/api/DemandeEmpruntaccept/'+id);
-     window.location.reload();
+    swal("demande acceptée ", {
+      icon: "success",
+    });
+    window.location.reload();
+  } else {
+    swal("demande non acceptée");
+  }
+});
+     
     },
     refuser(id) {
+           swal({
+  title: "Are you sure?",
+  text: " refuser cette demande ?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
      axios.post('http://127.0.0.1:8000/api/DemandeEmpruntrefuse/'+id);
-     window.location.reload();
+      swal("demande refusée ", {
+      icon: "success",
+    });
+    window.location.reload();
+  } else {
+    swal("demande non refusée");
+  }
+});
+     
     },
       formatDate(dateString) {
             const date = new Date(dateString);
