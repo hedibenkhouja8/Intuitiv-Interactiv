@@ -17,6 +17,8 @@ import MemoireComponent from '../components/memoire.vue'
 import AddDemandeDepotComponent from '../components/adddemandedepot.vue'
 import mesdemandesComponent from '../components/mesdemandes.vue'
 import parametresComponent from '../components/Parametresprofile.vue'
+import notfoundPage from '../components/notfound.vue'
+
 
 import AdminComponent from '../components/Admin/adminindex.vue'
 import activityComponent from '../components/Admin/activity.vue'
@@ -48,6 +50,14 @@ const routes = [
     meta: {
       title: 'home',
       needsetudiant :true
+    }
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "Not Found",
+    component: notfoundPage,
+    meta: {
+      title: 'Not Found',
     }
   },
   {

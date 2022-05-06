@@ -88,6 +88,7 @@ components: {
       info1: null,
       info2: null,
       username: localStorage.getItem("name"),
+      demandedepotSuccessful: localStorage.getItem("demandedepotSuccessful"),
 
       prenom: localStorage.getItem("prenom"),
       id: localStorage.getItem("id")

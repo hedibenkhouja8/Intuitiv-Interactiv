@@ -5,6 +5,7 @@
       <sidebar-component />
       <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4">Ajouter votre propre Memoire</h2>
+   
         <div class="row">
           <div class="col-md-20">
             <div class="white_shd full margin_bottom_30">
@@ -255,7 +256,7 @@
                       <br />
                       <div class="input-group mb-3">
                         <button
-                          onclick="return confirm('Vous confirmez le dépot de cette memoire?');"
+                          
                           type="submit"
                           class="btn btn-dark"
                           style="background-color: #0e3746"
@@ -285,6 +286,8 @@
 import NavbarComponent from "@/components/navbar.vue";
 import sidebarComponent from "@/components/sidebar.vue";
 import axios from "axios";
+import swal from 'sweetalert';
+
 import { Field, Form, ErrorMessage } from "vee-validate";
 export default {
   name: "AddDemandeDepotComponent",
@@ -335,6 +338,7 @@ export default {
       .then((response) => (this.etablisements = response.data));
   },
   methods: {
+  
     isRequired(value) {
       if (!value) {
         return "this field is required";
@@ -385,7 +389,16 @@ export default {
       this.file4 = e.target.files[0];
     },
     onCreate() {
-      let data = new FormData();
+        swal({
+  title: "Are you sure?",
+  text: " ajouté la demande ?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    let data = new FormData();
       data.append("titre", this.titre);
       data.append("user_id", this.userid);
       data.append("encadreur_id", this.selectedEncadreur);
@@ -411,7 +424,14 @@ export default {
           console.log("response", response.data);
         })
         .catch((err) => console.log(err));
-    },
+swal("Demande ajouté !", "votre demande est en attente de reponse!", "success");
+this.$router.push({ path: "/mesdemandes" });
+  } else {
+    swal("demande non ajouté");
+  }
+});
+      
+},
   },
 };
 </script>

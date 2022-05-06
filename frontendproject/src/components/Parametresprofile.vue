@@ -136,6 +136,7 @@
 </template>
 
 <script>
+import swal from 'sweetalert';
 import NavbarComponent from "@/components/navbar.vue";
 import sidebarComponent from "@/components/sidebar.vue";
 import axios from "axios";
@@ -258,6 +259,7 @@ export default {
             localStorage.setItem("tel", this.tel);
             localStorage.setItem("email", this.email);
             localStorage.setItem("profilepic", this.file);
+swal("profil modifié !", "vos donnés sont  modifiés!", "success");
 
             this.$router.push({ path: "/myprofile/" + this.id });
           }

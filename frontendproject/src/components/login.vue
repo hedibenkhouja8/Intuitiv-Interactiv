@@ -51,6 +51,8 @@
 
 <script>
 import axios from "axios";
+import swal from 'sweetalert';
+
 import NavbarComponent from "@/components/navbar.vue";
 import FooterComponent from "@/components/footer.vue";
 import { Field, Form, ErrorMessage } from "vee-validate";
@@ -67,6 +69,7 @@ export default {
     return {
       email: "",
       password: "",
+      username:"",
       values: {
         id: "",
         nom: "",
@@ -115,14 +118,19 @@ export default {
           localStorage.setItem("profilepic", response.data.user.profilepic);
           localStorage.setItem("tel", response.data.user.tel);
           localStorage.setItem("email", response.data.user.email);
-
+            this.username= response.data.user.name;
           if (response.status === 201) {
             if (response.data.user.role === "admin") {
+              
               this.$router.push({ path: "/Admin" });
+              swal("Welcome " +this.username+ " !", "you are logged in!", "success");
             } else {
               this.$router.push({ path: "/Memoire" });
+              swal("Welcome " +this.username+ " !", "you are logged in!", "success");
             }
           }
+         
+          
         })
         .catch((err) => console.log(err));
     },

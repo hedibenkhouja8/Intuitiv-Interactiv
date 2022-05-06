@@ -249,7 +249,7 @@ import axios from "axios";
 import NavbarComponent from "@/components/navbar.vue";
 import FooterComponent from "@/components/footer.vue";
 import { Field, Form, ErrorMessage } from "vee-validate";
-
+import swal from 'sweetalert';
 export default {
   props: ["id"],
   name: "DetailMemoire",
@@ -338,7 +338,9 @@ export default {
         })
         .then((response) => {
           if (response.status === 200) {
+            swal("Demande ajouté !", "votre demande est en attente de reponse!", "success");
             document.getElementById("close").click();
+
             this.$router.push({ path: "/Memoire" });
           }
         });

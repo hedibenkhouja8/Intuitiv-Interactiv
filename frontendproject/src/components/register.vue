@@ -107,6 +107,8 @@
 </template>
 
 <script>
+import swal from 'sweetalert';
+
 import axios from "axios";
 import NavbarComponent from "@/components/navbar.vue";
 import FooterComponent from "@/components/footer.vue";
@@ -222,6 +224,7 @@ export default {
         .then((response) => {
           console.log("response", response.data);
           if (response.status === 201) {
+            swal("compte créé !", "votre compte a été créé et en attente d'acceptation par un admin!", "success");
             this.$router.push({ path: "/login" });
           }
         })
