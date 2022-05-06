@@ -29,11 +29,12 @@
                           >
                           <Field
                             name="titre"
+                            :rules="isRequired"
                             class="form-control"
                             type="text"
                             placeholder="Titre "
                             v-model="titre"
-                            :rules="isRequired"
+                            
                           />
                           <ErrorMessage style="color: red" name="titre" />
                         </div>

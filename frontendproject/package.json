@@ -16,7 +16,8 @@
     "v-toaster": "^1.0.3",
     "vee-validate": "^4.5.11",
     "vue": "^3.2.13",
-    "vue-router": "^4.0.13"
+    "vue-router": "^4.0.13",
+    "vue-yup-form-validation": "^0.0.19"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
