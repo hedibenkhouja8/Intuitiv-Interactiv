@@ -5,7 +5,9 @@ import 'bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css"
 createApp(App).use(router).mount('#app')
 import Vue from 'vue'
- 
+import VeeValidate from 'vee-validate';
+
+Vue.use(VeeValidate);
 import Toaster from 'v-toaster'
 import axios from 'axios'
 // You need a specific loader for CSS files like https://github.com/webpack/css-loader

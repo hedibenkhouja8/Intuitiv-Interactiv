@@ -148,7 +148,15 @@
 	<script src="fornt/js/simplyCountdown.js"></script>
 	<!-- Main -->
 	<script src="fornt/js/main.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/vee-validate@<3.0.0/dist/vee-validate.js"></script>
+
+  <!-- unpkg -->
+  <script src="https://unpkg.com/vee-validate@<3.0.0"></script>
+  <script src="path/to/vue.js"></script>
+  <script src="path/to/vee-validate.js"></script>
+  <script>
+    Vue.use(VeeValidate); // good to go.
+  </script>
 	<script>
     var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
 

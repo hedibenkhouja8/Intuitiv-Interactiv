@@ -144,7 +144,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <Form action="" @submit="onCreate" >
+            <Form action="" @submit="onCreate">
               <div class="modal-body">
                 <div class="form-group">
                   <h6 for="disabledTextInput">
@@ -170,14 +170,14 @@
                   </div>
                   <Field
                     name="dated"
-                    :rules="isRequired"
+                    :rules="datedeubt"
                     type="date"
                     class="form-control"
                     aria-label="Sizing example input"
                     v-model="date_debut"
                     aria-describedby="inputGroup-sizing-default"
                   />
-                  
+
                   <ErrorMessage style="color: red" name="dated" />
                 </div>
                 <div class="input-group mb-3 input-group-lg">
@@ -190,7 +190,7 @@
                   </div>
                   <Field
                     name="datef"
-                    :rules="isRequired"
+                    :rules="datefin"
                     type="date"
                     class="form-control"
                     v-model="date_fin"
@@ -240,6 +240,7 @@
         </div>
       </div>
     </div>
+
     <footer-component />
   </div>
 </template>
@@ -249,7 +250,7 @@ import axios from "axios";
 import NavbarComponent from "@/components/navbar.vue";
 import FooterComponent from "@/components/footer.vue";
 import { Field, Form, ErrorMessage } from "vee-validate";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 export default {
   props: ["id"],
   name: "DetailMemoire",
@@ -316,14 +317,44 @@ export default {
 
       return true;
     },
-    Description(value) {
-     if (!value) {
+    datedeubt(value) {
+      if (!value) {
         return "this field is required";
       }
-  if (value.length < 20) {
-    return `This field must be at least 20 characters`;
-  }
-  return true;
+      var varDate = new Date(value); //dd-mm-YYYY
+      var today = new Date();
+      today.setHours(0,0,0,0);
+      if (varDate < today) {
+        return "cette date est deja passé ";
+      }
+
+      return true;
+    },
+     datefin(value) {
+      if (!value) {
+        return "this field is required";
+      }
+      var varDate = new Date(value); //dd-mm-YYYY
+      var today = new Date();
+      today.setHours(0,0,0,0);
+      var datedeubt = new Date(this.date_debut);
+      datedeubt.setHours(0,0,0,0);
+      if (varDate <= today) {
+        return "cette date est deja passé ";
+      }
+      if (varDate < datedeubt) {
+        return "la date fin doit etre apres la date debut ";
+      }
+      return true;
+    },
+    Description(value) {
+      if (!value) {
+        return "this field is required";
+      }
+      if (value.length < 20) {
+        return `This field must be at least 20 characters`;
+      }
+      return true;
     },
     onCreate() {
       axios
@@ -338,7 +369,11 @@ export default {
         })
         .then((response) => {
           if (response.status === 200) {
-            swal("Demande ajouté !", "votre demande est en attente de reponse!", "success");
+            swal(
+              "Demande ajouté !",
+              "votre demande est en attente de reponse!",
+              "success"
+            );
             document.getElementById("close").click();
 
             this.$router.push({ path: "/Memoire" });
