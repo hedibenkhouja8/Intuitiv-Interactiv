@@ -345,6 +345,13 @@ export default {
       if (varDate < datedeubt) {
         return "la date fin doit etre apres la date debut ";
       }
+      var nbjours=10;
+      var Difference_In_Time = varDate.getTime() - datedeubt.getTime();
+      var Days = Difference_In_Time / (1000 * 3600 * 24);
+      if(Days>nbjours){
+        return "le nombre de jours max est 10 jours  ";
+      }
+
       return true;
     },
     Description(value) {
