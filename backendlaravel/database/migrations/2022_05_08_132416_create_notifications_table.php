@@ -17,9 +17,9 @@ class CreateNotificationsTable extends Migration
             $table->id();
             $table->string('titre');
             $table->string('content');
-            
+            $table->boolean('admin')->default(0);
             $table->boolean('viewed')->default(0);
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
            
             $table->timestamps();
         });

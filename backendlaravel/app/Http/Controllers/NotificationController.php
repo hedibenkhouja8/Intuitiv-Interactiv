@@ -17,6 +17,7 @@ class NotificationController extends Controller
     public function index()
     {
         return Notification::all();
+        
     }
 
     /**
@@ -69,7 +70,39 @@ class NotificationController extends Controller
         
         $notif= DB::table('notifications')
                 ->where('user_id',$user->id)
+                ->where('admin',0)
+                ->orderBy('created_at','desc')
+                ->get();
+                return $notif;
+              
+                        
+    }
+    public function Adminnotif(){
+        
+        $notif= DB::table('notifications')
+                ->where('admin',1)
                 ->get();
                 return $notif;
     }
+    public function viewed($id){
+
+        DB::table('notifications')
+        ->where('id',$id)
+        ->update(['viewed' => 1
+        ]);
+       
+       
+    }
+    public function notviewed(User $user){
+
+        $notif= DB::table('notifications')
+        ->where('user_id',$user->id)
+        ->where('admin',0)
+        ->where('viewed',0)
+        ->count();
+        return $notif;
+       
+       
+    }
+
 }

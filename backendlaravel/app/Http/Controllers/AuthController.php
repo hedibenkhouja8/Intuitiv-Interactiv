@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Etablisement;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -43,7 +44,12 @@ class AuthController extends Controller
             'profilepic'=>$file,
             'password' => bcrypt($fields['password'])
         ]);
-
+        $notif= new Notification;
+        $notif->titre  ='Compte';
+        $notif->content ="un compte en attente d'acceptation";
+        $notif->user_id =$user->id;
+        $notif->admin= 1; 
+        $notif->save();
         $token = $user->createToken('myapptoken')->plainTextToken;
 
         $response = [
@@ -148,6 +154,11 @@ class AuthController extends Controller
         ->update(['etatdecompte' => 'active'
         ]);
 
+        $notif= new Notification;
+        $notif->titre  ='Welcome';
+        $notif->content ='votre compte est active';
+        $notif->user_id =$user->id;
+        $notif->save();
      
 
     }
@@ -167,7 +178,11 @@ class AuthController extends Controller
         ->where('id',$user->id)
         ->update(['etatdecompte' => 'restreint'
         ]);
-
+        $notif= new Notification;
+        $notif->titre  ='bonjour';
+        $notif->content ='votre compte est Restreint ';
+        $notif->user_id =$user->id;
+        $notif->save();
      
 
     }
@@ -177,7 +192,11 @@ class AuthController extends Controller
         ->where('id',$user->id)
         ->update(['etatdecompte' => 'active'
         ]);
-
+        $notif= new Notification;
+        $notif->titre  ='bonjour';
+        $notif->content ='un admin a renouveler lacces de votre compte ';
+        $notif->user_id =$user->id;
+        $notif->save();
      
 
     }

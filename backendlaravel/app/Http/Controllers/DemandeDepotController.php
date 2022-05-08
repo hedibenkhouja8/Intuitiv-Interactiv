@@ -7,6 +7,7 @@ use App\Models\Etablisement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Memoire;
+use App\Models\Notification;
 
 class DemandeDepotController extends Controller
 {
@@ -88,7 +89,13 @@ class DemandeDepotController extends Controller
            $demande->fichierbrevet = $file3;
            $demande->fichierrecherche = $file4;
            $demande->save();
-       
+
+           $notif= new Notification;
+           $notif->titre  ='Demande depot';
+           $notif->content ='une nouvelle demande de depot';
+           $notif->user_id =$demande->user_id;
+           $notif->admin= 1; 
+           $notif->save();
 
        
 
@@ -209,6 +216,12 @@ class DemandeDepotController extends Controller
         $memoire->archive  ='no';
         $memoire->demande_depot_id = $demandedepot->id;
         $memoire->save();
+
+        $notif= new Notification;
+        $notif->titre  ='Demande depot';
+        $notif->content ="votre demande de depot de la memoire ' $demandedepot->titre ' a été accepté";
+        $notif->user_id =$demandedepot->user_id;
+        $notif->save();
   
      
 
@@ -220,7 +233,11 @@ class DemandeDepotController extends Controller
         ->where('id',$demandedepot->id)
         ->update(['status' => 'Refuse'
         ]);
-
+        $notif= new Notification;
+        $notif->titre  ='Demande depot';
+        $notif->content ="votre demande de depot de la memoire ' $demandedepot->titre 'a été refusée";
+        $notif->user_id =$demandedepot->user_id; 
+        $notif->save();
      
 
     }

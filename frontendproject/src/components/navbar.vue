@@ -32,7 +32,9 @@
                 <router-link class="nav-link" to="/about"> about </router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" to="/encadreurs"> Encadreurs </router-link>
+                <router-link class="nav-link" to="/encadreurs">
+                  Encadreurs
+                </router-link>
               </li>
               <li class="nav-item">
                 <router-link class="nav-link" to="/memoire">
@@ -53,7 +55,35 @@
                   login
                 </router-link>
               </li>
-             
+
+              <li class="nav-item" v-if="username !== null">
+                <div class="dropdown show">
+                  <a
+                    class="nav-link nav-item"
+                    href="#"
+                    role="button"
+                    id="dropdownMenuLink"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >notifications
+                    <i class="fa fa-bell"></i>
+                    <span v-if="nb >0" class="badge" style="color:black;">{{nb}}</span>
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                   
+                    
+                  <div class="dropdown-item" v-bind:key="item.id" v-for="item in info"> 
+                    <a class="dropdown-item" @click="redirect(item.titre,item.id)">
+                      <h6><i class="fa fa-info-circle" aria-hidden="true"></i> {{item.titre}} </h6>  <h6>{{item.content}}</h6> 
+                    </a> 
+                  
+
+                  </div>
+                  </div>
+                </div>
+              </li>
               <li class="nav-item" v-if="username !== null">
                 <div class="dropdown show">
                   <a
@@ -74,7 +104,7 @@
                     <a class="dropdown-item" href="#"
                       ><i class="fa fa-home"></i>&nbsp;&nbsp; Acceuil</a
                     >
-                     <router-link class="dropdown-item" :to="'/myprofile/' + id">
+                    <router-link class="dropdown-item" :to="'/myprofile/' + id">
                       <i class="fa fa-user"></i>&nbsp;&nbsp; Profile
                     </router-link>
                     <router-link class="dropdown-item" to="/mesemprunts">
@@ -105,43 +135,61 @@
 
 <script>
 import axios from "axios";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 export default {
   name: "NavbarComponent",
   data() {
     return {
       username: localStorage.getItem("name"),
-
+      info: null,
+      nb: null,
+      id:localStorage.getItem("id"),
       prenom: localStorage.getItem("prenom"),
     };
   },
   mounted() {
     console.log(localStorage.getItem("name"));
+ axios
+      .get("http://127.0.0.1:8000/api/Notificationnotviewed/"+this.id )
+      .then((response) => (this.nb = response.data));
+
+    axios
+      .get("http://127.0.0.1:8000/api/Notification/User/"+this.id )
+      .then((response) => (this.info = response.data));
   },
   methods: {
     logout() {
       swal({
-  title: "Are you sure?",
-  text: " you will Logout!",
-  icon: "warning",
-  buttons: true,
-  dangerMode: true,
-})
-.then((willDelete) => {
-  if (willDelete) {
-    localStorage.clear();
-      axios.post("http://127.0.0.1:8000/api/logout");
-      
-    swal("you are loged out!", {
-      icon: "success",
-    });
-    this.$router.push("/login");
-  } else {
-    swal("You are not loged out");
-  }
-});
-      
+        title: "Are you sure?",
+        text: " you will Logout!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          localStorage.clear();
+          axios.post("http://127.0.0.1:8000/api/logout");
+
+          swal("you are loged out!", {
+            icon: "success",
+          });
+          this.$router.push("/login");
+        } else {
+          swal("You are not loged out");
+        }
+      });
+    },
+    redirect(titre,id) {
+      axios.post('http://127.0.0.1:8000/api/Notificationviewed/'+id);
+       if(titre == "Demande depot"){
+this.$router.push("/mesdemandes");
+       }
+        if(titre == "Demande emprunt"){
+this.$router.push("/mesemprunts");
+       }
+    
+     
     },
   },
 };
