@@ -167,22 +167,24 @@
                             >Fichier initial de la memoire *</label
                           >
                           
-                          <input
+                          <Field name="Fichier initial"  rules="required|ext:pdf"
                             class="form-control"
                             type="file"
                             @change="onchange"
                           />
+                          <ErrorMessage style="color: red" name="Fichier initial" />
                           
                         </div>
                         <div class="col-md-4">
                           <label for="basic-url" class="form-label"
                             >Fichier de la demande *</label
                           >
-                          <input
+                         <Field name="Fichier de la demande"  rules="required|ext:pdf"
                             class="form-control"
                             type="file"
                             @change="onchange1"
                           />
+                          <ErrorMessage style="color: red" name="Fichier de la demande" />
                         </div>
                       </div>
                       <div class="row">
@@ -190,21 +192,23 @@
                           <label for="basic-url" class="form-label"
                             >Photo de Couverture *</label
                           >
-                          <input
+                          <Field name="Photo de Couverture"  rules="required|image"
                             class="form-control"
                             type="file"
                             @change="onchange2"
                           />
+                          <ErrorMessage style="color: red" name="Photo de Couverture" />
                         </div>
                         <div class="col-md-4">
                           <label for="basic-url" class="form-label"
                             >Fichier du brevet</label
                           >
-                          <input
+                          <Field name="Fichier du brevet"  rules="ext:pdf"
                             class="form-control"
                             type="file"
                             @change="onchange3"
                           />
+                          <ErrorMessage style="color: red" name="Fichier du brevet" />
                         </div>
                       </div>
                       <div class="row">
@@ -212,11 +216,12 @@
                           <label for="basic-url" class="form-label"
                             >Fichier du recherche</label
                           >
-                          <input
+                          <Field name="Fichier du recherche"  rules="ext:pdf"
                             class="form-control"
                             type="file"
                             @change="onchange4"
                           />
+                          <ErrorMessage style="color: red" name="Fichier du recherche" />
                         </div>
                         <div class="col-md-4">
                           <label for="basic-url" class="form-label"
@@ -287,8 +292,11 @@ import NavbarComponent from "@/components/navbar.vue";
 import sidebarComponent from "@/components/sidebar.vue";
 import axios from "axios";
 import swal from 'sweetalert';
-
-import { Field, Form, ErrorMessage } from "vee-validate";
+import { image, ext,required } from '@vee-validate/rules';
+defineRule('image', image);
+defineRule('ext', ext);
+defineRule('required', required);
+import { Field, Form, ErrorMessage,defineRule } from "vee-validate";
 export default {
   name: "AddDemandeDepotComponent",
   components: {

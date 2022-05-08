@@ -155,12 +155,13 @@
                                   <ErrorMessage style="color: red" name="etab" />
                                 </div>
                                 <label for="pic"> profile pic</label>
-                                <input
+                                <Field name="Photo de profile"  rules="image"
                                   class="form-control"
                                   id="pic"
                                   type="file"
                                   @change="onchange"
                                 />
+                                <ErrorMessage style="color: red" name="Photo de profile" />
                                 <div>
                                   <label for="basic-url" class="form-label"
                                     >Description</label
@@ -334,9 +335,11 @@
 
 <script>
 import axios from "axios";
+import { image} from '@vee-validate/rules';
+defineRule('image', image);
 import sidebarComponent from "@/components/Admin/sidebaradmin.vue";
 import topbarComponent from "@/components/Admin/topbar.vue";
-import { Field, Form, ErrorMessage } from "vee-validate";
+import { Field, Form, ErrorMessage,defineRule } from "vee-validate";
 export default {
   name: "etabetencadComponent",
   components: {

@@ -90,11 +90,15 @@
                   </Field>
                   <ErrorMessage style="color: white" name="Etablissement" />
                 </div>
+                 <label for=""> fichier demande</label>
+                <Field name="Pdf"  rules="required|ext:pdf" class="form-control" type="file"  @change="onchange1" />
+                 <ErrorMessage style="color: white" name="Pdf" :custom-messages="customMessages" />
+                 <br>
+                 
                 <label for=""> profile pic</label>
-                <input class="form-control" type="file" @change="onchange" />
-                <label for=""> fichier demande</label>
-                <input class="form-control" type="file" @change="onchange1" />
-
+                <Field  name="image" class="form-control" type="file" rules="image" @change="onchange" />
+               <ErrorMessage style="color: white" name="image" />
+               <br>
                 <button type="submit">Register</button>
               </Form>
             </div>
@@ -108,12 +112,18 @@
 
 <script>
 import swal from 'sweetalert';
-
+import { image, ext,required } from '@vee-validate/rules';
 import axios from "axios";
 import NavbarComponent from "@/components/navbar.vue";
 import FooterComponent from "@/components/footer.vue";
 import { Field, Form, ErrorMessage, defineRule } from "vee-validate";
 import * as yup from "yup";
+defineRule('image', image);
+defineRule('ext', ext);
+defineRule('required', required);
+
+
+
 defineRule("required", (value) => {
   if (!value) {
     return "This is required !!";
@@ -171,6 +181,7 @@ export default {
     };
   },
   mounted() {
+
     axios
       .get("http://127.0.0.1:8000/api/Etablisement")
       .then((response) => (this.etablisements = response.data));
@@ -197,6 +208,7 @@ export default {
       return true;
     },
     onchange(e) {
+      
       this.file = e.target.files[0];
     },
     onchange1(e) {

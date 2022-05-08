@@ -1,6 +1,7 @@
 <template>
   <div>
     <navbar-component />
+    <Form action="" @submit="onCreate">
     <div class="wrapper d-flex align-items-stretch">
       <sidebar-component />
       <div
@@ -31,16 +32,17 @@
 
             <div class="pl-sm-4 pl-2" id="img-section">
               <label for="pic"> profile pic</label>
-              <input
+              <Field name="Photo de profile"  rules="image"
                 class="form-control"
                 id="pic"
                 type="file"
                 @change="onchange"
               />
+              <ErrorMessage style="color: red" name="Photo de profile" />
             </div>
           </div>
           <div class="py-2" style="margin-left: 30px">
-            <Form action="" @submit="onCreate">
+            
               <div class="row py-2">
                 <div class="col-md-6">
                   <label for="firstname">Prenom</label>
@@ -118,7 +120,7 @@
                 </button>
                 <button class="btn border button">Cancel</button>
               </div>
-            </Form>
+            
             <div class="d-sm-flex align-items-center pt-3" id="deactivate">
               <div>
                 <b>Deactivate your account</b>
@@ -131,7 +133,8 @@
           </div>
         </div>
       </div>
-    </div>
+    </div></Form>
+
   </div>
 </template>
 
@@ -139,6 +142,8 @@
 import swal from 'sweetalert';
 import NavbarComponent from "@/components/navbar.vue";
 import sidebarComponent from "@/components/sidebar.vue";
+import { image} from '@vee-validate/rules';
+defineRule('image', image);
 import axios from "axios";
 import { Field, Form, ErrorMessage, defineRule } from "vee-validate";
 import * as yup from "yup";
