@@ -20,6 +20,10 @@ class DemandeEmpruntController extends Controller
     {
         return DemandeEmprunt::with('user')->with('memoire.demande_depot')->where('status', '!=', 'Accepte')
             ->orderBy('status')->orderBy('created_at', 'desc')->get();
+    } public function dejaemprunte($id,$idd)
+    {
+        return DemandeEmprunt::with('user')->with('memoire.demande_depot')->where('status', '=', 'EnAttente')->where('memoire_id', '=', $id)->where('user_id', '=', $idd)
+            ->orderBy('status')->orderBy('created_at', 'desc')->get();
     }
     public function acceptedbyUser($user)
     {

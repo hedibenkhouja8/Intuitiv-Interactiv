@@ -126,6 +126,8 @@ Route::get('/Emprunt/{emprunt}/Memoire',[EmpruntController::class,'byEmprunt']);
 Route::get('/Domaine/{domaine}/Memoire',[MemoireController::class,'byDomaine']);
 Route::get('/MemoireAccepted',[MemoireController::class,'MemoireAccepted']);
 
+Route::get('/MemoireDejaEmprunte/{id}/{idd}',[DemandeEmpruntController::class,'dejaemprunte']);
+
 Route::get('/MemoireDeMemeDomaine/{demandedepot}',[MemoireController::class,'MemoireDeMemeDomaine']);
 Route::get('/MemoireEncadreur/{encadreur}',[MemoireController::class,'MemoireEncadreur']);
 
