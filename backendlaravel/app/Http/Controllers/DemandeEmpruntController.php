@@ -94,12 +94,20 @@ class DemandeEmpruntController extends Controller
 
 
         $demande->save();
+        $user = DB::table('users')
+        ->where('id',$demande->user_id)
+        ->first();
+        $memoire=Memoire::where('id','=',$demande->memoire_id)->first();
 
+            $titre = DB::table('demande_depots')
+                ->where('id',$memoire->demande_depot_id)
+                ->first();
         $notif = new Notification;
         $notif->titre  = 'Demande emprunt';
-        $notif->content = 'une nouvelle demande emprunt';
+        $notif->content = "une nouvelle demande emprunt pour ' $titre->titre ' par ' $user->name ' ";
         $notif->user_id = $demande->user_id;
         $notif->admin = 1;
+        $notif->demande_id =$demande->id;
         $notif->save();
     }
 

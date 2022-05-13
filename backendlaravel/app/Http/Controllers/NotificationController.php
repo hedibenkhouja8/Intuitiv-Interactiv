@@ -72,6 +72,17 @@ class NotificationController extends Controller
                 ->where('user_id',$user->id)
                 ->where('admin',0)
                 ->orderBy('created_at','desc')
+                ->take(4)->get();
+                return $notif;
+              
+                        
+    }
+    public function byUserall(User $user){
+        
+        $notif= DB::table('notifications')
+                ->where('user_id',$user->id)
+                ->where('admin',0)
+                ->orderBy('created_at','desc')
                 ->get();
                 return $notif;
               
@@ -81,6 +92,17 @@ class NotificationController extends Controller
         
         $notif= DB::table('notifications')
                 ->where('admin',1)
+                ->orderBy('created_at','desc')
+                ->take(4)
+                ->get();
+                return $notif;
+    }
+    public function allAdminnotif(){
+        
+        $notif= DB::table('notifications')
+                ->where('admin',1)
+                ->orderBy('created_at','desc')
+
                 ->get();
                 return $notif;
     }
@@ -102,6 +124,38 @@ class NotificationController extends Controller
         ->count();
         return $notif;
        
+       
+    }
+    public function notviewedlist(User $user){
+
+        $notif= DB::table('notifications')
+        ->where('user_id',$user->id)
+        ->where('admin',0)
+        ->where('viewed',0)
+        ->get();
+        return $notif;
+       
+       
+    }
+    public function notviewedadmin(){
+
+        $notif= DB::table('notifications')
+        ->where('admin',1)
+        ->where('viewed',0)
+        ->count();
+        return $notif;
+       
+       
+    }
+    public function notviewedadminlist(){
+
+        $notif= DB::table('notifications')
+        ->where('admin',1)
+        ->where('viewed',0)
+        ->orderBy('created_at','desc')
+        ->get();
+        return $notif;
+               
        
     }
 

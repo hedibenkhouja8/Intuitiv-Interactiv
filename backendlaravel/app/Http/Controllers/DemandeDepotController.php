@@ -90,11 +90,15 @@ class DemandeDepotController extends Controller
            $demande->fichierrecherche = $file4;
            $demande->save();
 
+           $user = DB::table('users')
+           ->where('id',$demande->user_id)
+           ->first();
            $notif= new Notification;
            $notif->titre  ='Demande depot';
-           $notif->content ='une nouvelle demande de depot';
+           $notif->content ="une nouvelle demande de depot par '$user->name $user->prenom ' ";
            $notif->user_id =$demande->user_id;
            $notif->admin= 1; 
+           $notif->demande_id =$demande->id;
            $notif->save();
 
        

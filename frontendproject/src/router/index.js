@@ -18,6 +18,8 @@ import AddDemandeDepotComponent from '../components/adddemandedepot.vue'
 import mesdemandesComponent from '../components/mesdemandes.vue'
 import parametresComponent from '../components/Parametresprofile.vue'
 import notfoundPage from '../components/notfound.vue'
+import mesnotifComponent from '../components/allnotif.vue'
+
 
 
 import AdminComponent from '../components/Admin/adminindex.vue'
@@ -38,6 +40,10 @@ import memoireadmindetailComponent from '../components/Admin/memoireadmindetail.
 import etudiantsenattenteComponent from '../components/Admin/etudiantsenattente.vue'
 import domainecritereComponent from '../components/Admin/domainecritere.vue'
 import archiveComponent from '../components/Admin/archive.vue'
+import notifComponent from '../components/Admin/allnotif.vue'
+
+
+
 
 
 
@@ -224,6 +230,16 @@ const routes = [
     }
   },
   {
+    path: "/NotificationsAdmin",
+    name: "NotificationsAdmin",
+    component: notifComponent,
+    meta: {
+      title: 'Notifications',
+      needsAuth : true,
+      needsAdmin :true
+    }
+  },
+  {
     path: "/profile/:id",
     name: "profile",
     component: profileComponent,
@@ -355,6 +371,16 @@ const routes = [
     component: mesdemandesComponent,
     meta: {
       title: 'Mes Demandes de depot',
+      needsAuth : true,
+      needsetudiant :true
+    }
+  },
+  {
+    path: "/mesnotif",
+    name: "mesnotif",
+    component: mesnotifComponent,
+    meta: {
+      title: 'Mes Notifications',
       needsAuth : true,
       needsetudiant :true
     }

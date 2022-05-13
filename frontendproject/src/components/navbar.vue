@@ -74,13 +74,21 @@
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                    
                     
-                  <div class="dropdown-item" v-bind:key="item.id" v-for="item in info"> 
+                  <div class="dropdown-item" v-bind:key="item.id" style="width:600px;border-bottom:0.05px solid;" v-for="item in info"> 
                     <a class="dropdown-item" @click="redirect(item.titre,item.id)">
-                      <h6><i class="fa fa-info-circle" aria-hidden="true"></i> {{item.titre}} </h6>  <h6>{{item.content}}</h6> 
+                      <h6><i class="fa fa-info-circle" aria-hidden="true"></i> {{item.titre}} </h6>  <h8 style="width:50px;">{{item.content}}</h8> 
                     </a> 
                   
 
                   </div>
+                  <div class="notification-footer" style="height:35px">
+                <router-link class="nav-link" to="/mesnotif">
+                  <h7 style="color:red">
+                    View all
+                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                  </h7>
+                </router-link>
+              </div>
                   </div>
                 </div>
               </li>
@@ -187,6 +195,9 @@ this.$router.push("/mesdemandes");
        }
         if(titre == "Demande emprunt"){
 this.$router.push("/mesemprunts");
+       }
+        if(titre == "Demande emprunt"){
+this.$router.push("/historyprofile");
        }
     
      

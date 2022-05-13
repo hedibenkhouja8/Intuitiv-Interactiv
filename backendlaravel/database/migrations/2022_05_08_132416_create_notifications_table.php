@@ -20,7 +20,7 @@ class CreateNotificationsTable extends Migration
             $table->boolean('admin')->default(0);
             $table->boolean('viewed')->default(0);
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
-           
+            $table->foreignId('demande_id')->nullable();
             $table->timestamps();
         });
     }

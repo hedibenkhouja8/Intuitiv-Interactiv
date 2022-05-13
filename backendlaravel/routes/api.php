@@ -110,10 +110,16 @@ Route::put('/updateuser/{user}',[AuthController::class,'updateuser']);
 Route::get('/DemandeNonAccepte',[DemandeDepotController::class,'notAccepted']);
 
 Route::get('/Notification/User/{user}',[NotificationController::class,'byUser']);
+Route::get('/Notification/Userall/{user}',[NotificationController::class,'byUserall']);
 Route::get('/Notificationnotviewed/{user}',[NotificationController::class,'notviewed']);
+Route::get('/Notificationnotviewedadmin',[NotificationController::class,'notviewedadmin']);
+Route::get('/Notificationnotviewedadminlist',[NotificationController::class,'notviewedadminlist']);
+Route::get('/Notificationnotviewedlist/{user}',[NotificationController::class,'notviewedlist']);
+
 
 
 Route::get('/Notification/Admin',[NotificationController::class,'Adminnotif']);
+Route::get('/Notification/allAdmin',[NotificationController::class,'allAdminnotif']);
 Route::get('/Etablisement/{etablisement}/Encadreur',[EncadreursController::class,'byEtablisement']);
 Route::post('/Notificationviewed/{notification}',[NotificationController::class,'viewed']);
 Route::get('/Emprunt/{emprunt}/Memoire',[EmpruntController::class,'byEmprunt']);
