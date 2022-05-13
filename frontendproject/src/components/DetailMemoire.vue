@@ -217,6 +217,9 @@
                   ></Field>
                   <ErrorMessage style="color: red" name="description" />
                 </div>
+                 <h6 v-if="nblimite == 1" style="color: red"
+                          >vous avez depassé le nb demandes autorisé !
+                        </h6>
               </div>
               <div class="modal-footer">
                 <button
@@ -275,6 +278,8 @@ export default {
       type: "indefini",
       date_debut: "",
       date_fin: "",
+      nblimite: 0,
+      nbd: null,
       values: {
         id: this.$route.params.id,
       },
@@ -365,6 +370,10 @@ export default {
     },
     onCreate() {
       axios
+        .get("http://127.0.0.1:8000/api/nbdemandesemprunt/" + this.user_id)
+        .then((response) => (this.nbd = response.data));
+      if (this.nbd > 0) {
+      axios
         .post("http://127.0.0.1:8000/api/DemandeEmprunt", {
           date_debut: this.date_debut,
           date_fin: this.date_fin,
@@ -386,8 +395,12 @@ export default {
             this.$router.push({ path: "/Memoire" });
           }
         });
+      }
+      else{
+         this.nblimite = 1;
+      }
     },
-    deletehedi(id) {
+     deletehedi(id) {
       axios.delete("http://127.0.0.1:8000/api/Memoire/" + id);
     },
     edit(id, c) {
@@ -396,6 +409,7 @@ export default {
         params: { id: id, c: c },
       });
     },
+   
   },
 };
 </script>

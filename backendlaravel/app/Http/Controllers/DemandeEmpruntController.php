@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Memoire;
 use Illuminate\Http\Request;
@@ -109,6 +109,14 @@ class DemandeEmpruntController extends Controller
         $notif->admin = 1;
         $notif->demande_id =$demande->id;
         $notif->save();
+        $nb=DB::table('users')->where('id',$demande->user_id)->select('nb_demandes_emprunt')->pluck('nb_demandes_emprunt')->first();
+        if($nb>0){
+        $nb=$nb-1;
+        DB::table('users')
+        ->where('id',$demande->user_id)
+        ->update(['nb_demandes_emprunt' => $nb
+        ]);
+     }
     }
 
     /**
@@ -253,5 +261,10 @@ class DemandeEmpruntController extends Controller
         $notif->content = "votre demande de depot de la memoire ' $titre->titre ' a été refusé";
         $notif->user_id = $demandeemprunt->user_id;
         $notif->save();
+    }
+    public function nbdemandes($id)
+    {
+        $nb=DB::table('users')->where('id',$id)->select('nb_demandes_emprunt')->pluck('nb_demandes_emprunt')->first();
+        return $nb; 
     }
 }

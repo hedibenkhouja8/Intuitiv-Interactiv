@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->foreignId('etablisement_id')->constrained()->onDelete('cascade');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('nb_demandes_depot')->default(3);
+            $table->integer('nb_demandes_emprunt')->default(5);
             $table->enum('role',['admin','etudiant'])->default('etudiant');
             $table->string('etatdecompte')->default('notactive');
 

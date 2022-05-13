@@ -5,7 +5,7 @@
       <sidebar-component />
       <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4">Ajouter votre propre Memoire</h2>
-   
+
         <div class="row">
           <div class="col-md-20">
             <div class="white_shd full margin_bottom_30">
@@ -35,7 +35,6 @@
                             type="text"
                             placeholder="Titre "
                             v-model="titre"
-                            
                           />
                           <ErrorMessage style="color: red" name="titre" />
                         </div>
@@ -135,7 +134,10 @@
                               {{ etablisement.nom }}
                             </option>
                           </Field>
-                          <ErrorMessage style="color: red" name="Etablissement" />
+                          <ErrorMessage
+                            style="color: red"
+                            name="Etablissement"
+                          />
                         </div>
                         <div class="col-md-4">
                           <label for="basic-url" class="form-label"
@@ -166,25 +168,34 @@
                           <label for="basic-url" class="form-label"
                             >Fichier initial de la memoire *</label
                           >
-                          
-                          <Field name="Fichier initial"  rules="required|ext:pdf"
+
+                          <Field
+                            name="Fichier initial"
+                            rules="required|ext:pdf"
                             class="form-control"
                             type="file"
                             @change="onchange"
                           />
-                          <ErrorMessage style="color: red" name="Fichier initial" />
-                          
+                          <ErrorMessage
+                            style="color: red"
+                            name="Fichier initial"
+                          />
                         </div>
                         <div class="col-md-4">
                           <label for="basic-url" class="form-label"
                             >Fichier de la demande *</label
                           >
-                         <Field name="Fichier de la demande"  rules="required|ext:pdf"
+                          <Field
+                            name="Fichier de la demande"
+                            rules="required|ext:pdf"
                             class="form-control"
                             type="file"
                             @change="onchange1"
                           />
-                          <ErrorMessage style="color: red" name="Fichier de la demande" />
+                          <ErrorMessage
+                            style="color: red"
+                            name="Fichier de la demande"
+                          />
                         </div>
                       </div>
                       <div class="row">
@@ -192,23 +203,33 @@
                           <label for="basic-url" class="form-label"
                             >Photo de Couverture *</label
                           >
-                          <Field name="Photo de Couverture"  rules="required|image"
+                          <Field
+                            name="Photo de Couverture"
+                            rules="required|image"
                             class="form-control"
                             type="file"
                             @change="onchange2"
                           />
-                          <ErrorMessage style="color: red" name="Photo de Couverture" />
+                          <ErrorMessage
+                            style="color: red"
+                            name="Photo de Couverture"
+                          />
                         </div>
                         <div class="col-md-4">
                           <label for="basic-url" class="form-label"
                             >Fichier du brevet</label
                           >
-                          <Field name="Fichier du brevet"  rules="ext:pdf"
+                          <Field
+                            name="Fichier du brevet"
+                            rules="ext:pdf"
                             class="form-control"
                             type="file"
                             @change="onchange3"
                           />
-                          <ErrorMessage style="color: red" name="Fichier du brevet" />
+                          <ErrorMessage
+                            style="color: red"
+                            name="Fichier du brevet"
+                          />
                         </div>
                       </div>
                       <div class="row">
@@ -216,12 +237,17 @@
                           <label for="basic-url" class="form-label"
                             >Fichier du recherche</label
                           >
-                          <Field name="Fichier du recherche"  rules="ext:pdf"
+                          <Field
+                            name="Fichier du recherche"
+                            rules="ext:pdf"
                             class="form-control"
                             type="file"
                             @change="onchange4"
                           />
-                          <ErrorMessage style="color: red" name="Fichier du recherche" />
+                          <ErrorMessage
+                            style="color: red"
+                            name="Fichier du recherche"
+                          />
                         </div>
                         <div class="col-md-4">
                           <label for="basic-url" class="form-label"
@@ -253,7 +279,6 @@
                             placeholder="Description"
                             v-model="description"
                             :rules="Description"
-                            
                           ></Field>
                           <ErrorMessage style="color: red" name="Description" />
                         </div>
@@ -261,16 +286,19 @@
                       <br />
                       <div class="input-group mb-3">
                         <button
-                          
                           type="submit"
                           class="btn btn-dark"
                           style="background-color: #0e3746"
                         >
                           Déposer ma demande
                         </button>
+                        
                       </div>
                     </Form>
                   </div>
+                  <h4 v-if="nblimite == 1" style="color: red"
+                          >vous avez depassé le nb demandes autorisé !
+                        </h4>
                 </div>
                 <div class="col-md-6">
                   <div class="map_container">
@@ -291,12 +319,12 @@
 import NavbarComponent from "@/components/navbar.vue";
 import sidebarComponent from "@/components/sidebar.vue";
 import axios from "axios";
-import swal from 'sweetalert';
-import { image, ext,required } from '@vee-validate/rules';
-defineRule('image', image);
-defineRule('ext', ext);
-defineRule('required', required);
-import { Field, Form, ErrorMessage,defineRule } from "vee-validate";
+import swal from "sweetalert";
+import { image, ext, required } from "@vee-validate/rules";
+defineRule("image", image);
+defineRule("ext", ext);
+defineRule("required", required);
+import { Field, Form, ErrorMessage, defineRule } from "vee-validate";
 export default {
   name: "AddDemandeDepotComponent",
   components: {
@@ -331,6 +359,8 @@ export default {
       file4: null,
       userid: localStorage.getItem("id"),
       testres: "",
+      nblimite: 0,
+      nbd: null,
     };
   },
   mounted() {
@@ -346,7 +376,6 @@ export default {
       .then((response) => (this.etablisements = response.data));
   },
   methods: {
-  
     isRequired(value) {
       if (!value) {
         return "this field is required";
@@ -355,15 +384,15 @@ export default {
       return true;
     },
     Description(value) {
-     if (!value) {
+      if (!value) {
         return "this field is required";
       }
-  if (value.length < 20) {
-    return `This field must be at least 20 characters`;
-  }
-  return true;
+      if (value.length < 20) {
+        return `This field must be at least 20 characters`;
+      }
+      return true;
     },
-    
+
     getCriteres(DomaineId) {
       axios
         .get("http://127.0.0.1:8000/api/Domaine/" + DomaineId + "/Critere")
@@ -397,49 +426,58 @@ export default {
       this.file4 = e.target.files[0];
     },
     onCreate() {
+      axios
+        .get("http://127.0.0.1:8000/api/nbdemandesdepot/" + this.userid)
+        .then((response) => (this.nbd = response.data));
+      if (this.nbd > 0) {
         swal({
-  title: "Are you sure?",
-  text: " ajouté la demande ?",
-  icon: "warning",
-  buttons: true,
-  dangerMode: true,
-})
-.then((willDelete) => {
-  if (willDelete) {
-    let data = new FormData();
-      data.append("titre", this.titre);
-      data.append("user_id", this.userid);
-      data.append("encadreur_id", this.selectedEncadreur);
-      data.append("domaine_id", this.selectedDomaine.id);
-      data.append("critere_id", this.selectedCritere);
-      data.append("description", this.description);
-      data.append("fichierpdf", this.file);
-      data.append("fichierdemande", this.file1);
-      data.append("etablisement_id", this.selectedEtablisement.id);
-      data.append("nbpages", this.nbpages);
-      data.append("entreprise_id", this.selectedEntreprise);
-      data.append("coverimage", this.file2);
-      data.append("fichierbrevet", this.file3);
-      data.append("fichierrecherche", this.file4);
-      axios({
-        headers: { "Content-Type": "multipart/form-data" },
-        method: "post",
-        url: "http://127.0.0.1:8000/api/DemandeDepot",
-        data: data,
-      })
-        .then((response) => {
-          this.testres = response.data;
-          console.log("response", response.data);
-        })
-        .catch((err) => console.log(err));
-swal("Demande ajouté !", "votre demande est en attente de reponse!", "success");
-this.$router.push({ path: "/mesdemandes" });
-  } else {
-    swal("demande non ajouté");
-  }
-});
-      
-},
+          title: "Are you sure?",
+          text: " ajouté la demande ?",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        }).then((willDelete) => {
+          if (willDelete) {
+            let data = new FormData();
+            data.append("titre", this.titre);
+            data.append("user_id", this.userid);
+            data.append("encadreur_id", this.selectedEncadreur);
+            data.append("domaine_id", this.selectedDomaine.id);
+            data.append("critere_id", this.selectedCritere);
+            data.append("description", this.description);
+            data.append("fichierpdf", this.file);
+            data.append("fichierdemande", this.file1);
+            data.append("etablisement_id", this.selectedEtablisement.id);
+            data.append("nbpages", this.nbpages);
+            data.append("entreprise_id", this.selectedEntreprise);
+            data.append("coverimage", this.file2);
+            data.append("fichierbrevet", this.file3);
+            data.append("fichierrecherche", this.file4);
+            axios({
+              headers: { "Content-Type": "multipart/form-data" },
+              method: "post",
+              url: "http://127.0.0.1:8000/api/DemandeDepot",
+              data: data,
+            })
+              .then((response) => {
+                this.testres = response.data;
+                console.log("response", response.data);
+              })
+              .catch((err) => console.log(err));
+            swal(
+              "Demande ajouté !",
+              "votre demande est en attente de reponse!",
+              "success"
+            );
+            this.$router.push({ path: "/mesdemandes" });
+          } else {
+            swal("demande non ajouté");
+          }
+        });
+      } else {
+        this.nblimite = 1;
+      }
+    },
   },
 };
 </script>

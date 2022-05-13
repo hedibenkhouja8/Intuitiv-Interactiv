@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Memoire;
 use App\Models\Notification;
-
+use Illuminate\Support\Facades\Auth;
 class DemandeDepotController extends Controller
 {
     /**
@@ -101,6 +101,14 @@ class DemandeDepotController extends Controller
            $notif->demande_id =$demande->id;
            $notif->save();
 
+           $nb=DB::table('users')->where('id',$demande->user_id)->select('nb_demandes_depot')->pluck('nb_demandes_depot')->first();
+           if($nb>0){
+           $nb=$nb-1;
+           DB::table('users')
+           ->where('id',$demande->user_id)
+           ->update(['nb_demandes_depot' => $nb
+           ]);
+        }
        
 
     
@@ -244,5 +252,10 @@ class DemandeDepotController extends Controller
         $notif->save();
      
 
+    }
+    public function nbdemandes($id)
+    {
+        $nb=DB::table('users')->where('id',$id)->select('nb_demandes_depot')->pluck('nb_demandes_depot')->first();
+        return $nb; 
     }
 }
