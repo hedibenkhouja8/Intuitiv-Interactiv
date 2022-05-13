@@ -62,9 +62,12 @@
                 <h3 v-if="user_status === 'restreint'">
                   Votre compte est désactivé veuillez nous contacter
                 </h3>
+                 <h3 v-if="x > 0">
+                 Vous avez déja demandé d'empruntez cette mémoire
+                </h3>
                 <br />
                 <a
-                  v-if="user_id !== null && user_status !== 'restreint'"
+                  v-if="user_id !== null && user_status !== 'restreint' && x<1"
                   href=""
                   data-toggle="modal"
                   data-target=".bd-example-modal-lg"
@@ -263,7 +266,7 @@ export default {
   },
   data() {
     return {
-      info: null,
+      info: null,x:null,
       memoire_id: this.$route.params.id,
       nb: null,
 
@@ -295,6 +298,13 @@ export default {
           "/DemandeDepot"
       )
       .then((response) => (this.info = response.data));
+  axios
+      .get(
+        "http://127.0.0.1:8000/api/MemoireDejaEmprunte/" +
+          this.$route.params.id +
+          "/"+localStorage.getItem("id")
+      )
+      .then((response) => (this.x = response.data.length));
 
     axios
       .get(
