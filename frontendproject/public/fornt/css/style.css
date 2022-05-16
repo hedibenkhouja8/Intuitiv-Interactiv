@@ -168,7 +168,13 @@ body {
   text-align: center;
   text-transform: uppercase;
 }
-
+.zz{
+  color: #272727;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: -1cm;
+  margin-top: 0.1cm;
+}
 a,
 a:hover,
 a:focus {

@@ -20,7 +20,7 @@ class MemoireController extends Controller
     public function index()
     {
      
-        return Memoire::with('demande_depot.user')->with('demande_depot.critere')->with('demande_depot.domaine')->where('archive','=','no')->get();
+        return Memoire::with('demande_depot.user')->with('demande_depot.critere')->with('demande_depot.domaine')->with('demande_depot.etablisement')->where('archive','=','no')->get();
 
     } public function archive()
     {

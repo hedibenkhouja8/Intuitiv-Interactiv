@@ -56,10 +56,10 @@
                 </router-link>
               </li>
 
-              <li class="nav-item" v-if="username !== null">
-                <div class="dropdown show">
+              <li class="zz" v-if="username !== null">
+              <div class="dropdown show">
                   <a
-                    class="nav-link nav-item"
+                    class="zz nav-item"
                     href="#"
                     role="button"
                     id="dropdownMenuLink"
@@ -92,10 +92,10 @@
                   </div>
                 </div>
               </li>
-              <li class="nav-item" v-if="username !== null">
+              <li class=" zz nav-item" v-if="username !== null">
                 <div class="dropdown show">
                   <a
-                    class="nav-link nav-item"
+                    class="zz nav-item"
                     href="#"
                     role="button"
                     id="dropdownMenuLink"
@@ -103,7 +103,7 @@
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    {{ username + "  " + prenom }}&nbsp;&nbsp;<i
+                    {{ prenom + "  " + username }}&nbsp;&nbsp;<i
                       class="fa fa-user"
                     ></i>
                   </a>
