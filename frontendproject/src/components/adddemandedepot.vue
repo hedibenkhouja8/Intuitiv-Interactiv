@@ -76,7 +76,7 @@
                             v-model="selectedDomaine"
                             v-on:change="getCriteres(selectedDomaine.id)"
                           >
-                            <option selected>Domaine</option>
+                            <option disabled value="">Séléctionnez Un Domaine</option>
                             <option
                               v-bind:key="domaine.id"
                               v-for="domaine in domaines"
@@ -99,7 +99,7 @@
                             aria-label="Default select example"
                             v-model="selectedCritere"
                           >
-                            <option selected>critere</option>
+                            <option disabled value="">Séléctionnez Un Critère</option>
                             <option
                               v-bind:key="critere.id"
                               v-bind:value="critere.id"
@@ -125,7 +125,7 @@
                             v-model="selectedEtablisement"
                             v-on:change="getEncadreurs(selectedEtablisement.id)"
                           >
-                            <option selected>Etablissement</option>
+                           <option disabled value="">Séléctionnez un Etablissement</option>
                             <option
                               v-bind:key="etablisement.id"
                               v-for="etablisement in etablisements"
@@ -151,7 +151,7 @@
                             aria-label="Default select example"
                             v-model="selectedEncadreur"
                           >
-                            <option selected>encadreur</option>
+               <option disabled value="">Séléctionnez Un Encadreur</option>
                             <option
                               v-bind:key="encadreur.id"
                               v-bind:value="encadreur.id"

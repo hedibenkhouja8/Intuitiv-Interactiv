@@ -204,15 +204,15 @@ class DemandeEmpruntController extends Controller
         $users = DB::table('demande_emprunts')->where('user_id', $user->id)->where('status', '=', 'Refuse')->get();
         return $users;
     }
-    public function X()
+    public function X($domaine)
     {
-        return  $shares = DB::table('demande_emprunts')
+         $shares = DB::table('demande_emprunts')
             ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
 
             ->join('demande_depots', 'demande_depots.id', '=', 'memoires.demande_depot_id')
-
-            ->join('domaines', 'domaines.id', '=', 'demande_depots.domaine_id')
-            ->get();
+->where('domaine_id','=',$domaine)
+           // ->join('domaines', 'domaines.id', '=', 'demande_depots.domaine_id')
+            ->get();return count($shares);
         /*   $latestPosts  = DB::table('users')
         ->join('demande_emprunts', function ($join) {
             $join->on('users.id', '=', 'demande_emprunts.user_id');
@@ -270,5 +270,38 @@ class DemandeEmpruntController extends Controller
     {
         $nb=DB::table('users')->where('id',$id)->select('nb_demandes_emprunt')->pluck('nb_demandes_emprunt')->first();
         return $nb; 
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    public function XX()
+    {
+        return $shares = DB::table('demande_emprunts')
+            ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
+
+            ->join('demande_depots', 'demande_depots.id', '=', 'memoires.demande_depot_id')->select(DB::raw('count(*) as total'))
+->groupBy('domaine_id')
+           // ->join('domaines', 'domaines.id', '=', 'demande_depots.domaine_id')
+            ->get();
+        /*   $latestPosts  = DB::table('users')
+        ->join('demande_emprunts', function ($join) {
+            $join->on('users.id', '=', 'demande_emprunts.user_id');
+                 
+        })->where('user_id',$user->id)
+        ->get();
+        $memoiresnuser = DB::table('memoires')
+        ->joinSub($latestPosts , 'demande_emprunts', function ($join) {
+            $join->on('memoires.id', '=', 'demande_emprunts.memoire_id');
+        })->get();
+        return $memoiresnuser;*/
     }
 }

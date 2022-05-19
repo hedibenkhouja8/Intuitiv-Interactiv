@@ -43,7 +43,7 @@
                      <li><router-link  class="nav-link" to="/historiquesemprunt"><i class="fa fa-clock-o orange_color"></i> <span>Historique D'emprunt</span> </router-link></li>
                     
                    
-                     <li><router-link  class="nav-link" to="/charts"><i class="fa fa-bar-chart-o green_color"></i> <span>Charts</span></router-link></li>
+                     <li><router-link  class="nav-link" to="/charts"><i class="fa fa-bar-chart-o green_color"></i> <span>Diagrammes</span></router-link></li>
                      <li><router-link  class="nav-link" to="/settings"><i class="fa fa-cog yellow_color"></i> <span>Settings</span></router-link></li>
                   </ul>
                </div>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Etablisement;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 class EtablisementsController extends Controller
 {
    /**
@@ -16,6 +18,15 @@ class EtablisementsController extends Controller
         return Etablisement::all();
 
     }
+    public function index2()
+    {
+       return  $shares = DB::table('etablisements')
+      ->select('nom')->groupBy('nom')
+        ->get();
+
+    }
+   
+
 
     /**
      * Store a newly created resource in storage.

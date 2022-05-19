@@ -37,14 +37,14 @@ class DatabaseSeeder extends Seeder
         'nom' => 'Chimie',
     ]); DB::table('domaines')->insert([
         'nom' => 'Math',
-    ]); DB::table('domaines')->insert([
-        'nom' => 'Autre',
     ]);DB::table('domaines')->insert([
         'nom' => 'Medecine',
     ]);DB::table('domaines')->insert([
         'nom' => 'Art',
     ]);DB::table('domaines')->insert([
         'nom' => 'Langues',
+    ]); DB::table('domaines')->insert([
+        'nom' => 'Autre',
     ]);
         
         Etablisement::factory()->count(3)

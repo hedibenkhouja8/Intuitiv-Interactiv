@@ -123,7 +123,19 @@ class AuthController extends Controller
       
         return User::with('etablisement')->where('etatdecompte','=','active')->where('role','=','etudiant')->get();
 
-    } public function users2()
+    }
+    public function index3()
+    {
+       return  $shares = DB::table('users')
+       ->select(DB::raw('count(*) as total'))
+       ->groupBy('etablisement_id')
+        ->get();
+
+    }
+    
+    
+    
+    public function users2()
     {
       
         return User::with('etablisement')->where('etatdecompte','=','restreint')->get();

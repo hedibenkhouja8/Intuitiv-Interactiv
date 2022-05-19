@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Domaine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DomaineController extends Controller
 {
@@ -14,6 +15,13 @@ class DomaineController extends Controller
     public function index()
     {
         return Domaine::with('criteres')->get();
+
+    }
+    public function index2()
+    {
+       return  $shares = DB::table('domaines')->orderBy('id','asc')
+      ->select('nom')->groupBy('nom')
+        ->get();
 
     }
 

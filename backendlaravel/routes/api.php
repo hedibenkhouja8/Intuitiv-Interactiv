@@ -99,7 +99,11 @@ Route::get('/UserX',[AuthController::class,'users2']);
 
 Route::get('/UserEnAttente',[AuthController::class,'usersenattente']);
 
-Route::get('/UserJoin/{user}',[DemandeEmpruntController::class,'X']);
+Route::get('/UserEmprunt/{domaine}',[DemandeEmpruntController::class,'X']);
+Route::get('/UserEmpruntX',[DemandeEmpruntController::class,'XX']);
+Route::get('/EtablisementX',[EtablisementsController::class,'index2']);
+Route::get('/DomaineX',[DomaineController::class,'index2']);
+Route::get('/UserZ',[AuthController::class,'index3']);
 
 Route::get('/User/Recents',[AuthController::class,'Recentusers']);
 Route::get('/User/{user}',[AuthController::class,'userById']);
