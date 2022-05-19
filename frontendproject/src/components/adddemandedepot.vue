@@ -283,9 +283,11 @@
                           <ErrorMessage style="color: red" name="Description" />
                         </div>
                       </div>
-                      <br />
-                      <div class="input-group mb-3">
-                        <button
+                      <br ><h3 v-if="info1 > 2">
+                 Vous avez déja demandé de déposer plus de 3 mémoire veuillez attendre qu'une soit accepté ou réfusé
+                </h3>
+                      <div v-if="info1 <3" class="input-group mb-3">
+                        <button 
                           type="submit"
                           class="btn btn-dark"
                           style="background-color: #0e3746"
@@ -296,9 +298,7 @@
                       </div>
                     </Form>
                   </div>
-                  <h4 v-if="nblimite == 1" style="color: red"
-                          >vous avez depassé le nb demandes autorisé !
-                        </h4>
+                 
                 </div>
                 <div class="col-md-6">
                   <div class="map_container">
@@ -343,6 +343,7 @@ export default {
       selectedEtablisement: 0,
       selectedCritere: "",
       selectedEntreprise: "",
+      info1:[],
       selectedEncadreur: "",
       criteres: null,
       etablisements: null,
@@ -368,6 +369,9 @@ export default {
       .get("http://127.0.0.1:8000/api/Entreprise")
       .then((response) => (this.entreprises = response.data));
 
+       axios
+      .get('http://127.0.0.1:8000/api/DemandeDepotByUser/'+localStorage.getItem("id"))
+      .then(response => (this.info1 = response.data.length));
     axios
       .get("http://127.0.0.1:8000/api/Domaine")
       .then((response) => (this.domaines = response.data));
@@ -426,10 +430,6 @@ export default {
       this.file4 = e.target.files[0];
     },
     onCreate() {
-      axios
-        .get("http://127.0.0.1:8000/api/nbdemandesdepot/" + this.userid)
-        .then((response) => (this.nbd = response.data));
-      if (this.nbd > 0) {
         swal({
           title: "Are you sure?",
           text: " ajouté la demande ?",
@@ -474,9 +474,7 @@ export default {
             swal("demande non ajouté");
           }
         });
-      } else {
-        this.nblimite = 1;
-      }
+      
     },
   },
 };

@@ -38,7 +38,7 @@
                       <tbody>
                         <tr v-bind:key="item.id" v-for="item in info">
                           <td>
-                            <img
+                            <img v-if="item.profilepic!=null"
                               v-bind:src="
                                 'http://localhost:8000/storage/files/register/profilepic/' +
                                 item.profilepic

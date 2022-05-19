@@ -140,7 +140,9 @@
   <div class="alert alert-danger" v-if="(this.q || this.domaine || this.etablisement) && getfilteredmemoires.length === 0">{{getfilteredmemoires.length}} Aucune mémoire touvée</div>
   <div class="alert alert-secondary" v-if="(this.q || this.domaine || this.etablisement) && getfilteredmemoires.length === 1">{{getfilteredmemoires.length}} Une seule mémoire touvée</div>
   <div class="loader" v-if="loading "></div>
-      <div class="row" >
+      <div class="row" >   <div style="margin-left:500px"  v-if="(this.q || this.domaine || this.etablisement) && getfilteredmemoires.length === 0">
+            <img  style="height:300px;width:300px" src="../assets/images/abc.jpg" alt="">
+          </div>
        <div class="col-md-6 " v-for="info in getfilteredmemoires"  v-bind:key="info.id" >
      <div class="course" >
 						

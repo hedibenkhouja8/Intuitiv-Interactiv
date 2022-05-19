@@ -63,11 +63,14 @@
                   Votre compte est désactivé veuillez nous contacter
                 </h3>
                  <h3 v-if="x > 0">
-                 Vous avez déja demandé d'empruntez cette mémoire
+                 Vous avez déja demandé d'emprunter cette mémoire
+                </h3>
+                <h3 v-if="info5.length > 4">
+                 Vous avez déja demandé d'emprunter plus de 5 mémoire veuillez attendre qu'une soit accepté ou réfusé
                 </h3>
                 <br />
                 <a
-                  v-if="user_id !== null && user_status !== 'restreint' && x<1"
+                  v-if="user_id !== null && user_status !== 'restreint' && x<1 && info5.length < 5" 
                   href=""
                   data-toggle="modal"
                   data-target=".bd-example-modal-lg"
@@ -269,7 +272,7 @@ export default {
   },
   data() {
     return {
-      info: null,x:null,
+      info: null,x:null,info5:null,
       memoire_id: this.$route.params.id,
       nb: null,
 
@@ -303,6 +306,9 @@ export default {
           "/DemandeDepot"
       )
       .then((response) => (this.info = response.data));
+       axios
+      .get('http://127.0.0.1:8000/api/enattentebyUser/'+localStorage.getItem("id"))
+      .then(response => (this.info5 = response.data))
   axios
       .get(
         "http://127.0.0.1:8000/api/MemoireDejaEmprunte/" +
@@ -379,10 +385,7 @@ export default {
       return true;
     },
     onCreate() {
-      axios
-        .get("http://127.0.0.1:8000/api/nbdemandesemprunt/" + this.user_id)
-        .then((response) => (this.nbd = response.data));
-      if (this.nbd > 0) {
+    
       axios
         .post("http://127.0.0.1:8000/api/DemandeEmprunt", {
           date_debut: this.date_debut,
@@ -405,10 +408,7 @@ export default {
             this.$router.push({ path: "/Memoire" });
           }
         });
-      }
-      else{
-         this.nblimite = 1;
-      }
+     
     },
      deletehedi(id) {
       axios.delete("http://127.0.0.1:8000/api/Memoire/" + id);

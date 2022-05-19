@@ -17,8 +17,31 @@
               </div>
             </div>
             <!-- row -->
-          
-             <div class="row column1">
+          <br><div class="form-row"><div class="col-md-4">
+	  <input type="text" class="form-control" placeholder="Memoire Ex'Big Data research'" height="222px" v-model="q"></div>
+	<div class="col-md-4" >   <select  v-model="domaine"   class="form-control"  
+                          > <option disabled value="">Séléctionnez Un Domaine</option>
+                            <option
+                              v-bind:key="domaine.id"
+                              v-for="domaine in domaines"
+                              :value="domaine.nom"
+                            >
+                              {{ domaine.nom }}
+                            </option></select></div>
+						<div class="col-md-3">	  <select v-model="etablisement"  class="form-control"  
+                          > <option disabled value="">Séléctionnez Un Etablissement</option>
+                            <option
+                              v-bind:key="etablisement.id"
+                              v-for="etablisement in etablisements"
+                              :value="etablisement.nom"
+                            >
+                              {{ etablisement.nom }}
+                            </option></select></div>
+        </div><br> <div class="alert alert-secondary" v-if="(this.q || this.domaine || this.etablisement) && getfilteredmemoires.length >1">{{getfilteredmemoires.length}} mémoires trouvées</div>
+  <div class="alert alert-danger" v-if="(this.q || this.domaine || this.etablisement) && getfilteredmemoires.length === 0">{{getfilteredmemoires.length}} Aucune mémoire touvée</div>
+  <div class="alert alert-secondary" v-if="(this.q || this.domaine || this.etablisement) && getfilteredmemoires.length === 1">{{getfilteredmemoires.length}} Une seule mémoire touvée</div>
+  <div class="loader" v-if="loading "></div>
+             <div class="row column1"> 
                         <div class="col-md-12">
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
@@ -28,13 +51,15 @@
                                 
                                     <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Archive&nbsp;<router-link to="archive"><i class="fa fa-archive color-red"></i></router-link></h2>
                               </div>   <div class="full gallery_section_inner padding_infor_info">
-                                 <div class="row">
-                                    <div v-bind:key="item.id" v-for="item in info" class="col-sm-4 col-md-3 margin_bottom_30">
+                                 <div class="row"><div style="margin-left:450px"  v-if="(this.q || this.domaine || this.etablisement) && getfilteredmemoires.length === 0">
+            <img  style="height:300px;width:300px" src="../../assets/images/abc.jpg" alt="">
+          </div>
+                                    <div v-bind:key="info.id" v-for="info in getfilteredmemoires" class="col-sm-4 col-md-3 margin_bottom_30">
                                        <div class="column2">
-                                          <a  @click="details(item.id,item.demande_depot.user_id)" ><img  v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.demande_depot.coverimage"  alt="#" /></a>
+                                          <a  @click="details(info.id,info.demande_depot.user_id)" ><img  v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+info.demande_depot.coverimage"  alt="#" /></a>
                                        </div>
                                        <div class="heading_section">
-                                          <h4>{{item.demande_depot.titre}}</h4>
+                                          <h4>{{info.demande_depot.titre}}</h4>
                                        </div>
                                     </div>
                                   
@@ -77,15 +102,19 @@ export default {
   },
   data() {
     return {
-      info: null,
-      user: "test",
+      infos: [],
+	  q:'',domaine:'',critere:'',domaines:[],criteres:[],etablisements:[],etablisement:'',loading:true,
     };
   },
   mounted() {
     
-    axios
-      .get("http://127.0.0.1:8000/api/Memoire")
-      .then((response) => (this.info = response.data));
+      this.getmemoires(); axios
+      .get("http://127.0.0.1:8000/api/Domaine")
+      .then((response) => (this.domaines = response.data));
+	  axios
+      .get("http://127.0.0.1:8000/api/Etablisement")
+      .then((response) => (this.etablisements = response.data));
+   
       
   },
   methods: {
@@ -103,9 +132,28 @@ export default {
      axios.post('http://127.0.0.1:8000/api/DemandeDepotrefuse/'+id);
      window.location.reload();
     },
-    //http://127.0.0.1:8000/api/User/5
-    //http://127.0.0.1:8000/api/Encadreurs/1
-  },
+   
+getmemoires(){
+ axios
+      .get('http://127.0.0.1:8000/api/Memoire')
+      .then(response => {this.infos = response.data;this.loading=false;})
+} ,
+ filterProductsByDomaine: function(infos){
+                return infos.filter(info => !info.demande_depot.domaine.nom.indexOf(this.domaine))
+            }, filterProductsByEtablisement: function(infos){
+                return infos.filter(info => !info.demande_depot.etablisement.nom.indexOf(this.etablisement))
+            }, filterProductsByName: function(infos) {
+                return infos.filter(info=>info.demande_depot.titre.toLowerCase().includes(this.q.toLowerCase()));
+            },
+  },computed:{
+	 /* getfilteredmemoires(){
+		  return this.infos.filter(info =>{
+			  return info.demande_depot.titre.toLowerCase().includes(this.q.toLowerCase());
+		  })
+	  }*/ getfilteredmemoires: function(){ 
+                return this.filterProductsByDomaine(this.filterProductsByName(this.filterProductsByEtablisement(this.infos)))
+            }
+  }
 };
 </script>
 
