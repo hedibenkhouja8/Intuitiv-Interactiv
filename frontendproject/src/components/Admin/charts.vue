@@ -36,11 +36,11 @@
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
                                     <h2>
-Diagramme circulaire<p>(Nombre d'utilisateur par établissement)</p></h2>
+Diagramme circulaire<p>(Nombre d'étudiants par établissement)</p></h2>
                                  </div>
                               </div>
                               <div class="map_section padding_infor_info">
-                                       <canvas id="myChart2" width="10" height="10"></canvas>
+                                       <canvas id="myChart2" width="5" height="5"></canvas>
                               </div>
                            </div>
                         </div>
@@ -48,11 +48,11 @@ Diagramme circulaire<p>(Nombre d'utilisateur par établissement)</p></h2>
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>Radar Chart</h2>
+                                    <h2>Graphique Linéaire</h2>
                                  </div>
                               </div>
                               <div class="map_section padding_infor_info">
-                                 <canvas id="radar_chart"></canvas>
+                                     <canvas id="myChart3" width="5" height="5"></canvas>
                               </div>
                            </div>
                         </div>
@@ -60,11 +60,11 @@ Diagramme circulaire<p>(Nombre d'utilisateur par établissement)</p></h2>
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>Pie Chart</h2>
+                                    <h2>Carte de la Zone Polaire <p>Nombre d'etudiants par ville</p></h2>
                                  </div>
                               </div>
                               <div class="map_section padding_infor_info">
-                                 <canvas id="pie_chart"></canvas>
+                                 <canvas id="myChart4"></canvas>
                               </div> 
                            </div> 
                         </div> 
@@ -104,13 +104,22 @@ components: {
   },async mounted(){ 
       const a = await axios.get("http://127.0.0.1:8000/api/UserEmpruntX");
       const b = await axios.get("http://127.0.0.1:8000/api/DomaineX");
-     const ax =a.data.map((x) =>x.total ) 
+      const c = await axios.get("http://127.0.0.1:8000/api/UserVille");
+      const d = await axios.get("http://127.0.0.1:8000/api/Ville");
+      const months = await axios.get("http://127.0.0.1:8000/api/EmpruntMois");
+      const months2 = await axios.get("http://127.0.0.1:8000/api/DepotMois");
+     const amois =months.data.map((x) =>x.total_emprunts ) 
+     const bmois =months2.data.map((x) =>x.total_depots ) 
+      const ax =a.data.map((x) =>x.total ) 
       const bx =b.data.map((x) =>x.nom )
+      const cx =c.data.map((x) =>x.total_users ) 
+      const dx =d.data.map((x) =>x.ville )
+      console.log(dx.length)
          const nometablisement = await axios.get("http://127.0.0.1:8000/api/EtablisementX");
   const ne =nometablisement.data.map((x) =>x.nom )
    const users = await axios.get("http://127.0.0.1:8000/api/UserZ");
   const ne2 =users.data.map((x) =>x.total )
-   console.log(ne2)
+   
      const ctx = document.getElementById('myChart');
      const myChart = new Chart(ctx, {
     type: 'bar',
@@ -145,7 +154,73 @@ components: {
             }
         }
     }
-});   
+});    const ctx3 = document.getElementById('myChart3');
+
+     const myChart3 = new Chart(ctx3, {
+    type: 'line',
+    data: {
+        labels: ['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','September','Octobre','November','December'],
+        datasets: [{
+            label: "Nombre de demande d'emprunt par Mois",fill: true,
+            data: amois,
+            backgroundColor: [
+                'rgba(255,99,132,0.2)',
+              
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+             
+            ],
+            borderWidth: 5,tension: 0.2,
+        },{
+            label: "Nombre de demande de dépot par Mois",
+            data: bmois,
+            backgroundColor: [
+               'rgba(54,162, 235, 1)',
+                
+               
+            ],
+            borderColor: [
+              
+                'rgba(54, 162, 235, 1)',
+              
+               
+            ],
+            borderWidth: 5,tension: 0.2,
+        }]
+    },
+    options: {
+    animations: {
+      radius: {
+        duration: 400,
+        easing: 'linear',
+        loop: (context) => context.active
+      }
+    },
+    hoverRadius: 12,
+    hoverBackgroundColor: 'yellow',
+    interaction: {
+      mode: 'nearest',
+      intersect: false,
+      axis: 'x'
+    },  plugins: {
+      tooltip: {
+        enabled: false
+      }
+    }
+  },
+});   function rand(frm, to) {
+    return ~~(Math.random() * (to - frm)) + frm;
+}
+var COLORS = [];
+while (COLORS.length < 100) {
+    COLORS.push(`rgba(${rand(0, 255)}, ${rand(0, 255)}, ${rand(0, 255)},0.5)`);
+}
+var COLORS1 = [];
+while (COLORS1.length < 100) {
+    COLORS1.push(`rgba(${rand(0, 255)}, ${rand(0, 255)}, ${rand(0, 255)},0.5)`);
+}
+
      const ctx2 = document.getElementById('myChart2');
      const myChart2 = new Chart(ctx2, {
     type: 'pie',
@@ -154,22 +229,8 @@ components: {
         datasets: [{
      
             data: ne2,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
+            backgroundColor: COLORS,
+            borderColor: COLORS,
             borderWidth: 1
         }]
     },
@@ -178,7 +239,27 @@ components: {
          
         }
     }
-}); myChart;myChart2;
+}); const ctx4 = document.getElementById('myChart4');
+var colors = [];
+while (colors.length < dx.length) {
+    do {
+        var color = Math.floor((Math.random()*1053900)+1);
+    } while (colors.indexOf(color) >= 0);
+    colors.push("#" + ("123860" + color.toString(16)).slice(-6));
+}
+     const myChart4 = new Chart(ctx4, {
+    type: 'polarArea',
+    data: {
+        labels: dx,
+        datasets: [{
+            label: "Nombre de d'etudiants par ville",
+            data: cx,
+            backgroundColor: COLORS1,
+            borderColor:COLORS1,
+            borderWidth: 1
+        }]
+    }
+});  myChart;myChart2;myChart3;myChart4;
   }
 }
 </script>

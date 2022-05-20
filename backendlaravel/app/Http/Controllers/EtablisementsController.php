@@ -24,6 +24,12 @@ class EtablisementsController extends Controller
       ->select('nom')->groupBy('nom')
         ->get();
 
+    } public function index3()
+    {
+       return  $shares = DB::table('etablisements')
+      ->select('ville')->groupBy('ville')
+        ->get();
+
     }
    
 

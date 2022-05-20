@@ -33,9 +33,10 @@ class UserFactory extends Factory
             'fichierdemande' =>$this->faker->name,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
-            'profilepic'=>'nouser.jpg',
+            'profilepic'=>'nouser.jpg','etatdecompte'=>'active',
             
             'etablisement_id'=>$this->faker->randomElement($etablisement),
+            'created_at' => $this->faker->dateTimeBetween('-5 months', '+7 months')     
         ];
     }
 }

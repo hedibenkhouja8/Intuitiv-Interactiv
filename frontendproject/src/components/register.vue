@@ -99,7 +99,8 @@
                 <Field  name="image" class="form-control" type="file" rules="image" @change="onchange" />
                <ErrorMessage style="color: white" name="image" />
                <br>
-                <button type="submit">Register</button>
+                <button type="submit">Register</button><br><br>
+                 <div class="alert alert-danger" v-if="this.error">{{error}}</div>
               </Form>
             </div>
           </div>
@@ -169,7 +170,7 @@ export default {
       selectedEtablisement: 0,
       schema,
       etablisements: null,
-      phone: "",
+      phone: "",error:"",
       password_confirmation: "",
       nom: "",
       prenom: "",
@@ -240,7 +241,7 @@ export default {
             this.$router.push({ path: "/login" });
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => this.error=err.response.data.errors.email[0]);
     },
   },
 };

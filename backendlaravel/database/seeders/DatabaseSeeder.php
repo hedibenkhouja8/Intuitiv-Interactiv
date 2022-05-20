@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
         'nom' => 'Autre',
     ]);
         
-        Etablisement::factory()->count(3)
+        Etablisement::factory()->count(6)
         ->create();
        
         Entreprise::factory(10)->create();
@@ -56,24 +56,13 @@ class DatabaseSeeder extends Seeder
         Emprunt::factory(10)->create();
        Critere::factory(10)->create();
        
-       User::factory(10)->create();
+       User::factory(1000)->create();
        DemandeEmprunt::factory(1000)->create();
+       DemandeDepot::factory(1000)->create();
        
-       DemandeDepot::factory(100)->create();
-        
-  /*  foreach (DemandeDepot::all() as $DemandeDepot){
-
-        $encadreur = Encadreur::inRandomOrder()->take(rand(1,2))->pluck('id');
-        $domaine = Domaine::inRandomOrder()->take(rand(1,3))->pluck('id');
-        
-        $critere = Critere::inRandomOrder()->take(rand(1,3))->pluck('id');
-        $DemandeDepot->encadreurs()->attach($encadreur);
-        
-        $DemandeDepot->domaines()->attach($domaine);
-        $DemandeDepot->criteres()->attach($critere);
-    }*/
+    
        
-Memoire::factory()->count(30)
+Memoire::factory()->count(100)
     ->create();
     
    /* foreach (Memoire::all() as $memoire){

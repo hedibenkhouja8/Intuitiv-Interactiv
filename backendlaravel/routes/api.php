@@ -100,8 +100,14 @@ Route::get('/UserX',[AuthController::class,'users2']);
 Route::get('/UserEnAttente',[AuthController::class,'usersenattente']);
 
 Route::get('/UserEmprunt/{domaine}',[DemandeEmpruntController::class,'X']);
+
+Route::get('/EmpruntMois',[DemandeEmpruntController::class,'parmois']);
+Route::get('/UserMois',[AuthController::class,'parmois']);
+Route::get('/UserVille',[AuthController::class,'parville']);
+Route::get('/DepotMois',[DemandeDepotController::class,'parmois']);
 Route::get('/UserEmpruntX',[DemandeEmpruntController::class,'XX']);
 Route::get('/EtablisementX',[EtablisementsController::class,'index2']);
+Route::get('/Ville',[EtablisementsController::class,'index3']);
 Route::get('/DomaineX',[DomaineController::class,'index2']);
 Route::get('/UserZ',[AuthController::class,'index3']);
 

@@ -72,7 +72,7 @@ class AuthController extends Controller
         // Check password
         if(!$user || !Hash::check($fields['password'], $user->password)) {
             return response([
-                'message' => 'pass incorect '
+                'message' => 'Mot De Passe ou Email Incorrect'
             ], 401);
         }
         if($user->etatdecompte != 'active' and $user->etatdecompte != 'restreint'  ) {
@@ -127,7 +127,7 @@ class AuthController extends Controller
     public function index3()
     {
        return  $shares = DB::table('users')
-       ->select(DB::raw('count(*) as total'))
+       ->select(DB::raw('count(*) as total'))->where('etatdecompte','=','active')
        ->groupBy('etablisement_id')
         ->get();
 
@@ -262,4 +262,26 @@ class AuthController extends Controller
 
         return response(201);
     }
+    public function parmois(){
+        return   DB::table("users")
+   
+        ->select(DB::raw("(COUNT(*)) as total_users"))   
+        //   ->select(DB::raw("(COUNT(*)) as total_emprunts"), DB::raw("(DATE_FORMAT(created_at, '%m')) as month"))
+       
+               ->orderBy('created_at')
+       ->where('etatdecompte','=','active')
+               ->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
+       
+               ->get();
+       } public function parville(){
+        return   DB::table("users")
+   
+        ->select(DB::raw("(COUNT(*)) as total_users"))   
+        ->join('etablisements', 'users.etablisement_id', '=', 'etablisements.id')
+               
+       ->where('etatdecompte','=','active')
+               ->groupBy('ville')
+       
+               ->get();
+       }
 }

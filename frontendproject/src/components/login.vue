@@ -38,7 +38,9 @@
                   />
                   <ErrorMessage style="color: white" name="password" />
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit">Login</button><br><br>
+                 <div class="alert alert-danger" v-if="this.error">{{error}}</div>
+ 
               </Form>
             </div>
           </div>
@@ -73,7 +75,7 @@ export default {
       values: {
         id: "",
         nom: "",
-      },
+      },error:""
     };
   },
   methods: {
@@ -108,7 +110,7 @@ export default {
         data: data,
       })
         .then((response) => {
-          console.log("response", response.data);
+          console.log(response);
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("name", response.data.user.name);
           localStorage.setItem("id", response.data.user.id);
@@ -132,7 +134,7 @@ export default {
          
           
         })
-        .catch((err) => console.log(err));
+        .catch((err) => this.error=err.response.data.message);
     },
   },
 };

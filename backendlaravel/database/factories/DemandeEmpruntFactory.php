@@ -29,6 +29,7 @@ class DemandeEmpruntFactory extends Factory
             'memoire_id' => $this->faker->randomElement($memoire),
             'date_debut' => $this->faker->dateTime($max = 'now', $timezone = null),
             'date_fin' => $this->faker->dateTime($max = 'now', $timezone = null), 
+            'created_at' => $this->faker->dateTimeBetween('-5 months', '+7 months')
         ];
     }
 }

@@ -44,14 +44,16 @@ class DemandeDepotFactory extends Factory
              
             'description' =>$this->faker->paragraph($nbSentences = 5, $variableNbSentences = true),
             
-            'status' =>$this->faker->  randomElement($array = array ('EnAttente','Accepte','Refuse')) ,// 'b',
+            'status' =>$this->faker->  randomElement($array = array ('EnAttente','Refuse')) ,// 'b',
+          // 'status' =>$this->faker->  randomElement($array = array ('Accepte')),
             'nbpages' =>$this->faker->randomDigit,   
             'coverimage'=>'these.png', 
             'fichierdemande' =>$this->faker->name,   
             'fichierpdf' =>$this->faker->name,  
             
             'fichierbrevet' =>$this->faker->name,  
-            'fichierrecherche' =>$this->faker->name,            
+            'fichierrecherche' =>$this->faker->name,   
+            'created_at' => $this->faker->dateTimeBetween('-5 months', '+7 months')         
         ];
     }
 }

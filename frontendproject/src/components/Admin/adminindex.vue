@@ -78,97 +78,20 @@
                               <div class="counter_no">
                                  <div>
                                     <p class="total_no">{{demande}}</p>
-                                    <p class="head_couter">Demande de depots</p>
+                                    <p class="head_couter">Demande de depots en attente</p>
                                  </div>
                               </div>
                            </div>
                         </div>
                      </div>
-                     <div class="row column1 social_media_section">
-                        <div class="col-md-6 col-lg-3">
-                           <div class="full socile_icons fb margin_bottom_30">
-                              <div class="social_icon">
-                                 <i class="fa fa-facebook"></i>
-                              </div>
-                              <div class="social_cont">
-                                 <ul>
-                                    <li>
-                                       <span><strong>35k</strong></span>
-                                       <span>Friends</span>
-                                    </li>
-                                    <li>
-                                       <span><strong>128</strong></span>
-                                       <span>Feeds</span>
-                                    </li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                           <div class="full socile_icons tw margin_bottom_30">
-                              <div class="social_icon">
-                                 <i class="fa fa-twitter"></i>
-                              </div>
-                              <div class="social_cont">
-                                 <ul>
-                                    <li>
-                                       <span><strong>584k</strong></span>
-                                       <span>Followers</span>
-                                    </li>
-                                    <li>
-                                       <span><strong>978</strong></span>
-                                       <span>Tweets</span>
-                                    </li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                           <div class="full socile_icons linked margin_bottom_30">
-                              <div class="social_icon">
-                                 <i class="fa fa-linkedin"></i>
-                              </div>
-                              <div class="social_cont">
-                                 <ul>
-                                    <li>
-                                       <span><strong>758+</strong></span>
-                                       <span>Contacts</span>
-                                    </li>
-                                    <li>
-                                       <span><strong>365</strong></span>
-                                       <span>Feeds</span>
-                                    </li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                           <div class="full socile_icons google_p margin_bottom_30">
-                              <div class="social_icon">
-                                 <i class="fa fa-google-plus"></i>
-                              </div>
-                              <div class="social_cont">
-                                 <ul>
-                                    <li>
-                                       <span><strong>450</strong></span>
-                                       <span>Followers</span>
-                                    </li>
-                                    <li>
-                                       <span><strong>57</strong></span>
-                                       <span>Circles</span>
-                                    </li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
+                     
                      <!-- graph -->
                      <div class="row column2 graph margin_bottom_30">
                         <div class="col-md-l2 col-lg-12">
                            <div class="white_shd full">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>Extra Area Chart</h2>
+                                    <h2>Statistique Générale</h2>
                                  </div>
                               </div>
                               <div class="full graph_revenue">
@@ -176,7 +99,7 @@
                                     <div class="col-md-12">
                                        <div class="content">
                                           <div class="area_chart">
-                                             <canvas height="120" id="canvas"></canvas>
+                                              <canvas id="myChart3"></canvas>
                                           </div>
                                        </div>
                                     </div>
@@ -352,6 +275,7 @@ import axios from 'axios';
 import sidebaradminComponent from '@/components/Admin/sidebaradmin.vue'
 import topbarComponent from '@/components/Admin/topbar.vue'
 
+import Chart from 'chart.js/auto'
 
 export default {
 name: 'AdminComponent',
@@ -375,7 +299,7 @@ components: {
             return new Intl.DateTimeFormat('default', {dateStyle: 'long'}).format(date);
         }
     },
-  mounted () {
+ async  mounted () {
 this.a=7,
     axios
       .get('http://127.0.0.1:8000/api/MemoireAccepted')
@@ -413,7 +337,72 @@ this.a=7,
        axios
       .get('http://127.0.0.1:8000/api/DemandeNonAccepte')
       .then(response => (this.demande = response.data.length))
+       const months = await axios.get("http://127.0.0.1:8000/api/EmpruntMois");
+      const months2 = await axios.get("http://127.0.0.1:8000/api/DepotMois");
+      const months3 = await axios.get("http://127.0.0.1:8000/api/UserMois");
+     const amois =months.data.map((x) =>x.total_emprunts ) 
+     const bmois =months2.data.map((x) =>x.total_depots ) 
+     const cmois =months3.data.map((x) =>x.total_users ) 
+  const ctx3 = document.getElementById('myChart3');
+
+     const myChart3 = new Chart(ctx3, {
+    type: 'bar',
+    data: {
+        labels: ['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','September','Octobre','November','December'],
+        datasets: [{
+            label: "Nombre de demande d'emprunt par Mois",fill: true,
+            data: amois,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+              
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+             
+            ],  order:2,
+            borderWidth: 5,tension: 0.2,
+        },{
+            label: "Nombre de demande de dépot par Mois",
+            data: bmois,
+               type: 'bar',  order:3,
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+                
+               
+            ],
+            borderColor: [
+              
+                'rgba(54, 162, 235, 1)',
+              
+               
+            ],
+            borderWidth: 5,tension: 0.2,
+        },{
+            label: "Nombre de d'etudiants ajoutés par Mois",
+            data: cmois,  order:1,
+               type: 'line',fill: true,
+            backgroundColor: [
+                  'rgba(255, 206, 86, 0.5)',
+              
+               
+            ],
+            borderColor: [
+              
+                 'rgba(255, 206, 86, 1)',
+              
+               
+            ],
+            borderWidth: 5,tension: 0.2,
+        }]
+    }, options: {
+    scales: {
+      y: {
+        beginAtZero: false
+      }
+    }
+  },
   
+});   myChart3
   },
   
 

@@ -144,7 +144,7 @@
             <img  style="height:300px;width:300px" src="../assets/images/abc.jpg" alt="">
           </div>
        <div class="col-md-6 " v-for="info in getfilteredmemoires"  v-bind:key="info.id" >
-     <div class="course" >
+     <div class="course"  >
 						
 						<img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+info.demande_depot.coverimage" width="250" height="380" class="p"  alt="...">
  

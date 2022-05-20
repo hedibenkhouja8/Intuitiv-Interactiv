@@ -258,4 +258,16 @@ class DemandeDepotController extends Controller
         $nb=DB::table('users')->where('id',$id)->select('nb_demandes_depot')->pluck('nb_demandes_depot')->first();
         return $nb; 
     }
+    public function parmois(){
+        return   DB::table("demande_depots")
+   
+        ->select(DB::raw("(COUNT(*)) as total_depots"))   
+        //   ->select(DB::raw("(COUNT(*)) as total_emprunts"), DB::raw("(DATE_FORMAT(created_at, '%m')) as month"))
+       
+               ->orderBy('created_at')
+       
+               ->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
+       
+               ->get();
+       }
 }

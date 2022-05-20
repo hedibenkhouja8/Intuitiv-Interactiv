@@ -292,16 +292,19 @@ class DemandeEmpruntController extends Controller
 ->groupBy('domaine_id')
            // ->join('domaines', 'domaines.id', '=', 'demande_depots.domaine_id')
             ->get();
-        /*   $latestPosts  = DB::table('users')
-        ->join('demande_emprunts', function ($join) {
-            $join->on('users.id', '=', 'demande_emprunts.user_id');
-                 
-        })->where('user_id',$user->id)
-        ->get();
-        $memoiresnuser = DB::table('memoires')
-        ->joinSub($latestPosts , 'demande_emprunts', function ($join) {
-            $join->on('memoires.id', '=', 'demande_emprunts.memoire_id');
-        })->get();
-        return $memoiresnuser;*/
+    
+    
+    }
+    public function parmois(){
+     return   DB::table("demande_emprunts")
+
+     ->select(DB::raw("(COUNT(*)) as total_emprunts"))   
+     //   ->select(DB::raw("(COUNT(*)) as total_emprunts"), DB::raw("(DATE_FORMAT(created_at, '%m')) as month"))
+    
+            ->orderBy('created_at')
+    
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
+    
+            ->get();
     }
 }
