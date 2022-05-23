@@ -126,7 +126,7 @@ components: {
     data: {
         labels: bx,
         datasets: [{
-            label: "Nombre de demande d'emprunt par domaine",
+            label: "Nombre de demande d'emprunt ",
             data: ax,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

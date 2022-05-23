@@ -25,7 +25,7 @@ class MemoireFactory extends Factory
        $encadreur = Encadreur::all();
        $domaine = Domaine::all();
         return [
-          //  'archive' => $this->faker->  randomElement($array = array ('no','yes')) ,
+         //  'archive' => $this->faker->  randomElement($array = array ('no','yes')) ,
             'archive' => $this->faker->  randomElement($array = array ('no')) ,// 'b'  
 
             
