@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {   /*  DB::table('domaines')->insert([
+    {     DB::table('domaines')->insert([
         'nom' => 'Informatique',
     ]); DB::table('domaines')->insert([
         'nom' => 'Comptabilité',
@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
         'nom' => 'Langues',
     ]); DB::table('domaines')->insert([
         'nom' => 'Autre',
-    ]);*/
+    ]);
         
         Etablisement::factory()->count(6)
         ->create();
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
        Critere::factory(10)->create();
        
       // User::factory(1000)->create();
-       DemandeEmprunt::factory(1000)->create();
+      // DemandeEmprunt::factory(1000)->create();
        
     
        

@@ -14,7 +14,7 @@
               <div class="row column_title">
                 <div class="col-md-12">
                   <div class="page_title">
-                    <h2>Memoires</h2>
+                    <h2>Profil</h2>
                   </div>
                 </div>
               </div>

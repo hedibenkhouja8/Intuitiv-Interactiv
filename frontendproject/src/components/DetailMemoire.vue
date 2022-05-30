@@ -392,7 +392,7 @@ export default {
           date_fin: this.date_fin,
           memoire_id: this.memoire_id,
           user_id: this.user_id,
-          description: this.description,
+          description: this.description,                                                                                                     
           status: this.status,
           type: this.type,
         })

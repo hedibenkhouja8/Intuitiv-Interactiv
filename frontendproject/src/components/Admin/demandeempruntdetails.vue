@@ -25,7 +25,7 @@
             <h3 class="card-title">{{item.memoire.demande_depot.titre}}</h3>
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-6">
-                    <div class="white-box text-center"><img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.coverimage" class="img-responsive"></div>
+                    <div class="white-box text-center"><img v-bind:src="'http://localhost:8000/storage/files/demandes/cover/'+item.memoire.demande_depot.coverimage" class="img-responsive"></div>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-6">  <h4 class="box-title mt-5"> Etudiant</h4>
                     <p>{{item.user.name}}  <button
