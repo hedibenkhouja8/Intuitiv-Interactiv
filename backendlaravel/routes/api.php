@@ -102,6 +102,17 @@ Route::get('/UserEnAttente',[AuthController::class,'usersenattente']);
 Route::get('/UserEmprunt/{domaine}',[DemandeEmpruntController::class,'X']);
 
 Route::get('/EmpruntMois',[DemandeEmpruntController::class,'parmois']);
+Route::get('/EmpruntAnnee',[DemandeEmpruntController::class,'parannee']);
+Route::get('/EmpruntAnnee2',[DemandeEmpruntController::class,'parannee2']);
+Route::get('/EmpruntAnnee3',[DemandeEmpruntController::class,'parannee3']);
+Route::get('/EmpruntAnnee4',[DemandeEmpruntController::class,'parannee4']);
+Route::get('/EmpruntAnnee5',[DemandeEmpruntController::class,'parannee5']);
+Route::get('/EmpruntAnnee6',[DemandeEmpruntController::class,'parannee6']);
+Route::get('/EmpruntAnnee7',[DemandeEmpruntController::class,'parannee7']);
+Route::get('/EmpruntAnnee8',[DemandeEmpruntController::class,'parannee8']);
+Route::get('/EmpruntAnnee9',[DemandeEmpruntController::class,'parannee9']);
+
+Route::get('/Annee',[DemandeEmpruntController::class,'annee']);
 Route::get('/UserMois',[AuthController::class,'parmois']);
 Route::get('/UserVille',[AuthController::class,'parville']);
 Route::get('/DepotMois',[DemandeDepotController::class,'parmois']);

@@ -307,4 +307,150 @@ class DemandeEmpruntController extends Controller
     
             ->get();
     }
+    public function parannee(){
+        return   DB::table("demande_emprunts")
+        ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
+
+        ->join('demande_depots', 'demande_depots.id', '=', 'memoires.demande_depot_id')
+->where('domaine_id','=','1')
+        ->select(DB::raw("(COUNT(*)) as total_emprunts") ) 
+        //   ->select(DB::raw("(COUNT(*)) as total_emprunts"), DB::raw("(DATE_FORMAT(created_at, '%m')) as month"))
+       
+              // ->orderBy('created_at')
+       
+               ->groupBy(DB::raw("DATE_FORMAT(demande_emprunts.created_at, '%y')"))
+       
+               ->get();
+       }
+       public function annee(){
+        return   DB::table("demande_emprunts")
+        ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
+
+        ->join('demande_depots', 'demande_depots.id', '=', 'memoires.demande_depot_id')
+->where('domaine_id','=','1')
+        ->select( DB::raw("(DATE_FORMAT(demande_emprunts.created_at, '20%y')) as year")  ) 
+        //   ->select(DB::raw("(COUNT(*)) as total_emprunts"), DB::raw("(DATE_FORMAT(created_at, '%m')) as month"))
+       
+              // ->orderBy('created_at')
+       
+               ->groupBy(DB::raw("DATE_FORMAT(demande_emprunts.created_at, '%y')"))
+       
+               ->get();
+       }
+       public function parannee2(){
+        return   DB::table("demande_emprunts")
+        ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
+
+        ->join('demande_depots', 'demande_depots.id', '=', 'memoires.demande_depot_id')
+->where('domaine_id','=','2')
+        ->select(DB::raw("(COUNT(*)) as total_emprunts") ) 
+        //   ->select(DB::raw("(COUNT(*)) as total_emprunts"), DB::raw("(DATE_FORMAT(created_at, '%m')) as month"))
+       
+              // ->orderBy('created_at')
+       
+               ->groupBy(DB::raw("DATE_FORMAT(demande_emprunts.created_at, '%y')"))
+       
+               ->get();
+       } public function parannee3(){
+        return   DB::table("demande_emprunts")
+        ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
+
+        ->join('demande_depots', 'demande_depots.id', '=', 'memoires.demande_depot_id')
+->where('domaine_id','=','3')
+        ->select(DB::raw("(COUNT(*)) as total_emprunts") ) 
+        //   ->select(DB::raw("(COUNT(*)) as total_emprunts"), DB::raw("(DATE_FORMAT(created_at, '%m')) as month"))
+       
+              // ->orderBy('created_at')
+       
+               ->groupBy(DB::raw("DATE_FORMAT(demande_emprunts.created_at, '%y')"))
+       
+               ->get();
+       } public function parannee4(){
+        return   DB::table("demande_emprunts")
+        ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
+
+        ->join('demande_depots', 'demande_depots.id', '=', 'memoires.demande_depot_id')
+->where('domaine_id','=','4')
+        ->select(DB::raw("(COUNT(*)) as total_emprunts") ) 
+        //   ->select(DB::raw("(COUNT(*)) as total_emprunts"), DB::raw("(DATE_FORMAT(created_at, '%m')) as month"))
+       
+              // ->orderBy('created_at')
+       
+               ->groupBy(DB::raw("DATE_FORMAT(demande_emprunts.created_at, '%y')"))
+       
+               ->get();
+       }
+       public function parannee5(){
+        return   DB::table("demande_emprunts")
+        ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
+
+        ->join('demande_depots', 'demande_depots.id', '=', 'memoires.demande_depot_id')
+->where('domaine_id','=','5')
+        ->select(DB::raw("(COUNT(*)) as total_emprunts") ) 
+        //   ->select(DB::raw("(COUNT(*)) as total_emprunts"), DB::raw("(DATE_FORMAT(created_at, '%m')) as month"))
+       
+              // ->orderBy('created_at')
+       
+               ->groupBy(DB::raw("DATE_FORMAT(demande_emprunts.created_at, '%y')"))
+       
+               ->get();
+       } public function parannee6(){
+        return   DB::table("demande_emprunts")
+        ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
+
+        ->join('demande_depots', 'demande_depots.id', '=', 'memoires.demande_depot_id')
+->where('domaine_id','=','6')
+        ->select(DB::raw("(COUNT(*)) as total_emprunts") ) 
+        //   ->select(DB::raw("(COUNT(*)) as total_emprunts"), DB::raw("(DATE_FORMAT(created_at, '%m')) as month"))
+       
+              // ->orderBy('created_at')
+       
+               ->groupBy(DB::raw("DATE_FORMAT(demande_emprunts.created_at, '%y')"))
+       
+               ->get();
+       }
+       public function parannee7(){
+        return   DB::table("demande_emprunts")
+        ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
+
+        ->join('demande_depots', 'demande_depots.id', '=', 'memoires.demande_depot_id')
+->where('domaine_id','=','7')
+        ->select(DB::raw("(COUNT(*)) as total_emprunts") ) 
+        //   ->select(DB::raw("(COUNT(*)) as total_emprunts"), DB::raw("(DATE_FORMAT(created_at, '%m')) as month"))
+       
+              // ->orderBy('created_at')
+       
+               ->groupBy(DB::raw("DATE_FORMAT(demande_emprunts.created_at, '%y')"))
+       
+               ->get();
+       }
+       public function parannee8(){
+        return   DB::table("demande_emprunts")
+        ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
+
+        ->join('demande_depots', 'demande_depots.id', '=', 'memoires.demande_depot_id')
+->where('domaine_id','=','8')
+        ->select(DB::raw("(COUNT(*)) as total_emprunts") ) 
+        //   ->select(DB::raw("(COUNT(*)) as total_emprunts"), DB::raw("(DATE_FORMAT(created_at, '%m')) as month"))
+       
+              // ->orderBy('created_at')
+       
+               ->groupBy(DB::raw("DATE_FORMAT(demande_emprunts.created_at, '%y')"))
+       
+               ->get();
+       } public function parannee9(){
+        return   DB::table("demande_emprunts")
+        ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
+
+        ->join('demande_depots', 'demande_depots.id', '=', 'memoires.demande_depot_id')
+->where('domaine_id','=','9')
+        ->select(DB::raw("(COUNT(*)) as total_emprunts") ) 
+        //   ->select(DB::raw("(COUNT(*)) as total_emprunts"), DB::raw("(DATE_FORMAT(created_at, '%m')) as month"))
+       
+              // ->orderBy('created_at')
+       
+               ->groupBy(DB::raw("DATE_FORMAT(demande_emprunts.created_at, '%y')"))
+       
+               ->get();
+       }
 }
