@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Notification;
 use App\Models\User;
-
+use App\Models\DemandeEmprunt;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
@@ -105,6 +105,12 @@ class NotificationController extends Controller
 
                 ->get();
                 return $notif;
+    }
+    public function allAdminnotifmobile(){
+        
+        return DemandeEmprunt::with('memoire.demande_depot')->where('status', '=', 'EnAttente')
+        ->orderBy('status')->orderBy('created_at', 'desc')->get();
+
     }
     public function viewed($id){
 

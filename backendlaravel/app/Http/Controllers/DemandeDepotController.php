@@ -217,6 +217,11 @@ class DemandeDepotController extends Controller
         return DemandeDepot::with('memoire')->where('status','=','EnAttente')->get();
 
     }
+    public function mobileAccepted(){
+       return DemandeDepot::join('memoires', 'demande_depots.id', '=', 'memoires.demande_depot_id')
+        ->get();
+
+    }
 
     public function DemandeDepotaccept(DemandeDepot $demandedepot)
     {

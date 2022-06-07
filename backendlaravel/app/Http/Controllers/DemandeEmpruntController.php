@@ -16,6 +16,16 @@ class DemandeEmpruntController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function allUser($user)
+    {
+        return DemandeEmprunt::with('memoire.demande_depot.user')->with('memoire.demande_depot.domaine')->with('memoire.demande_depot.critere')->where('user_id', '=', $user)
+            ->orderBy('status')->orderBy('created_at', 'desc')->get();
+    }
+    public function enattente()
+    {
+        return DemandeEmprunt::with('user')->with('memoire.demande_depot')->where('status', '=', 'EnAttente')
+            ->orderBy('status')->orderBy('created_at', 'desc')->get();
+    }
     public function index()
     {
         return DemandeEmprunt::with('user')->with('memoire.demande_depot')->where('status', '!=', 'Accepte')
@@ -241,7 +251,7 @@ class DemandeEmpruntController extends Controller
 
         $notif = new Notification;
         $notif->titre  = 'Demande emprunt';
-        $notif->content = "votre demande de depot de la memoire ' $titre->titre 'a été accepté";
+        $notif->content = "votre demande pour emprunter la memoire ' $titre->titre 'a été accepté";
         $notif->user_id = $demandeemprunt->user_id;
         $notif->save();
     }
