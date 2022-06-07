@@ -8,7 +8,6 @@ import 'package:project/auth/sign_in.dart';
 import 'package:project/auth/sign_up.dart';
 import 'package:project/page/mesmemoires_page.dart';
 import 'package:project/page/profile_page.dart';
-import 'package:project/page/buy_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +29,6 @@ class MyApp extends StatelessWidget {
         '/signup': (BuildContext context) => const SignUpPage(),
         '/signin': (BuildContext context) => const SignInPage(),
         '/HomePage': (BuildContext context) => const HomePage(),
-        '/buy': (BuildContext context) => const BuyPage(),
         '/Demandeemprunts': (BuildContext context) =>
             const Demandeempruntpage(),
         '/MesMemoires': (BuildContext context) => const MesMemoirespage(),
