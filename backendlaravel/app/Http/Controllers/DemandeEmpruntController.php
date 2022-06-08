@@ -123,16 +123,9 @@ class DemandeEmpruntController extends Controller
         $notif->admin = 1;
         $notif->demande_id =$demande->id;
         $notif->save();
-        $nb=DB::table('users')->where('id',$demande->user_id)->select('nb_demandes_emprunt')->pluck('nb_demandes_emprunt')->first();
-        if($nb>0){
-        $nb=$nb-1;
-        DB::table('users')
-        ->where('id',$demande->user_id)
-        ->update(['nb_demandes_emprunt' => $nb
-        ]);
+       
      }
-    }
-
+    
     /**
      * Display the specified resource.
      *

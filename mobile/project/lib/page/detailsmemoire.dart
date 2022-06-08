@@ -262,7 +262,7 @@ class _MemoiredetailsState extends State<Memoiredetails> {
           body: json.encode(data),
           headers: {"Content-Type": "application/json"});
       var response = await request.timeout(Duration(seconds: 10));
-      if (response.statusCode == 500) {
+      if (response.statusCode == 200) {
         var snackBar2 = const SnackBar(
           content: Text('Demande ajouté ! '),
         );
