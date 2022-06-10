@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:project/Admin/demandedetails.dart';
 import 'package:project/page/notificationTiles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:project/widget/navigation_draweradmin_widget.dart';
@@ -15,18 +16,19 @@ class NotificationadminPage extends StatefulWidget {
 
 class _NotificationadminPageState extends State<NotificationadminPage> {
   dynamic data = [];
-
-  void getMemoire() async {
-    var id;
+  dynamic data2 = [];
+  var id;
+  void getnotif() async {
     final SharedPreferences userdata = await SharedPreferences.getInstance();
     var idd = userdata.getString("id");
 
     setState(() {
       id = idd;
     });
-    Response response =
-        await get(Uri.parse("http://127.0.0.1:8000/api/Notification/allAdmin"));
+    Response response = await get(
+        Uri.parse("http://127.0.0.1:8000/api/Notificationnotviewedadminlist"));
     dynamic responsedata = jsonDecode(response.body);
+
     setState(() {
       this.data = responsedata;
     });
@@ -34,7 +36,7 @@ class _NotificationadminPageState extends State<NotificationadminPage> {
 
   @override
   void initState() {
-    getMemoire();
+    getnotif();
     super.initState();
   }
 
@@ -67,16 +69,34 @@ class _NotificationadminPageState extends State<NotificationadminPage> {
               physics: ClampingScrollPhysics(),
               itemCount: data.length,
               itemBuilder: (context, index) {
-                return NotificationTiles(
-                  title: data[index]['titre'],
-                  subtitle: data[index]['content'],
-                  enable: true,
-                  date: data[index]['created_at'],
-                );
+                return GestureDetector(
+                    onTap: () => {
+                          redirect(data[index]['titre'],
+                              data[index]['demande_emprunt_id'], id)
+                        },
+                    child: NotificationTiles(
+                      title: data[index]['titre'],
+                      subtitle: data[index]['content'],
+                      enable: true,
+                      date: data[index]['created_at'],
+                    ));
               },
               separatorBuilder: (context, index) {
                 return Divider();
               }),
         )));
+  }
+
+  redirect(titre, demande_emprunt_id, user_id) {
+    if (titre == "Compte") {}
+    if (titre == "Demande depot") {}
+    if (titre == "Demande emprunt") {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Demandedetails(id: '${demande_emprunt_id}'),
+        ),
+      );
+    }
   }
 }

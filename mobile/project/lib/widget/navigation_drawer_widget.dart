@@ -5,6 +5,7 @@ import 'package:project/page/mesdemandes.dart';
 import 'package:project/page/profile_page.dart';
 import 'package:project/page/mesmemoires_page.dart';
 import 'package:project/page/pdfreader.dart';
+import 'package:http/http.dart' as http;
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -38,6 +39,8 @@ getmail() async {
 }
 
 Logout() async {
+  var uri = Uri.parse("http://127.0.0.1:8000/api/logout");
+  var request = http.post(uri);
   //clear shared preferences
   SharedPreferences userdata = await SharedPreferences.getInstance();
   userdata.clear();
