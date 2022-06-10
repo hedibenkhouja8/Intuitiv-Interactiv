@@ -163,7 +163,7 @@ export default {
       .then((response) => (this.nb = response.data));
 
     axios
-      .get("http://127.0.0.1:8000/api/Notification/User/"+this.id )
+      .get("http://127.0.0.1:8000/api/Notificationnotviewedlist/"+this.id )
       .then((response) => (this.info = response.data));
   },
   methods: {

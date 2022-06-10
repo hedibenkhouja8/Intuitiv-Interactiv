@@ -78,7 +78,7 @@
                 v-bind:key="item.id"
                 v-for="item in info"
               >
-                <a class="content" @click="redirect(item.titre, item.id ,item.demande_id ,item.user_id)">
+                <a class="content" @click="redirect(item.titre, item.id ,item.demande_depot_id,item.demande_emprunt_id  ,item.user_id)">
                   <div class="notification-item">
                     <h4 class="item-title">
                       <i class="fa fa-info-circle" aria-hidden="true"></i
@@ -125,7 +125,7 @@ axios
       .get("http://127.0.0.1:8000/api/Notificationnotviewedadmin")
       .then((response) => (this.nb = response.data));
     axios
-      .get("http://127.0.0.1:8000/api/Notification/Admin")
+      .get("http://127.0.0.1:8000/api/Notificationnotviewedadminlist")
       .then((response) => (this.info = response.data));
   },
   methods: {
@@ -150,7 +150,7 @@ axios
         }
       });
     },
-  redirect(titre, id , demande_id ,user_id) {
+  redirect(titre, id , demande_depot_id ,demande_emprunt_id,user_id) {
       axios.post("http://127.0.0.1:8000/api/Notificationviewed/" + id);
       if (titre == "Compte") {
         this.$router.push("/etudiantsenattente");
@@ -158,14 +158,14 @@ axios
       if (titre == "Demande depot") {
         this.$router.push({
         name: "Demandedepotdetails",
-        params: { id: demande_id },
+        params: { id: demande_depot_id },
       });
         
       }
       if (titre == "Demande emprunt") {
         this.$router.push({
         name: "Demandeempruntdetails",
-        params: { id: demande_id ,c:user_id},
+        params: { id: demande_emprunt_id ,c:user_id},
       });
       }
     },

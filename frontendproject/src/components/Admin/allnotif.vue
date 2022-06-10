@@ -57,12 +57,31 @@
                               <h6>all notifications</h6>
                               <br>
                               <ul>
+                                <li v-bind:key="item.id" v-for="item in info2">
+                                  <a
+                                    class="content"
+                                    @click="redirect(item.titre, item.id ,item.demande_depot_id,item.demande_emprunt_id  ,item.user_id)"
+                                  >
+                                    <div class="notification-item" >
+                                      <h4 class="item-title">
+                                        <i
+                                          class="fa fa-info-circle"
+                                          aria-hidden="true"
+                                        ></i
+                                        >{{ item.titre }}
+                                      </h4>
+                                      <p class="item-info">
+                                        {{ item.content }}
+                                      </p>
+                                    </div>
+                                  </a>
+                                </li>
                                 <li v-bind:key="item.id" v-for="item in info">
                                   <a
                                     class="content"
-                                    @click="redirect(item.titre, item.id ,item.demande_id ,item.user_id)"
+                                     @click="redirectdone(item.titre, item.id)"
                                   >
-                                    <div class="notification-item">
+                                    <div class="notification-item" style="background-color: white; border-style: ridge;">
                                       <h4 class="item-title">
                                         <i
                                           class="fa fa-info-circle"
@@ -121,11 +140,15 @@ export default {
   data() {
     return {
       info: null,
+      info2:null,
       nb: null,
       etat:"all",
     };
   },
   mounted() {
+    axios
+      .get("http://127.0.0.1:8000/api/Notificationnotviewedadminlist")
+      .then((response) => (this.info2 = response.data));
     axios
       .get("http://127.0.0.1:8000/api/Notificationnotviewedadmin")
       .then((response) => (this.nb = response.data));
@@ -134,7 +157,7 @@ export default {
       .then((response) => (this.info = response.data));
   },
   methods: {
-    redirect(titre, id , demande_id ,user_id) {
+    redirect(titre, id , demande_depot_id ,demande_emprunt_id,user_id) {
       axios.post("http://127.0.0.1:8000/api/Notificationviewed/" + id);
       if (titre == "Compte") {
         this.$router.push("/etudiantsenattente");
@@ -142,19 +165,32 @@ export default {
       if (titre == "Demande depot") {
         this.$router.push({
         name: "Demandedepotdetails",
-        params: { id: demande_id },
+        params: { id: demande_depot_id },
       });
         
       }
       if (titre == "Demande emprunt") {
         this.$router.push({
         name: "Demandeempruntdetails",
-        params: { id: demande_id ,c:user_id},
+        params: { id: demande_emprunt_id ,c:user_id},
       });
       }
     },
      all() {
      this.etat="all";
+    },
+    redirectdone(titre, id ,) {
+      axios.post("http://127.0.0.1:8000/api/Notificationviewed/" + id);
+      if (titre == "Compte") {
+        this.$router.push("/etudiantsenattente");
+      }
+      if (titre == "Demande depot") {
+        this.$router.push("/demandesdepot");
+        
+      }
+      if (titre == "Demande emprunt") {
+        this.$router.push("/demandesemprunt");
+      }
     },
     notview() {
      this.etat="notviewed";

@@ -98,7 +98,7 @@ class DemandeDepotController extends Controller
            $notif->content ="une nouvelle demande de depot par '$user->name $user->prenom ' ";
            $notif->user_id =$demande->user_id;
            $notif->admin= 1; 
-           $notif->demande_id =$demande->id;
+           $notif->demande_depot_id =$demande->id;
            $notif->save();
 
            $nb=DB::table('users')->where('id',$demande->user_id)->select('nb_demandes_depot')->pluck('nb_demandes_depot')->first();

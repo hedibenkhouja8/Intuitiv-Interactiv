@@ -27,11 +27,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-<<<<<<< HEAD
     {   DB::table('domaines')->insert([
-=======
-    {     DB::table('domaines')->insert([
->>>>>>> 59e8f8cff8f078cad7b24b7f10c6111b4f14e751
         'nom' => 'Informatique',
     ]); DB::table('domaines')->insert([
         'nom' => 'Comptabilité',

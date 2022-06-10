@@ -7,7 +7,7 @@
       <li
         v-bind:key="item.id"
         v-for="item in info"
-        style="width: 800px; border-bottom: 0.05px solid"
+        style="width: 800px; border-bottom: 0.05px solid; background-color: #E6E6FA;"
       >
         <a class="dropdown-item" @click="redirect(item.titre, item.id)">
           <h4>

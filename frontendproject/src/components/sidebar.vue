@@ -3,15 +3,16 @@
 			<nav id="sidebar1">
 			
 	  		<div class="img bg-wrap text-center py-4" style="background-image: url(../assets/images/bg_1.jpg);">
-	  			<div class="user-logo">
-	  				<div class="img"><img width="100" class="rounded-circle" v-bind:src="'http://localhost:8000/storage/files/register/profilepic/'+profilepic" alt="#" /></div>
+	  			<div class="user-logo" v-bind:key="item.id"
+        v-for="item in info" >
+	  				<div class="img"><img width="100" class="rounded-circle" v-bind:src="'http://localhost:8000/storage/files/register/profilepic/'+item.profilepic" alt="#" /></div>
 	  				<h3>{{username + "  " + prenom}} </h3>
 	  			</div>
 	  		</div>
         <ul class="list-unstyled components mb-5">
           <li class="active"> 
           </li>  <li><router-link  class="nav-link" :to="'/myprofile/'+ id"><i class="fa fa-book"></i> <span>profile</span></router-link></li>
-          <li><router-link  class="nav-link" to="/mesemprunts"><i class="fa fa-book"></i> <span>Mes Emprunts</span></router-link></li>
+          <li><router-link  class="nav-link" to="/mesemprunts"><i class="fa fa-book"></i> <span>Mes Emprunts </span></router-link></li>
                  <li><router-link  class="nav-link" to="/historyprofile"><i class="fa fa-history"></i> <span> Historique d'emprunt</span></router-link></li>
                  <li><router-link  class="nav-link" to="/mesdemandes"><i class="fa fa-cloud"></i> <span> Mes demandes de depot</span></router-link></li>
                  <li><router-link  class="nav-link" to="/adddemandedepot"><i class="fa fa-download"></i> <span> Deposer une memoire</span></router-link></li>
@@ -41,11 +42,19 @@ name: 'sidebarComponent',
 data() {
     return {
       username: localStorage.getItem("name"),
-
+info: null,
       prenom: localStorage.getItem("prenom"),
       id: localStorage.getItem("id"),
       profilepic: localStorage.getItem("profilepic")
     };
+  },
+   mounted() {
+    axios
+      .get("http://127.0.0.1:8000/api/User/" + localStorage.getItem("id"))
+      .then((response) => (this.info = response.data));
+         axios
+      
+     
   },
    methods: {
     logout() {

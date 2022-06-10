@@ -121,7 +121,7 @@ class DemandeEmpruntController extends Controller
         $notif->content = "une nouvelle demande emprunt pour ' $titre->titre ' par ' $user->name ' ";
         $notif->user_id = $demande->user_id;
         $notif->admin = 1;
-        $notif->demande_id =$demande->id;
+        $notif->demande_emprunt_id =$demande->id;
         $notif->save();
        
      }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Notification;
 
 use App\Models\User;
 use App\Models\Critere;
@@ -34,7 +35,10 @@ class DemandeDepot extends Model
     {
         return $this->belongsTo(Entreprise::class);
     }
-  
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
     public function user()
     {
         return $this->belongsTo(User::class);

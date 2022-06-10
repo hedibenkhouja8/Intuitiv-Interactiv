@@ -31,6 +31,19 @@
               </div>
               <div class="table_section padding_infor_info" v-if="etat == 'all' ">
                 <ul>
+                   <li
+        v-bind:key="item.id"
+        v-for="item in info2"
+        style="width: 800px; border-bottom: 0.05px solid; background-color: #E6E6FA;"
+      >
+        <a class="dropdown-item" @click="redirect(item.titre, item.id)">
+          <h4>
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+            {{ item.titre }}
+          </h4>
+          <h8 style="width: 50px">{{ item.content }}</h8>
+        </a>
+      </li>
                   <li
                     v-bind:key="item.id"
                     v-for="item in info"
@@ -75,6 +88,7 @@ export default {
     return {
       username: localStorage.getItem("name"),
       info: null,
+      info2: null,
       nb: null,
       id: localStorage.getItem("id"),
       etat: "all",
@@ -85,7 +99,9 @@ export default {
     axios
       .get("http://127.0.0.1:8000/api/Notificationnotviewed/" + this.id)
       .then((response) => (this.nb = response.data));
-
+  axios
+      .get("http://127.0.0.1:8000/api/Notificationnotviewedlist/" + this.id)
+      .then((response) => (this.info2 = response.data));
     axios
       .get("http://127.0.0.1:8000/api/Notification/Userall/" + this.id)
       .then((response) => (this.info = response.data));

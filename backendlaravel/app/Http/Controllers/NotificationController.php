@@ -82,6 +82,7 @@ class NotificationController extends Controller
         $notif= DB::table('notifications')
                 ->where('user_id',$user->id)
                 ->where('admin',0)
+                ->where('viewed',1)
                 ->orderBy('created_at','desc')
                 ->get();
                 return $notif;
@@ -99,12 +100,23 @@ class NotificationController extends Controller
     }
     public function allAdminnotif(){
         
-        $notif= DB::table('notifications')
-                ->where('admin',1)
-                ->orderBy('created_at','desc')
+        $a= Notification::join('demande_depots', 'notifications.demande_depot_id', '=', 'demande_depots.id') 
+        ->where('demande_depots.status','!=','EnAttente')
+        ->orderBy('notifications.created_at','desc')
+        ->get('notifications.*');
 
-                ->get();
-                return $notif;
+        $b =Notification::join('demande_emprunts', 'notifications.demande_emprunt_id', '=', 'demande_emprunts.id')
+        ->where('demande_emprunts.status','!=','EnAttente')
+        ->orderBy('notifications.created_at','desc')
+        ->get();
+        $d =Notification::join('users', 'notifications.user_id', '=', 'users.id')
+        ->where('titre','=','compte')
+        ->where('users.etatdecompte','!=','notactive')
+        ->orderBy('notifications.created_at','desc')
+        ->get();
+
+        $c=$a->merge($b)->merge($d)->SortBy('notifications.created_at');
+        return $c;
     }
     public function allAdminnotifmobile(){
         
@@ -149,18 +161,50 @@ class NotificationController extends Controller
         ->where('admin',1)
         ->where('viewed',0)
         ->count();
-        return $notif;
+        $a= Notification::join('demande_depots', 'notifications.demande_depot_id', '=', 'demande_depots.id') 
+        ->where('demande_depots.status','=','EnAttente')
+        ->orderBy('notifications.created_at','desc')
+        ->get()->count();
+
+        $b =Notification::join('demande_emprunts', 'notifications.demande_emprunt_id', '=', 'demande_emprunts.id')
+        ->where('demande_emprunts.status','=','EnAttente')
+        ->orderBy('notifications.created_at','desc')
+        ->get()->count();
+
+        $d =Notification::join('users', 'notifications.user_id', '=', 'users.id')
+        ->where('titre','=','compte')
+        ->where('users.etatdecompte','=','notactive')
+        ->orderBy('notifications.created_at','desc')
+        ->get()->count();
+
+        $c=$a+$b+$d;
+        return $c;
        
        
     }
     public function notviewedadminlist(){
 
-        $notif= DB::table('notifications')
-        ->where('admin',1)
-        ->where('viewed',0)
-        ->orderBy('created_at','desc')
+        
+
+        $a= Notification::join('demande_depots', 'notifications.demande_depot_id', '=', 'demande_depots.id') 
+        ->where('demande_depots.status','=','EnAttente')
+        ->orderBy('notifications.created_at','desc')
+        ->get('notifications.*');
+
+        $b =Notification::join('demande_emprunts', 'notifications.demande_emprunt_id', '=', 'demande_emprunts.id')
+        ->where('demande_emprunts.status','=','EnAttente')
+        ->orderBy('notifications.created_at','desc')
         ->get();
-        return $notif;
+        $d =Notification::join('users', 'notifications.user_id', '=', 'users.id')
+        ->where('titre','=','compte')
+        ->where('users.etatdecompte','=','notactive')
+        ->orderBy('notifications.created_at','desc')
+        ->get();
+
+        $c=$a->merge($b)->merge($d)->SortBy('notifications.created_at');
+        return $c;
+
+
                
        
     }
