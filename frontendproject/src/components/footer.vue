@@ -32,28 +32,28 @@
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mx-auto">
             <h4>
-              Contact us
+              Contactez nous
             </h4>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit
+            Mohamed Hedi Ben Khoua et Oussama Ben Abid
             </p>
             <div class="contact_nav">
               <a href="">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
-                  Location
+                 Institut supérieur des études technologique de Bizerte
                 </span>
               </a>
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Call : +01 123455678990
+                  Call : +216 54 54 66 07
                 </span>
               </a>
               <a href="">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
-                  Email : demo@gmail.com
+                  Email : pfeoussamahedi@gmail.com
                 </span>
               </a>
             </div>
@@ -61,12 +61,12 @@
           <div class="col-md-4">
             <div class="info_form">
               <h4>
-                SIGN UP TO OUR NEWSLETTER
+              Inscrivez Vous dans notre NEWSLETTER
               </h4>
               <form action="">
                 <input type="text" placeholder="Enter Your Email" />
                 <button type="submit">
-                  Subscribe
+                  S'inscrire
                 </button>
               </form>
             </div>

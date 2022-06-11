@@ -3,11 +3,11 @@
 <div class="wrapper d-flex align-items-stretch">
 <sidebar-component/>
  <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4">Mes Demandes de depot</h2>  <div class="row" >  <div class="col-md-12">
+        <h2 class="mb-4">Mes Demandes de dépôt</h2>  <div class="row" >  <div class="col-md-12">
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>Demandes de depot </h2>
+                                    <h2>Demandes de dépôt </h2>
                                  </div>
                               </div>
                               <div class="table_section padding_infor_info">

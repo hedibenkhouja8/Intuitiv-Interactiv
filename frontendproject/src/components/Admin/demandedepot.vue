@@ -23,7 +23,7 @@
                 <div class="white_shd full margin_bottom_30">
                   <div class="full graph_head">
                     <div class="heading1 margin_0">
-                      <h2>Demandes Depot</h2>
+                      <h2>Demandes Dépôt</h2>
       
                     </div>
                   </div>

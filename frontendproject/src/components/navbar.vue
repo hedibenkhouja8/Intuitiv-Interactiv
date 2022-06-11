@@ -25,11 +25,11 @@
             <ul class="navbar-nav">
               <li class="nav-item active">
                 <router-link class="nav-link" to="/">
-                  home <span class="sr-only">(current)</span></router-link
+                  Accueil <span class="sr-only">(current)</span></router-link
                 >
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" to="/about"> about </router-link>
+                <router-link class="nav-link" to="/about"> Présentation </router-link>
               </li>
               <li class="nav-item">
                 <router-link class="nav-link" to="/encadreurs">
@@ -38,12 +38,12 @@
               </li>
               <li class="nav-item">
                 <router-link class="nav-link" to="/memoire">
-                  Memoire
+                  Mémoires
                 </router-link>
               </li>
               <li class="nav-item">
                 <router-link class="nav-link" to="/contactus">
-                  Contact us
+                  Contactez nous
                 </router-link>
               </li>
               <li class="nav-item">
@@ -52,7 +52,7 @@
                   class="nav-link"
                   to="/login"
                 >
-                  login
+                  Connexion
                 </router-link>
               </li>
 
@@ -116,15 +116,16 @@
                       <i class="fa fa-user"></i>&nbsp;&nbsp; Profile
                     </router-link>
                     <router-link class="dropdown-item" to="/mesemprunts">
-                      <i class="fa fa-history"></i>&nbsp;&nbsp; Mes Emprunts
+                      <i class="fa fa-book"></i>&nbsp;&nbsp; Mes Emprunts
                     </router-link>
-                    <router-link class="dropdown-item" to="/mesemprunts">
-                      <i class="fa fa-cloud-upload"></i>&nbsp;&nbsp; Mes
-                      Demandes d'emprunt
+                    <router-link class="dropdown-item" to="/historyprofile">
+                      <i class="fa fa-history"></i>&nbsp;&nbsp; Historique d'emprunt
                     </router-link>
-                    <router-link class="dropdown-item" to="/mesemprunts">
+                    <router-link class="dropdown-item" to="/mesdemandes">
                       <i class="fa fa-cloud-download"></i>&nbsp;&nbsp; Mes
-                      Demandes de depot
+                      Demandes de Dépôt
+                    </router-link><router-link class="dropdown-item" to="/parametresprofile">
+                      <i class="fa fa-cog"></i>&nbsp;&nbsp; Parametres
                     </router-link>
 
                     <a class="dropdown-item" @click="logout()"

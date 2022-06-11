@@ -330,7 +330,6 @@ class DemandeEmpruntController extends Controller
         ->join('memoires', 'demande_emprunts.memoire_id', '=', 'memoires.id')
 
         ->join('demande_depots', 'demande_depots.id', '=', 'memoires.demande_depot_id')
-->where('domaine_id','=','1')
         ->select( DB::raw("(DATE_FORMAT(demande_emprunts.created_at, '20%y')) as year")  ) 
         //   ->select(DB::raw("(COUNT(*)) as total_emprunts"), DB::raw("(DATE_FORMAT(created_at, '%m')) as month"))
        

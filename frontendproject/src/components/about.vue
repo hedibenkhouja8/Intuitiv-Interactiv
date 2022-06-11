@@ -13,15 +13,16 @@
           <div class="detail-box">
             <div class="heading_container">
               <h2>
-                Who We Are
+               Qui nous sommes
               </h2>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem eum consequuntur ipsam repellat dolor soluta aliquid laborum, eius odit consectetur vel quasi in quidem, eveniet ab est corporis tempore.
-            </p>
-            <a href="">
-              Read More
-            </a>
+           
+            On vous présente notre bibliothèque universitaire en ligne où vous pouvez partagez vos mémoires ou empruntez d'autres librement en toutes sécurité </p><p>N'hesitez pas a nous joindre</p>
+            <router-link   to="/memoire">
+     <strong>   Nos mémoires</strong>
+         </router-link>
+          
           </div>
         </div>
       </div>

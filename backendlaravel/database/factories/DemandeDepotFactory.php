@@ -44,8 +44,8 @@ class DemandeDepotFactory extends Factory
              
             'description' =>$this->faker->paragraph($nbSentences = 5, $variableNbSentences = true),
             
-         //  'status' =>$this->faker->  randomElement($array = array ('EnAttente','Refuse')) ,// 'b',
-     'status' =>$this->faker->  randomElement($array = array ('Accepte')),
+          'status' =>$this->faker->  randomElement($array = array ('EnAttente','Refuse')) ,// 'b',
+    //'status' =>$this->faker->  randomElement($array = array ('Accepte')),
             'nbpages' =>$this->faker->randomDigit,   
             'coverimage'=>'these.png', 
             'fichierdemande' =>$this->faker->name,   
@@ -53,7 +53,7 @@ class DemandeDepotFactory extends Factory
             
             'fichierbrevet' =>$this->faker->name,  
             'fichierrecherche' =>$this->faker->name,   
-            'created_at' => $this->faker->dateTimeBetween('-5 months', '+7 months')         
+            'created_at' => $this->faker->dateTimeBetween('-5 years', '-1 days')        
         ];
     }
 }

@@ -18,19 +18,12 @@ class MemoireController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {/*  return$shares = DB::table('memoires')
-        ->join('demande_depots', 'memoires.demande_depot_id', '=', 'demande_depots.id')
-       ->join('users', 'memoires.demande_depot_id', '=', 'demande_depots.id')
-        ->join('criteres', 'memoires.demande_depot_id', '=', 'demande_depots.id')
-        ->join('domaines', 'memoires.demande_depot_id', '=', 'demande_depots.id')
-        
-        
-        ->where('status','=','Accepte')->where('archive','=','no')
-->with('demande_depot.user')->with('demande_depot.critere')->with('demande_depot.domaine')->with('demande_depot.etablisement')
-       
-        ->get(); 
-     */
+    {
        return Memoire::with('demande_depot.user')->with('demande_depot.critere')->with('demande_depot.domaine')->with('demande_depot.etablisement')->where('archive','=','no')->get();
+
+    } public function index2()
+    {
+       return Memoire::with('demande_depot.user')->with('demande_depot.critere')->with('demande_depot.domaine')->with('demande_depot.etablisement')->where('archive','=','no')->orderBy('created_at', 'desc')->limit(2)->get();
 
     } public function archive()
     {

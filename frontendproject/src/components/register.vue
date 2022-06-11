@@ -6,17 +6,16 @@
         <div class="row">
           <div class="col-md-6">
             <div class="detail-box">
-              <h3>GET ONLINE COURSES FOR FREE</h3>
-              <p>
-                Create your free account now and get immediate access to 100s of
-                online courses
+              <h3 style="color:white"> Vous AVEZ DéJA UN COMPTE ?</h3>
+              <p style="color:white">
+               Connectez vous maintenant
               </p>
-              <router-link to="/login"> LOGIN NOW</router-link>
+              <router-link to="/login"> Connexion</router-link>
             </div>
           </div>
           <div class="col-md-6">
             <div class="login_form">
-              <h5>REGISTER NOW</h5>
+              <h5>Inscription</h5>
               <Form action="" @submit="onCreate">
                 <Field
                   name="nom"
@@ -90,16 +89,15 @@
                   </Field>
                   <ErrorMessage style="color: white" name="Etablissement" />
                 </div>
-                 <label for=""> fichier demande</label>
-                <Field name="Pdf"  rules="required|ext:pdf" class="form-control" type="file"  @change="onchange1" />
+                 <label class="hovertext" data-hover="Un fichier qui peut confirmer votre identité universitaire ex : (carte étudiant,cin,attestation de présence)"> Fichier de demande</label>
+                <Field name="Pdf"  rules="required|ext:pdf" class="form-control " type="file"  @change="onchange1" />
                  <ErrorMessage style="color: white" name="Pdf" :custom-messages="customMessages" />
-                 <br>
-                 
-                <label for=""> profile pic</label>
+            
+                <label for=""> Photo de profil</label>
                 <Field  name="image" class="form-control" type="file" rules="image" @change="onchange" />
                <ErrorMessage style="color: white" name="image" />
                <br>
-                <button type="submit">Register</button><br><br>
+                <button type="submit">S'inscrire</button><br><br>
                  <div class="alert alert-danger" v-if="this.error">{{error}}</div>
               </Form>
             </div>
@@ -247,5 +245,31 @@ export default {
 };
 </script>
 
-<style>
+<style>.hovertext {
+  position: relative;
+  border-bottom: 1px dotted black;
+}
+
+.hovertext:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 200px;
+  background-color: rgb(83, 81, 81);
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  transition: opacity 1s ease-in-out;
+
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 110%;
+}
+
+.hovertext:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
 </style>

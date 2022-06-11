@@ -140,9 +140,11 @@ getmemoires(){
 } ,
  filterProductsByDomaine: function(infos){
                 return infos.filter(info => !info.demande_depot.domaine.nom.indexOf(this.domaine))
-            }, filterProductsByEtablisement: function(infos){
+            },
+             filterProductsByEtablisement: function(infos){
                 return infos.filter(info => !info.demande_depot.etablisement.nom.indexOf(this.etablisement))
-            }, filterProductsByName: function(infos) {
+            },
+             filterProductsByName: function(infos) {
                 return infos.filter(info=>info.demande_depot.titre.toLowerCase().includes(this.q.toLowerCase()));
             },
   },computed:{

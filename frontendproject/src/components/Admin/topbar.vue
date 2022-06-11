@@ -7,11 +7,7 @@
         </button>
         <div class="logo_section">
           <router-link class="nav-link" to="/Admin">
-            <img
-              class="img-responsive"
-              src="../../assets/images/logo/logo.png"
-              alt="#"
-            />
+         
           </router-link>
         </div>
 
@@ -35,11 +31,9 @@
                   ></a
                 >
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="profile.html">My Profile</a>
-                  <a class="dropdown-item" href="settings.html">Settings</a>
-                  <a class="dropdown-item" href="help.html">Help</a>
+                 
                   <a class="dropdown-item" @click="logout()"
-                    ><span>Log Out</span> <i class="fa fa-sign-out"></i
+                    ><span>Déconnexion</span> <i class="fa fa-sign-out"></i
                   ></a>
                 </div>
               </li>

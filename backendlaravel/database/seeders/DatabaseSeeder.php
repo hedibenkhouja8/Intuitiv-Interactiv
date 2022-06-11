@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {   DB::table('domaines')->insert([
+    { /*  DB::table('domaines')->insert([
         'nom' => 'Informatique',
     ]); DB::table('domaines')->insert([
         'nom' => 'Comptabilité',
@@ -45,33 +45,25 @@ class DatabaseSeeder extends Seeder
         'nom' => 'Langues',
     ]); DB::table('domaines')->insert([
         'nom' => 'Autre',
-    ]);
+    ]);*/
         
-        Etablisement::factory()->count(6)
-        ->create();
+     //   Etablisement::factory()->count(12)  ->create();
        
-        Entreprise::factory(10)->create();
-        
-        Encadreur::factory(10)->create();
-        Emprunt::factory(10)->create();
-       Critere::factory(10)->create();
+   // Entreprise::factory(10)->create();
+ //       
+     // Encadreur::factory(30)->create();
+     //  Emprunt::factory(10)->create();
+     //  Critere::factory(30)->create();
        
-      // User::factory(1000)->create();
-      // DemandeEmprunt::factory(1000)->create();
+      User::factory(100)->create();
+    //  DemandeEmprunt::factory(1000)->create();
        
     
        
-//$memoire=Memoire::factory()->count(200) ->create();
-DemandeDepot::factory()->count(100) ->create();
+//Memoire::factory()->count(200) ->create();
+//DemandeDepot::factory()->count(500) ->create();
   // DemandeDepot::factory(200)  ->for($memoire)->create();
-   /* foreach (Memoire::all() as $memoire){
-
-        $domaine = domaine::inRandomOrder()->take(rand(1,3))->pluck('id');
-        
-        $encadreur = Encadreur::inRandomOrder()->take(rand(1,2))->pluck('id');
-        $memoire->encadreurs()->attach($encadreur);
-        $memoire->domaines()->attach($domaine);
-    }*/
+  
        //  $this->call(MamoireSeeder::class);
        
       // DemandeEmprunt::factory(1000)->create();

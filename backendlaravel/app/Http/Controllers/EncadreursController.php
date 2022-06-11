@@ -15,7 +15,11 @@ class EncadreursController extends Controller
      */
     public function index()
     {
-        return Encadreur::with('etablisement')->get();
+        return Encadreur::with('etablisement')->orderBy('created_at', 'desc')->get();
+
+    }  public function index2()
+    {
+        return Encadreur::with('etablisement')->orderBy('created_at', 'desc')->limit(4)->get();
 
     }
 

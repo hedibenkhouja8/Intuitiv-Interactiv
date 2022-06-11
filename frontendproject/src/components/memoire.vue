@@ -153,7 +153,7 @@
               <h3>{{ info.demande_depot.user.name}}</h3>
               <h3>{{ info.demande_depot.domaine.nom}}</h3>
 							<p>{{ info.demande_depot.description}}</p>
-							<span><button class="btn btn-primary btn-sm btn-course"  @click="edit(info.id,info.demande_depot.domaine_id)" >View Details</button></span>
+							<span><button class="btn btn-primary btn-sm btn-course"  @click="edit(info.id,info.demande_depot.domaine_id)" >Voir Details</button></span>
 						</div>
 					</div>
        </div>

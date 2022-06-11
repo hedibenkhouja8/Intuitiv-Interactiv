@@ -47,6 +47,8 @@ Route::get('/Entreprise/search/{name}', [EntrepriseController::class, 'search'])
 Route::resource('Memoire',MemoireController::class);
 
 Route::get('/Memoire',[MemoireController::class,'index']); 
+Route::get('/MemoireX',[MemoireController::class,'index2']); 
+Route::get('/EncadreurX',[EncadreursController::class,'index2']); 
 Route::get('/Archive',[MemoireController::class,'archive']); 
 Route::get('/Memoire/{memoire}/Emprunt',[EmpruntController::class,'byMemoire']);
 

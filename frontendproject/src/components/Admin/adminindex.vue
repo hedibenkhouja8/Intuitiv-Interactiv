@@ -320,7 +320,7 @@ this.a=7,
       .get('http://127.0.0.1:8000/api/autre')
       .then(response => (this.a = response.data.length))
        axios
-      .get('http://127.0.0.1:8000/api/Emprunt')
+      .get('http://127.0.0.1:8000/api/DemandeEmpruntAccepted')
       .then(response => (this.emprunt = response.data.length))
        axios
       .get('http://127.0.0.1:8000/api/recentDemandeEmprunts')

@@ -6,17 +6,17 @@
         <div class="row">
           <div class="col-md-6">
             <div class="detail-box">
-              <h3 style="color:white">GET ONLINE COURSES FOR FREE</h3>
+              <h3 style="color:white">  Bienvenue dans notre 
+                      Bibliothèque</h3>
               <p style="color:white">
-                Create your free account now and get immediate access to 100s of
-                online courses
-              </p>
-              <router-link to="/Register"> REGISTER NOW</router-link>
+                Empruntez et partagez des mémoires en ligne quand vous voulez ,où vous voulez        
+                 </p>
+              <router-link to="/Register"> Inscrivez vous</router-link>
             </div>
           </div>
           <div class="col-md-6">
             <div class="login_form">
-              <h5 style="color:white">Login Now</h5>
+              <h5 style="color:white">Connexion</h5>
               <Form action="" @submit="onCreate">
                 <div>
                   <Field
@@ -38,7 +38,7 @@
                   />
                   <ErrorMessage style="color: white" name="password" />
                 </div>
-                <button type="submit">Login</button><br><br>
+                <button type="submit">Connexion</button><br><br>
                  <div class="alert alert-danger" v-if="this.error">{{error}}</div>
  
               </Form>
