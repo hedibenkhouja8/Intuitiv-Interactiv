@@ -12,6 +12,8 @@ use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\DemandeDepotController;
 use App\Http\Controllers\EtablisementsController;
 use App\Http\Controllers\DemandeEmpruntController;
+use App\Http\Controllers\ContactController;
+
 use App\Http\Controllers\NotificationController;
 use App\Models\Notification;
 
@@ -256,6 +258,7 @@ Route::get('/chimie', [MemoireController::class, 'MemoireChimie']);
 Route::get('/math', [MemoireController::class, 'MemoireMath']);
 Route::get('/autre', [MemoireController::class, 'MemoireAutre']);
 
+Route::post('/sendcontactmail',[ContactController::class,'sendmailcontact']);
 //protected routes LOGIN
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
