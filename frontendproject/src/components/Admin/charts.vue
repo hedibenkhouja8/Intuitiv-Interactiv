@@ -47,7 +47,7 @@
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
                                     <h2>
-Diagramme circulaire<p>(Nombre d'étudiants par établissement)</p></h2>
+Diagramme circulaire<p>Nombre d'étudiants par établissement</p></h2>
                                  </div>
                               </div>
                               <div class="map_section padding_infor_info">
@@ -59,7 +59,7 @@ Diagramme circulaire<p>(Nombre d'étudiants par établissement)</p></h2>
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>Graphique Linéaire</h2>
+                                    <h2>Graphique Linéaire<p>Comparaison entre le nombre des demandes de dépôt et les demandes d'emprunts</p></h2>
                                  </div>
                               </div>
                               <div class="map_section padding_infor_info">
