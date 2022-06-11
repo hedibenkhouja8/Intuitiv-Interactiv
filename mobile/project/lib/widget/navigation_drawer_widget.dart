@@ -168,7 +168,7 @@ class NavigationDrawerWidget extends StatelessWidget {
                       color: Colors.white,
                     ),
                     title: const Text(
-                      'Logout',
+                      'Se déconnecter',
                       style: TextStyle(color: Colors.white),
                     ),
                     onTap: () => {
@@ -187,7 +187,7 @@ class NavigationDrawerWidget extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Contact Us",
+                    "Nous contacter",
                     style: TextStyle(
                         color: Colors.white70, fontWeight: FontWeight.bold),
                   ),

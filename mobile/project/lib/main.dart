@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   const Padding(
                     padding: EdgeInsets.fromLTRB(0, 70, 0, 10),
                     child: Text(
-                      "Hello There",
+                      "Bienvenue ",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   const Padding(
                     padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                     child: Text(
-                      "Let's Sign Up To Continue",
+                      "connectez-vous pour continuer",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.normal,
@@ -98,43 +98,16 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: RaisedButton(
                               color: Color.fromARGB(218, 43, 119, 218),
                               textColor: Colors.white,
-                              child: const Text("Sign Up "),
+                              child: const Text("Connectez vous maintenant"),
                               padding:
                                   const EdgeInsets.fromLTRB(70, 20, 70, 20),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50.0)),
                               onPressed: () {
-                                Navigator.pushNamed(context, '/signup');
+                                Navigator.pushNamed(context, '/signin');
                               })),
                     ],
                   ),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                          child: Text(
-                            "Already have an account? ",
-                            style: TextStyle(
-                                fontSize: 17,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        FlatButton(
-                            padding: const EdgeInsets.fromLTRB(0, 5, 40, 0),
-                            child: const Text(
-                              'Sign In',
-                              style: TextStyle(
-                                  fontSize: 17,
-                                  color: Color.fromARGB(218, 43, 119, 218),
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/signin');
-                            })
-                      ]),
                 ]),
           ),
         )));

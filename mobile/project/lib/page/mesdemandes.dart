@@ -62,7 +62,8 @@ class _MesDemandeempruntState extends State<MesDemandeempruntpage> {
         ),
         backgroundColor: const Color.fromARGB(218, 43, 119, 218),
       ),
-      body: Center(
+      body: SingleChildScrollView(
+          child:Center(
           child: Column(children: <Widget>[
         Container(
           margin: EdgeInsets.all(20),
@@ -108,7 +109,7 @@ class _MesDemandeempruntState extends State<MesDemandeempruntpage> {
             ),
           ),
         ),
-      ])),
+      ])),)
     );
   }
 }

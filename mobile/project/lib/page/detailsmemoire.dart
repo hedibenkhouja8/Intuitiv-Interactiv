@@ -15,7 +15,7 @@ import 'package:project/widget/navigation_drawer_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-import '../widget/navigation_draweradmin_widget.dart';
+import '../widget/navigation_drawer_widget.dart';
 
 class Memoiredetails extends StatefulWidget {
   final String id;
@@ -51,7 +51,7 @@ class _MemoiredetailsState extends State<Memoiredetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: NavigationDraweradminWidget(),
+        drawer: NavigationDrawerWidget(),
         appBar: AppBar(
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(

@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
         ),
         title: const Center(
           child: Text(
-            'Welcome to our app',
+            'Bienvenue sur notre application',
             textAlign: TextAlign.right,
             style: TextStyle(color: Colors.white, fontSize: 15),
           ),

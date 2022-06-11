@@ -50,20 +50,20 @@ class _SignInPageState extends State<SignInPage> {
 
       if (role == "etudiant") {
         var snackBar1 = const SnackBar(
-          content: Text('welcome you are loged in '),
+          content: Text('bienvenue vous êtes connecté '),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar1);
         Navigator.pushNamed(context, '/HomePage');
       } else if (role == "admin") {
         var snackBar2 = const SnackBar(
-          content: Text('welcome admin '),
+          content: Text('Bienvenue Admin'),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar2);
         Navigator.pushNamed(context, '/Demandeemprunts');
       }
     } else {
       var snackBar3 = const SnackBar(
-        content: Text('check your information !'),
+        content: Text('vérifiez vos informations !'),
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar3);
     }
@@ -88,7 +88,7 @@ class _SignInPageState extends State<SignInPage> {
               const Padding(
                 padding: EdgeInsets.fromLTRB(0, 99, 0, 10),
                 child: Text(
-                  "SIGN IN",
+                  "Login",
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -98,7 +98,7 @@ class _SignInPageState extends State<SignInPage> {
               const Padding(
                 padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                 child: Text(
-                  "Log Back Into Your Account",
+                  "Reconnectez-vous à votre compte",
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.normal),
                 ),
@@ -129,7 +129,7 @@ class _SignInPageState extends State<SignInPage> {
                           filled: true,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(50)),
-                          hintText: 'Enter Email Adress'),
+                          hintText: "Entrer l'adresse email"),
                       keyboardType: TextInputType.emailAddress,
                     ),
                   )
@@ -141,7 +141,7 @@ class _SignInPageState extends State<SignInPage> {
                 children: [
                   const Padding(
                     padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                    child: Text('Password ',
+                    child: Text('Mot de passe ',
                         style: TextStyle(color: Colors.white)),
                   ),
                   TextField(
@@ -160,7 +160,7 @@ class _SignInPageState extends State<SignInPage> {
                             }),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(50)),
-                        hintText: 'Enter Password'),
+                        hintText: 'Entrer le mot de passe'),
                     obscureText: _isObscure,
                     keyboardType: TextInputType.text,
                   ),
@@ -175,7 +175,7 @@ class _SignInPageState extends State<SignInPage> {
                       child: RaisedButton(
                           color: const Color.fromARGB(218, 43, 119, 218),
                           textColor: Colors.white,
-                          child: const Text("Sign In Now"),
+                          child: const Text("Connectez vous maintenant"),
                           padding: const EdgeInsets.fromLTRB(120, 20, 120, 20),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50.0)),
@@ -183,7 +183,7 @@ class _SignInPageState extends State<SignInPage> {
                             if (email.text == '' || mdp.text == '') {
                               var snackBar = const SnackBar(
                                 content: Text(
-                                    'please enter your email and password !'),
+                                    'veuillez saisir votre email et votre mot de passe!'),
                               );
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(snackBar);
@@ -193,33 +193,6 @@ class _SignInPageState extends State<SignInPage> {
                           })),
                 ],
               ),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: Text(
-                        "Don't have an account?",
-                        style: TextStyle(
-                            fontSize: 13,
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal),
-                      ),
-                    ),
-                    FlatButton(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: const Text(
-                          'Sign Up',
-                          style: TextStyle(
-                              fontSize: 13,
-                              color: Color.fromARGB(218, 43, 119, 218),
-                              fontWeight: FontWeight.normal),
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/signup');
-                        })
-                  ]),
             ]),
       ),
     ));

@@ -90,24 +90,7 @@ class NavigationDraweradminWidget extends StatelessWidget {
                       )
                     },
                   ),
-                  const Divider(color: Colors.white70),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.book_outlined,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      'Demandes Depots',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onTap: () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MesMemoirespage()),
-                      )
-                    },
-                  ),
+                  
                   const Divider(color: Colors.white70),
                   ListTile(
                     leading: const Icon(
@@ -151,7 +134,7 @@ class NavigationDraweradminWidget extends StatelessWidget {
                       color: Colors.white,
                     ),
                     title: const Text(
-                      'Logout',
+                      'Se déconnecter',
                       style: TextStyle(color: Colors.white),
                     ),
                     onTap: () => {
