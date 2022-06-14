@@ -5,8 +5,8 @@
  <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4">Memoire Disponible</h2>
          <div class="row" >
-    
-      <embed controlslist="nodownload" v-bind:src="'http://localhost:8000/storage/files/demandes/pdf/'+fichier" toolbar=0 width="500" height="1300" 
+    <button class="btn" @contextmenu.prevent="onRightClick">a</button>
+      <embed  @contextmenu.prevent="onRightClick" controlslist="nodownload" v-bind:src="'http://localhost:8000/storage/files/demandes/pdf/'+fichier+'#toolbar=0'" toolbar=0 width="500" height="1300" 
  type="application/pdf">
       </div>  </div>
 
@@ -36,6 +36,10 @@ components: {
   },mounted () { axios
       .get('http://127.0.0.1:8000/api/AcceptedByUser/'+localStorage.getItem("id"))
       .then(response => (this.info = response.data))
+ },methods: {
+   onRightClick() {  
+      console.log("right clicked");  document.addEventListener('contextmenu', event => event.preventDefault());
+    },  
  }
 }
 

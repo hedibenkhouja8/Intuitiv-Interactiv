@@ -77,7 +77,7 @@ class AuthController extends Controller
         }
         if($user->etatdecompte != 'active' and $user->etatdecompte != 'restreint'  ) {
             return response([
-                'message' => 'account not  active '
+                'message' => 'compte non activé '
             ], 401);
         }
 

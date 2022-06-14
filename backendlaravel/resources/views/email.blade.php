@@ -1,6 +1,6 @@
 <p>
-Hi, <br>
-you have a new contact email from application. <br> <br>
+Bonjour <br>
+ Vous avez recu un nouveau mail<br> <br>
 <strong>Details :</strong> <br>
 <strong>Nom :</strong>{{$data['name']}} <br>
 <strong>Phone :</strong>{{$data['phone']}} <br>

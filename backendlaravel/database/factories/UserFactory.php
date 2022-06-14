@@ -36,7 +36,7 @@ class UserFactory extends Factory
             'profilepic'=>'nouser.jpg','etatdecompte'=>'notactive',
             
             'etablisement_id'=>$this->faker->randomElement($etablisement),
-            'created_at' => $this->faker->dateTimeBetween('-6 months', '+6 months')     
+            'created_at' => $this->faker->dateTimeBetween('-6 months', '-1 days')     
         ];
     }
 }

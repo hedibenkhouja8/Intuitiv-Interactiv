@@ -487,7 +487,7 @@ export default {
 .then((willDelete) => {
   if (willDelete) {
       axios.post("http://127.0.0.1:8000/api/restreindre/" + id);
-      swal(" l'acces restreindre ", {
+      swal(" l'acces est restreint ", {
       icon: "success",
     });
     window.location.reload();

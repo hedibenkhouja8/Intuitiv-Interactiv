@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:project/page/mesdemandes.dart';
+import 'package:project/page/mesmemoires_page.dart';
 import 'package:project/page/notificationTiles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:project/widget/navigation_drawer_widget.dart';
@@ -25,7 +27,7 @@ class _NotificationPageState extends State<NotificationPage> {
       id = idd;
     });
     Response response = await get(
-        Uri.parse("http://127.0.0.1:8000/api/Notification/Userall/${id}"));
+        Uri.parse("http://127.0.0.1:8000/api/Notificationnotviewedlist/${id}"));
     dynamic responsedata = jsonDecode(response.body);
     setState(() {
       this.data = responsedata;
@@ -67,16 +69,30 @@ class _NotificationPageState extends State<NotificationPage> {
               physics: ClampingScrollPhysics(),
               itemCount: data.length,
               itemBuilder: (context, index) {
-                return NotificationTiles(
+                return  GestureDetector(
+                    onTap: () => {
+                          redirect()
+                        },
+                        child:NotificationTiles(
                   title: data[index]['titre'],
                   subtitle: data[index]['content'],
                   enable: true,
                   date: data[index]['created_at'],
-                );
+                ));
               },
               separatorBuilder: (context, index) {
                 return Divider();
               }),
         )));
+  }
+    redirect() {
+   
+       Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const MesMemoirespage()),
+                      );
+    
   }
 }

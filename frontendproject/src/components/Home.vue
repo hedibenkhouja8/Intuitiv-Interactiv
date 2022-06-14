@@ -308,7 +308,7 @@
   <section class="contact_section layout_padding">
       <div class="container">
         <div class="heading_container">
-          <h2>Contact Nous</h2>
+          <h2>Contactez Nous</h2>
         </div>
         <div class="row">
           <div class="col-md-6">

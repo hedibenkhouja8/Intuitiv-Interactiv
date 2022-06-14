@@ -129,7 +129,7 @@
                     </router-link>
 
                     <a class="dropdown-item" @click="logout()"
-                      ><i class="fa fa-sign-out"></i>&nbsp;&nbsp;Log Out</a
+                      ><i class="fa fa-sign-out"></i>&nbsp;&nbsp;Déconnexion</a
                     >
                   </div>
                 </div>
